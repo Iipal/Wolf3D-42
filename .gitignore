@@ -1,0 +1,7 @@
+#ignore object files in source folders
+srcs/*.o
+libft/srcs/*/*.o
+libft/libft.a
+wolf3d
+**.DS_Store
+.VScode
