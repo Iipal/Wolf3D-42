@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/02/06 15:02:38 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/02/06 19:50:40 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,10 @@ ifeq ($(UNAME_S),Darwin)
 endif
 
 CC = gcc -march=native
-CFLAGS = -Wall -Wextra -Werror -Ofast
+CFLAGS = -Wall -Wextra -Werror -g
 
-SRC = srcs/main.c srcs/wolf_init.c srcs/wolf_key_hooks.c srcs/wolf_free.c
+SRC = srcs/main.c srcs/wolf_init.c srcs/wolf_map_reader.c srcs/wolf_key_hooks.c \
+srcs/wolf_free.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -59,7 +60,7 @@ clean:
 fclean: clean
 	@$(LMAKE) fclean
 	@$(DEL) $(NAME)
-	@echo "$(RED)deleted$(WHITE): ./wolf3d"
+	@echo "$(RED)deleted$(WHITE): ./$(NAME)"
 
 re: fclean all
 

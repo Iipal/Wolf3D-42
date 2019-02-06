@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:39:47 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/06 14:40:21 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/06 19:20:44 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,5 @@
 
 # define E_EMAP		"\tERROR: Empty map \\ "
 # define E_IMAP		"\tERROR: Invalid map \\ "
-# define E_HEX		"\tERROR: Invalid HEX code or you put black color \\ "
 
 #endif

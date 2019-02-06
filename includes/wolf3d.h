@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/06 15:09:09 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/06 19:51:27 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,7 @@ _FPOINT;
 _POINT;
 _BOOL;
 _IARR;
-
-typedef struct	s_isrender
-{
-	bool	is_render;
-}				t_isr;
+_UINT;
 
 typedef struct	s_mlx
 {
@@ -61,17 +57,33 @@ typedef struct	s_mlx
 	iarr	screen;
 }				t_mlx;
 
+typedef struct	s_isrender
+{
+	bool	is_render;
+}				t_isr;
+
+typedef struct	s_map
+{
+	strtab	tab;
+	int		xsize;
+	int		ysize;
+}				t_map;
+
 typedef struct	s_fdf_environment
 {
 	t_mlx	*mlx;
 	t_isr	*isr;
+	t_map	*map;
 }				t_env;
 
 bool			wolf_init(t_env *env);
+
+bool			wolf_readnsave(string map_name, t_env *env);
 
 int				wolf_key_hooks(int key, t_env *env);
 int				wolf_killwindow_hook(t_env *env);
 
 void			wolf_free(t_env *env);
+void			wolf_free_map(strtab map, int y);
 
 #endif

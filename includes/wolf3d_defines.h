@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/06 15:09:33 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/06 19:55:14 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@
 # define ZOOM_DEF	15
 # define ZOOM_MAX	127
 
+# define MAX_TEXTURES	1
+
 # define _MSG(msg) ft_putstr(msg);
 # define _MSGN(msg) ft_putendl(msg);
 # define _NOTIS(msg, ex, do, ret) if (!(ex)) {_MSGN(msg);do;return (ret);}
@@ -62,14 +64,19 @@
 # define _COSR(angle) cos(_RAD(angle))
 # define _SINR(angle) sin(_RAD(angle))
 
-# define _BOOL		typedef enum e_bool	bool
-# define _IARR		typedef int*		iarr
-# define _POINT		typedef t_p			point
-# define _FPOINT	typedef t_fp		fpoint
+# define _FPOINT	typedef t_fp			fpoint
+# define _POINT		typedef t_p				point
+# define _BOOL		typedef enum e_bool		bool
+# define _IARR		typedef int*			iarr
+# define _UINT		typedef unsigned int	uint
 
 # define MPTR	env->mlx->mlx
 # define WPTR	env->mlx->win
 # define IPTR	env->mlx->img
 # define SPTR	env->mlx->screen
+
+# define MAPY	env->map->ysize
+# define MAPX	env->map->xsize
+# define MAP	env->map->tab
 
 #endif
