@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/06 19:51:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/06 23:09:24 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ enum	e_bool {false, true} __attribute__((packed));
 
 typedef struct	s_point
 {
-	short	y;
-	short	x;
+	int	y;
+	int	x;
 }				t_p;
 
 typedef struct	s_fpoint
@@ -80,8 +80,10 @@ bool			wolf_init(t_env *env);
 
 bool			wolf_readnsave(string map_name, t_env *env);
 
+void			wolf_rendering(t_env *env);
+
 int				wolf_key_hooks(int key, t_env *env);
-int				wolf_killwindow_hook(t_env *env);
+int				wolf_killwindow(t_env *env);
 
 void			wolf_free(t_env *env);
 void			wolf_free_map(strtab map, int y);

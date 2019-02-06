@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/02/06 19:50:40 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/02/06 22:10:31 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ CC = gcc -march=native
 CFLAGS = -Wall -Wextra -Werror -g
 
 SRC = srcs/main.c srcs/wolf_init.c srcs/wolf_map_reader.c srcs/wolf_key_hooks.c \
-srcs/wolf_free.c
+srcs/wolf_free.c srcs/wolf_rendering.c
 
 OBJ = $(SRC:.c=.o)
 

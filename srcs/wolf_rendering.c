@@ -1,27 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wolf_key_hooks.c                                   :+:      :+:    :+:   */
+/*   wolf_rendering.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/06 14:44:03 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/06 23:18:48 by tmaluh           ###   ########.fr       */
+/*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
+/*   Updated: 2019/02/06 23:18:35 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
 
-int		wolf_killwindow(t_env *env)
+#include <time.h>
+
+
+typedef struct	s_raycaster
 {
-	wolf_free(env);
-	exit(EXIT_SUCCESS);
-	return (0);
+	point	pos;
+	float	rotate;
+}				t_rc;
+
+static void	add_randomize_pos(t_rc *rc, t_env *env)
+{
+	while (1)
+	{
+		rc->pos = (point){rand() % MAPY, rand() % MAPX};
+		if (!MAP[rc->pos.y][rc->pos.x])
+			break ;
+	}
 }
 
-int		wolf_key_hooks(int key, t_env *env)
+void	wolf_rendering(t_env *env)
 {
-	if (key == ESC)
-		wolf_killwindow(env);
-	return (0);
+	srand(time(NULL));
+	t_rc	*rc;
+
+	rc = malloc(sizeof(t_rc));
+	*rc = (t_rc){{0,0},0};
+	add_randomize_pos(rc, env);
+	printf("%d - %d\n", rc->pos.y, rc->pos.x);
 }
