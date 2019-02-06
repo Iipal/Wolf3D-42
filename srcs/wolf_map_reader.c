@@ -6,20 +6,20 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 17:18:56 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/06 20:00:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/06 20:19:08 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
 
-static bool		add_save_map(string line, t_env *env, string map_line)
+static bool		add_save_map(string line, string map_line, int map_x)
 {
 	string	temp_digits;
 	int		digits;
 	int		x;
 
 	x = -1;
-	while (*line && x < MAPX)
+	while (*line && x < map_x)
 	{
 		if (ft_isdigit(*line))
 		{
@@ -57,24 +57,22 @@ static int		add_valid_inline_numbers(string line)
 	return (out);
 }
 
-static bool		add_valid_info_line(string info_line, t_env *env)
+static bool		add_valid_info_line(string info_line, t_map *map)
 {
 	strtab	info_tab;
 	int		i;
 
 	_NOTIS_F(info_tab = ft_strsplit(info_line, ' '));
-	_NOTIS_F(MAPY = ft_atoi(info_tab[0]));
+	_NOTIS_F(map->ysize = ft_atoi(info_tab[0]));
 	ft_strdel(&info_tab[0]);
-	_NOTIS_F(MAPX = ft_atoi(info_tab[1]));
+	_NOTIS_F(map->xsize = ft_atoi(info_tab[1]));
 	ft_strdel(&info_tab[1]);
 	_NOTIS_F(!info_tab[2]);
 	free(info_tab);
-	_NOTIS(E_ALLOC, MAP = malloc(sizeof(string) * MAPY),
-		wolf_free(env), false);
+	_NOTIS_F(map->tab = malloc(sizeof(string) * map->ysize));
 	i = -1;
-	while (++i < MAPY)
-		_NOTIS(E_ALLOC, MAP[i] = malloc(sizeof(char) * MAPX),
-			wolf_free(env), false);
+	while (++i < map->ysize)
+		_NOTIS_F(map->tab[i] = malloc(sizeof(char) * map->xsize));
 	ft_strdel(&info_line);
 	return (true);
 }
@@ -88,11 +86,11 @@ bool			wolf_readnsave(string map_name, t_env *env)
 	i = -1;
 	_NOTIS_F(!(!(fd = open(map_name, O_RDONLY)) || fd < 0));
 	_NOTIS_F(!(ft_gnl(fd, &gnl_temp) < 0));
-	_NOTIS_F(add_valid_info_line(gnl_temp, env));
+	_NOTIS_F(add_valid_info_line(gnl_temp, env->map));
 	while (ft_gnl(fd, &gnl_temp) > 0)
 	{
 		_NOTIS_F(!(add_valid_inline_numbers(gnl_temp) != MAPX));
-		_NOTIS_F(add_save_map(gnl_temp, env, MAP[++i]));
+		_NOTIS_F(add_save_map(gnl_temp, MAP[++i], MAPX));
 		ft_strdel(&gnl_temp);
 	}
 	_NOTIS_F(!(++i != MAPY));
