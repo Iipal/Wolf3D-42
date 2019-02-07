@@ -6,13 +6,14 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 17:18:56 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/07 11:55:58 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/07 14:38:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
 
-static bool		add_save_map(string line, iarr map_line, int map_x)
+static bool		add_save_map(string line, iarr map_line,
+						iarr colors_line, int map_x)
 {
 	string	temp_digits;
 	int		digits;
@@ -25,6 +26,12 @@ static bool		add_save_map(string line, iarr map_line, int map_x)
 		{
 			map_line[++x] = ft_atoi(line);
 			_NOTIS_F(!(map_line[x] < 0 || map_line[x] > MAX_TEXTURES));
+			map_line[x] == 0 ? (colors_line[x] = IRGB_WHITE) : 0;
+			map_line[x] == 1 ? (colors_line[x] = IRGB_RED) : 0;
+			map_line[x] == 2 ? (colors_line[x] = IRGB_ORANGE) : 0;
+			map_line[x] == 3 ? (colors_line[x] = IRGB_LIME) : 0;
+			map_line[x] == 4 ? (colors_line[x] = IRGB_AQUA) : 0;
+			map_line[x] == 5 ? (colors_line[x] = IRGB_PURPLE) : 0;
 			temp_digits = ft_itoa(map_line[x]);
 			digits = ft_strlen(temp_digits);
 			ft_strdel(&temp_digits);
@@ -57,11 +64,13 @@ static int		add_valid_inline_numbers(string line)
 	return (out);
 }
 
-static bool		add_valid_info_line(string info_line, t_map *map)
+static bool		add_valid_info(string info_line, t_map *map, string map_name)
 {
 	strtab	info_tab;
 	int		i;
 
+	_NOTIS_F(!ft_strcmp(map_name +
+		(ft_strlen(map_name) - ft_strlen(WOLF_FILE_EXT)), WOLF_FILE_EXT));
 	_NOTIS_F(info_tab = ft_strsplit(info_line, ' '));
 	_NOTIS_F(map->ysize = ft_atoi(info_tab[0]));
 	ft_strdel(&info_tab[0]);
@@ -70,9 +79,13 @@ static bool		add_valid_info_line(string info_line, t_map *map)
 	_NOTIS_F(!info_tab[2]);
 	free(info_tab);
 	_NOTIS_F(map->tab = malloc(sizeof(iarr) * map->ysize));
+	_NOTIS_F(map->colors = malloc(sizeof(iarr) * map->ysize));
 	i = -1;
 	while (++i < map->ysize)
+	{
 		_NOTIS_F(map->tab[i] = malloc(sizeof(int) * map->xsize));
+		_NOTIS_F(map->colors[i] = malloc(sizeof(int) * map->xsize));
+	}
 	ft_strdel(&info_line);
 	return (true);
 }
@@ -115,12 +128,12 @@ bool			wolf_readnsave(string map_name, t_env *env)
 	i = -1;
 	_NOTIS_F(!(!(fd = open(map_name, O_RDONLY)) || fd < 0));
 	_NOTIS_F(!(ft_gnl(fd, &gnl_temp) < 0));
-	_NOTIS_F(add_valid_info_line(gnl_temp, env->map));
+	_NOTIS_F(add_valid_info(gnl_temp, env->map, map_name));
 	while ((gnl_ret = ft_gnl(fd, &gnl_temp)) && ++i < MAPY)
 	{
 		_NOTIS(E_IMAP, !(add_valid_inline_numbers(gnl_temp) != MAPX),
 			ft_strdel(&gnl_temp), false);
-		_NOTIS(E_ALLOC, add_save_map(gnl_temp, MAP[i], MAPX),
+		_NOTIS(E_IMAP, add_save_map(gnl_temp, MAP[i], MAPC[i], MAPX),
 			ft_strdel(&gnl_temp), false);
 		_NOTIS(E_ENDMAP, add_endofmap(env, i, (point){MAPY, MAPX}, false),
 			ft_strdel(&gnl_temp), false);

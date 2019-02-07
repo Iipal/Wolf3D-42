@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/07 10:46:58 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/07 14:12:44 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct	s_isrender
 typedef struct	s_map
 {
 	itab	tab;
+	itab	colors;
 	int		xsize;
 	int		ysize;
 }				t_map;

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/07 11:36:24 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/07 14:20:36 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # define WIN_X		2000
 # define WIN_Y		1000
 # define WIN_TITTLE	"Wolfenstein 3D"
+
+# define WOLF_FILE_EXT	".w3d"
 
 # define WIN_EXT	17
 # define WIN_EXTM	(1L << 17)
@@ -35,8 +37,13 @@
 
 # define PI 3.141592
 
-# define INT_MAX	2147483647
-# define INT_MIN	(-INT_MAX-1)
+# define IRGB_WHITE		0xFFFFFF
+# define IRGB_GRAY		0x3D3D3D
+# define IRGB_RED		0xF21856
+# define IRGB_ORANGE	0xFFB833
+# define IRGB_LIME		0x7FFF00
+# define IRGB_AQUA		0x6EFDFF
+# define IRGB_PURPLE	0xD800F0
 
 # define SHIFT_INC	15
 
@@ -49,7 +56,7 @@
 # define ZOOM_DEF	15
 # define ZOOM_MAX	127
 
-# define MAX_TEXTURES	1
+# define MAX_TEXTURES	5
 
 # define _MSG(msg) ft_putstr(msg);
 # define _MSGN(msg) ft_putendl(msg);
@@ -79,5 +86,6 @@
 # define MAPY	env->map->ysize
 # define MAPX	env->map->xsize
 # define MAP	env->map->tab
+# define MAPC	env->map->colors
 
 #endif
