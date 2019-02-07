@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 17:18:56 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/07 11:37:09 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/07 11:55:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,21 +77,30 @@ static bool		add_valid_info_line(string info_line, t_map *map)
 	return (true);
 }
 
-static bool		add_valid_endofmap(iarr map_line, int y, int maxy, int line_len)
+static bool		add_endofmap(t_env *env, int y,
+								point map_max, bool valid_all)
 {
 	int	i;
 
 	i = 0;
-	if (!y || y == --maxy)
+	if (valid_all)
 	{
-		while (i < line_len)
-			if (map_line[i] > 0)
+		while (++y < map_max.y - 1 && (i = -1))
+			while (++i < map_max.x)
+				if (MAP[y][i] == 0)
+					return (true);
+		return (false);
+	}
+	else if (!y || y == map_max.y - 1)
+	{
+		while (i < map_max.x)
+			if (MAP[y][i] > 0)
 				++i;
 			else
 				break ;
-		return ((i != line_len) ? false : true);
+		return ((i != map_max.x) ? false : true);
 	}
-	else if (!map_line[0] || !map_line[--line_len])
+	else if (!MAP[y][0] || !MAP[y][map_max.x - 1])
 		return (false);
 	return (true);
 }
@@ -113,11 +122,13 @@ bool			wolf_readnsave(string map_name, t_env *env)
 			ft_strdel(&gnl_temp), false);
 		_NOTIS(E_ALLOC, add_save_map(gnl_temp, MAP[i], MAPX),
 			ft_strdel(&gnl_temp), false);
-		_NOTIS(E_ENDMAP, add_valid_endofmap(MAP[i], i, MAPY, MAPX),
+		_NOTIS(E_ENDMAP, add_endofmap(env, i, (point){MAPY, MAPX}, false),
 			ft_strdel(&gnl_temp), false);
 		ft_strdel(&gnl_temp);
 	}
 	_NOTIS(E_IMAP, !(gnl_ret || gnl_temp), ft_strdel(&gnl_temp), false);
 	_NOTIS_F(!(++i != MAPY));
+	_NOTIS(E_NOFLOOR, add_endofmap(env, 0, (point){MAPY, MAPX}, true),
+		exit(EXIT_FAILURE), 0);
 	return (true);
 }
