@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/06 23:18:35 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/07 10:24:08 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 #include <time.h>
 
-
-typedef struct	s_raycaster
+typedef struct	s_ray_caster
 {
 	point	pos;
 	float	rotate;

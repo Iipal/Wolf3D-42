@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 17:18:56 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/06 20:19:08 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/07 10:58:11 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
 
-static bool		add_save_map(string line, string map_line, int map_x)
+static bool		add_save_map(string line, iarr map_line, int map_x)
 {
 	string	temp_digits;
 	int		digits;
@@ -69,17 +69,40 @@ static bool		add_valid_info_line(string info_line, t_map *map)
 	ft_strdel(&info_tab[1]);
 	_NOTIS_F(!info_tab[2]);
 	free(info_tab);
-	_NOTIS_F(map->tab = malloc(sizeof(string) * map->ysize));
+	_NOTIS_F(map->tab = malloc(sizeof(iarr) * map->ysize));
 	i = -1;
 	while (++i < map->ysize)
-		_NOTIS_F(map->tab[i] = malloc(sizeof(char) * map->xsize));
+		_NOTIS_F(map->tab[i] = malloc(sizeof(int) * map->xsize));
 	ft_strdel(&info_line);
+	return (true);
+}
+
+static bool		add_valid_endofmap(iarr map_line, int y, int maxy, int line_len)
+{
+	int	counter;
+
+	counter = 0;
+	if (!y || y == --maxy)
+	{
+		while (counter < line_len)
+		{
+			if (map_line[counter] > 0)
+				++counter;
+			else
+				break ;
+		}
+		if (counter != line_len)
+			return (false);
+	}
+	else if (map_line[0] == 0 || map_line[--line_len] == 0)
+		return (false);
 	return (true);
 }
 
 bool			wolf_readnsave(string map_name, t_env *env)
 {
 	string	gnl_temp;
+	int		gnl_ret;
 	int		fd;
 	int		i;
 
@@ -87,12 +110,17 @@ bool			wolf_readnsave(string map_name, t_env *env)
 	_NOTIS_F(!(!(fd = open(map_name, O_RDONLY)) || fd < 0));
 	_NOTIS_F(!(ft_gnl(fd, &gnl_temp) < 0));
 	_NOTIS_F(add_valid_info_line(gnl_temp, env->map));
-	while (ft_gnl(fd, &gnl_temp) > 0)
+	while ((gnl_ret = ft_gnl(fd, &gnl_temp)) && ++i < MAPY)
 	{
-		_NOTIS_F(!(add_valid_inline_numbers(gnl_temp) != MAPX));
-		_NOTIS_F(add_save_map(gnl_temp, MAP[++i], MAPX));
+		_NOTIS(E_IMAP, !(add_valid_inline_numbers(gnl_temp) != MAPX),
+			ft_strdel(&gnl_temp), false);
+		_NOTIS(E_ALLOC, add_save_map(gnl_temp, MAP[i], MAPX),
+			ft_strdel(&gnl_temp), false);
+		_NOTIS(E_ENDMAP, add_valid_endofmap(MAP[i], i, MAPY, MAPX),
+			ft_strdel(&gnl_temp), false);
 		ft_strdel(&gnl_temp);
 	}
+	_NOTIS(E_IMAP, !(gnl_ret || gnl_temp), ft_strdel(&gnl_temp), false);
 	_NOTIS_F(!(++i != MAPY));
 	return (true);
 }

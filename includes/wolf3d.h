@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/06 23:09:24 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/07 10:46:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ _FPOINT;
 _POINT;
 _BOOL;
 _IARR;
+_ITAB;
 _UINT;
 
 typedef struct	s_mlx
@@ -64,7 +65,7 @@ typedef struct	s_isrender
 
 typedef struct	s_map
 {
-	strtab	tab;
+	itab	tab;
 	int		xsize;
 	int		ysize;
 }				t_map;
@@ -86,6 +87,6 @@ int				wolf_key_hooks(int key, t_env *env);
 int				wolf_killwindow(t_env *env);
 
 void			wolf_free(t_env *env);
-void			wolf_free_map(strtab map, int y);
+void			wolf_free_map(itab map, int y);
 
 #endif

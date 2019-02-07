@@ -6,19 +6,19 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/06 19:52:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/07 10:20:24 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
 
-void	wolf_free_map(strtab map, int y)
+void	wolf_free_map(itab map, int y)
 {
 	int	i;
 
 	i = -1;
 	while (++i < y)
-		map[i] ? ft_strdel(&map[i]) : 0;
+		map[i] ? free(map[i]) : 0;
 	map ? free(map) : NULL;
 }
 
