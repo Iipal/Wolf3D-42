@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 17:18:56 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/07 10:58:11 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/07 11:37:09 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,22 +79,19 @@ static bool		add_valid_info_line(string info_line, t_map *map)
 
 static bool		add_valid_endofmap(iarr map_line, int y, int maxy, int line_len)
 {
-	int	counter;
+	int	i;
 
-	counter = 0;
+	i = 0;
 	if (!y || y == --maxy)
 	{
-		while (counter < line_len)
-		{
-			if (map_line[counter] > 0)
-				++counter;
+		while (i < line_len)
+			if (map_line[i] > 0)
+				++i;
 			else
 				break ;
-		}
-		if (counter != line_len)
-			return (false);
+		return ((i != line_len) ? false : true);
 	}
-	else if (map_line[0] == 0 || map_line[--line_len] == 0)
+	else if (!map_line[0] || !map_line[--line_len])
 		return (false);
 	return (true);
 }
