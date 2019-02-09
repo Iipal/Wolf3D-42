@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:44:03 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/06 23:18:48 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/09 12:55:11 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		wolf_killwindow(t_env *env)
 {
-	wolf_free(env);
+	wolf_free(&env);
 	exit(EXIT_SUCCESS);
 	return (0);
 }

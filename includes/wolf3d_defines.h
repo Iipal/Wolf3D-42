@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/09 10:58:19 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/09 12:57:28 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@
 # define _NOTIS(msg, ex, do, ret) if (!(ex)) {_MSGN(msg);do;return (ret);}
 # define _NOTIS_N(ex) if (!(ex)) return (NULL)
 # define _NOTIS_F(ex) if (!(ex)) return (false)
+
+# define _FREE(trash, fre)	if ((trash)) {fre(trash); trash = NULL;}
 
 # define _ISARGS(ac, av) {--ac;++av;_NOTIS(E_USAGE, !(ac != 1), exit(-1), 0);}
 

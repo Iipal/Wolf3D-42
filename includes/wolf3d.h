@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/09 12:44:23 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/09 12:49:45 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,8 @@ void			wolf_rendering(t_env *env);
 int				wolf_key_hooks(int key, t_env *env);
 int				wolf_killwindow(t_env *env);
 
-void			wolf_free(t_env *env);
-void			wolf_free_matrix(t_matrix **m, int y);
-void			wolf_free_map(t_map *map);
+void			wolf_free(t_env **env);
+void			wolf_free_matrix(t_matrix ***m, int y);
+void			wolf_free_map(t_map **map);
 
 #endif
