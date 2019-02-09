@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:19:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/09 17:43:28 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/09 23:25:06 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
 
-static void	add_randomize_pos(t_env *env)
+void	add_randomize_pos(t_env *env)
 {
 	srand(time(NULL));
 	while (1)
@@ -40,6 +40,9 @@ int			main(int argc, string argv[])
 	_NOTIS(E_ALLOC, env = malloc(sizeof(t_env)), exit(EXIT_FAILURE), 0);
 	_NOTIS(E_ALLOC, wolf_init(env), wolf_free(&env), 0);
 	_NOTIS(E_FILER, wolf_readnsave(*argv, env), exit(EXIT_FAILURE), 0);
-	add_randomize_pos(env);
+	*(RC) = (t_rc){{12, 22}, {0, -1}, {0.66, 0}, 0,
+		{0, 0}, {0, 0}, {0, 0}, {0, 0}, 0, {0, 0},
+		false, false, 0, 0, 0, 0};
+	// add_randomize_pos(env);
 	add_mlx_hooks(env);
 }

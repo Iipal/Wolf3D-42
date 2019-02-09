@@ -6,15 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/09 18:00:18 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/09 22:16:08 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WOLF3D_DEFINES_H
 # define WOLF3D_DEFINES_H
 
-# define WIN_X		2000
-# define WIN_Y		1000
 # define WIN_TITTLE	"Wolfenstein 3D"
 
 # define WOLF_FILE_EXT	".w3d"

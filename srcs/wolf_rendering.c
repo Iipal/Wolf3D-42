@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/09 18:10:08 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/09 23:24:54 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ static void	add_set_draw_area(t_env *env, point *p)
 	if (RC->is_side)
 		RC->current_color /= 2;
 	p->y = RC->draw_start;
-	while (++(p->y) < RC->draw_end)
-		SPTR[p->y * WIN_X + p->x] = RC->current_color;
+	while (p->y <= RC->draw_end)
+		SPTR[(p->y)++ * WIN_X + p->x] = RC->current_color;
 }
 
 void		wolf_rendering(t_env *env)
@@ -85,14 +85,16 @@ void		wolf_rendering(t_env *env)
 	point	p;
 
 	p.x = -1;
+	ft_bzero(SPTR, sizeof(int) * WIN_X * WIN_Y);
 	while (++(p.x) < WIN_X)
 	{
-		*(RC) = (t_rc){{RC->pos.y, RC->pos.x}, {0, -1}, {0.66, 0},
-			2 * p.x / (double)WIN_X - 1, {0, 0}, {0, 0}, {0, 0}, {0, 0},
-			0, {0, 0}, false, false, 0, 0, 0, 0};
-		RC->ray_dir = (fpoint) { RC->dir.y + RC->plane.y * RC->xcamera,
+		*(RC) = (t_rc){{RC->pos.y, RC->pos.x}, {RC->dir.y, RC->dir.x},
+		{RC->plane.y, RC->plane.x}, 0, {0, 0}, {0, 0}, {0, 0}, {0, 0},
+		0, {0, 0}, false, false, 0, 0, 0, 0};
+		RC->xcamera = 2 * p.x / (double)WIN_X - 1;
+		RC->ray_dir = (fpoint){RC->dir.y + RC->plane.y * RC->xcamera,
 			RC->dir.x + RC->plane.x * RC->xcamera };
-		RC->map = (point) {(int)RC->pos.y, (int)RC->pos.x};
+		RC->map = (point){(int)RC->pos.y, (int)RC->pos.x};
 		RC->delta_dist = (fpoint){_ABS(RC->ray_dir.y), _ABS(RC->ray_dir.x)};
 		add_set_diststep(env);
 		add_check_hit(env);

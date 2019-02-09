@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/09 18:00:14 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/09 22:16:34 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,16 @@
 
 # ifdef __APPLE__
 #  include "macos_keys.h"
+
+# define WIN_X		2000
+# define WIN_Y		1000
 # endif
 
 # ifdef __linux__
 #  include "linux_keys.h"
+
+# define WIN_X		1280
+# define WIN_Y		720
 # endif
 
 # include "wolf3d_defines.h"
