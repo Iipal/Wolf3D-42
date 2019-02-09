@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/07 14:20:36 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/09 09:53:45 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 
 # define PI 3.141592
 
+# define IRGB_COLORS	6
 # define IRGB_WHITE		0xFFFFFF
 # define IRGB_GRAY		0x3D3D3D
 # define IRGB_RED		0xF21856

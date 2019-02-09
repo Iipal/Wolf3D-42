@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 17:18:56 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/07 14:38:13 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/09 09:56:28 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 static bool		add_save_map(string line, iarr map_line,
 						iarr colors_line, int map_x)
 {
-	string	temp_digits;
-	int		digits;
-	int		x;
+	const int	colors[] = {IRGB_WHITE, IRGB_RED, IRGB_ORANGE, IRGB_LIME,
+							IRGB_AQUA, IRGB_PURPLE};
+	string		temp_digits;
+	int			digits;
+	int			x;
 
 	x = -1;
 	while (*line && x < map_x)
@@ -26,12 +28,7 @@ static bool		add_save_map(string line, iarr map_line,
 		{
 			map_line[++x] = ft_atoi(line);
 			_NOTIS_F(!(map_line[x] < 0 || map_line[x] > MAX_TEXTURES));
-			map_line[x] == 0 ? (colors_line[x] = IRGB_WHITE) : 0;
-			map_line[x] == 1 ? (colors_line[x] = IRGB_RED) : 0;
-			map_line[x] == 2 ? (colors_line[x] = IRGB_ORANGE) : 0;
-			map_line[x] == 3 ? (colors_line[x] = IRGB_LIME) : 0;
-			map_line[x] == 4 ? (colors_line[x] = IRGB_AQUA) : 0;
-			map_line[x] == 5 ? (colors_line[x] = IRGB_PURPLE) : 0;
+			colors_line[x] = colors[map_line[x]];
 			temp_digits = ft_itoa(map_line[x]);
 			digits = ft_strlen(temp_digits);
 			ft_strdel(&temp_digits);
