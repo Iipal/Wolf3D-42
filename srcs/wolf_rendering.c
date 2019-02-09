@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/09 11:09:35 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/09 12:37:14 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ static void	add_randomize_pos(t_rc *rc, t_env *env)
 	while (1)
 	{
 		rc->pos = (fpoint){rand() % MAPY, rand() % MAPX};
-		if (!MAP[(int)rc->pos.y][(int)rc->pos.x].pos.x
-			&& !MAP[(int)rc->pos.y][(int)rc->pos.x].pos.y)
+		if (MAP[(int)rc->pos.y][(int)rc->pos.x].rgb == IRGB_WHITE
+			&& MAP[(int)rc->pos.y][(int)rc->pos.x].rgb == IRGB_WHITE)
 			break ;
 	}
 }

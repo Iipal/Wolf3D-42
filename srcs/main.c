@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:19:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/09 11:08:15 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/09 12:36:24 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	add_mlx_hooks(t_env *env)
 {
 	mlx_hook(WPTR, KEY_PRESSED, KEY_RELEASE, wolf_key_hooks, env);
 	mlx_hook(WPTR, WIN_EXT, WIN_EXTM, wolf_killwindow, env);
-	// wolf_rendering(env);
+	wolf_rendering(env);
 	MPTR ? mlx_loop(MPTR) : 0;
 }
 

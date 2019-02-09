@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/09 11:49:16 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/09 12:30:34 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ bool	wolf_convert_map_to_matrix(t_env *env)
 			++r.y;
 	}
 	wolf_free_map(env->raw);
+	env->raw = NULL;
 	return (true);
 }
 

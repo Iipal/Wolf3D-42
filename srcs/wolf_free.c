@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/09 11:54:07 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/09 12:30:29 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	wolf_free(t_env *env)
 	IPTR ? mlx_destroy_image(MPTR, IPTR) : 0;
 	WPTR ? mlx_destroy_window(MPTR, WPTR) : 0;
 	env->mlx ? free(env->mlx) : NULL;
-	env->raw ? wolf_free_map(env->raw) : 0;
 	env->map ? free(env->map) : NULL;
 	env->isr ? free(env->isr) : NULL;
 	env ? free(env) : NULL;
