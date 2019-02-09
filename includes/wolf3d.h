@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/09 12:49:45 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/09 18:00:14 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,7 @@ _BOOL;
 _IARR;
 _ITAB;
 _UINT;
-
-typedef struct	s_matrix
-{
-	fpoint	pos;
-	int		rgb;
-}				t_matrix;
+_ULL;
 
 typedef struct	s_mlx
 {
@@ -78,27 +73,37 @@ typedef struct	s_map
 	int		ysize;
 }				t_map;
 
-typedef struct	s_fdf_environment
-{
-	t_mlx		*mlx;
-	t_isr		*isr;
-	t_map		*raw;
-	t_matrix	**map;
-	point		map_sizes;
-}				t_env;
-
 typedef struct	s_ray_caster
 {
 	fpoint	pos;
 	fpoint	dir;
 	fpoint	plane;
-	float	rotate;
+	double	xcamera;
+	fpoint	ray_dir;
+	point	map;
+	fpoint	side_dist;
+	fpoint	delta_dist;
+	double	pwd;
+	point	step;
+	bool	is_hit;
+	bool	is_side;
+	int		hline;
+	int		draw_start;
+	int		draw_end;
+	int		current_color;
 }				t_rc;
+
+typedef struct	s_wolf3d_environment
+{
+	t_mlx		*mlx;
+	t_isr		*isr;
+	t_map		*map;
+	t_rc		*rc;
+}				t_env;
 
 bool			wolf_init(t_env *env);
 
 bool			wolf_readnsave(string map_name, t_env *env);
-bool			wolf_convert_map_to_matrix(t_env *env);
 
 void			wolf_rendering(t_env *env);
 
@@ -106,7 +111,6 @@ int				wolf_key_hooks(int key, t_env *env);
 int				wolf_killwindow(t_env *env);
 
 void			wolf_free(t_env **env);
-void			wolf_free_matrix(t_matrix ***m, int y);
 void			wolf_free_map(t_map **map);
 
 #endif

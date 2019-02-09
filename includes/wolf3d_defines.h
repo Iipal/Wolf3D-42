@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/09 13:18:42 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/09 18:00:18 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,25 +74,24 @@
 # define _COSR(angle) cos(_RAD(angle))
 # define _SINR(angle) sin(_RAD(angle))
 
-# define _FPOINT	typedef t_fp			fpoint
-# define _POINT		typedef t_p				point
-# define _BOOL		typedef enum e_bool		bool
-# define _IARR		typedef int*			iarr
-# define _ITAB		typedef int**			itab
-# define _UINT		typedef unsigned int	uint
+# define _FPOINT	typedef t_fp				fpoint
+# define _POINT		typedef t_p					point
+# define _BOOL		typedef enum e_bool			bool
+# define _IARR		typedef int*				iarr
+# define _ITAB		typedef int**				itab
+# define _UINT		typedef unsigned int		uint
+# define _ULL		typedef unsigned long long	ull
 
 # define MPTR	env->mlx->mlx
 # define WPTR	env->mlx->win
 # define IPTR	env->mlx->img
 # define SPTR	env->mlx->screen
 
-# define RAWY	env->raw->ysize
-# define RAWX	env->raw->xsize
-# define RAW	env->raw->tab
-# define RAWC	env->raw->colors
+# define MAPY	env->map->ysize
+# define MAPX	env->map->xsize
+# define MAP	env->map->tab
+# define MAPC	env->map->colors
 
-# define MAP	env->map
-# define MAPY	env->map_sizes.y
-# define MAPX	env->map_sizes.x
+# define RC		env->rc
 
 #endif

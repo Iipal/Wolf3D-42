@@ -6,24 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/09 13:45:28 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/09 17:35:17 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
-
-void	wolf_free_matrix(t_matrix ***m, int y)
-{
-	int	i;
-
-	if (*m)
-	{
-		i = -1;
-		while (++i < y)
-			_FREE((*m)[i], free);
-		_FREE(*m, free);
-	}
-}
 
 void	wolf_free_map(t_map **map)
 {
@@ -57,10 +44,8 @@ void	wolf_free(t_env **env)
 		mlx_destroy_image((*env)->mlx->mlx, (*env)->mlx->img);
 	if ((*env)->mlx->win)
 		mlx_destroy_window((*env)->mlx->mlx, (*env)->mlx->win);
-	if ((*env)->map)
-		wolf_free_matrix(&((*env)->map), (*env)->map_sizes.y);
-	if ((*env)->raw != NULL)
-		wolf_free_map(&((*env)->raw));
+	if ((*env)->map != NULL)
+		wolf_free_map(&((*env)->map));
 	_FREE((*env)->mlx, free);
 	_FREE((*env)->isr, free);
 	_FREE(*env, free);
