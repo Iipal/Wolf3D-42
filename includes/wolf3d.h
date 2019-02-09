@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/09 11:09:00 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/09 12:44:23 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <math.h>
+# include <time.h>
 # include <mlx.h>
 
 enum	e_bool {false, true} __attribute__((packed));
-
 
 typedef struct	s_point
 {
@@ -86,6 +86,14 @@ typedef struct	s_fdf_environment
 	t_matrix	**map;
 	point		map_sizes;
 }				t_env;
+
+typedef struct	s_ray_caster
+{
+	fpoint	pos;
+	fpoint	dir;
+	fpoint	plane;
+	float	rotate;
+}				t_rc;
 
 bool			wolf_init(t_env *env);
 
