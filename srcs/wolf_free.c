@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/09 13:25:33 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/09 13:45:28 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	wolf_free_matrix(t_matrix ***m, int y)
 {
 	int	i;
 
-	i = -1;
 	if (*m)
 	{
+		i = -1;
 		while (++i < y)
 			_FREE((*m)[i], free);
 		_FREE(*m, free);
@@ -29,7 +29,6 @@ void	wolf_free_map(t_map **map)
 {
 	int	i;
 
-	i = -1;
 	if (*map)
 	{
 		if ((*map)->tab)
