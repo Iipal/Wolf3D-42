@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/09 09:53:45 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/09 10:58:19 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,13 @@
 # define IPTR	env->mlx->img
 # define SPTR	env->mlx->screen
 
-# define MAPY	env->map->ysize
-# define MAPX	env->map->xsize
-# define MAP	env->map->tab
-# define MAPC	env->map->colors
+# define RAWY	env->raw->ysize
+# define RAWX	env->raw->xsize
+# define RAW	env->raw->tab
+# define RAWC	env->raw->colors
+
+# define MAP	env->map
+# define MAPY	env->map_sizes.y
+# define MAPX	env->map_sizes.x
 
 #endif

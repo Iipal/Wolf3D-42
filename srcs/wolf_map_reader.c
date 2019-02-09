@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 17:18:56 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/09 09:56:28 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/09 11:28:38 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 static bool		add_save_map(string line, iarr map_line,
 						iarr colors_line, int map_x)
 {
-	const int	colors[] = {IRGB_WHITE, IRGB_RED, IRGB_ORANGE, IRGB_LIME,
-							IRGB_AQUA, IRGB_PURPLE};
+	/* const int	colors[] = {IRGB_WHITE, IRGB_RED, IRGB_ORANGE, IRGB_LIME,
+							IRGB_AQUA, IRGB_PURPLE}; */
+	const int	colors[] = {0, 1, 2, 3, 4, 5};
 	string		temp_digits;
 	int			digits;
 	int			x;
@@ -97,20 +98,20 @@ static bool		add_endofmap(t_env *env, int y,
 	{
 		while (++y < map_max.y - 1 && (i = -1))
 			while (++i < map_max.x)
-				if (MAP[y][i] == 0)
+				if (RAW[y][i] == 0)
 					return (true);
 		return (false);
 	}
 	else if (!y || y == map_max.y - 1)
 	{
 		while (i < map_max.x)
-			if (MAP[y][i] > 0)
+			if (RAW[y][i] > 0)
 				++i;
 			else
 				break ;
 		return ((i != map_max.x) ? false : true);
 	}
-	else if (!MAP[y][0] || !MAP[y][map_max.x - 1])
+	else if (!RAW[y][0] || !RAW[y][map_max.x - 1])
 		return (false);
 	return (true);
 }
@@ -125,20 +126,20 @@ bool			wolf_readnsave(string map_name, t_env *env)
 	i = -1;
 	_NOTIS_F(!(!(fd = open(map_name, O_RDONLY)) || fd < 0));
 	_NOTIS_F(!(ft_gnl(fd, &gnl_temp) < 0));
-	_NOTIS_F(add_valid_info(gnl_temp, env->map, map_name));
-	while ((gnl_ret = ft_gnl(fd, &gnl_temp)) && ++i < MAPY)
+	_NOTIS_F(add_valid_info(gnl_temp, env->raw, map_name));
+	while ((gnl_ret = ft_gnl(fd, &gnl_temp)) && ++i < RAWY)
 	{
-		_NOTIS(E_IMAP, !(add_valid_inline_numbers(gnl_temp) != MAPX),
+		_NOTIS(E_IMAP, !(add_valid_inline_numbers(gnl_temp) != RAWX),
 			ft_strdel(&gnl_temp), false);
-		_NOTIS(E_IMAP, add_save_map(gnl_temp, MAP[i], MAPC[i], MAPX),
+		_NOTIS(E_IMAP, add_save_map(gnl_temp, RAW[i], RAWC[i], RAWX),
 			ft_strdel(&gnl_temp), false);
-		_NOTIS(E_ENDMAP, add_endofmap(env, i, (point){MAPY, MAPX}, false),
+		_NOTIS(E_ENDMAP, add_endofmap(env, i, (point){RAWY, RAWX}, false),
 			ft_strdel(&gnl_temp), false);
 		ft_strdel(&gnl_temp);
 	}
 	_NOTIS(E_IMAP, !(gnl_ret || gnl_temp), ft_strdel(&gnl_temp), false);
-	_NOTIS_F(!(++i != MAPY));
-	_NOTIS(E_NOFLOOR, add_endofmap(env, 0, (point){MAPY, MAPX}, true),
+	_NOTIS_F(!(++i != RAWY));
+	_NOTIS(E_NOFLOOR, add_endofmap(env, 0, (point){RAWY, RAWX}, true),
 		exit(EXIT_FAILURE), 0);
 	return (true);
 }
