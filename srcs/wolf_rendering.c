@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/09 12:44:17 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/09 13:26:28 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,10 @@ static void	add_randomize_pos(t_rc *rc, t_env *env)
 
 void		wolf_rendering(t_env *env)
 {
-	t_rc	*rc;
+	t_rc	rc;
 
-	rc = malloc(sizeof(t_rc));
 	srand(time(NULL));
-	*rc = (t_rc){{0, 0}, {0, -1}, {0.66, 0}, 0};
-	add_randomize_pos(rc, env);
-	printf("%.1f - %.1f\n", rc->pos.y, rc->pos.x);
+	rc = (t_rc){{0, 0}, {0, -1}, {0.66, 0}, 0};
+	add_randomize_pos(&rc, env);
+	printf("%.1f - %.1f\n", rc.pos.y, rc.pos.x);
 }

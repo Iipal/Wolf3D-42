@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/09 12:58:24 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/09 13:25:33 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ void	wolf_free_matrix(t_matrix ***m, int y)
 	if (*m)
 	{
 		while (++i < y)
-			*m[i] ? free(*m[i]) : 0;
-		free(*m);
-		*m = NULL;
+			_FREE((*m)[i], free);
+		_FREE(*m, free);
 	}
 }
 
@@ -38,19 +37,18 @@ void	wolf_free_map(t_map **map)
 			i = -1;
 			while (++i < (*map)->ysize)
 				if ((*map)->tab[i] != NULL)
-					free((*map)->tab[i]);
-			free((*map)->tab);
+					_FREE((*map)->tab[i], free);
+			_FREE((*map)->tab, free);
 		}
 		if ((*map)->colors)
 		{
 			i = -1;
 			while (++i < (*map)->ysize)
 				if ((*map)->colors[i] != NULL)
-					free((*map)->colors[i]);
-			free((*map)->colors);
+					_FREE((*map)->colors[i], free);
+			_FREE((*map)->colors, free);
 		}
-		free(*map);
-		*map = NULL;
+		_FREE(*map, free);
 	}
 }
 
@@ -60,8 +58,11 @@ void	wolf_free(t_env **env)
 		mlx_destroy_image((*env)->mlx->mlx, (*env)->mlx->img);
 	if ((*env)->mlx->win)
 		mlx_destroy_window((*env)->mlx->mlx, (*env)->mlx->win);
+	if ((*env)->map)
+		wolf_free_matrix(&((*env)->map), (*env)->map_sizes.y);
+	if ((*env)->raw != NULL)
+		wolf_free_map(&((*env)->raw));
 	_FREE((*env)->mlx, free);
-	_FREE((*env)->map, free);
 	_FREE((*env)->isr, free);
 	_FREE(*env, free);
 }
