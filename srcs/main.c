@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:19:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/11 01:38:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/11 01:57:34 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@ void	add_init_rc_n_randomize_pos(t_env *env)
 	*(RC) = (t_rc){{0, 0}, {0, -1}, {0.66, 0}, 0,
 		{0, 0}, {0, 0}, {0, 0}, {0, 0}, 0, {0, 0},
 		false, false, 0, 0, 0, 0};
-	srand(time(NULL));
 	while (1)
 	{
-		env->rc->pos = (fpoint){rand() % MAPY, rand() % MAPX};
+		env->rc->pos = (fpoint){ft_rand(MAPY), ft_rand(MAPX)};
 		if (!MAP[(int)env->rc->pos.y][(int)env->rc->pos.x]
 			&& !MAP[(int)env->rc->pos.y][(int)env->rc->pos.x])
 			break ;
