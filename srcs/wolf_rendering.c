@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/11 00:35:53 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/11 01:18:32 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static void	add_set_draw_area(t_rc *rc, iarr screen,
 		screen[(p->y)++ * WIN_X + p->x] = rc->current_color;
 }
 
-void		wolf_rendering(t_env *env)
+void		wolf_rendering_rc(t_env *env)
 {
 	point	p;
 
