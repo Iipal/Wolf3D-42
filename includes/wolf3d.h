@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/10 09:40:42 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/11 00:27:43 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ typedef struct	s_ray_caster
 	fpoint	ray_dir;
 	point	map;
 	fpoint	side_dist;
-	fpoint	delta_dist;
+	fpoint	absdist;
 	double	pwd;
 	point	step;
 	bool	is_hit;

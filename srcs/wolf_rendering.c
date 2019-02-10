@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/10 09:50:21 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/11 00:35:53 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,22 @@ static void	add_set_diststep(t_rc *rc)
 	if (rc->ray_dir.x < 0)
 	{
 		rc->step.x = -1;
-		rc->side_dist.x = (rc->pos.x - rc->map.x) * rc->delta_dist.x;
+		rc->side_dist.x = (rc->pos.x - rc->map.x) * rc->absdist.x;
 	}
 	else
 	{
 		rc->step.x = 1;
-		rc->side_dist.x = (rc->map.x + 1.0 - rc->pos.x) * rc->delta_dist.x;
+		rc->side_dist.x = (rc->map.x + 1.0 - rc->pos.x) * rc->absdist.x;
 	}
 	if (rc->ray_dir.y < 0)
 	{
 		rc->step.y = -1;
-		rc->side_dist.y = (rc->pos.y - rc->map.y) * rc->delta_dist.y;
+		rc->side_dist.y = (rc->pos.y - rc->map.y) * rc->absdist.y;
 	}
 	else
 	{
 		rc->step.y = 1;
-		rc->side_dist.y = (rc->map.y + 1.0 - rc->pos.y) * rc->delta_dist.y;
+		rc->side_dist.y = (rc->map.y + 1.0 - rc->pos.y) * rc->absdist.y;
 	}
 }
 
@@ -42,13 +42,13 @@ static void	add_check_hit(t_rc *rc, itab map)
 	{
 		if (rc->side_dist.x < rc->side_dist.y)
 		{
-			rc->side_dist.x += rc->delta_dist.x;
+			rc->side_dist.x += rc->absdist.x;
 			rc->map.x += rc->step.x;
 			rc->is_side = false;
 		}
 		else
 		{
-			rc->side_dist.y += rc->delta_dist.y;
+			rc->side_dist.y += rc->absdist.y;
 			rc->map.y += rc->step.y;
 			rc->is_side = true;
 		}
@@ -87,6 +87,7 @@ void		wolf_rendering(t_env *env)
 
 	p.x = -1;
 	ft_bzero(SPTR, sizeof(int) * WIN_X * WIN_Y);
+	printf("%.2f - %.2f\n", RC->plane.y, RC->plane.x);
 	while (++(p.x) < WIN_X)
 	{
 		*(RC) = (t_rc){{RC->pos.y, RC->pos.x}, {RC->dir.y, RC->dir.x},
@@ -96,7 +97,8 @@ void		wolf_rendering(t_env *env)
 		RC->ray_dir = (fpoint){RC->dir.y + RC->plane.y * RC->xcamera,
 			RC->dir.x + RC->plane.x * RC->xcamera };
 		RC->map = (point){(int)RC->pos.y, (int)RC->pos.x};
-		RC->delta_dist = (fpoint){_ABS(RC->ray_dir.y), _ABS(RC->ray_dir.x)};
+		RC->absdist = (fpoint){_ABS(1 / RC->ray_dir.y),
+			_ABS(1 / RC->ray_dir.x)};
 		add_set_diststep(RC);
 		add_check_hit(RC, MAP);
 		add_set_draw_area(RC, SPTR, MAPC, &p);
