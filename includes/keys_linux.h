@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linux_keys.h                                       :+:      :+:    :+:   */
+/*   keys_linux.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 12:46:50 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/01/17 17:15:41 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/10 09:33:01 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LINUX_KEYS_H
-# define LINUX_KEYS_H
+#ifndef KEYS_LINUX_H
+# define KEYS_LINUX_H
 
 # define KEY_PRESSED	2
 # define KEY_RELEASE	3

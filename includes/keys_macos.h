@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   macos_keys.h                                       :+:      :+:    :+:   */
+/*   keys_macos.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 12:46:42 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/01/17 17:15:45 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/10 09:33:06 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MACOS_KEYS_H
-# define MACOS_KEYS_H
+#ifndef KEYS_MACOS_H
+# define KEYS_MACOS_H
 
 # define KEY_PRESSED	2
 # define KEY_RELEASE	2
