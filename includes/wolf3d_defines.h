@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/09 22:16:08 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/11 01:34:22 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,10 @@
 # define IRGB_AQUA		0x6EFDFF
 # define IRGB_PURPLE	0xD800F0
 
-# define SHIFT_INC	15
-
-# define ROT_MIN	0.0
-# define ROT_INC	5.0
-# define ROT_MAX	360.0
-
-# define ZOOM_INC	1
-# define ZOOM_MIN	1
-# define ZOOM_DEF	15
-# define ZOOM_MAX	127
+# define FOV_MIN    0.0f
+# define FOV_INC    0.05f
+# define MOVE_INC	0.05f
+# define ROT_INC	2.0f
 
 # define MAX_TEXTURES	5
 

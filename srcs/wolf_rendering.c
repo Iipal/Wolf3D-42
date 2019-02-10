@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/11 01:18:32 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/11 01:38:12 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,13 @@ void		wolf_rendering_rc(t_env *env)
 {
 	point	p;
 
-	p.x = -1;
 	ft_bzero(SPTR, sizeof(int) * WIN_X * WIN_Y);
-	printf("%.2f - %.2f\n", RC->plane.y, RC->plane.x);
+	p.y = -1;
+	while (++(p.y) < WIN_Y && (p.x = -1))
+		while (++(p.x) < WIN_X)
+			SPTR[p.y * WIN_X + p.x] = (p.y < WIN_Y / 2)
+								? IRGB_GRAY : IRGB_WHITE;
+	p.x = -1;
 	while (++(p.x) < WIN_X)
 	{
 		*(RC) = (t_rc){{RC->pos.y, RC->pos.x}, {RC->dir.y, RC->dir.x},
