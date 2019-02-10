@@ -6,78 +6,79 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/09 23:24:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/10 09:50:21 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
 
-static void	add_set_diststep(t_env *env)
+static void	add_set_diststep(t_rc *rc)
 {
-	if (RC->ray_dir.x < 0)
+	if (rc->ray_dir.x < 0)
 	{
-		RC->step.x = -1;
-		RC->side_dist.x = (RC->pos.x - RC->map.x) * RC->delta_dist.x;
+		rc->step.x = -1;
+		rc->side_dist.x = (rc->pos.x - rc->map.x) * rc->delta_dist.x;
 	}
 	else
 	{
-		RC->step.x = 1;
-		RC->side_dist.x = (RC->map.x + 1.0 - RC->pos.x) * RC->delta_dist.x;
+		rc->step.x = 1;
+		rc->side_dist.x = (rc->map.x + 1.0 - rc->pos.x) * rc->delta_dist.x;
 	}
-	if (RC->ray_dir.y < 0)
+	if (rc->ray_dir.y < 0)
 	{
-		RC->step.y = -1;
-		RC->side_dist.y = (RC->pos.y - RC->map.y) * RC->delta_dist.y;
+		rc->step.y = -1;
+		rc->side_dist.y = (rc->pos.y - rc->map.y) * rc->delta_dist.y;
 	}
 	else
 	{
-		RC->step.y = 1;
-		RC->side_dist.y = (RC->map.y + 1.0 - RC->pos.y) * RC->delta_dist.y;
+		rc->step.y = 1;
+		rc->side_dist.y = (rc->map.y + 1.0 - rc->pos.y) * rc->delta_dist.y;
 	}
 }
 
-static void	add_check_hit(t_env *env)
+static void	add_check_hit(t_rc *rc, itab map)
 {
-	while (!RC->is_hit)
+	while (!rc->is_hit)
 	{
-		if (RC->side_dist.x < RC->side_dist.y)
+		if (rc->side_dist.x < rc->side_dist.y)
 		{
-			RC->side_dist.x += RC->delta_dist.x;
-			RC->map.x += RC->step.x;
-			RC->is_side = false;
+			rc->side_dist.x += rc->delta_dist.x;
+			rc->map.x += rc->step.x;
+			rc->is_side = false;
 		}
 		else
 		{
-			RC->side_dist.y += RC->delta_dist.y;
-			RC->map.y += RC->step.y;
-			RC->is_side = true;
+			rc->side_dist.y += rc->delta_dist.y;
+			rc->map.y += rc->step.y;
+			rc->is_side = true;
 		}
-		if (MAP[RC->map.y][RC->map.x] > 0)
-			RC->is_hit = true;
+		if (map[rc->map.y][rc->map.x] > 0)
+			rc->is_hit = true;
 	}
 }
 
-static void	add_set_draw_area(t_env *env, point *p)
+static void	add_set_draw_area(t_rc *rc, iarr screen,
+							itab colors, point *p)
 {
-	if (!RC->is_side)
-		RC->pwd = (RC->map.x
-			- RC->pos.x + (1 - RC->step.x) / 2) / RC->ray_dir.x;
+	if (!rc->is_side)
+		rc->pwd = (rc->map.x
+			- rc->pos.x + (1 - rc->step.x) / 2) / rc->ray_dir.x;
 	else
-		RC->pwd = (RC->map.y
-			- RC->pos.y + (1 - RC->step.y) / 2) / RC->ray_dir.y;
-	RC->hline = (int)(WIN_Y / RC->pwd);
-	RC->draw_start = -(RC->hline) / 2 + WIN_Y / 2;
-	RC->draw_end = RC->hline / 2 + WIN_Y / 2;
-	if (RC->draw_start < 0)
-		RC->draw_start = 0;
-	if ((ull)RC->draw_end >= (ull)WIN_Y)
-		RC->draw_end = WIN_Y - 1;
-	RC->current_color = MAPC[RC->map.y][RC->map.x];
-	if (RC->is_side)
-		RC->current_color /= 2;
-	p->y = RC->draw_start;
-	while (p->y <= RC->draw_end)
-		SPTR[(p->y)++ * WIN_X + p->x] = RC->current_color;
+		rc->pwd = (rc->map.y
+			- rc->pos.y + (1 - rc->step.y) / 2) / rc->ray_dir.y;
+	rc->hline = (int)(WIN_Y / rc->pwd);
+	rc->draw_start = -(rc->hline) / 2 + WIN_Y / 2;
+	rc->draw_end = rc->hline / 2 + WIN_Y / 2;
+	if (rc->draw_start < 0)
+		rc->draw_start = 0;
+	if (rc->draw_end >= WIN_Y)
+		rc->draw_end = WIN_Y - 1;
+	rc->current_color = colors[rc->map.y][rc->map.x];
+	if (rc->is_side)
+		rc->current_color /= 2;
+	p->y = rc->draw_start;
+	while (p->y <= rc->draw_end)
+		screen[(p->y)++ * WIN_X + p->x] = rc->current_color;
 }
 
 void		wolf_rendering(t_env *env)
@@ -96,9 +97,9 @@ void		wolf_rendering(t_env *env)
 			RC->dir.x + RC->plane.x * RC->xcamera };
 		RC->map = (point){(int)RC->pos.y, (int)RC->pos.x};
 		RC->delta_dist = (fpoint){_ABS(RC->ray_dir.y), _ABS(RC->ray_dir.x)};
-		add_set_diststep(env);
-		add_check_hit(env);
-		add_set_draw_area(env, &p);
+		add_set_diststep(RC);
+		add_check_hit(RC, MAP);
+		add_set_draw_area(RC, SPTR, MAPC, &p);
 	}
 	mlx_put_image_to_window(MPTR, WPTR, IPTR, 0, 0);
 }
