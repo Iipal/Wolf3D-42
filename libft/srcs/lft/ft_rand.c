@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 01:54:18 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/11 01:58:12 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/11 02:03:21 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 size_t		ft_rand(size_t limit)
 {
-	ssize_t			ponies;
-	static int		fd;
+	size_t	ponies;
+	int		fd;
 
-	if (fd == 0)
-		fd = open("/dev/urandom", O_RDONLY);
-	read(fd, &ponies, sizeof(ssize_t));
-	return (ponies % limit);
+	fd = open("/dev/urandom", O_RDONLY);
+	read(fd, &ponies, sizeof(size_t));
+	close(fd);
+    return (ponies % limit);
 }

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 17:18:56 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/09 17:34:55 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/11 03:20:18 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,24 +65,24 @@ static bool		add_valid_info(string info_line, t_map *map, string map_name)
 {
 	strtab	info_tab;
 	int		i;
-
+	
 	_NOTIS_F(!ft_strcmp(map_name +
 		(ft_strlen(map_name) - ft_strlen(WOLF_FILE_EXT)), WOLF_FILE_EXT));
 	_NOTIS_F(info_tab = ft_strsplit(info_line, ' '));
 	_NOTIS_F(map->ysize = ft_atoi(info_tab[0]));
-	ft_strdel(&info_tab[0]);
 	_NOTIS_F(map->xsize = ft_atoi(info_tab[1]));
-	ft_strdel(&info_tab[1]);
 	_NOTIS_F(!info_tab[2]);
-	free(info_tab);
-	_NOTIS_F(map->tab = malloc(sizeof(iarr) * map->ysize));
-	_NOTIS_F(map->colors = malloc(sizeof(iarr) * map->ysize));
+	_NOTIS_F(map->tab = (itab)malloc(sizeof(iarr) * map->ysize));
+	_NOTIS_F(map->colors = (itab)malloc(sizeof(iarr) * map->ysize));
 	i = -1;
 	while (++i < map->ysize)
 	{
-		_NOTIS_F(map->tab[i] = malloc(sizeof(int) * map->xsize));
-		_NOTIS_F(map->colors[i] = malloc(sizeof(int) * map->xsize));
+		if (i < 2)
+			ft_strdel(&(info_tab[i]));
+		_NOTIS_F(map->tab[i] = (iarr)malloc(sizeof(int) * map->xsize));
+		_NOTIS_F(map->colors[i] = (iarr)malloc(sizeof(int) * map->xsize));
 	}
+	_FREE(info_tab, free);
 	ft_strdel(&info_line);
 	return (true);
 }
@@ -126,6 +126,7 @@ bool			wolf_readnsave(string map_name, t_env *env)
 	_NOTIS_F(!(!(fd = open(map_name, O_RDONLY)) || fd < 0));
 	_NOTIS_F(!(ft_gnl(fd, &gnl_temp) < 0));
 	_NOTIS_F(add_valid_info(gnl_temp, env->map, map_name));
+	// ft_strdel(&gnl_temp);
 	while ((gnl_ret = ft_gnl(fd, &gnl_temp)) && ++i < MAPY)
 	{
 		_NOTIS(E_IMAP, !(add_valid_inline_numbers(gnl_temp) != MAPX),

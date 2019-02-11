@@ -6,4 +6,5 @@ wolf3d
 **.DS_Store
 test/
 .VScode
+.vscode
 **.cpp
