@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/11 01:32:05 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/12 12:45:52 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,7 @@
 # include "wolf3d_errno.h"
 # include "../libft/includes/libft.h"
 # include <fcntl.h>
-# include <stdio.h>
 # include <math.h>
-# include <time.h>
 # include <mlx.h>
 
 enum	e_bool {false, true} __attribute__((packed));
@@ -116,7 +114,9 @@ void			wolf_rendering_rc(t_env *env);
 int				wolf_key_hooks(int key, t_env *env);
 int				wolf_killwindow(t_env *env);
 
+bool			wolf_is_tile(t_map *map, fpoint pos);
 void			wolf_rotate(t_rc *rc, float angle);
+void			wolf_move(t_env *env, float dist);
 
 void			wolf_free(t_env **env);
 void			wolf_free_map(t_map **map);

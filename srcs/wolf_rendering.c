@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/11 01:42:21 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/12 12:58:36 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@ void		wolf_rendering_rc(t_env *env)
 	p.y = -1;
 	while (++(p.y) < WIN_Y && (p.x = -1))
 		while (++(p.x) < WIN_X)
-			SPTR[p.y * WIN_X + p.x] = (p.y < WIN_Y / 2)
-								? IRGB_GRAY : IRGB_WHITE;
+			SPTR[p.y * WIN_X + p.x] = (p.y >= WIN_Y / 2)
+								? IRGB_GRAY : IRGB_GRAY / 0.5;
 	p.x = -1;
 	while (++(p.x) < WIN_X)
 	{

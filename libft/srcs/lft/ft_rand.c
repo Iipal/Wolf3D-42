@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 01:54:18 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/11 02:03:21 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/12 12:46:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ size_t		ft_rand(size_t limit)
 	fd = open("/dev/urandom", O_RDONLY);
 	read(fd, &ponies, sizeof(size_t));
 	close(fd);
-    return (ponies % limit);
+	return (ponies % limit);
 }

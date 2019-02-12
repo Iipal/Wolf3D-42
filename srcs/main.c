@@ -6,11 +6,12 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:19:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/11 02:48:22 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/12 13:22:08 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
+#include <stdio.h>
 
 void	add_init_rc_n_randomize_pos(t_env *env)
 {
@@ -19,11 +20,14 @@ void	add_init_rc_n_randomize_pos(t_env *env)
 		false, false, 0, 0, 0, 0};
 	while (1)
 	{
-		env->rc->pos = (fpoint){ft_rand(MAPY), ft_rand(MAPX)};
-		if (!MAP[(int)env->rc->pos.y][(int)env->rc->pos.x]
-			&& !MAP[(int)env->rc->pos.y][(int)env->rc->pos.x])
+		RC->pos = (fpoint){ft_rand(MAPY - 1), ft_rand(MAPX - 1)};
+		if (!MAP[(int)RC->pos.y][(int)RC->pos.x])
 			break ;
 	}
+	if (!MAP[(int)RC->pos.y][(int)(RC->pos.x + MOVE_INC)])
+		RC->pos.x += MOVE_INC;
+	if (!MAP[(int)(RC->pos.y + MOVE_INC)][(int)RC->pos.x])
+		RC->pos.y += MOVE_INC;
 }
 
 static void	add_mlx_hooks(t_env *env)
