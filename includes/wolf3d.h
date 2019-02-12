@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/12 13:28:10 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/12 18:46:48 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ typedef struct	s_mlx
 
 typedef struct	s_isrender
 {
-	bool	is_render;
+	bool	is_boost_step;
 }				t_isr;
 
 typedef struct	s_map
@@ -96,12 +96,27 @@ typedef struct	s_ray_caster
 	int		draw_end;
 }				t_rc;
 
+typedef struct	s_xpm_image
+{
+	pvoid	img;
+	iarr	screen;
+}				t_xpm_image;
+
+typedef struct	s_mouse
+{
+	bool	is_pres;
+	fpoint	last;
+	fpoint	curr;
+}				t_mouse;
+
 typedef struct	s_wolf3d_environment
 {
 	t_mlx		*mlx;
 	t_isr		*isr;
 	t_map		*map;
 	t_rc		*rc;
+	t_xpm_image	*textures;
+	t_mouse		*mouse;
 }				t_env;
 
 bool			wolf_init(t_env *env);
@@ -110,8 +125,12 @@ bool			wolf_readnsave(string map_name, t_env *env);
 
 void			wolf_rendering_rc(t_env *env);
 
-int				wolf_key_hooks(int key, t_env *env);
 int				wolf_killwindow(t_env *env);
+int				wolf_key_hooks(int key, t_env *env);
+
+int				wolf_mouse_release(int button, int x, int y, t_env *env);
+int				wolf_mouse_press(int button, int x, int y, t_env *env);
+int				wolf_mouse_moves(int x, int y, t_env *env);
 
 bool			wolf_is_tile(t_map *map, fpoint pos);
 void			wolf_rotate(t_rc *rc, float angle);
@@ -119,5 +138,4 @@ void			wolf_move(t_env *env, float dist);
 
 void			wolf_free(t_env **env);
 void			wolf_free_map(t_map **map);
-
 #endif

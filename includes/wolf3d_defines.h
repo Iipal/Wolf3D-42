@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/11 01:34:22 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/12 19:02:06 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,39 +17,42 @@
 
 # define WOLF_FILE_EXT	".w3d"
 
-# define WIN_EXT	17
-# define WIN_EXTM	(1L << 17)
+# define WIN_EXT        17
+# define WIN_EXTM       (1L << 17)
 
-# define MOUSE_MASK	0
-# define MOUSE_DOWN	4
-# define MOUSE_UP	5
-# define MOUSE_MOVE	6
+# define MOUSE_MASK     0
+# define MOUSE_DOWN     4
+# define MOUSE_UP       5
+# define MOUSE_MOVE     6
 
-# define MLEFT_BUTTON	1
-# define MRIGHT_BUTTON	2
-# define MTHIRD_BUTTON	3
-# define MSCROLL_DOWN	4
-# define MSCROLL_UPS	5
-# define MSCROLL_LEFT	6
-# define MSCROLL_RIGHT	7
+# define MLEFT_BUTTON   1
+# define MRIGHT_BUTTON  2
+# define MTHIRD_BUTTON  3
+# define MSCROLL_DOWN   4
+# define MSCROLL_UPS    5
+# define MSCROLL_LEFT   6
+# define MSCROLL_RIGHT  7
 
-# define PI 3.141592
+# define PI             3.141592
 
-# define IRGB_COLORS	6
-# define IRGB_WHITE		0xFFFFFF
-# define IRGB_GRAY		0x3D3D3D
-# define IRGB_RED		0xF21856
-# define IRGB_ORANGE	0xFFB833
-# define IRGB_LIME		0x7FFF00
-# define IRGB_AQUA		0x6EFDFF
-# define IRGB_PURPLE	0xD800F0
+# define IRGB_COLORS    6
+# define IRGB_WHITE     0xFFFFFF
+# define IRGB_GRAY      0x3D3D3D
+# define IRGB_RED       0xF21856
+# define IRGB_ORANGE    0xFFB833
+# define IRGB_LIME      0x7FFF00
+# define IRGB_AQUA      0x6EFDFF
+# define IRGB_PURPLE    0xD800F0
+# define IRGB_MINT      0x2BFFE3
+# define IRGB_DARK_BLUE 0x2B75FF
 
-# define FOV_MIN    0.0f
-# define FOV_INC    0.05f
-# define MOVE_INC	0.05f
-# define ROT_INC	2.0f
+# define MOVE_INC       0.05f
+# define MOVE_BOOST     5.55f
+# define ROT_INC        2.0f
+# define ROT_BOOST      4.44f
 
-# define MAX_TEXTURES	5
+# define MAX_TEXTURES   8
+# define TEXTURE_WALL1  "resource/wall1.xpm"
 
 # define _MSG(msg) ft_putstr(msg);
 # define _MSGN(msg) ft_putendl(msg);
@@ -66,24 +69,30 @@
 # define _COSR(angle) cos(_RAD(angle))
 # define _SINR(angle) sin(_RAD(angle))
 
-# define _FPOINT	typedef t_fp				fpoint
-# define _POINT		typedef t_p					point
-# define _BOOL		typedef enum e_bool			bool
-# define _IARR		typedef int*				iarr
-# define _ITAB		typedef int**				itab
-# define _UINT		typedef unsigned int		uint
-# define _ULL		typedef unsigned long long	ull
+# define _FPOINT    typedef t_fp                fpoint
+# define _POINT     typedef t_p                 point
+# define _BOOL      typedef enum e_bool         bool
+# define _IARR      typedef int*                iarr
+# define _ITAB      typedef int**               itab
+# define _UINT      typedef unsigned int        uint
+# define _ULL       typedef unsigned long long  ull
 
-# define MPTR	env->mlx->mlx
-# define WPTR	env->mlx->win
-# define IPTR	env->mlx->img
-# define SPTR	env->mlx->screen
+# define MPTR   env->mlx->mlx
+# define WPTR   env->mlx->win
+# define IPTR   env->mlx->img
+# define SPTR   env->mlx->screen
 
-# define MAPY	env->map->ysize
-# define MAPX	env->map->xsize
-# define MAP	env->map->tab
-# define MAPC	env->map->colors
+# define MAPY   env->map->ysize
+# define MAPX   env->map->xsize
+# define MAP    env->map->tab
+# define MAPC   env->map->colors
 
-# define RC		env->rc
+# define ISRB   env->isr->is_boost_step
+
+# define MOUSE  env->mouse
+
+# define RC     env->rc
+
+# define TEX    env->textures
 
 #endif
