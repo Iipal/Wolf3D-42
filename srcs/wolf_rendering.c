@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/12 12:58:36 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/12 13:44:33 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ static void	add_check_hit(t_rc *rc, itab map)
 static void	add_set_draw_area(t_rc *rc, iarr screen,
 							itab colors, point *p)
 {
+	int	current_color;
+
 	if (!rc->is_side)
 		rc->pwd = (rc->map.x
 			- rc->pos.x + (1 - rc->step.x) / 2) / rc->ray_dir.x;
@@ -73,12 +75,12 @@ static void	add_set_draw_area(t_rc *rc, iarr screen,
 		rc->draw_start = 0;
 	if (rc->draw_end >= WIN_Y)
 		rc->draw_end = WIN_Y - 1;
-	rc->current_color = colors[rc->map.y][rc->map.x];
+	current_color = colors[rc->map.y][rc->map.x];
 	if (rc->is_side)
-		rc->current_color /= 2;
+		current_color /= 2;
 	p->y = rc->draw_start;
 	while (p->y <= rc->draw_end)
-		screen[(p->y)++ * WIN_X + p->x] = rc->current_color;
+		screen[(p->y)++ * WIN_X + p->x] = current_color;
 }
 
 void		wolf_rendering_rc(t_env *env)
@@ -96,7 +98,7 @@ void		wolf_rendering_rc(t_env *env)
 	{
 		*(RC) = (t_rc){{RC->pos.y, RC->pos.x}, {RC->dir.y, RC->dir.x},
 		{RC->plane.y, RC->plane.x}, 0, {0, 0}, {0, 0}, {0, 0}, {0, 0},
-		0, {0, 0}, false, false, 0, 0, 0, 0};
+		0, {0, 0}, false, false, 0, 0, 0};
 		RC->xcamera = 2 * p.x / (double)WIN_X - 1;
 		RC->ray_dir = (fpoint){RC->dir.y + RC->plane.y * RC->xcamera,
 			RC->dir.x + RC->plane.x * RC->xcamera };

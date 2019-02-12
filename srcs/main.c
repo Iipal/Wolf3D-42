@@ -6,17 +6,26 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:19:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/12 13:25:01 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/12 14:05:27 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
 
-void		add_init_rc_n_randomize_pos(t_env *env)
+static void	wolf_usage(void)
+{
+	_MSGN("Usage:");
+	_MSGN("  [W | S] - Moving forward | backward(or Arrows [UP | DOWN])");
+	_MSGN("  [A | D] - Rotate left | right(or Arrows [LEFT | RIGHT]");
+	_MSGN("  [+ | -] - Chaneg FoV.");
+	_MSGN("  [ESC] - exit.");
+}
+
+static void	add_init_rc_n_randomize_pos(t_env *env)
 {
 	*(RC) = (t_rc){{0, 0}, {0, -1}, {0.66, 0}, 0,
 		{0, 0}, {0, 0}, {0, 0}, {0, 0}, 0, {0, 0},
-		false, false, 0, 0, 0, 0};
+		false, false, 0, 0, 0};
 	while (1)
 	{
 		RC->pos = (fpoint){ft_rand(MAPY - 1), ft_rand(MAPX - 1)};
@@ -27,6 +36,7 @@ void		add_init_rc_n_randomize_pos(t_env *env)
 		RC->pos.x += MOVE_INC;
 	if (!MAP[(int)(RC->pos.y + MOVE_INC)][(int)RC->pos.x])
 		RC->pos.y += MOVE_INC;
+	wolf_usage();
 }
 
 static void	add_mlx_hooks(t_env *env)

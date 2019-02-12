@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/12 12:45:52 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/12 13:28:10 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ typedef struct	s_ray_caster
 	int		hline;
 	int		draw_start;
 	int		draw_end;
-	int		current_color;
 }				t_rc;
 
 typedef struct	s_wolf3d_environment
