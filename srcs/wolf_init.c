@@ -15,7 +15,8 @@
 static bool	add_init_textures(t_env *env)
 {
 	if (env)
-	;
+	{
+	}
 	return (true);
 }
 
