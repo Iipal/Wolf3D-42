@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 17:18:56 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/11 03:20:18 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/12 13:25:41 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static bool		add_valid_info(string info_line, t_map *map, string map_name)
 {
 	strtab	info_tab;
 	int		i;
-	
+
 	_NOTIS_F(!ft_strcmp(map_name +
 		(ft_strlen(map_name) - ft_strlen(WOLF_FILE_EXT)), WOLF_FILE_EXT));
 	_NOTIS_F(info_tab = ft_strsplit(info_line, ' '));
@@ -126,7 +126,6 @@ bool			wolf_readnsave(string map_name, t_env *env)
 	_NOTIS_F(!(!(fd = open(map_name, O_RDONLY)) || fd < 0));
 	_NOTIS_F(!(ft_gnl(fd, &gnl_temp) < 0));
 	_NOTIS_F(add_valid_info(gnl_temp, env->map, map_name));
-	// ft_strdel(&gnl_temp);
 	while ((gnl_ret = ft_gnl(fd, &gnl_temp)) && ++i < MAPY)
 	{
 		_NOTIS(E_IMAP, !(add_valid_inline_numbers(gnl_temp) != MAPX),

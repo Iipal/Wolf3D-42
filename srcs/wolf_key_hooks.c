@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:44:03 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/12 12:58:04 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/12 13:25:10 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	add_action_wasd(int key, t_env *env)
 	if (key == KEY_S)
 		wolf_move(env, -MOVE_INC);
 	if (key == KEY_D)
-		wolf_rotate(RC, _RAD(-ROT_INC));		
+		wolf_rotate(RC, _RAD(-ROT_INC));
 }
 
 static void	add_action_arrows(int key, t_env *env)

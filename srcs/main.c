@@ -6,14 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:19:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/12 13:22:08 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/12 13:25:01 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
-#include <stdio.h>
 
-void	add_init_rc_n_randomize_pos(t_env *env)
+void		add_init_rc_n_randomize_pos(t_env *env)
 {
 	*(RC) = (t_rc){{0, 0}, {0, -1}, {0.66, 0}, 0,
 		{0, 0}, {0, 0}, {0, 0}, {0, 0}, 0, {0, 0},
