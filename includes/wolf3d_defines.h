@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 18:58:09 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 19:48:38 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@
 # define MOVE_BOOST     5.55f
 # define ROT_INC        2.0f
 # define ROT_BOOST      4.44f
-# define ROT_MOUSE_INC  0.0016f
+# define ROT_MOUSE_INC  0.002f
 
 # define MAX_TEXTURES   8
 # define TEXWALL1       "resources/wall1.xpm"

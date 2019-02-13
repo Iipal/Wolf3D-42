@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 18:47:00 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 19:49:24 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,8 @@ typedef struct	s_ray_caster
 
 typedef struct	s_mouse
 {
-	fpoint	last;
-	fpoint	curr;
+	int	last;
+	int	curr;
 }				t_mouse;
 
 typedef struct	s_xpm_images
