@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 11:04:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 12:54:06 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@ static bool	add_init_textures(t_env *env)
 	const string	textures[] = {TEXWALL1, TEXWALL2, TEXWALL3, TEXWALL4,
 		TEXWALL5, TEXWALL6, TEXWALL7, TEXWALL8, TEXFLOOR};
 	int				i;
-	int				w;
-	int				h;
+	t_tim			t;
 
 	i = -1;
 	while (++i < MAX_TEXTURES + 1)
-		TEX[i] = mlx_xpm_file_to_image(MPTR, textures[i], &w, &h);
+	{
+		TEX[i].xpm = mlx_xpm_file_to_image(MPTR, textures[i], &t.w, &t.h);
+		TEX[i].img = (iarr)mlx_get_data_addr(TEX[i].xpm, &t.bps, &t.sl, &t.end);
+	}
 	return (true);
 }
 
@@ -39,11 +41,11 @@ bool		wolf_init(t_env *env)
 	_NOTIS_F(IPTR = mlx_new_image(MPTR, WIN_X, WIN_Y));
 	_NOTIS_F(SPTR = (iarr)mlx_get_data_addr(IPTR, &bps, &sz, &end));
 	_NOTIS_F(env->isr = (t_isr*)malloc(sizeof(t_isr)));
-	*(env->isr) = (t_isr){false};
+	*(env->isr) = (t_isr){false, false, false};
 	_NOTIS_F(env->map = (t_map*)malloc(sizeof(t_map)));
 	_NOTIS_F(env->rc = (t_rc*)malloc(sizeof(t_rc)));
 	_NOTIS_F(MOUSE = (t_mouse*)malloc(sizeof(t_mouse)));
-	_NOTIS_F(TEX = (pvoid*)(malloc(sizeof(pvoid) * (MAX_TEXTURES + 1))));
+	_NOTIS_F(TEX = (t_xpm*)(malloc(sizeof(t_xpm) * (MAX_TEXTURES + 1))));
 	_NOTIS_F(add_init_textures(env));
 	return (true);
 }

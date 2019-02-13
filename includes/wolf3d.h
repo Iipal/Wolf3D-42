@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 10:40:24 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 12:20:00 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ typedef struct	s_mlx
 typedef struct	s_isrender
 {
 	bool	is_boost_step;
+	bool	is_textured;
+	bool	is_press_mouse;
 }				t_isr;
 
 typedef struct	s_map
@@ -98,10 +100,15 @@ typedef struct	s_ray_caster
 
 typedef struct	s_mouse
 {
-	bool	is_pres;
 	fpoint	last;
 	fpoint	curr;
 }				t_mouse;
+
+typedef struct	s_xpm_images
+{
+	pvoid	xpm;
+	iarr	img;
+}				t_xpm;
 
 typedef struct	s_wolf3d_environment
 {
@@ -109,15 +116,27 @@ typedef struct	s_wolf3d_environment
 	t_isr		*isr;
 	t_map		*map;
 	t_rc		*rc;
-	pvoid		*xpm;
 	t_mouse		*mouse;
+	t_xpm		*xpm;
 }				t_env;
+
+typedef struct	s_temp_init_mlx
+{
+	int	bps;
+	int	sl;
+	int	end;
+	int	w;
+	int	h;
+}				t_tim;
 
 bool			wolf_init(t_env *env);
 
 bool			wolf_readnsave(string map_name, t_env *env);
 
 void			wolf_rendering_rc(t_env *env);
+void			wolf_set_diststep(t_rc *rc);
+void			wolf_check_hit(t_rc *rc, itab map);
+void			wolf_set_draw_area(t_rc *rc);
 
 int				wolf_killwindow(t_env *env);
 int				wolf_key_hooks(int key, t_env *env);
@@ -132,4 +151,5 @@ void			wolf_move(t_env *env, float dist);
 
 void			wolf_free(t_env **env);
 void			wolf_free_map(t_map **map);
+
 #endif

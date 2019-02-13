@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 10:43:30 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 12:49:21 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 # define IRGB_MINT      0x2BFFE3
 # define IRGB_DARK_BLUE 0x2B75FF
 
-# define MOVE_INC       0.05f
+# define MOVE_INC       0.1f
 # define MOVE_BOOST     5.55f
 # define ROT_INC        2.0f
 # define ROT_BOOST      4.44f
@@ -99,6 +99,8 @@
 # define MAPC   env->map->colors
 
 # define ISRB   env->isr->is_boost_step
+# define ISRM   env->isr->is_press_mouse
+# define ISRT   env->isr->is_textured
 
 # define MOUSE  env->mouse
 

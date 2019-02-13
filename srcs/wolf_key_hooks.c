@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:44:03 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/12 20:22:37 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 12:19:08 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int			wolf_key_hooks(int key, t_env *env)
 		wolf_killwindow(env);
 	if (key == LSHIFT)
 		ISRB ? (ISRB = false) : (ISRB = true);
+	if (key == KEY_T)
+		ISRT ? (ISRT = false) : (ISRT = true);
 	add_action_wasd(key, env);
 	add_action_arrows(key, env);
 	wolf_rendering_rc(env);
