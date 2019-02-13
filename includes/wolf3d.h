@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 13:18:10 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 15:25:09 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,20 @@ typedef struct	s_texture_render_helper
 	int		curr_color_on_tex;
 	point	pos_on_tex;
 	float	where_is_hit;
-}				t_helper;
+}				t_texhelper;
+
+typedef struct	s_floor_render_helper
+{
+	fpoint	fpos;
+	fpoint	fcur;
+	float	dist_wall;
+	float	dist_player;
+	float	current_dist;
+	float	weight;
+	point	ftex;
+	int		check_board;
+}				t_floorhelper;
+
 
 bool			wolf_init(t_env *env);
 

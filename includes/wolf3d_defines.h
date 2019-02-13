@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 12:49:21 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 15:25:28 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,9 @@
 # define TEXWALL7       "resources/wall7.xpm"
 # define TEXWALL8       "resources/wall8.xpm"
 # define TEXFLOOR       "resources/floor.xpm"
-# define YTEX           256
-# define XTEX           256
+# define FLOOR          MAX_TEXTURES
+# define YTEX           64
+# define XTEX           64
 # define TEX            env->xpm
 
 # define _MSG(msg) ft_putstr(msg);
