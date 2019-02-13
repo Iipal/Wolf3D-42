@@ -6,14 +6,14 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 21:58:24 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 23:18:47 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WOLF3D_DEFINES_H
 # define WOLF3D_DEFINES_H
 
-# define WIN_TITTLE	"Wolfenstein 3D"
+# define WIN_TITTLE     "Wolfenstein 3D"
 
 # define WOLF_FILE_EXT	".w3d"
 
@@ -35,6 +35,9 @@
 
 # define PI             3.141592
 
+# define IRGB_MAP_RAY   0x00B37A
+# define IRGB_MAP_POS   0xC7C7C7
+# define IRGB_MAP_BG    0x808080
 # define IRGB_SKY       0x002D80
 # define IRGB_FLOOR     0x242424
 # define IRGB_COLORS    8
