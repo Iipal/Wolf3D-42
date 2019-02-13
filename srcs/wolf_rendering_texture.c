@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 15:41:02 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 15:47:20 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 17:35:40 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ static void	add_render_floor(t_env *env, t_texhelper *tx, point *p)
 		h.ftex.y = (int)(h.fcur.y * YTEX) % YTEX;
 		h.ftex.x = (int)(h.fcur.x * XTEX) % XTEX;
 		h.check_board = (int)(h.fcur.x + h.fcur.y) % 2;
-		SPTR[p->y * WIN_X + p->x] = (TEX[FLOOR].img[
-					h.ftex.y * XTEX + h.ftex.x] >> 1) & 8355711;
-		SPTR[(WIN_Y - (p->y)++) * WIN_X + p->x] = (TEX[FLOOR].img[
-					XTEX * h.ftex.y + h.ftex.x]);
+		SPTR[p->y * WIN_X + p->x] =
+			(TEX[TFLOOR].img[h.ftex.y * XTEX + h.ftex.x] >> 1) & 8355711;
+		SPTR[(WIN_Y - (p->y)++) * WIN_X + p->x] =
+			(TEX[TSKY].img[XTEX * h.ftex.y + h.ftex.x]);
 	}
 }
 

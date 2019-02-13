@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 15:49:57 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 17:33:55 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	add_render_colored(t_env *env, point *p)
 {
-	int		current_color;
+	int	current_color;
 
 	current_color = MAPC[RC->map.y][RC->map.x];
 	if (RC->is_side)
@@ -31,14 +31,14 @@ void		add_fill_floor_is_colored(t_mlx *mlx)
 	p.y = -1;
 	while (++(p.y) < WIN_Y && (p.x = -1))
 		while (++(p.x) < WIN_X)
-			mlx->screen[p.y * WIN_X + p.x] = (p.y >= WIN_Y / 2) ? IRGB_GRAY : 0;
+			mlx->screen[p.y * WIN_X + p.x] =
+				(p.y >= WIN_Y / 2) ? IRGB_GRAY : IRGB_SKY;
 }
 
 void		wolf_rendering_rc(t_env *env)
 {
 	point	p;
 
-	ft_bzero(SPTR, sizeof(int) * WIN_X * WIN_Y);
 	if (!ISRT)
 		add_fill_floor_is_colored(env->mlx);
 	p.x = -1;
@@ -58,4 +58,5 @@ void		wolf_rendering_rc(t_env *env)
 		ISRT ? wolf_render_textured(env, &p) : add_render_colored(env, &p);
 	}
 	mlx_put_image_to_window(MPTR, WPTR, IPTR, 0, 0);
+	ft_bzero(SPTR, sizeof(int) * WIN_X * WIN_Y);
 }

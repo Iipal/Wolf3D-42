@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 15:25:28 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 17:36:35 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@
 
 # define IRGB_COLORS    6
 # define IRGB_WHITE     0xFFFFFF
-# define IRGB_GRAY      0x3D3D3D
+# define IRGB_SKY       0x002D80
+# define IRGB_GRAY      0x242424
 # define IRGB_RED       0xF21856
 # define IRGB_ORANGE    0xFFB833
 # define IRGB_LIME      0x7FFF00
@@ -61,7 +62,9 @@
 # define TEXWALL7       "resources/wall7.xpm"
 # define TEXWALL8       "resources/wall8.xpm"
 # define TEXFLOOR       "resources/floor.xpm"
-# define FLOOR          MAX_TEXTURES
+# define TEXSKY         "resources/sky.xpm"
+# define TFLOOR         MAX_TEXTURES
+# define TSKY           TFLOOR + 1
 # define YTEX           64
 # define XTEX           64
 # define TEX            env->xpm
