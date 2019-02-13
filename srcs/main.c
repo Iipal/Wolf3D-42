@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:19:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/12 18:44:49 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 12:55:21 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	wolf_usage(void)
 	_MSGN("Usage:");
 	_MSGN("  [W | S] - Moving forward | backward(or Arrows [UP | DOWN])");
 	_MSGN("  [A | D] - Rotate left | right(or Arrows [LEFT | RIGHT]");
-	_MSGN("  [+ | -] - Chaneg FoV.");
+	_MSGN("  [T] - Switch Textured\\Flat rendering method.");
 	_MSGN("  [ESC] - exit.");
 }
 
