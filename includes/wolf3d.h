@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 15:25:09 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 15:43:19 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,7 @@ bool			wolf_init(t_env *env);
 bool			wolf_readnsave(string map_name, t_env *env);
 
 void			wolf_rendering_rc(t_env *env);
+void			wolf_render_textured(t_env *env, point *p);
 void			wolf_set_diststep(t_rc *rc);
 void			wolf_check_hit(t_rc *rc, itab map);
 void			wolf_set_draw_area(t_rc *rc);
