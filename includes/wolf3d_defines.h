@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/12 20:29:07 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 10:43:30 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,18 @@
 # define ROT_BOOST      4.44f
 
 # define MAX_TEXTURES   8
-# define TEXTURE_WALL1  "resource/wall1.xpm"
+# define TEXWALL1       "resources/wall1.xpm"
+# define TEXWALL2       "resources/wall2.xpm"
+# define TEXWALL3       "resources/wall3.xpm"
+# define TEXWALL4       "resources/wall4.xpm"
+# define TEXWALL5       "resources/wall5.xpm"
+# define TEXWALL6       "resources/wall6.xpm"
+# define TEXWALL7       "resources/wall7.xpm"
+# define TEXWALL8       "resources/wall8.xpm"
+# define TEXFLOOR       "resources/floor.xpm"
+# define YTEX           256
+# define XTEX           256
+# define TEX            env->xpm
 
 # define _MSG(msg) ft_putstr(msg);
 # define _MSGN(msg) ft_putendl(msg);
@@ -92,10 +103,5 @@
 # define MOUSE  env->mouse
 
 # define RC     env->rc
-
-# define YTEX   256
-# define XTEX   256
-# define TEX    env->textures
-
 
 #endif

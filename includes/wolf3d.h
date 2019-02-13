@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/12 21:02:12 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 10:40:24 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,14 +96,6 @@ typedef struct	s_ray_caster
 	int		draw_end;
 }				t_rc;
 
-typedef struct	s_xpm_image
-{
-	pvoid	xpm;
-	iarr	screen;
-	int		width;
-	int		height;
-}				t_xpm_image;
-
 typedef struct	s_mouse
 {
 	bool	is_pres;
@@ -117,7 +109,7 @@ typedef struct	s_wolf3d_environment
 	t_isr		*isr;
 	t_map		*map;
 	t_rc		*rc;
-	t_xpm_image	*textures;
+	pvoid		*xpm;
 	t_mouse		*mouse;
 }				t_env;
 
