@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 22:02:28 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 22:05:21 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # ifdef __linux__
 #  include "keys_linux.h"
 
-#  define WIN_X		1280
-#  define WIN_Y		720
+#  define WIN_X		1000
+#  define WIN_Y		500
 # endif
 
 # include "wolf3d_defines.h"
