@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/11 03:14:52 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 13:05:41 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,7 @@ void	wolf_free(t_env **env)
 	_FREE((*env)->mlx, free);
 	_FREE((*env)->isr, free);
 	_FREE((*env)->rc, free);
+	_FREE((*env)->mouse, free);
+	_FREE((*env)->xpm, free);
 	_FREE(*env, free);
 }
