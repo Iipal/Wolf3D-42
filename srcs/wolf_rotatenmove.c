@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 01:03:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/12 13:11:57 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 18:47:25 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
 
-bool		wolf_is_tile(t_map *map, fpoint pos)
+static bool	add_is_tile(t_map *map, fpoint pos)
 {
 	if (pos.x < 0 || pos.y < 0
 	|| pos.x > map->xsize - 1
@@ -25,10 +25,10 @@ bool		wolf_is_tile(t_map *map, fpoint pos)
 
 void		wolf_move(t_env *env, float dist)
 {
-	if (wolf_is_tile(env->map,
+	if (add_is_tile(env->map,
 		(fpoint){RC->pos.y, RC->pos.x + dist * RC->dir.x}))
 		RC->pos.x += dist * RC->dir.x;
-	if (wolf_is_tile(env->map,
+	if (add_is_tile(env->map,
 		(fpoint){RC->pos.y + dist * RC->dir.y, RC->pos.x}))
 		RC->pos.y += dist * RC->dir.y;
 }

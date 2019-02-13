@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 15:41:02 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 17:35:40 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 18:15:11 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void		wolf_render_textured(t_env *env, point *p)
 	else
 		h.where_is_hit = RC->pos.x + RC->pwd * RC->raydir.x;
 	h.where_is_hit -= floor(h.where_is_hit);
-	h.pos_on_tex.x = (int)(h.where_is_hit * (double)(XTEX));
+	h.pos_on_tex.x = (int)(h.where_is_hit * (double)XTEX);
 	if (!RC->is_side && RC->raydir.x > 0)
 		h.pos_on_tex.x = XTEX - h.pos_on_tex.x - 1;
 	if (RC->is_side && RC->raydir.y > 0)

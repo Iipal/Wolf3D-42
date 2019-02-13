@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 15:43:19 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 18:47:00 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,10 +159,10 @@ typedef struct	s_floor_render_helper
 	int		check_board;
 }				t_floorhelper;
 
+bool			wolf_readnsave(string map_name, t_env *env);
 
 bool			wolf_init(t_env *env);
-
-bool			wolf_readnsave(string map_name, t_env *env);
+void			wolf_init_rc_n_randomize_pos(t_env *env);
 
 void			wolf_rendering_rc(t_env *env);
 void			wolf_render_textured(t_env *env, point *p);
@@ -177,7 +177,6 @@ int				wolf_mouse_release(int button, int x, int y, t_env *env);
 int				wolf_mouse_press(int button, int x, int y, t_env *env);
 int				wolf_mouse_moves(int x, int y, t_env *env);
 
-bool			wolf_is_tile(t_map *map, fpoint pos);
 void			wolf_rotate(t_rc *rc, float angle);
 void			wolf_move(t_env *env, float dist);
 

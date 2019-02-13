@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 18:33:42 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 12:13:15 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 18:33:02 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		wolf_mouse_moves(int x, int y, t_env *env)
 	MOUSE->curr = (fpoint){y, x};
 	if (ISRM)
 	{
-		wolf_rotate(RC, -(x - MOUSE->last.x) * 0.002);
+		wolf_rotate(RC, -(x - MOUSE->last.x) * ROT_MOUSE_INC);
 		wolf_rendering_rc(env);
 	}
 	return (0);

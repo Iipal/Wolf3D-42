@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 17:36:35 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 18:39:38 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@
 
 # define PI             3.141592
 
+# define IRGB_SKY       0x002D80
+# define IRGB_FLOOR     0x242424
 # define IRGB_COLORS    6
 # define IRGB_WHITE     0xFFFFFF
-# define IRGB_SKY       0x002D80
-# define IRGB_GRAY      0x242424
 # define IRGB_RED       0xF21856
 # define IRGB_ORANGE    0xFFB833
 # define IRGB_LIME      0x7FFF00
@@ -47,10 +47,11 @@
 # define IRGB_MINT      0x2BFFE3
 # define IRGB_DARK_BLUE 0x2B75FF
 
-# define MOVE_INC       0.1f
+# define MOVE_INC       0.066f
 # define MOVE_BOOST     5.55f
 # define ROT_INC        2.0f
 # define ROT_BOOST      4.44f
+# define ROT_MOUSE_INC  0.0016f
 
 # define MAX_TEXTURES   8
 # define TEXWALL1       "resources/wall1.xpm"

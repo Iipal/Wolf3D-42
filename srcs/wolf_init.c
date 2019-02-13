@@ -6,11 +6,38 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 17:52:53 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 18:30:12 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
+
+static void	wolf_usage(void)
+{
+	_MSGN("Usage:");
+	_MSGN("  [W | S] - Moving forward | backward(or Arrows [UP | DOWN])");
+	_MSGN("  [A | D] - Rotate left | right(or Arrows [LEFT | RIGHT]");
+	_MSGN("  [T] - Switch Textured\\Flat rendering method.");
+	_MSGN("  [ESC] - exit.");
+}
+
+void		wolf_init_rc_n_randomize_pos(t_env *env)
+{
+	*(RC) = (t_rc){{0, 0}, {0, -1}, {0.66, 0}, 0,
+		{0, 0}, {0, 0}, {0, 0}, {0, 0}, 0, {0, 0},
+		false, false, 0, 0, 0};
+	while (1)
+	{
+		RC->pos = (fpoint){ft_rand(MAPY - 1), ft_rand(MAPX - 1)};
+		if (!MAP[(int)RC->pos.y][(int)RC->pos.x])
+			break ;
+	}
+	if (!MAP[(int)RC->pos.y][(int)(RC->pos.x + MOVE_INC)])
+		RC->pos.x += MOVE_INC;
+	if (!MAP[(int)(RC->pos.y + MOVE_INC)][(int)RC->pos.x])
+		RC->pos.y += MOVE_INC;
+	wolf_usage();
+}
 
 static bool	add_init_textures(t_env *env)
 {
@@ -45,7 +72,7 @@ bool		wolf_init(t_env *env)
 	_NOTIS_F(env->rc = (t_rc*)malloc(sizeof(t_rc)));
 	_NOTIS_F(MOUSE = (t_mouse*)malloc(sizeof(t_mouse)));
 	_NOTIS_F(TEX = (t_xpm*)(malloc(sizeof(t_xpm) * (MAX_TEXTURES + 2))));
-	*(env->isr) = (t_isr){false, false, false};
+	*(env->isr) = (t_isr){false, true, false};
 	_NOTIS_F(add_init_textures(env));
 	return (true);
 }

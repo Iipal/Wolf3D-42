@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 17:33:55 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 18:25:21 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void		add_fill_floor_is_colored(t_mlx *mlx)
 	while (++(p.y) < WIN_Y && (p.x = -1))
 		while (++(p.x) < WIN_X)
 			mlx->screen[p.y * WIN_X + p.x] =
-				(p.y >= WIN_Y / 2) ? IRGB_GRAY : IRGB_SKY;
+				(p.y >= WIN_Y / 2) ? IRGB_FLOOR : IRGB_SKY;
 }
 
 void		wolf_rendering_rc(t_env *env)
