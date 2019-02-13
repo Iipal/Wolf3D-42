@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 11:13:19 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 12:19:40 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 13:12:11 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	wolf_set_diststep(t_rc *rc)
 {
-	if (rc->ray_dir.x < 0)
+	if (rc->raydir.x < 0)
 	{
 		rc->step.x = -1;
 		rc->side_dist.x = (rc->pos.x - rc->map.x) * rc->absdist.x;
@@ -24,7 +24,7 @@ void	wolf_set_diststep(t_rc *rc)
 		rc->step.x = 1;
 		rc->side_dist.x = (rc->map.x + 1.0 - rc->pos.x) * rc->absdist.x;
 	}
-	if (rc->ray_dir.y < 0)
+	if (rc->raydir.y < 0)
 	{
 		rc->step.y = -1;
 		rc->side_dist.y = (rc->pos.y - rc->map.y) * rc->absdist.y;
@@ -61,10 +61,10 @@ void	wolf_set_draw_area(t_rc *rc)
 {
 	if (!rc->is_side)
 		rc->pwd = (rc->map.x
-			- rc->pos.x + (1 - rc->step.x) / 2) / rc->ray_dir.x;
+			- rc->pos.x + (1 - rc->step.x) / 2) / rc->raydir.x;
 	else
 		rc->pwd = (rc->map.y
-			- rc->pos.y + (1 - rc->step.y) / 2) / rc->ray_dir.y;
+			- rc->pos.y + (1 - rc->step.y) / 2) / rc->raydir.y;
 	rc->hline = (int)(WIN_Y / rc->pwd);
 	rc->draw_start = -(rc->hline) / 2 + WIN_Y / 2;
 	rc->draw_end = rc->hline / 2 + WIN_Y / 2;

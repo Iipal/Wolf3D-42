@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 12:54:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 13:07:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,14 @@ static bool	add_init_textures(t_env *env)
 
 bool		wolf_init(t_env *env)
 {
-	int	bps;
-	int	sz;
-	int	end;
+	t_tim	t;
 
 	*env = (t_env){NULL, NULL, NULL, NULL, NULL, NULL};
 	_NOTIS_F(env->mlx = (t_mlx*)malloc(sizeof(t_mlx)));
 	_NOTIS_F(MPTR = mlx_init());
 	_NOTIS_F(WPTR = mlx_new_window(MPTR, WIN_X, WIN_Y, WIN_TITTLE));
 	_NOTIS_F(IPTR = mlx_new_image(MPTR, WIN_X, WIN_Y));
-	_NOTIS_F(SPTR = (iarr)mlx_get_data_addr(IPTR, &bps, &sz, &end));
+	_NOTIS_F(SPTR = (iarr)mlx_get_data_addr(IPTR, &t.bps, &t.sl, &t.end));
 	_NOTIS_F(env->isr = (t_isr*)malloc(sizeof(t_isr)));
 	*(env->isr) = (t_isr){false, false, false};
 	_NOTIS_F(env->map = (t_map*)malloc(sizeof(t_map)));

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 12:20:00 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 13:18:10 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ typedef struct	s_ray_caster
 	fpoint	dir;
 	fpoint	plane;
 	double	xcamera;
-	fpoint	ray_dir;
+	fpoint	raydir;
 	point	map;
 	fpoint	side_dist;
 	fpoint	absdist;
@@ -120,6 +120,10 @@ typedef struct	s_wolf3d_environment
 	t_xpm		*xpm;
 }				t_env;
 
+/*
+**	t_tim using only for init MLX!
+*/
+
 typedef struct	s_temp_init_mlx
 {
 	int	bps;
@@ -128,6 +132,20 @@ typedef struct	s_temp_init_mlx
 	int	w;
 	int	h;
 }				t_tim;
+
+/*
+**	t_helper using only for make texture rendering process
+**		function avoid to norme.
+*/
+
+typedef struct	s_texture_render_helper
+{
+	int		d;
+	int		curr_tex;
+	int		curr_color_on_tex;
+	point	pos_on_tex;
+	float	where_is_hit;
+}				t_helper;
 
 bool			wolf_init(t_env *env);
 
