@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/12 21:09:05 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 10:56:01 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,19 @@
 
 static bool	add_init_textures(t_env *env)
 {
-	const string	textures[] = {TEXTURE_WALL1};
-	int	i;
-	// int	bps;
-	// int	sz;
-	// int	end;
+	const string	textures[] = {TEXWALL1, TEXWALL2, TEXWALL3, TEXWALL4,
+		TEXWALL5, TEXWALL6, TEXWALL7, TEXWALL8, TEXFLOOR};
+	int				i;
+	int				w;
+	int				h;
 
 	i = -1;
-	while (++i < 1)
-	{
-		TEX[i].xpm = mlx_xpm_file_to_image(MPTR, textures[i], &TEX[i].width, &TEX[i].height);
-		// TEX[i].screen = (iarr)mlx_get_data_addr(TEX[i].xpm, &bps, &sz, &end);
-	}
+	while (++i < MAX_TEXTURES + 1)
+		TEX[i] = mlx_xpm_file_to_image(MPTR, textures[i], &w, &h);
 	return (true);
 }
 
-bool	wolf_init(t_env *env)
+bool		wolf_init(t_env *env)
 {
 	int	bps;
 	int	sz;
@@ -46,7 +43,7 @@ bool	wolf_init(t_env *env)
 	_NOTIS_F(env->map = (t_map*)malloc(sizeof(t_map)));
 	_NOTIS_F(env->rc = (t_rc*)malloc(sizeof(t_rc)));
 	_NOTIS_F(MOUSE = (t_mouse*)malloc(sizeof(t_mouse)));
-	_NOTIS_F(TEX = (t_xpm_image*)(malloc(sizeof(t_xpm_image) * MAX_TEXTURES)));
+	_NOTIS_F(TEX = (pvoid*)(malloc(sizeof(pvoid) * (MAX_TEXTURES + 1))));
 	_NOTIS_F(add_init_textures(env));
 	return (true);
 }
