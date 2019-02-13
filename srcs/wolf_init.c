@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/12 18:38:41 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/12 21:09:05 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,17 @@
 
 static bool	add_init_textures(t_env *env)
 {
-	if (env)
+	const string	textures[] = {TEXTURE_WALL1};
+	int	i;
+	// int	bps;
+	// int	sz;
+	// int	end;
+
+	i = -1;
+	while (++i < 1)
 	{
+		TEX[i].xpm = mlx_xpm_file_to_image(MPTR, textures[i], &TEX[i].width, &TEX[i].height);
+		// TEX[i].screen = (iarr)mlx_get_data_addr(TEX[i].xpm, &bps, &sz, &end);
 	}
 	return (true);
 }

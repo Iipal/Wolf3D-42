@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/12 19:02:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/12 20:29:07 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,9 @@
 
 # define RC     env->rc
 
+# define YTEX   256
+# define XTEX   256
 # define TEX    env->textures
+
 
 #endif

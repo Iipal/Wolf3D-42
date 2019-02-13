@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/12 19:03:52 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/12 21:09:24 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,4 +110,5 @@ void		wolf_rendering_rc(t_env *env)
 		add_set_draw_area(RC, SPTR, MAPC, &p);
 	}
 	mlx_put_image_to_window(MPTR, WPTR, IPTR, 0, 0);
+	mlx_put_image_to_window(MPTR, WPTR, TEX[0].xpm, 0, 0);
 }
