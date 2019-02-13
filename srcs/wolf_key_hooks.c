@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:44:03 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 19:19:32 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 22:00:02 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,40 +21,42 @@ int			wolf_killwindow(t_env *env)
 
 static void	add_action_wasd(int key, t_env *env)
 {
-	if (key == KEY_W)
+	if (key == KEY_W && (ISRR = true))
 		wolf_move(env, ISRB ? (MOVE_BOOST * MOVE_INC) : MOVE_INC);
-	if (key == KEY_A)
+	if (key == KEY_A && (ISRR = true))
 		wolf_rotate(RC, _RAD(ISRB ? (ROT_BOOST * ROT_INC) : ROT_INC));
-	if (key == KEY_S)
+	if (key == KEY_S && (ISRR = true))
 		wolf_move(env, ISRB ? (MOVE_BOOST * -MOVE_INC) : -MOVE_INC);
-	if (key == KEY_D)
+	if (key == KEY_D && (ISRR = true))
 		wolf_rotate(RC, _RAD(ISRB ? (ROT_BOOST * -ROT_INC) : -ROT_INC));
 }
 
 static void	add_action_arrows(int key, t_env *env)
 {
-	if (key == ARROW_UP)
+	if (key == ARROW_UP && (ISRR = true))
 		wolf_move(env, ISRB ? (MOVE_BOOST * MOVE_INC) : MOVE_INC);
-	if (key == ARROW_DOWN)
+	if (key == ARROW_DOWN && (ISRR = true))
 		wolf_move(env, ISRB ? (MOVE_BOOST * -MOVE_INC) : -MOVE_INC);
-	if (key == ARROW_LEFT)
+	if (key == ARROW_LEFT && (ISRR = true))
 		wolf_rotate(RC, _RAD(ISRB ? (ROT_BOOST * ROT_INC) : ROT_INC));
-	if (key == ARROW_RIGHT)
+	if (key == ARROW_RIGHT && (ISRR = true))
 		wolf_rotate(RC, _RAD(ISRB ? (ROT_BOOST * -ROT_INC) : -ROT_INC));
 }
 
 int			wolf_key_hooks(int key, t_env *env)
 {
+	ISRR = false;
 	if (key == ESC)
 		wolf_killwindow(env);
-	if (key == LSHIFT)
+	if (key == LSHIFT && (ISRR = true))
 		ISRB ? (ISRB = false)
 			: (ISRB = true);
-	if (key == KEY_T)
+	if (key == KEY_T && (ISRR = true))
 		ISRT ? (ISRT = false)
 			: (ISRT = true);
 	add_action_wasd(key, env);
 	add_action_arrows(key, env);
-	wolf_rendering_rc(env);
+	if (ISRR)
+		wolf_rendering_rc(env);
 	return (0);
 }

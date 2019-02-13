@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 19:49:24 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 22:02:28 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct	s_mlx
 
 typedef struct	s_isrender
 {
+	bool	is_render;
 	bool	is_boost_step;
 	bool	is_textured;
 	bool	is_press_mouse;

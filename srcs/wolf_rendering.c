@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 18:25:21 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 22:01:27 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void		wolf_rendering_rc(t_env *env)
 {
 	point	p;
 
+	ft_bzero(SPTR, sizeof(int) * WIN_X * WIN_Y);
 	if (!ISRT)
 		add_fill_floor_is_colored(env->mlx);
 	p.x = -1;
@@ -58,5 +59,4 @@ void		wolf_rendering_rc(t_env *env)
 		ISRT ? wolf_render_textured(env, &p) : add_render_colored(env, &p);
 	}
 	mlx_put_image_to_window(MPTR, WPTR, IPTR, 0, 0);
-	ft_bzero(SPTR, sizeof(int) * WIN_X * WIN_Y);
 }
