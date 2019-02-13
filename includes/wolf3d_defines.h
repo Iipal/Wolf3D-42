@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 18:39:38 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 18:58:09 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 
 # define IRGB_SKY       0x002D80
 # define IRGB_FLOOR     0x242424
-# define IRGB_COLORS    6
+# define IRGB_COLORS    8
 # define IRGB_WHITE     0xFFFFFF
 # define IRGB_RED       0xF21856
 # define IRGB_ORANGE    0xFFB833

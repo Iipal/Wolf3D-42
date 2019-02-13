@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 17:18:56 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 18:38:46 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/13 18:58:34 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static bool		add_save_map(string line, iarr map_line,
 		{
 			map_line[++x] = ft_atoi(line);
 			_NOTIS_F(!(map_line[x] < 0 || map_line[x] > MAX_TEXTURES));
-			colors_line[x] = colors[map_line[x]];
+			colors_line[x] = colors[map_line[x] - 1];
 			temp_digits = ft_itoa(map_line[x]);
 			digits = ft_strlen(temp_digits);
 			ft_strdel(&temp_digits);
