@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 15:41:02 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/14 18:47:26 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/14 19:07:16 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ static void	add_choose_current_texture(t_env *env, t_texhelper *h)
 		else
 			tex = 3;
 	}
-	if ((h->curr_tex += tex) > MAX_TEXTURES + 2)
-		h->curr_tex -= (MAX_TEXTURES + 2);
+	if ((h->curr_tex += tex) > MAX_TEXTURES + 1)
+		h->curr_tex -= (MAX_TEXTURES + 1);
 }
 
 void		wolf_render_textured(t_env *env, point *p)
