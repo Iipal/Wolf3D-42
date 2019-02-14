@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/14 14:03:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/14 18:55:52 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ void		wolf_rendering_rc(t_env *env)
 		wolf_set_diststep(RC);
 		wolf_check_hit(RC, MAP);
 		wolf_set_draw_area(RC);
-		ISRT ? wolf_render_textured(env, &p)
-			: wolf_render_colored(MAPC, SPTR, &p, RC);
+		ISRT ? wolf_render_textured(env, &p) : wolf_render_colored(env, &p);
 	}
 	mlx_put_image_to_window(MPTR, WPTR, IPTR, 0, 0);
 	add_draw_bonus(env);

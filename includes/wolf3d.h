@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/14 13:59:23 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/14 18:55:44 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,8 +173,7 @@ void			wolf_draw_minimap(t_env *env);
 void			wolf_rendering_rc(t_env *env);
 
 void			wolf_render_textured(t_env *env, point *p);
-void			wolf_render_colored(itab colors, iarr screen,
-									point *p, t_rc *rc);
+void			wolf_render_colored(t_env *env, point *p);
 void			wolf_fill_floor_if_colored_rc(iarr screen);
 
 void			wolf_set_diststep(t_rc *rc);
