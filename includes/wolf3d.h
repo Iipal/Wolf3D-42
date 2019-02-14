@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 22:34:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/14 09:32:03 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,6 +172,10 @@ void			wolf_set_diststep(t_rc *rc);
 void			wolf_check_hit(t_rc *rc, itab map);
 void			wolf_set_draw_area(t_rc *rc);
 bool			wolf_is_tile(t_map *map, fpoint pos);
+
+/*
+**	wolf_is_tile defined in file wolf_rotatenmove.c
+*/
 
 int				wolf_killwindow(t_env *env);
 int				wolf_key_hooks(int key, t_env *env);

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 22:33:18 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 23:30:09 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/14 09:57:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,10 @@ static void	add_draw_ray(t_env *env, int size, fpoint p)
 	fpoint	ray;
 
 	ray = (fpoint){p.y + RC->dir.y, p.x + RC->dir.x};
-	while ((ray.y >= 0.00f && ray.x >= 0.00f)
-	&& (ray.y < MAPY && ray.x < MAPX)
-	&& !MAP[(int)ray.y][(int)ray.x])
+	while (wolf_is_tile(env->map, ray) && !MAP[(int)ray.y][(int)ray.x])
 	{
-		add_draw_square(env->mlx, size / 2, ray, IRGB_MAP_RAY);
-		if (RC->dir.x <= 0)
-			ray.x -= MOVE_INC;
-		else
-			ray.x += MOVE_INC;
-		if (RC->dir.y <= 0)
-			ray.y -= MOVE_INC;
-		else
-			ray.y += MOVE_INC;
+		add_draw_square(env->mlx, size, ray, IRGB_MAP_RAY);
+		ray = (fpoint) {ray.y + RC->dir.y, ray.x + RC->dir.x};
 	}
 }
 
@@ -65,5 +56,5 @@ void		wolf_draw_minimap(t_env *env)
 				add_draw_square(env->mlx, size, p, IRGB_MAP_BG);
 	p = (fpoint){RC->pos.y, RC->pos.x};
 	add_draw_square(env->mlx, size, p, IRGB_MAP_POS);
-	// add_draw_ray(env, size, p);
+	add_draw_ray(env, size, p);
 }
