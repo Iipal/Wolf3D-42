@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/14 09:32:03 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/14 13:05:30 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct	s_isrender
 	bool	is_boost_step;
 	bool	is_textured;
 	bool	is_press_mouse;
+	bool	is_draw_minimap;
 }				t_isr;
 
 typedef struct	s_map
