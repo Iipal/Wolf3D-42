@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 15:41:02 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/14 19:07:16 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/14 19:17:41 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static void	add_render_floor(t_env *env, t_texhelper *tx, point *p)
 static void	add_choose_current_texture(t_env *env, t_texhelper *h)
 {
 	int	tex;
+
 	h->curr_tex = MAP[RC->map.y][RC->map.x] - 1;
 	if (RC->step.x < 0)
 		tex = 0;
