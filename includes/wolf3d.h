@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/14 13:05:30 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/14 13:59:23 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct	s_isrender
 	bool	is_textured;
 	bool	is_press_mouse;
 	bool	is_draw_minimap;
+	bool	is_draw_fog;
 }				t_isr;
 
 typedef struct	s_map
@@ -166,14 +167,21 @@ bool			wolf_readnsave(string map_name, t_env *env);
 bool			wolf_init(t_env *env);
 void			wolf_init_rc_n_randomize_pos(t_env *env);
 
+void			wolf_draw_fog(t_env *env);
 void			wolf_draw_minimap(t_env *env);
+
 void			wolf_rendering_rc(t_env *env);
+
 void			wolf_render_textured(t_env *env, point *p);
+void			wolf_render_colored(itab colors, iarr screen,
+									point *p, t_rc *rc);
+void			wolf_fill_floor_if_colored_rc(iarr screen);
+
 void			wolf_set_diststep(t_rc *rc);
 void			wolf_check_hit(t_rc *rc, itab map);
 void			wolf_set_draw_area(t_rc *rc);
-bool			wolf_is_tile(t_map *map, fpoint pos);
 
+bool			wolf_is_tile(t_map *map, fpoint pos);
 /*
 **	wolf_is_tile defined in file wolf_rotatenmove.c
 */
