@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lft_str.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmaluh <tmaluh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 09:09:02 by tmaluh            #+#    #+#             */
-/*   Updated: 2018/12/19 20:34:14 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/14 11:21:34 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int		ft_strncmp(cstring s1, cstring s2, size_t n);
 int		ft_strequ(char const *s1, char const *s2);
 int		ft_strnequ(char const *s1, char const *s2, size_t n);
 int		ft_count_if(char const *str, char const ch);
+int		ft_strrepchr(cstring str, char find_sumbol, char replace_sumbol);
 
 size_t	ft_strlen(cstring str);
 size_t	ft_strlcat(string dest, cstring src,
