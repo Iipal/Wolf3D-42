@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 17:18:56 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 18:58:34 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/14 21:43:47 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ static bool		add_valid_info(string info_line, t_map *map, string map_name)
 		_NOTIS_F(map->colors[i] = (iarr)malloc(sizeof(int) * map->xsize));
 	}
 	_FREE(info_tab, free);
-	ft_strdel(&info_line);
 	return (true);
 }
 
@@ -123,9 +122,11 @@ bool			wolf_readnsave(string map_name, t_env *env)
 	int		i;
 
 	i = -1;
+	gnl_temp = NULL;
 	_NOTIS_F(!(!(fd = open(map_name, O_RDONLY)) || fd < 0));
 	_NOTIS_F(!(ft_gnl(fd, &gnl_temp) < 0));
 	_NOTIS_F(add_valid_info(gnl_temp, env->map, map_name));
+	ft_strdel(&gnl_temp);
 	while ((gnl_ret = ft_gnl(fd, &gnl_temp)) && ++i < MAPY)
 	{
 		_NOTIS(E_IMAP, !(add_valid_inline_numbers(gnl_temp) != MAPX),
@@ -136,7 +137,7 @@ bool			wolf_readnsave(string map_name, t_env *env)
 			ft_strdel(&gnl_temp), false);
 		ft_strdel(&gnl_temp);
 	}
-	_NOTIS(E_IMAP, !(gnl_ret || gnl_temp), ft_strdel(&gnl_temp), false);
+	_NOTIS(E_IMAP, !(gnl_ret || gnl_temp), exit(EXIT_FAILURE), false);
 	_NOTIS_F(!(++i != MAPY));
 	_NOTIS(E_NOFLOOR, add_endofmap(env, 0, (point){MAPY, MAPX}, true),
 		exit(EXIT_FAILURE), 0);

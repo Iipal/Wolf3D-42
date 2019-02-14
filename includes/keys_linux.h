@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 12:46:50 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/14 13:11:10 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/14 21:52:44 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 
 # define LSHIFT         65505
 
-# define KEY_M          46
-# define KEY_F          3
+# define KEY_M          109
+# define KEY_F          102
 # define KEY_T          116
 
 # define KEY_W          119

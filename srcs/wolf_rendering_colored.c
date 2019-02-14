@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 13:22:34 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/14 19:06:20 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/14 21:03:27 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 static int	add_choose_current_color(t_env *env)
 {
 	int	tex;
-	int	temp;
 
-	temp = MAP[RC->map.y][RC->map.x];
 	if (RC->step.x < 0)
 		tex = 1;
 	else

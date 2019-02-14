@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/14 18:56:38 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/14 23:40:23 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ static void	wolf_usage(void)
 	_MSGN("Usage:");
 	_MSGN("  [W | S] - Moving forward | backward(or Arrows [UP | DOWN])");
 	_MSGN("  [A | D] - Rotate left | right(or Arrows [LEFT | RIGHT]");
-	_MSGN("  [T] - Switch Textured\\Flat rendering method.");
+	_MSGN("  [T] - Toggle Textured\\Flat rendering method.");
+	_MSGN("  [M] - Toggle map drawing.")
 	_MSGN("  [ESC] - exit.");
 }
 
