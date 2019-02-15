@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/14 23:40:09 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/15 11:59:45 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include "wolf3d_defines.h"
 # include "wolf3d_errno.h"
 # include "../libft/includes/libft.h"
+# include "../frameworks/SDL2.framework/Headers/SDL.h"
 # include <fcntl.h>
 # include <math.h>
 # include <mlx.h>
