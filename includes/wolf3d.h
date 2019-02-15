@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/15 17:00:32 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/15 17:25:34 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # ifdef __APPLE__
 #  include "keys_macos.h"
-#  include "../frameworks/SDL2.framework/Headers/SDL.h"
 
 #  define WIN_X		2000
 #  define WIN_Y		1000
@@ -23,7 +22,6 @@
 
 # ifdef __linux__
 #  include "keys_linux.h"
-#  include <SDL2/SDL.h>
 
 #  define WIN_X		1000
 #  define WIN_Y		500
@@ -32,6 +30,7 @@
 # include "wolf3d_defines.h"
 # include "wolf3d_errno.h"
 # include "../libft/includes/libft.h"
+# include <SDL2/SDL.h>
 # include <fcntl.h>
 # include <math.h>
 # include <mlx.h>

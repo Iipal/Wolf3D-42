@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/15 17:01:10 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/15 17:07:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void		wolf_init_rc_n_randomize_pos(t_env *env)
 static bool	add_init_textures(t_env *env)
 {
 	const string	textures[] = {TEXWALL1, TEXWALL2, TEXWALL3, TEXWALL4,
-		TEXWALL5, TEXWALL6, TEXWALL7, TEXWALL8, TEXFLOOR, TEXSKY};
+		TEXWALL5, TEXWALL6, TEXWALL7, TEXWALL8, TEXFLOOR, TEXSKY, NULL};
 	int				i;
 	t_tim			t;
 
