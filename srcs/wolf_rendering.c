@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/14 18:55:52 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/15 17:00:19 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 static void	add_draw_bonus(t_env *env)
 {
-	if (ISRF)
-		wolf_draw_fog(env);
 	if (ISRMM)
 		wolf_draw_minimap(env);
 }

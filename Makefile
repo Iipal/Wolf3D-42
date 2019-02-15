@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/02/15 12:51:29 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/02/15 17:00:57 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 SRC = srcs/main.c srcs/wolf_init.c srcs/wolf_map_reader.c srcs/wolf_key_hooks.c \
 srcs/wolf_free.c srcs/wolf_rendering.c srcs/wolf_rotatenmove.c srcs/wolf_mouse_hooks.c \
 srcs/wolf_raycaster.c srcs/wolf_rendering_textured.c srcs/wolf_rendering_colored.c \
-srcs/wolf_minimap.c srcs/wolf_fog.c
+srcs/wolf_minimap.c
 
 OBJ = $(SRC:.c=.o)
 

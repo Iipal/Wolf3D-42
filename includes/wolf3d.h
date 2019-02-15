@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/15 12:51:11 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/15 17:00:32 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ typedef struct	s_isrender
 	bool	is_textured;
 	bool	is_press_mouse;
 	bool	is_draw_minimap;
-	bool	is_draw_fog;
 }				t_isr;
 
 typedef struct	s_map
@@ -177,7 +176,6 @@ bool			wolf_readnsave(string map_name, t_env *env);
 bool			wolf_init(t_env *env);
 void			wolf_init_rc_n_randomize_pos(t_env *env);
 
-void			wolf_draw_fog(t_env *env);
 void			wolf_draw_minimap(t_env *env);
 
 void			wolf_rendering_rc(t_env *env);

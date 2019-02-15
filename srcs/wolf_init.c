@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/15 12:18:04 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/15 17:01:10 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ bool		wolf_init(t_env *env)
 	_NOTIS_F(env->rc = (t_rc*)malloc(sizeof(t_rc)));
 	_NOTIS_F(MOUSE = (t_mouse*)malloc(sizeof(t_mouse)));
 	_NOTIS_F(TEX = (t_xpm*)(malloc(sizeof(t_xpm) * (MAX_TEXTURES + 2))));
-	*(env->isr) = (t_isr){true, false, true, false, true, true};
+	*(env->isr) = (t_isr){true, false, true, false, true};
 	_NOTIS_F(add_init_textures(env));
 	return (true);
 }
