@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/02/15 12:02:05 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/02/15 12:51:29 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@ NAME = wolf3d
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
 	MLXFLAGS := -L /usr/local/lib -I /usr/local/lib -lmlx -lXext -lX11 -lm
+	
+	SDLFRAMEWORK = -lSDL2
 endif
 ifeq ($(UNAME_S),Darwin)
 	MLXFLAGS := -L /usr/local/lib -lmlx -lm -framework OpenGL -framework AppKit
