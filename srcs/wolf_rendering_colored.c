@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 13:22:34 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/14 21:03:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/15 19:12:43 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,18 @@ void		wolf_render_colored(t_env *env, point *p)
 		SPTR[(p->y)++ * WIN_X + p->x] = current_color;
 }
 
-void		wolf_fill_floor_if_colored_rc(iarr screen)
+void		wolf_fill_floor_if_colored_rc(iarr screen, t_sdl *sdl)
 {
 	point	p;
+	iarr	sdl_screen;
 
+	sdl_screen = sdl->win_surface->pixels;
 	p.y = -1;
 	while (++(p.y) < WIN_Y && (p.x = -1))
 		while (++(p.x) < WIN_X)
-			screen[p.y * WIN_X + p.x] =
-				(p.y >= WIN_Y / 2) ? IRGB_FLOOR : IRGB_SKY;
+		{
+			sdl_screen[p.y * WIN_X + p.x] = (p.y >= WIN_Y / 2) ? IRGB_FLOOR : IRGB_SKY;
+			screen[p.y * WIN_X + p.x] = (p.y >= WIN_Y / 2) ? IRGB_FLOOR : IRGB_SKY;
+		}
+	sdl->win_surface->pixels = sdl_screen;
 }

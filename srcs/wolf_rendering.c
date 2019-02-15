@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/15 17:00:19 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/15 19:13:49 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		wolf_rendering_rc(t_env *env)
 	ft_memset(SPTR, 0, 4 * WIN_Y * WIN_X);
 	p.x = -1;
 	if (!ISRT)
-		wolf_fill_floor_if_colored_rc(SPTR);
+		wolf_fill_floor_if_colored_rc(SPTR, env->sdl);
 	while (++(p.x) < WIN_X)
 	{
 		*(RC) = (t_rc){{RC->pos.y, RC->pos.x}, {RC->dir.y, RC->dir.x},
@@ -41,6 +41,7 @@ void		wolf_rendering_rc(t_env *env)
 		wolf_set_draw_area(RC);
 		ISRT ? wolf_render_textured(env, &p) : wolf_render_colored(env, &p);
 	}
+	SDL_UpdateWindowSurface(SWIN);
 	mlx_put_image_to_window(MPTR, WPTR, IPTR, 0, 0);
 	add_draw_bonus(env);
 }
