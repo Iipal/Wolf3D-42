@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/02/14 13:24:43 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/02/15 11:59:36 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,9 @@ ifeq ($(UNAME_S),Linux)
 endif
 ifeq ($(UNAME_S),Darwin)
 	MLXFLAGS := -L /usr/local/lib -lmlx -lm -framework OpenGL -framework AppKit
+
+	SDLINC = -I./frameworks/SDL2.framework/Headers/ -F./frameworks
+	SDLFRAMEWORK = -F./frameworks -rpath ./frameworks -framework SDL2
 endif
 
 CC = gcc -march=native
@@ -43,13 +46,13 @@ all: $(NAME)
 
 $(OBJ): %.o: %.c
 	@echo -n '+'
-	@$(CC) -c $(CFLAGS) $< -o $@
+	@$(CC) -c $(SDLINC) $(CFLAGS) $< -o $@
 
 $(LIBFT):
 	@$(LMAKE)
 
 $(NAME): $(LIBFT) $(OBJ)
-	@$(CC) $(OBJ) $(MLXFLAGS) $(LIBFT) -o $(NAME)
+	@$(CC) $(OBJ) $(SDLFRAMEWORK) $(MLXFLAGS) $(LIBFT) -o $(NAME)
 	@echo "> $(NAME) $(GREEN)Compiled$(WHITE)"
 
 del:
