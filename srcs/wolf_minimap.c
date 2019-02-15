@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 22:33:18 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/14 11:22:29 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/15 10:41:17 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ static void	add_draw_ray(t_env *env, int size, fpoint p)
 
 	ray = (fpoint){p.y + RC->dir.y, p.x + RC->dir.x};
 	while (wolf_is_tile(env->map, ray) && !MAP[(int)ray.y][(int)ray.x])
-		ray = (fpoint) {ray.y + RC->dir.y * 0.01, ray.x + RC->dir.x * 0.01};
+		ray = (fpoint) {ray.y + RC->dir.y * MINIMAP_PRECISION,
+			ray.x + RC->dir.x * MINIMAP_PRECISION};
 	add_draw_square(env->mlx, size, ray, IRGB_MAP_RAY);
 }
 
