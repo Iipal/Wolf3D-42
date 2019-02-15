@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 17:18:56 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/14 21:43:47 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/15 10:29:10 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ static int		add_valid_inline_numbers(string line)
 	out = 0;
 	while (*line)
 	{
+		if (*line == '-')
+			break ;
 		if (ft_isdigit(*line))
 		{
 			temp_digits = ft_itoa(ft_atoi(line));
