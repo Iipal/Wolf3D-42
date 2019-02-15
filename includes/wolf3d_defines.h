@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/15 12:16:00 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/15 23:04:12 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,10 @@
 
 # define SWIN   env->sdl->win
 # define SWINS  env->sdl->win_surface
-
-# define MPTR   env->mlx->mlx
-# define WPTR   env->mlx->win
-# define IPTR   env->mlx->img
-# define SPTR   env->mlx->screen
+# define SWINP  env->sdl->win_pixels
+# define SEVENT env->sdl->event
+# define SETYPE env->sdl->event.type
+# define SEKEY  env->sdl->event.key.keysym.sym
 
 # define MAPY   env->map->ysize
 # define MAPX   env->map->xsize

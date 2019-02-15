@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/15 12:23:16 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/15 22:27:40 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,8 @@ void	wolf_free_map(t_map **map)
 
 void	wolf_free(t_env **env)
 {
-	if ((*env)->mlx->img)
-		mlx_destroy_image((*env)->mlx->mlx, (*env)->mlx->img);
-	if ((*env)->mlx->win)
-		mlx_destroy_window((*env)->mlx->mlx, (*env)->mlx->win);
 	if ((*env)->map != NULL)
 		wolf_free_map(&((*env)->map));
-	_FREE((*env)->mlx, free);
 	_FREE((*env)->isr, free);
 	_FREE((*env)->rc, free);
 	_FREE((*env)->mouse, free);

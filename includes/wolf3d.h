@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/15 19:09:57 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/15 23:00:49 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,18 +57,12 @@ _ITAB;
 _UINT;
 _ULL;
 
-typedef struct	s_mlx
-{
-	pvoid	mlx;
-	pvoid	win;
-	pvoid	img;
-	iarr	screen;
-}				t_mlx;
-
 typedef struct	s_sdl
 {
 	SDL_Window	*win;
 	SDL_Surface	*win_surface;
+	SDL_Event	event;
+	iarr		win_pixels;
 }				t_sdl;
 
 
@@ -122,7 +116,6 @@ typedef struct	s_xpm_images
 
 typedef struct	s_wolf3d_environment
 {
-	t_mlx		*mlx;
 	t_sdl		*sdl;
 	t_isr		*isr;
 	t_map		*map;
@@ -181,7 +174,7 @@ void			wolf_rendering_rc(t_env *env);
 
 void			wolf_render_textured(t_env *env, point *p);
 void			wolf_render_colored(t_env *env, point *p);
-void			wolf_fill_floor_if_colored_rc(iarr screen, t_sdl *sdl);
+void			wolf_fill_floor_if_colored_rc(t_sdl *sdl);
 
 void			wolf_set_diststep(t_rc *rc);
 void			wolf_check_hit(t_rc *rc, itab map);
@@ -201,6 +194,8 @@ int				wolf_mouse_moves(int x, int y, t_env *env);
 
 void			wolf_rotate(t_rc *rc, float angle);
 void			wolf_move(t_env *env, float dist);
+
+void			wolf_sdl_loop(t_env *env);
 
 void			wolf_free(t_env **env);
 void			wolf_free_map(t_map **map);

@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 22:33:18 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/15 10:41:17 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/15 22:32:49 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
 
-static void	add_draw_square(t_mlx *mlx, int size, fpoint pos, int color)
+static void	add_draw_square(t_env *env, int size, fpoint pos, int color)
 {
 	point	p;
 	point	exep;
@@ -26,7 +26,7 @@ static void	add_draw_square(t_mlx *mlx, int size, fpoint pos, int color)
 	{
 		p.x = xstart;
 		while (p.x < exep.x)
-			mlx_pixel_put(mlx->mlx, mlx->win, (p.x)++, p.y, color);
+			SWINP[p.y * WIN_X + (p.x)++] = color;
 		++(p.y);
 	}
 }
@@ -39,7 +39,7 @@ static void	add_draw_ray(t_env *env, int size, fpoint p)
 	while (wolf_is_tile(env->map, ray) && !MAP[(int)ray.y][(int)ray.x])
 		ray = (fpoint) {ray.y + RC->dir.y * MINIMAP_PRECISION,
 			ray.x + RC->dir.x * MINIMAP_PRECISION};
-	add_draw_square(env->mlx, size, ray, IRGB_MAP_RAY);
+	add_draw_square(env, size, ray, IRGB_MAP_RAY);
 }
 
 void		wolf_draw_minimap(t_env *env)
@@ -52,8 +52,8 @@ void		wolf_draw_minimap(t_env *env)
 	while (++(p.y) < MAPY && (p.x = -1))
 		while (++(p.x) < MAPX)
 			if (!wolf_is_tile(env->map, (fpoint){p.y, p.x}))
-				add_draw_square(env->mlx, size, p, IRGB_MAP_BG);
+				add_draw_square(env, size, p, IRGB_MAP_BG);
 	p = (fpoint){RC->pos.y, RC->pos.x};
-	add_draw_square(env->mlx, size, p, IRGB_MAP_POS);
+	add_draw_square(env, size, p, IRGB_MAP_POS);
 	add_draw_ray(env, size, p);
 }
