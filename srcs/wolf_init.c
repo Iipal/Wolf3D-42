@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/14 23:40:23 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/15 12:18:04 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,14 @@ bool		wolf_init(t_env *env)
 {
 	t_tim	t;
 
-	*env = (t_env){NULL, NULL, NULL, NULL, NULL, NULL};
+	*env = (t_env){NULL, NULL, NULL, NULL, NULL, NULL, NULL};
+	_NOTIS_F(env->sdl = (t_sdl*)malloc(sizeof(t_sdl)));
+	_NOTIS(SDL_GetError(), SDL_Init(SDL_INIT_EVERYTHING) >= 0, exit(EXIT_FAILURE), false);
+	_NOTIS(SDL_GetError(), SWIN = SDL_CreateWindow(WIN_TITTLE, SDL_WINDOWPOS_CENTERED,
+		SDL_WINDOWPOS_CENTERED, WIN_X, WIN_Y, SDL_WINDOW_SHOWN), exit(EXIT_FAILURE), false);
+	_NOTIS(SDL_GetError(), SWINS = SDL_GetWindowSurface(SWIN), exit(EXIT_FAILURE), false);
+	SDL_FillRect(SWINS, NULL, SDL_MapRGB(SWINS->format, 0xff, 0xff, 0xff));
+	SDL_UpdateWindowSurface(SWIN);
 	_NOTIS_F(env->mlx = (t_mlx*)malloc(sizeof(t_mlx)));
 	_NOTIS_F(MPTR = mlx_init());
 	_NOTIS_F(WPTR = mlx_new_window(MPTR, WIN_X, WIN_Y, WIN_TITTLE));

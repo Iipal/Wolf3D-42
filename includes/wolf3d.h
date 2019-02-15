@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/15 11:59:45 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/15 12:13:52 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,13 @@ typedef struct	s_mlx
 	iarr	screen;
 }				t_mlx;
 
+typedef struct	s_sdl
+{
+	SDL_Window	*win;
+	SDL_Surface	*win_surface;
+}				t_sdl;
+
+
 typedef struct	s_isrender
 {
 	bool	is_render;
@@ -117,6 +124,7 @@ typedef struct	s_xpm_images
 typedef struct	s_wolf3d_environment
 {
 	t_mlx		*mlx;
+	t_sdl		*sdl;
 	t_isr		*isr;
 	t_map		*map;
 	t_rc		*rc;

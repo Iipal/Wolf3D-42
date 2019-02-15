@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/15 10:40:22 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/15 12:16:00 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,9 @@
 # define _ITAB      typedef int**               itab
 # define _UINT      typedef unsigned int        uint
 # define _ULL       typedef unsigned long long  ull
+
+# define SWIN   env->sdl->win
+# define SWINS  env->sdl->win_surface
 
 # define MPTR   env->mlx->mlx
 # define WPTR   env->mlx->win
