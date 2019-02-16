@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:19:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/15 22:58:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/16 10:03:00 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int			main(int argc, string argv[])
 	t_env	*env;
 
 	
-	_NOTIS(E_DIR, ft_strlen(*argv) == 8 && !ft_strncmp(*argv, "./wolf3d", 8), exit(EXIT_FAILURE), 0);
+	// _NOTIS(E_DIR, ft_strlen(*argv) == 8 && !ft_strncmp(*argv, "./wolf3d", 8), exit(EXIT_FAILURE), 0);
 	_ISARGS(argc, argv);
 	_NOTIS(E_ALLOC, env = (t_env*)malloc(sizeof(t_env)), exit(EXIT_FAILURE), 0);
 	_NOTIS(E_ALLOC, wolf_init(env), wolf_free(&env), EXIT_FAILURE);

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/16 09:33:12 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/16 10:36:02 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,24 +40,35 @@ void		wolf_init_rc_n_randomize_pos(t_env *env)
 	wolf_usage();
 }
 
+static bool	add_init_textures(t_env *env)
+{
+	const string	textures[] = {TEXWALL1, TEXWALL2, TEXWALL3, TEXWALL4,
+		TEXWALL5, TEXWALL6, TEXWALL7, TEXWALL8, TEXFLOOR, TEXSKY};
+	int				i;
+
+	i = -1;
+	while (++i < (MAX_TEXTURES + 2))
+	{
+		_NOTIS_F(TEX[i].surf = wolf_optimize_surf_load(textures[i], SWINS->format));
+		_NOTIS_F(TEX[i].pixels = TEX[i].surf->pixels);
+	}
+	return (true);
+}
+
 bool		wolf_init(t_env *env)
 {
-	// t_tim	t;
-
-	*env = (t_env){NULL, NULL, NULL, NULL, NULL, NULL};
+	*env = (t_env){NULL, NULL, NULL, NULL, NULL};
 	_NOTIS_F(env->sdl = (t_sdl*)malloc(sizeof(t_sdl)));
 	_NOTIS(SDL_GetError(), SDL_Init(SDL_INIT_EVERYTHING) >= 0, exit(EXIT_FAILURE), false);
 	_NOTIS(SDL_GetError(), SWIN = SDL_CreateWindow(WIN_TITTLE, SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED, WIN_X, WIN_Y, SDL_WINDOW_SHOWN), exit(EXIT_FAILURE), false);
 	_NOTIS(SDL_GetError(), SWINS = SDL_GetWindowSurface(SWIN), exit(EXIT_FAILURE), false);
-	SDL_FillRect(SWINS, NULL, SDL_MapRGB(SWINS->format, 0xff, 0xff, 0xff));
-	SDL_UpdateWindowSurface(SWIN);
+	_NOTIS_F(SWINP = SWINS->pixels);
 	_NOTIS_F(env->isr = (t_isr*)malloc(sizeof(t_isr)));
 	_NOTIS_F(env->map = (t_map*)malloc(sizeof(t_map)));
 	_NOTIS_F(env->rc = (t_rc*)malloc(sizeof(t_rc)));
-	_NOTIS_F(MOUSE = (t_mouse*)malloc(sizeof(t_mouse)));
-	SWINP = SWINS->pixels;
+	_NOTIS_F(TEX = (t_tex*)malloc(sizeof(t_tex) * (MAX_TEXTURES + 2)));
 	*(env->isr) = (t_isr){true, false, false, false, true};
-	// _NOTIS_F(add_init_textures(env));
+	_NOTIS_F(add_init_textures(env));
 	return (true);
 }

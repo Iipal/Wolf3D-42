@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/15 23:00:49 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/16 10:35:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,17 +102,11 @@ typedef struct	s_ray_caster
 	int		draw_end;
 }				t_rc;
 
-typedef struct	s_mouse
+typedef struct	s_textures
 {
-	int	last;
-	int	curr;
-}				t_mouse;
-
-typedef struct	s_xpm_images
-{
-	pvoid	xpm;
-	iarr	img;
-}				t_xpm;
+	SDL_Surface	*surf;
+	iarr		pixels;
+}				t_tex;
 
 typedef struct	s_wolf3d_environment
 {
@@ -120,8 +114,7 @@ typedef struct	s_wolf3d_environment
 	t_isr		*isr;
 	t_map		*map;
 	t_rc		*rc;
-	t_mouse		*mouse;
-	t_xpm		*xpm;
+	t_tex		*textures;
 }				t_env;
 
 /*
@@ -165,10 +158,14 @@ typedef struct	s_floor_render_helper
 
 bool			wolf_readnsave(string map_name, t_env *env);
 
+SDL_Surface		*wolf_optimize_surf_load(string bmp_path, const SDL_PixelFormat *format);
+
 bool			wolf_init(t_env *env);
 void			wolf_init_rc_n_randomize_pos(t_env *env);
 
 void			wolf_draw_minimap(t_env *env);
+
+void			wolf_sdl_loop(t_env *env);
 
 void			wolf_rendering_rc(t_env *env);
 
@@ -181,21 +178,9 @@ void			wolf_check_hit(t_rc *rc, itab map);
 void			wolf_set_draw_area(t_rc *rc);
 
 bool			wolf_is_tile(t_map *map, fpoint pos);
-/*
-**	wolf_is_tile defined in file wolf_rotatenmove.c
-*/
-
-int				wolf_killwindow(t_env *env);
-int				wolf_key_hooks(int key, t_env *env);
-
-int				wolf_mouse_release(int button, int x, int y, t_env *env);
-int				wolf_mouse_press(int button, int x, int y, t_env *env);
-int				wolf_mouse_moves(int x, int y, t_env *env);
 
 void			wolf_rotate(t_rc *rc, float angle);
 void			wolf_move(t_env *env, float dist);
-
-void			wolf_sdl_loop(t_env *env);
 
 void			wolf_free(t_env **env);
 void			wolf_free_map(t_map **map);

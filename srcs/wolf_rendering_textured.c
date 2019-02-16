@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 15:41:02 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/15 22:27:17 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/16 10:33:03 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	add_render_floor(t_env *env, t_texhelper *tx, point *p)
 	h.dist_player = 0.0;
 	if (RC->draw_end < 0)
 		RC->draw_end = WIN_Y;
-	p->y = RC->draw_end + 1;
+	p->y = RC->draw_end;
 	while (p->y < WIN_Y)
 	{
 		h.current_dist = WIN_Y / (2.0 * p->y - WIN_Y);
@@ -46,9 +46,9 @@ static void	add_render_floor(t_env *env, t_texhelper *tx, point *p)
 		h.ftex.x = (int)(h.fcur.x * XTEX) % XTEX;
 		h.check_board = (int)(h.fcur.x + h.fcur.y) % 2;
 		SWINP[p->y * WIN_X + p->x] =
-			(TEX[TFLOOR].img[h.ftex.y * XTEX + h.ftex.x] >> 1) & 8355711;
+			(TEX[TFLOOR].pixels[h.ftex.y * XTEX + h.ftex.x] >> 1) & 8355711;
 		SWINP[(WIN_Y - (p->y)++) * WIN_X + p->x] =
-			(TEX[TSKY].img[XTEX * h.ftex.y + h.ftex.x]);
+			(TEX[TSKY].pixels[XTEX * h.ftex.y + h.ftex.x]);
 	}
 }
 
@@ -92,7 +92,7 @@ void		wolf_render_textured(t_env *env, point *p)
 	{
 		h.d = p->y * 256 - WIN_Y * 128 + RC->hline * 128;
 		h.pos_on_tex.y = ((h.d * YTEX) / RC->hline) / 256;
-		h.curr_color_on_tex = TEX[h.curr_tex].img[
+		h.curr_color_on_tex = TEX[h.curr_tex].pixels[
 					h.pos_on_tex.y * YTEX + h.pos_on_tex.x];
 		if (RC->is_side)
 			h.curr_color_on_tex = (h.curr_color_on_tex >> 1) & 8355711;

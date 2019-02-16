@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/15 23:04:12 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/16 09:43:05 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,21 +58,21 @@
 # define MINIMAP_PRECISION  0.05f
 
 # define MAX_TEXTURES   8
-# define TEXWALL1       "resources/wall1.xpm"
-# define TEXWALL2       "resources/wall2.xpm"
-# define TEXWALL3       "resources/wall3.xpm"
-# define TEXWALL4       "resources/wall4.xpm"
-# define TEXWALL5       "resources/wall5.xpm"
-# define TEXWALL6       "resources/wall6.xpm"
-# define TEXWALL7       "resources/wall7.xpm"
-# define TEXWALL8       "resources/wall8.xpm"
-# define TEXFLOOR       "resources/floor.xpm"
-# define TEXSKY         "resources/sky.xpm"
+# define TEXWALL1       "resources/wall1.bmp"
+# define TEXWALL2       "resources/wall2.bmp"
+# define TEXWALL3       "resources/wall3.bmp"
+# define TEXWALL4       "resources/wall4.bmp"
+# define TEXWALL5       "resources/wall5.bmp"
+# define TEXWALL6       "resources/wall6.bmp"
+# define TEXWALL7       "resources/wall7.bmp"
+# define TEXWALL8       "resources/wall8.bmp"
+# define TEXFLOOR       "resources/floor.bmp"
+# define TEXSKY         "resources/sky.bmp"
 # define TFLOOR         MAX_TEXTURES
 # define TSKY           TFLOOR + 1
 # define YTEX           64
 # define XTEX           64
-# define TEX            env->xpm
+# define TEX            env->textures
 
 # define _MSG(msg) ft_putstr(msg);
 # define _MSGN(msg) ft_putendl(msg);
