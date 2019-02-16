@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 13:22:34 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/15 22:26:12 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/16 22:57:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void		wolf_render_colored(t_env *env, point *p)
 		current_color /= 2;
 	p->y = RC->draw_start;
 	while (p->y <= RC->draw_end)
-		SWINP[(p->y)++ * WIN_X + p->x] = current_color;
+		SWINP[(p->y)++ * WIN_X + p->x] = wolf_fog(RC->pwd, current_color);
 }
 
 void		wolf_fill_floor_if_colored_rc(t_sdl *sdl)

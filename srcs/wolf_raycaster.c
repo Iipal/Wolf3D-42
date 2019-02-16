@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 11:13:19 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 14:28:38 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/16 21:45:21 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,11 @@ void	wolf_check_hit(t_rc *rc, itab map)
 	}
 }
 
-void	wolf_set_draw_area(t_rc *rc)
+void	wolf_dist_to_wall(t_rc *rc)
 {
-	if (!rc->is_side)
-		rc->pwd = (rc->map.x
-			- rc->pos.x + (1 - rc->step.x) / 2) / rc->raydir.x;
-	else
-		rc->pwd = (rc->map.y
-			- rc->pos.y + (1 - rc->step.y) / 2) / rc->raydir.y;
+	!rc->is_side
+	? (rc->pwd = (rc->map.x - rc->pos.x + (1 - rc->step.x) / 2) / rc->raydir.x)
+	: (rc->pwd = (rc->map.y - rc->pos.y + (1 - rc->step.y) / 2) / rc->raydir.y);
 	rc->hline = (int)(WIN_Y / rc->pwd);
 	rc->draw_start = -(rc->hline) / 2 + WIN_Y / 2;
 	rc->draw_end = rc->hline / 2 + WIN_Y / 2;

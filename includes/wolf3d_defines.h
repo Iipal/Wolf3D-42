@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/16 09:43:05 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/16 22:58:41 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,9 @@
 
 # define WOLF_FILE_EXT	".w3d"
 
-# define WIN_EXT        17
-# define WIN_EXTM       (1L << 17)
-
-# define MOUSE_MASK     0
-# define MOUSE_DOWN     4
-# define MOUSE_UP       5
-# define MOUSE_MOVE     6
-
-# define MLEFT_BUTTON   1
-# define MRIGHT_BUTTON  2
-# define MTHIRD_BUTTON  3
-# define MSCROLL_DOWN   4
-# define MSCROLL_UPS    5
-# define MSCROLL_LEFT   6
-# define MSCROLL_RIGHT  7
-
 # define PI             3.141592
+
+# define MAX_FOG_DIST   5
 
 # define IRGB_MAP_RAY   0x00B37A
 # define IRGB_MAP_POS   0xC7C7C7
@@ -55,7 +41,7 @@
 # define ROT_INC        2.0f
 # define ROT_BOOST      4.44f
 # define ROT_MOUSE_INC  0.002f
-# define MINIMAP_PRECISION  0.05f
+# define MMAP_PRECISION 0.05f
 
 # define MAX_TEXTURES   8
 # define TEXWALL1       "resources/wall1.bmp"
@@ -110,11 +96,9 @@
 # define MAPC   env->map->colors
 
 # define ISRB   env->isr->is_boost_step
-# define ISRM   env->isr->is_press_mouse
 # define ISRT   env->isr->is_textured
 # define ISRR   env->isr->is_render
 # define ISRMM  env->isr->is_draw_minimap
-# define ISRF   env->isr->is_draw_fog
 
 # define MOUSE  env->mouse
 

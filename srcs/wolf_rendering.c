@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/15 23:06:36 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/16 21:33:36 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		wolf_rendering_rc(t_env *env)
 		RC->absdist = (fpoint){_ABS(1 / RC->raydir.y), _ABS(1 / RC->raydir.x)};
 		wolf_set_diststep(RC);
 		wolf_check_hit(RC, MAP);
-		wolf_set_draw_area(RC);
+		wolf_dist_to_wall(RC);
 		ISRT ? wolf_render_textured(env, &p) : wolf_render_colored(env, &p);
 	}
 	add_draw_bonus(env);

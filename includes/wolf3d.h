@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/16 10:35:59 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/16 22:56:22 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,11 @@
 # define WOLF3D_H
 
 # ifdef __APPLE__
-#  include "keys_macos.h"
-
 #  define WIN_X		2000
 #  define WIN_Y		1000
 # endif
 
 # ifdef __linux__
-#  include "keys_linux.h"
-
 #  define WIN_X		1000
 #  define WIN_Y		500
 # endif
@@ -32,6 +28,7 @@
 # include "../libft/includes/libft.h"
 # include <SDL2/SDL.h>
 # include <fcntl.h>
+# include <stdio.h>
 # include <math.h>
 # include <mlx.h>
 
@@ -71,7 +68,6 @@ typedef struct	s_isrender
 	bool	is_render;
 	bool	is_boost_step;
 	bool	is_textured;
-	bool	is_press_mouse;
 	bool	is_draw_minimap;
 }				t_isr;
 
@@ -118,19 +114,6 @@ typedef struct	s_wolf3d_environment
 }				t_env;
 
 /*
-**	t_tim using only for init MLX!
-*/
-
-typedef struct	s_temp_init_mlx
-{
-	int	bps;
-	int	sl;
-	int	end;
-	int	w;
-	int	h;
-}				t_tim;
-
-/*
 **	t_helper using only for make texture rendering process
 **		function avoid to norme.
 */
@@ -164,6 +147,7 @@ bool			wolf_init(t_env *env);
 void			wolf_init_rc_n_randomize_pos(t_env *env);
 
 void			wolf_draw_minimap(t_env *env);
+Uint32			wolf_fog(double dist, Uint32 src_color);
 
 void			wolf_sdl_loop(t_env *env);
 
@@ -175,7 +159,7 @@ void			wolf_fill_floor_if_colored_rc(t_sdl *sdl);
 
 void			wolf_set_diststep(t_rc *rc);
 void			wolf_check_hit(t_rc *rc, itab map);
-void			wolf_set_draw_area(t_rc *rc);
+void			wolf_dist_to_wall(t_rc *rc);
 
 bool			wolf_is_tile(t_map *map, fpoint pos);
 
