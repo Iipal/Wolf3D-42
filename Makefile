@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/02/16 17:20:48 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/02/16 17:27:40 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,14 +14,14 @@ NAME = wolf3d
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
-	SDLFRAMEWORK = -lSDL2
+	SDLFRAMEWORK = -lSDL2 -lm
 endif
 ifeq ($(UNAME_S),Darwin)
-	SDLFRAMEWORK = -framework SDL2
+	SDLFRAMEWORK = -framework SDL2 -lm
 endif
 
 CC = gcc -march=native
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -Ofast
 
 SRC = srcs/main.c srcs/wolf_init.c srcs/wolf_map_reader.c srcs/wolf_free.c \
 srcs/wolf_rendering.c srcs/wolf_rotatenmove.c srcs/wolf_raycaster.c \
