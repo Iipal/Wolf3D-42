@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/02/16 10:35:18 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/02/16 17:20:48 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,9 @@ NAME = wolf3d
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
-	MLXFLAGS := -L /usr/local/lib -I /usr/local/lib -lmlx -lXext -lX11 -lm
-	
 	SDLFRAMEWORK = -lSDL2
 endif
 ifeq ($(UNAME_S),Darwin)
-	MLXFLAGS := -L /usr/local/lib -lmlx -lm -framework OpenGL -framework AppKit
-
 	SDLFRAMEWORK = -framework SDL2
 endif
 
@@ -53,7 +49,7 @@ $(LIBFT):
 	@$(LMAKE)
 
 $(NAME): $(LIBFT) $(OBJ)
-	@$(CC) $(OBJ) $(SDLFRAMEWORK) $(MLXFLAGS) $(LIBFT) -o $(NAME)
+	@$(CC) $(OBJ) $(SDLFRAMEWORK) $(LIBFT) -o $(NAME)
 	@echo "> $(NAME) $(GREEN)Compiled$(WHITE)"
 
 del:
