@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/17 19:16:50 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/17 19:40:37 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	wolf_usage(void)
 	_MSGN("  [W | S] - Moving forward | backward(or Arrows [UP | DOWN])");
 	_MSGN("  [A | D] - Rotate left | right(or Arrows [LEFT | RIGHT]");
 	_MSGN("  [T] - Toggle Textured\\Flat rendering method.");
-	_MSGN("  [M] - Toggle map drawing.");
+	_MSGN("  [M] - Toggle mini-map drawing.");
 	_MSGN("  [F] - Toggle Fog drawing.");
 	_MSGN("  [C] - Switch Fog colors");
 	_MSGN("  [LShift] - BOOST");
