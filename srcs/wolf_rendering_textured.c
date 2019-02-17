@@ -45,8 +45,8 @@ static void	add_render_floor(t_env *env, t_texhelper *tx, point *p)
 		h.ftex.y = (int)(h.fcur.y * YTEX) % YTEX;
 		h.ftex.x = (int)(h.fcur.x * XTEX) % XTEX;
 		h.check_board = (int)(h.fcur.x + h.fcur.y) % 2;
-		SWINP[p->y * WIN_X + p->x] = (TEX[TFLOOR].pixels[h.ftex.y * XTEX + h.ftex.x] >> 1) & 8355711;
-		SWINP[(WIN_Y - (p->y)++) * WIN_X + p->x] = TEX[TSKY].pixels[XTEX * h.ftex.y + h.ftex.x];
+		SWINP[p->y * WIN_X + p->x] = wolf_fog(h.current_dist, (TEX[TFLOOR].pixels[h.ftex.y * XTEX + h.ftex.x] >> 1) & 8355711, RC->fog_color);
+		SWINP[(WIN_Y - (p->y)++) * WIN_X + p->x] = wolf_fog(h.current_dist, TEX[TSKY].pixels[XTEX * h.ftex.y + h.ftex.x], RC->fog_color);
 	}
 }
 

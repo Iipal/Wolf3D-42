@@ -19,7 +19,7 @@
 
 # define PI             3.141592
 
-# define MAX_FOG_DIST   5
+# define MAX_FOG_DIST   4.2
 
 # define IRGB_BLACK     0x00
 # define IRGB_MAP_RAY   0x00B37A
