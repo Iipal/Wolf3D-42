@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/13 13:05:41 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/16 10:36:11 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,13 @@ void	wolf_free_map(t_map **map)
 
 void	wolf_free(t_env **env)
 {
-	if ((*env)->mlx->img)
-		mlx_destroy_image((*env)->mlx->mlx, (*env)->mlx->img);
-	if ((*env)->mlx->win)
-		mlx_destroy_window((*env)->mlx->mlx, (*env)->mlx->win);
 	if ((*env)->map != NULL)
 		wolf_free_map(&((*env)->map));
-	_FREE((*env)->mlx, free);
 	_FREE((*env)->isr, free);
 	_FREE((*env)->rc, free);
-	_FREE((*env)->mouse, free);
-	_FREE((*env)->xpm, free);
+	_FREE((*env)->textures, free);
+	SDL_DestroyWindow((*env)->sdl->win);
+	SDL_Quit();
+	_FREE((*env)->sdl, free);
 	_FREE(*env, free);
 }

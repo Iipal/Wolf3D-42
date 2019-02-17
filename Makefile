@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/02/14 13:24:43 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/02/16 22:46:43 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,19 +14,19 @@ NAME = wolf3d
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
-	MLXFLAGS := -L /usr/local/lib -I /usr/local/lib -lmlx -lXext -lX11 -lm
+	SDLFRAMEWORK = -lSDL2 -lm
 endif
 ifeq ($(UNAME_S),Darwin)
-	MLXFLAGS := -L /usr/local/lib -lmlx -lm -framework OpenGL -framework AppKit
+	SDLFRAMEWORK = -framework SDL2 -lm
 endif
 
 CC = gcc -march=native
 CFLAGS = -Wall -Wextra -Werror -g
 
-SRC = srcs/main.c srcs/wolf_init.c srcs/wolf_map_reader.c srcs/wolf_key_hooks.c \
-srcs/wolf_free.c srcs/wolf_rendering.c srcs/wolf_rotatenmove.c srcs/wolf_mouse_hooks.c \
-srcs/wolf_raycaster.c srcs/wolf_rendering_textured.c srcs/wolf_rendering_colored.c \
-srcs/wolf_minimap.c srcs/wolf_fog.c
+SRC = srcs/main.c srcs/wolf_init.c srcs/wolf_map_reader.c srcs/wolf_free.c \
+srcs/wolf_rendering.c srcs/wolf_rotatenmove.c srcs/wolf_raycaster.c \
+srcs/wolf_rendering_textured.c srcs/wolf_rendering_colored.c srcs/wolf_minimap.c \
+srcs/wolf_sdl_loop.c srcs/wolf_sdl_optimizing_surface_load.c srcs/wolf_fog.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -49,7 +49,7 @@ $(LIBFT):
 	@$(LMAKE)
 
 $(NAME): $(LIBFT) $(OBJ)
-	@$(CC) $(OBJ) $(MLXFLAGS) $(LIBFT) -o $(NAME)
+	@$(CC) $(OBJ) $(SDLFRAMEWORK) $(LIBFT) -o $(NAME)
 	@echo "> $(NAME) $(GREEN)Compiled$(WHITE)"
 
 del:

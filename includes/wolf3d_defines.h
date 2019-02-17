@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/15 10:40:22 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/17 09:49:30 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,11 @@
 
 # define WOLF_FILE_EXT	".w3d"
 
-# define WIN_EXT        17
-# define WIN_EXTM       (1L << 17)
-
-# define MOUSE_MASK     0
-# define MOUSE_DOWN     4
-# define MOUSE_UP       5
-# define MOUSE_MOVE     6
-
-# define MLEFT_BUTTON   1
-# define MRIGHT_BUTTON  2
-# define MTHIRD_BUTTON  3
-# define MSCROLL_DOWN   4
-# define MSCROLL_UPS    5
-# define MSCROLL_LEFT   6
-# define MSCROLL_RIGHT  7
-
 # define PI             3.141592
 
+# define MAX_FOG_DIST   5
+
+# define IRGB_BLACK     0x00
 # define IRGB_MAP_RAY   0x00B37A
 # define IRGB_MAP_POS   0xC7C7C7
 # define IRGB_MAP_BG    0x808080
@@ -55,24 +42,24 @@
 # define ROT_INC        2.0f
 # define ROT_BOOST      4.44f
 # define ROT_MOUSE_INC  0.002f
-# define MINIMAP_PRECISION  0.05f
+# define MMAP_PRECISION 0.05f
 
 # define MAX_TEXTURES   8
-# define TEXWALL1       "resources/wall1.xpm"
-# define TEXWALL2       "resources/wall2.xpm"
-# define TEXWALL3       "resources/wall3.xpm"
-# define TEXWALL4       "resources/wall4.xpm"
-# define TEXWALL5       "resources/wall5.xpm"
-# define TEXWALL6       "resources/wall6.xpm"
-# define TEXWALL7       "resources/wall7.xpm"
-# define TEXWALL8       "resources/wall8.xpm"
-# define TEXFLOOR       "resources/floor.xpm"
-# define TEXSKY         "resources/sky.xpm"
+# define TEXWALL1       "resources/wall1.bmp"
+# define TEXWALL2       "resources/wall2.bmp"
+# define TEXWALL3       "resources/wall3.bmp"
+# define TEXWALL4       "resources/wall4.bmp"
+# define TEXWALL5       "resources/wall5.bmp"
+# define TEXWALL6       "resources/wall6.bmp"
+# define TEXWALL7       "resources/wall7.bmp"
+# define TEXWALL8       "resources/wall8.bmp"
+# define TEXFLOOR       "resources/floor.bmp"
+# define TEXSKY         "resources/sky.bmp"
 # define TFLOOR         MAX_TEXTURES
 # define TSKY           TFLOOR + 1
 # define YTEX           64
 # define XTEX           64
-# define TEX            env->xpm
+# define TEX            env->textures
 
 # define _MSG(msg) ft_putstr(msg);
 # define _MSGN(msg) ft_putendl(msg);
@@ -97,10 +84,12 @@
 # define _UINT      typedef unsigned int        uint
 # define _ULL       typedef unsigned long long  ull
 
-# define MPTR   env->mlx->mlx
-# define WPTR   env->mlx->win
-# define IPTR   env->mlx->img
-# define SPTR   env->mlx->screen
+# define SWIN   env->sdl->win
+# define SWINS  env->sdl->win_surface
+# define SWINP  env->sdl->win_pixels
+# define SEVENT env->sdl->event
+# define SETYPE env->sdl->event.type
+# define SEKEY  env->sdl->event.key.keysym.sym
 
 # define MAPY   env->map->ysize
 # define MAPX   env->map->xsize
@@ -108,11 +97,9 @@
 # define MAPC   env->map->colors
 
 # define ISRB   env->isr->is_boost_step
-# define ISRM   env->isr->is_press_mouse
 # define ISRT   env->isr->is_textured
 # define ISRR   env->isr->is_render
 # define ISRMM  env->isr->is_draw_minimap
-# define ISRF   env->isr->is_draw_fog
 
 # define MOUSE  env->mouse
 
