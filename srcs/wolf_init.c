@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/17 09:52:52 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/17 19:16:50 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	wolf_usage(void)
 	_MSGN("  [A | D] - Rotate left | right(or Arrows [LEFT | RIGHT]");
 	_MSGN("  [T] - Toggle Textured\\Flat rendering method.");
 	_MSGN("  [M] - Toggle map drawing.");
+	_MSGN("  [F] - Toggle Fog drawing.");
 	_MSGN("  [C] - Switch Fog colors");
 	_MSGN("  [LShift] - BOOST");
 	_MSGN("  [ESC] - exit.");
@@ -67,7 +68,7 @@ bool		wolf_init(t_env *env)
 	_NOTIS(SDL_GetError(), SWINS = SDL_GetWindowSurface(SWIN), exit(EXIT_FAILURE), false);
 	_NOTIS_F(SWINP = SWINS->pixels);
 	_NOTIS_F(env->isr = (t_isr*)malloc(sizeof(t_isr)));
-	*(env->isr) = (t_isr){true, false, true, true};
+	*(env->isr) = (t_isr){true, false, true, true, true};
 	_NOTIS_F(env->map = (t_map*)malloc(sizeof(t_map)));
 	_NOTIS_F(env->rc = (t_rc*)malloc(sizeof(t_rc)));
 	_NOTIS_F(TEX = (t_tex*)malloc(sizeof(t_tex) * (MAX_TEXTURES + 2)));

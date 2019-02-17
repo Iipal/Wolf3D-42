@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 13:22:34 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/17 09:02:18 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/17 18:22:02 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,11 @@ static int	add_choose_current_color(t_env *env)
 {
 	int	tex;
 
-	if (RC->step.x < 0)
-		tex = 1;
-	else
-		tex = 2;
+	(RC->step.x < 0) ? (tex = 1)
+		: (tex = 2);
 	if (RC->is_side)
-	{
-		if (RC->step.y < 0)
-			tex = 3;
-		else
-			tex = 4;
-	}
+		(RC->step.y < 0) ? (tex = 3)
+			: (tex = 4);
 	return (MAPC[RC->map.y][RC->map.x] / tex);
 }
 
@@ -39,7 +33,11 @@ void		wolf_render_colored(t_env *env, point *p)
 		current_color /= 2;
 	p->y = RC->draw_start;
 	while (p->y <= RC->draw_end)
-		SWINP[(p->y)++ * WIN_X + p->x] = wolf_fog(RC->pwd, current_color, RC->fog_color);
+		if (ISRF)
+			SWINP[(p->y)++ * WIN_X + p->x] = wolf_fog(RC->pwd, current_color, RC->fog_color);
+		else
+			SWINP[(p->y)++ * WIN_X + p->x] = current_color;
+
 }
 
 void		wolf_fill_floor_if_colored_rc(t_sdl *sdl)

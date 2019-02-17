@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 22:59:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/17 09:53:45 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/17 18:19:49 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static void	add_is_draw_bonus(t_env *env)
 {
+	if (SEKEY == SDLK_f && (ISRR = true))
+		ISRF = !ISRF;
 	if (SEKEY == SDLK_m && (ISRR = true))
 		ISRMM = !ISRMM;
 	if (SEKEY == SDLK_LSHIFT && (ISRR = true))
@@ -54,9 +56,9 @@ void		wolf_sdl_loop(t_env *env)
 					exit = true;
 				add_actions(env);
 				add_is_draw_bonus(env);
-				if (ISRR)
-					wolf_rendering_rc(env);
 			}
+			if (ISRR)
+				wolf_rendering_rc(env);
 		}
 	}
 	wolf_free(&env);

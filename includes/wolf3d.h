@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/17 09:59:55 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/17 18:31:29 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ typedef struct	s_isrender
 	bool	is_boost_step;
 	bool	is_textured;
 	bool	is_draw_minimap;
+	bool	is_render_fog;
 }				t_isr;
 
 typedef struct	s_map
@@ -138,7 +139,7 @@ typedef struct	s_texture_render_helper
 {
 	int		d;
 	int		curr_tex;
-	int		curr_color_on_tex;
+	int		currtcolor;
 	point	pos_on_tex;
 	float	where_is_hit;
 }				t_texhelper;
@@ -147,12 +148,9 @@ typedef struct	s_floor_render_helper
 {
 	fpoint	fpos;
 	fpoint	fcur;
-	float	dist_wall;
-	float	dist_player;
-	float	current_dist;
+	float	currd;
 	float	weight;
 	point	ftex;
-	int		check_board;
 }				t_floorhelper;
 
 bool			wolf_readnsave(string map_name, t_env *env);

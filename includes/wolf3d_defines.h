@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/17 09:49:30 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/17 18:18:56 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@
 # define ISRT   env->isr->is_textured
 # define ISRR   env->isr->is_render
 # define ISRMM  env->isr->is_draw_minimap
+# define ISRF   env->isr->is_render_fog
 
 # define MOUSE  env->mouse
 
