@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/16 22:58:41 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/17 09:49:30 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 # define MAX_FOG_DIST   5
 
+# define IRGB_BLACK     0x00
 # define IRGB_MAP_RAY   0x00B37A
 # define IRGB_MAP_POS   0xC7C7C7
 # define IRGB_MAP_BG    0x808080

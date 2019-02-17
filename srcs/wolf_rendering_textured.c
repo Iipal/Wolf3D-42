@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 15:41:02 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/16 20:36:33 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/17 09:03:40 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void		wolf_render_textured(t_env *env, point *p)
 					h.pos_on_tex.y * YTEX + h.pos_on_tex.x];
 		if (RC->is_side)
 			h.curr_color_on_tex = (h.curr_color_on_tex >> 1) & 8355711;
-		SWINP[(p->y)++ * WIN_X + p->x] = wolf_fog(RC->pwd, h.curr_color_on_tex);
+		SWINP[(p->y)++ * WIN_X + p->x] = wolf_fog(RC->pwd, h.curr_color_on_tex, RC->fog_color);
 	}
 	add_render_floor(env, &h, p);
 }

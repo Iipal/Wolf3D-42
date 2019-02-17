@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/16 22:56:22 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/17 09:59:55 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,20 @@
 # include <mlx.h>
 
 enum	e_bool {false, true} __attribute__((packed));
+
+typedef enum	e_colors
+{
+	white,
+	red,
+	orange,
+	lime,
+	aqua,
+	purple,
+	mint,
+	dark_blue,
+	dark,
+	max_colors
+}	__attribute__((packed))	t_clrs;
 
 typedef struct	s_point
 {
@@ -88,7 +102,7 @@ typedef struct	s_ray_caster
 	fpoint	raydir;
 	point	map;
 	fpoint	side_dist;
-	fpoint	absdist;
+	fpoint	ddist;
 	double	pwd;
 	point	step;
 	bool	is_hit;
@@ -96,6 +110,8 @@ typedef struct	s_ray_caster
 	int		hline;
 	int		draw_start;
 	int		draw_end;
+	t_clrs	clr;
+	Uint32	fog_color;
 }				t_rc;
 
 typedef struct	s_textures
@@ -147,7 +163,8 @@ bool			wolf_init(t_env *env);
 void			wolf_init_rc_n_randomize_pos(t_env *env);
 
 void			wolf_draw_minimap(t_env *env);
-Uint32			wolf_fog(double dist, Uint32 src_color);
+Uint32			wolf_fog(double dist, Uint32 src_color, Uint32 fog_color);
+Uint32			wolf_fog_change(t_clrs *c);
 
 void			wolf_sdl_loop(t_env *env);
 

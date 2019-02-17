@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/16 21:33:36 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/17 10:02:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,19 @@ void		wolf_rendering_rc(t_env *env)
 	point	p;
 
 	p.x = -1;
+	SDL_FillRect(SWINS, NULL, IRGB_BLACK);
 	if (!ISRT)
 		wolf_fill_floor_if_colored_rc(env->sdl);
 	while (++(p.x) < WIN_X)
 	{
 		*(RC) = (t_rc){{RC->pos.y, RC->pos.x}, {RC->dir.y, RC->dir.x},
 		{RC->plane.y, RC->plane.x}, 0, {0, 0}, {0, 0}, {0, 0}, {0, 0},
-		0, {0, 0}, false, false, 0, 0, 0};
+		0, {0, 0}, false, false, 0, 0, 0, RC->clr, RC->fog_color};
 		RC->xcamera = 2 * p.x / (double)WIN_X - 1;
 		RC->raydir = (fpoint){RC->dir.y + RC->plane.y * RC->xcamera,
 			RC->dir.x + RC->plane.x * RC->xcamera };
 		RC->map = (point){(int)RC->pos.y, (int)RC->pos.x};
-		RC->absdist = (fpoint){_ABS(1 / RC->raydir.y), _ABS(1 / RC->raydir.x)};
+		RC->ddist = (fpoint){_ABS(1 / RC->raydir.y), _ABS(1 / RC->raydir.x)};
 		wolf_set_diststep(RC);
 		wolf_check_hit(RC, MAP);
 		wolf_dist_to_wall(RC);

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/16 18:57:50 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/17 09:52:52 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,17 @@ static void	wolf_usage(void)
 	_MSGN("  [W | S] - Moving forward | backward(or Arrows [UP | DOWN])");
 	_MSGN("  [A | D] - Rotate left | right(or Arrows [LEFT | RIGHT]");
 	_MSGN("  [T] - Toggle Textured\\Flat rendering method.");
-	_MSGN("  [M] - Toggle map drawing.")
+	_MSGN("  [M] - Toggle map drawing.");
+	_MSGN("  [C] - Switch Fog colors");
+	_MSGN("  [LShift] - BOOST");
 	_MSGN("  [ESC] - exit.");
 }
 
 void		wolf_init_rc_n_randomize_pos(t_env *env)
 {
-	*(RC) = (t_rc){{0, 0}, {0, -1}, {0.66, 0}, 0,
+	*(RC) = (t_rc){{0, 0}, {0, -1}, {0.9, 0}, 0,
 		{0, 0}, {0, 0}, {0, 0}, {0, 0}, 0, {0, 0},
-		false, false, 0, 0, 0};
+		false, false, 0, 0, 0, 8, IRGB_BLACK};
 	while (1)
 	{
 		RC->pos = (fpoint){ft_rand(MAPY - 1), ft_rand(MAPX - 1)};
