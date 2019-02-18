@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 10:47:03 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/18 11:51:54 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@
 # define IRGB_PURPLE    0xD800F0
 # define IRGB_MINT      0x2BFFE3
 # define IRGB_DARK_BLUE 0x2B75FF
+
+# define FCL            0x7F7F7F
 
 # define MOVE_INC       0.066f
 # define MOVE_BOOST     5.55f

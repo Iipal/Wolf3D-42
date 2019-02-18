@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 11:09:32 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/18 12:07:52 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef enum	e_colors
 	dark_blue,
 	dark,
 	max_colors
-}	__attribute__((packed))	t_clrs;
+} __attribute__((packed))				t_clrs;
 
 typedef struct	s_point
 {
@@ -75,7 +75,6 @@ typedef struct	s_sdl
 	SDL_Event	event;
 	iarr		win_pixels;
 }				t_sdl;
-
 
 typedef struct	s_isrender
 {
@@ -156,19 +155,22 @@ typedef struct	s_floor_render_helper
 
 bool			wolf_readnsave(string map_name, t_env *env);
 
-SDL_Surface		*wolf_optimize_surf_load(string bmp_path, const SDL_PixelFormat *format);
+SDL_Surface		*wolf_optimize_surf_load(string bmp_path,
+								const SDL_PixelFormat *format);
 
 bool			wolf_init(t_env *env);
 void			wolf_init_rc_n_randomize_pos(t_env *env);
 
 void			wolf_draw_minimap(t_env *env);
-Uint32			wolf_fog(double dist, Uint32 src_color, Uint32 fog_color, double fog_dist);
+Uint32			wolf_fog(double dist, Uint32 src_color,
+						Uint32 fog_color, double fog_dist);
 Uint32			wolf_fog_change(t_clrs *c);
 
 void			wolf_sdl_loop(t_env *env);
 
 void			wolf_rendering_rc(t_env *env);
 
+void			wolf_render_textured_help(t_env *env, point *p, t_texhelper *h);
 void			wolf_render_textured(t_env *env, point *p);
 void			wolf_render_colored(t_env *env, point *p);
 void			wolf_fill_floor_if_colored_rc(t_sdl *sdl);

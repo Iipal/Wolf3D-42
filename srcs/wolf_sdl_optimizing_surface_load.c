@@ -6,20 +6,24 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 09:51:17 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/16 10:12:43 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/18 11:50:51 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
 
-SDL_Surface	*wolf_optimize_surf_load(string bmp_path, const SDL_PixelFormat *format)
+SDL_Surface	*wolf_optimize_surf_load(string bmp_path,
+							const SDL_PixelFormat *format)
 {
 	SDL_Surface	*optimize_out;
 	SDL_Surface	*temp_load;
 
 	optimize_out = NULL;
-	_NOTIS(SDL_GetError(), temp_load = SDL_LoadBMP(bmp_path), exit(EXIT_FAILURE), NULL);
-	_NOTIS(SDL_GetError(), optimize_out = SDL_ConvertSurface(temp_load, format, 0), exit(EXIT_FAILURE), NULL);
+	_NOTIS(SDL_GetError(),
+		temp_load = SDL_LoadBMP(bmp_path), exit(EXIT_FAILURE), NULL);
+	_NOTIS(SDL_GetError(),
+		optimize_out = SDL_ConvertSurface(temp_load, format, 0),
+		exit(EXIT_FAILURE), NULL);
 	SDL_FreeSurface(temp_load);
 	return (optimize_out);
 }

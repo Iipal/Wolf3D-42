@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 15:41:02 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 11:09:45 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/18 12:01:51 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	add_render_floor_init_fpos(t_env *env, t_texhelper *tx,
 		h->fpos = (fpoint){RC->map.y + 1.0, RC->map.x + tx->where_is_hit};
 }
 
-void	add_is_render_fog(t_floorhelper *h, t_env *env, point *p, float d)
+static void	add_is_render_fog(t_floorhelper *h, t_env *env, point *p, float d)
 {
 	Uint32	currfloor;
 	Uint32	currsky;
@@ -34,7 +34,7 @@ void	add_is_render_fog(t_floorhelper *h, t_env *env, point *p, float d)
 
 	fscreen = p->y * WIN_X + p->x;
 	sscreen = (WIN_Y - p->y) * WIN_X + p->x;
-	currfloor = (TEX[TFLOOR].pixels[h->ftex.y * XTEX + h->ftex.x] >> 1) & 8355711;
+	currfloor = (TEX[TFLOOR].pixels[h->ftex.y * XTEX + h->ftex.x] >> 1) & FCL;
 	currsky = TEX[TSKY].pixels[XTEX * h->ftex.y + h->ftex.x];
 	if (ISRF)
 	{
@@ -96,18 +96,6 @@ void		wolf_render_textured(t_env *env, point *p)
 	if ((!RC->is_side && RC->raydir.x > 0)
 	|| (RC->is_side && RC->raydir.y > 0))
 		h.pos_on_tex.x = XTEX - h.pos_on_tex.x - 1;
-	p->y = RC->draw_start;
-	while (p->y < RC->draw_end)
-	{
-		h.d = p->y * 256 - WIN_Y * 128 + RC->hline * 128;
-		h.pos_on_tex.y = ((h.d * YTEX) / RC->hline) / 256;
-		h.currtcolor = TEX[h.curr_tex].pixels[h.pos_on_tex.y * YTEX + h.pos_on_tex.x];
-		if (RC->is_side)
-			h.currtcolor = (h.currtcolor >> 1) & 8355711;
-		if (ISRF)
-			SWINP[(p->y)++ * WIN_X + p->x] = wolf_fog(RC->pwd, h.currtcolor, RC->fog_color, RC->fog_dist);
-		else
-			SWINP[(p->y)++ * WIN_X + p->x] = h.currtcolor;
-	}
+	wolf_render_textured_help(env, p, &h);
 	add_render_floornceiling(env, &h, p);
 }

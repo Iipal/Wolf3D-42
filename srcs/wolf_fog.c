@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 19:10:46 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 10:58:39 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/18 11:44:07 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ Uint32	wolf_fog_change(t_clrs *c)
 	return (colors[*c]);
 }
 
-Uint32	wolf_fog(double dist, Uint32 src_color, Uint32 fog_color, double fog_dist)
+Uint32	wolf_fog(double dist, Uint32 src_color,
+				Uint32 fog_color, double fog_dist)
 {
 	float		fog_amount;
 	Uint32		dest_color;

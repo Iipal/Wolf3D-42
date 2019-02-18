@@ -6,29 +6,35 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 11:11:14 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/18 11:58:51 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
 
-static void	add_draw_bonus(t_env *env)
+static void		add_draw_bonus(t_env *env)
 {
 	if (ISRMM)
 		wolf_draw_minimap(env);
 }
 
-void		wolf_rendering_rc(t_env *env)
+static float	add_fog_freq(void)
+{
+	static int	fog_dist_freq;
+	const float	freqs[] = {4.2, 4.25, 4.15, 4.1, 4.3, 4.2, 4.1, 4.0};
+
+	if (fog_dist_freq > 7)
+		fog_dist_freq = 0;
+	return (freqs[fog_dist_freq++]);
+}
+
+void			wolf_rendering_rc(t_env *env)
 {
 	point			p;
-	static int		fog_dist_freq;
-	const float		amounts[] = {4.2, 4.25, 4.15, 4.1, 4.3, 4.2, 4.1};
 
 	p.x = -1;
-	RC->fog_dist = amounts[fog_dist_freq++];
-	if (fog_dist_freq > 6)
-		fog_dist_freq = 0;
 	SDL_FillRect(SWINS, NULL, IRGB_BLACK);
+	RC->fog_dist = add_fog_freq();
 	if (!ISRT)
 		wolf_fill_floor_if_colored_rc(env->sdl);
 	while (++(p.x) < WIN_X)

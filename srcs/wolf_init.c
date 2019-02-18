@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 10:59:47 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/18 12:03:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ static bool	add_init_textures(t_env *env)
 	i = -1;
 	while (++i < (MAX_TEXTURES + 2))
 	{
-		_NOTIS_F(TEX[i].surf = wolf_optimize_surf_load(textures[i], SWINS->format));
+		_NOTIS_F(TEX[i].surf =
+			wolf_optimize_surf_load(textures[i], SWINS->format));
 		_NOTIS_F(TEX[i].pixels = TEX[i].surf->pixels);
 	}
 	return (true);
@@ -62,10 +63,14 @@ bool		wolf_init(t_env *env)
 {
 	*env = (t_env){NULL, NULL, NULL, NULL, NULL};
 	_NOTIS_F(env->sdl = (t_sdl*)malloc(sizeof(t_sdl)));
-	_NOTIS(SDL_GetError(), SDL_Init(SDL_INIT_EVERYTHING) >= 0, exit(EXIT_FAILURE), false);
-	_NOTIS(SDL_GetError(), SWIN = SDL_CreateWindow(WIN_TITTLE, SDL_WINDOWPOS_CENTERED,
-		SDL_WINDOWPOS_CENTERED, WIN_X, WIN_Y, SDL_WINDOW_SHOWN), exit(EXIT_FAILURE), false);
-	_NOTIS(SDL_GetError(), SWINS = SDL_GetWindowSurface(SWIN), exit(EXIT_FAILURE), false);
+	_NOTIS(SDL_GetError(),
+		SDL_Init(SDL_INIT_EVERYTHING) >= 0, exit(EXIT_FAILURE), false);
+	_NOTIS(SDL_GetError(),
+		SWIN = SDL_CreateWindow(WIN_TITTLE, SDL_WINDOWPOS_CENTERED,
+			SDL_WINDOWPOS_CENTERED, WIN_X, WIN_Y,
+			SDL_WINDOW_SHOWN), exit(EXIT_FAILURE), false);
+	_NOTIS(SDL_GetError(),
+		SWINS = SDL_GetWindowSurface(SWIN), exit(EXIT_FAILURE), false);
 	_NOTIS_F(SWINP = SWINS->pixels);
 	_NOTIS_F(env->isr = (t_isr*)malloc(sizeof(t_isr)));
 	*(env->isr) = (t_isr){true, false, true, true, true};
