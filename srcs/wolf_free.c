@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 12:24:09 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/18 16:20:42 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
 
-void	wolf_free_map(t_map **map)
+void		wolf_free_map(t_map **map)
 {
 	int	i;
 
@@ -38,16 +38,28 @@ void	wolf_free_map(t_map **map)
 	}
 }
 
-void	wolf_free(t_env **env)
+static void	add_free_textures(t_tex **tex)
 {
-	if ((*env)->map != NULL)
+	int	i;
+
+	i = -1;
+	while (++i < MAX_TEXTURES + 2)
+	{
+		SDL_FreeSurface((*tex)[i].surf);
+		(*tex)[i].surf = NULL;
+	}
+	_FREE(*tex, free);
+}
+
+void		wolf_free(t_env **env)
+{
+	if ((*env)->map)
 		wolf_free_map(&((*env)->map));
+	if ((*env)->textures)
+		add_free_textures(&((*env)->textures));
 	_FREE((*env)->isr, free);
 	_FREE((*env)->rc, free);
-	_FREE((*env)->textures, free);
-	SDL_DestroyWindow((*env)->sdl->win);
-	SDL_Quit();
-	_FREE((*env)->sdl, free)
+	_FREE((*env)->sdl, free);
 	_FREE((*env)->mouse, free);
 	_FREE(*env, free);
 }
