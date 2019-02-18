@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 15:34:35 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/18 15:55:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 # define WOLF_FILE_EXT	".w3d"
 
-# define PI             3.141592
 
 # define MAX_FOG_DIST   4.2
 
@@ -63,6 +62,8 @@
 # define XTEX           64
 # define TEX            env->textures
 
+# define _ISARGS(ac, av) {--ac;++av;_NOTIS(E_USAGE, !(ac != 1), exit(-1), 0);}
+
 # define _MSG(msg) ft_putstr(msg);
 # define _MSGN(msg) ft_putendl(msg);
 # define _NOTIS(msg, ex, do, ret) if (!(ex)) {_MSGN(msg);do;return (ret);}
@@ -71,8 +72,7 @@
 
 # define _FREE(trash, del)	if ((trash)) {del(trash); trash = NULL;}
 
-# define _ISARGS(ac, av) {--ac;++av;_NOTIS(E_USAGE, !(ac != 1), exit(-1), 0);}
-
+# define PI             3.141592
 # define _ABS(var) ((var) < 0) ? -(var) : (var)
 # define _RAD(deg) (((deg) * PI) / 180.0)
 # define _COSR(angle) cos(_RAD(angle))
@@ -101,7 +101,6 @@
 # define ISR    env->isr
 # define ISRB   env->isr->is_boost_step
 # define ISRT   env->isr->is_textured
-# define ISRR   env->isr->is_render
 # define ISRMM  env->isr->is_draw_minimap
 # define ISRF   env->isr->is_render_fog
 

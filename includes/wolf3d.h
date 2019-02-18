@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 15:25:53 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/18 16:11:04 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ typedef struct	s_sdl
 
 typedef struct	s_isrender
 {
-	bool	is_render;
 	bool	is_boost_step;
 	bool	is_textured;
 	bool	is_draw_minimap;
@@ -179,7 +178,7 @@ Uint32			wolf_fog(double dist, Uint32 src_color,
 						Uint32 fog_color, double max_fog_dist);
 Uint32			wolf_fog_change(t_clrs *c);
 
-void			wolf_sdl_loop(t_env *env);
+void			wolf_sdl_events_loop(t_env *env);
 
 void			wolf_rendering_rc(t_env *env);
 
