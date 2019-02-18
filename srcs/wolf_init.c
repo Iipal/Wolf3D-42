@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 12:03:15 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/18 12:23:32 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static bool	add_init_textures(t_env *env)
 
 bool		wolf_init(t_env *env)
 {
-	*env = (t_env){NULL, NULL, NULL, NULL, NULL};
+	*env = (t_env){NULL, NULL, NULL, NULL, NULL, NULL};
 	_NOTIS_F(env->sdl = (t_sdl*)malloc(sizeof(t_sdl)));
 	_NOTIS(SDL_GetError(),
 		SDL_Init(SDL_INIT_EVERYTHING) >= 0, exit(EXIT_FAILURE), false);
@@ -76,6 +76,7 @@ bool		wolf_init(t_env *env)
 	*(env->isr) = (t_isr){true, false, true, true, true};
 	_NOTIS_F(env->map = (t_map*)malloc(sizeof(t_map)));
 	_NOTIS_F(env->rc = (t_rc*)malloc(sizeof(t_rc)));
+	_NOTIS_F(MOUSE = (t_mouse*)malloc(sizeof(t_mouse)));
 	_NOTIS_F(TEX = (t_tex*)malloc(sizeof(t_tex) * (MAX_TEXTURES + 2)));
 	_NOTIS_F(add_init_textures(env));
 	return (true);

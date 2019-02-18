@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 22:59:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 11:00:32 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/18 14:29:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,21 @@ static void	add_actions(t_env *env)
 		wolf_rotate(RC, _RAD(ISRB ? (ROT_BOOST * -ROT_INC) : -ROT_INC));
 }
 
+static void	add_mouse_moves(t_env *env)
+{
+	SDL_GetMouseState(&(SEVENT.motion.x), &(SEVENT.motion.y));
+	if (SEVENT.type == SDL_MOUSEBUTTONDOWN)
+		MOUSE->is_pressed_mouse = true;
+	if (SEVENT.type == SDL_MOUSEBUTTONUP)
+		MOUSE->is_pressed_mouse = false;
+	MOUSE->last = MOUSE->curr;
+	MOUSE->curr = SEVENT.motion.x;
+	if (MOUSE->is_pressed_mouse)
+	{
+		wolf_rotate(RC, -(SEVENT.motion.x - MOUSE->last) * ROT_MOUSE_INC);
+	}
+}
+
 void		wolf_sdl_loop(t_env *env)
 {
 	bool	exit;
@@ -57,6 +72,7 @@ void		wolf_sdl_loop(t_env *env)
 				add_actions(env);
 				add_is_draw_bonus(env);
 			}
+			add_mouse_moves(env);
 		}
 		wolf_rendering_rc(env);
 	}

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 11:51:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/18 14:29:43 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@
 # define MOVE_BOOST     5.55f
 # define ROT_INC        2.0f
 # define ROT_BOOST      4.44f
-# define ROT_MOUSE_INC  0.002f
+# define ROT_MOUSE_INC  0.0012f
 # define MMAP_PRECISION 0.05f
 
 # define MAX_TEXTURES   8

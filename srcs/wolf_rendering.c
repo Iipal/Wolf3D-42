@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 11:58:51 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/18 14:05:02 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void			wolf_rendering_rc(t_env *env)
 
 	p.x = -1;
 	SDL_FillRect(SWINS, NULL, IRGB_BLACK);
-	RC->fog_dist = add_fog_freq();
+	if (ISRF)
+		RC->fog_dist = add_fog_freq();
 	if (!ISRT)
 		wolf_fill_floor_if_colored_rc(env->sdl);
 	while (++(p.x) < WIN_X)

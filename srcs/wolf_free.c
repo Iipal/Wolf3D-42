@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/16 10:36:11 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/18 12:24:09 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	wolf_free(t_env **env)
 	_FREE((*env)->textures, free);
 	SDL_DestroyWindow((*env)->sdl->win);
 	SDL_Quit();
-	_FREE((*env)->sdl, free);
+	_FREE((*env)->sdl, free)
+	_FREE((*env)->mouse, free);
 	_FREE(*env, free);
 }

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 12:07:52 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/18 14:00:31 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,14 @@ typedef struct	s_textures
 	iarr		pixels;
 }				t_tex;
 
+typedef struct	s_mouse
+{
+	bool	is_pressed_mouse;
+	int		last;
+	int		curr;
+}				t_mouse;
+
+
 typedef struct	s_wolf3d_environment
 {
 	t_sdl		*sdl;
@@ -128,6 +136,7 @@ typedef struct	s_wolf3d_environment
 	t_map		*map;
 	t_rc		*rc;
 	t_tex		*textures;
+	t_mouse		*mouse;
 }				t_env;
 
 /*
