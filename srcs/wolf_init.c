@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/17 19:40:37 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/18 10:59:47 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void		wolf_init_rc_n_randomize_pos(t_env *env)
 {
 	*(RC) = (t_rc){{0, 0}, {0, -1}, {0.9, 0}, 0,
 		{0, 0}, {0, 0}, {0, 0}, {0, 0}, 0, {0, 0},
-		false, false, 0, 0, 0, 8, IRGB_BLACK};
+		false, false, 0, 0, 0, 8, IRGB_BLACK, 4.2};
 	while (1)
 	{
 		RC->pos = (fpoint){ft_rand(MAPY - 1), ft_rand(MAPX - 1)};

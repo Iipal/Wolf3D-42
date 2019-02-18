@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 15:41:02 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/17 19:18:44 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/18 11:09:45 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	add_is_render_fog(t_floorhelper *h, t_env *env, point *p, float d)
 	currsky = TEX[TSKY].pixels[XTEX * h->ftex.y + h->ftex.x];
 	if (ISRF)
 	{
-		SWINP[fscreen] = wolf_fog(d, currfloor, RC->fog_color);
-		SWINP[sscreen] = wolf_fog(d, currsky, RC->fog_color);
+		SWINP[fscreen] = wolf_fog(d, currfloor, RC->fog_color, RC->fog_dist);
+		SWINP[sscreen] = wolf_fog(d, currsky, RC->fog_color, RC->fog_dist);
 	}
 	else
 	{
@@ -105,7 +105,7 @@ void		wolf_render_textured(t_env *env, point *p)
 		if (RC->is_side)
 			h.currtcolor = (h.currtcolor >> 1) & 8355711;
 		if (ISRF)
-			SWINP[(p->y)++ * WIN_X + p->x] = wolf_fog(RC->pwd, h.currtcolor, RC->fog_color);
+			SWINP[(p->y)++ * WIN_X + p->x] = wolf_fog(RC->pwd, h.currtcolor, RC->fog_color, RC->fog_dist);
 		else
 			SWINP[(p->y)++ * WIN_X + p->x] = h.currtcolor;
 	}

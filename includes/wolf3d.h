@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/17 18:31:29 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/18 11:09:32 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ typedef struct	s_ray_caster
 	int		draw_end;
 	t_clrs	clr;
 	Uint32	fog_color;
+	double	fog_dist;
 }				t_rc;
 
 typedef struct	s_textures
@@ -161,7 +162,7 @@ bool			wolf_init(t_env *env);
 void			wolf_init_rc_n_randomize_pos(t_env *env);
 
 void			wolf_draw_minimap(t_env *env);
-Uint32			wolf_fog(double dist, Uint32 src_color, Uint32 fog_color);
+Uint32			wolf_fog(double dist, Uint32 src_color, Uint32 fog_color, double fog_dist);
 Uint32			wolf_fog_change(t_clrs *c);
 
 void			wolf_sdl_loop(t_env *env);
