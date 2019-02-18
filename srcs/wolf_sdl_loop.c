@@ -6,36 +6,44 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 22:59:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 14:29:59 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/18 15:34:05 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
 
-static void	add_is_draw_bonus(t_env *env)
+static void	add_keys_down(t_env *env)
 {
-	if (SEKEY == SDLK_f && (ISRR = true))
+	if (SEKEY == SDLK_w || SEKEY == SDLK_UP)
+		ISR->is_move_forward = true;
+	if (SEKEY == SDLK_a || SEKEY == SDLK_LEFT)
+		ISR->is_rotate_left = true;
+	if (SEKEY == SDLK_s || SEKEY == SDLK_DOWN)
+		ISR->is_move_backward = true;
+	if (SEKEY == SDLK_d || SEKEY == SDLK_RIGHT)
+		ISR->is_rotate_right = true;
+	if (SEKEY == SDLK_f)
 		ISRF = !ISRF;
-	if (SEKEY == SDLK_m && (ISRR = true))
+	if (SEKEY == SDLK_m)
 		ISRMM = !ISRMM;
-	if (SEKEY == SDLK_LSHIFT && (ISRR = true))
+	if (SEKEY == SDLK_LSHIFT)
 		ISRB = !ISRB;
-	if (SEKEY == SDLK_t && (ISRR = true))
+	if (SEKEY == SDLK_t)
 		ISRT = !ISRT;
-	if (SEKEY == SDLK_c && (ISRR = true))
+	if (SEKEY == SDLK_c)
 		RC->fog_color = wolf_fog_change(&(RC->clr));
 }
 
-static void	add_actions(t_env *env)
+static void	add_keys_up(t_env *env)
 {
-	if ((SEKEY == SDLK_w || SEKEY == SDLK_UP) && (ISRR = true))
-		wolf_move(env, ISRB ? (MOVE_BOOST * MOVE_INC) : MOVE_INC);
-	if ((SEKEY == SDLK_a || SEKEY == SDLK_LEFT) && (ISRR = true))
-		wolf_rotate(RC, _RAD(ISRB ? (ROT_BOOST * ROT_INC) : ROT_INC));
-	if ((SEKEY == SDLK_s || SEKEY == SDLK_DOWN) && (ISRR = true))
-		wolf_move(env, ISRB ? (MOVE_BOOST * -MOVE_INC) : -MOVE_INC);
-	if ((SEKEY == SDLK_d || SEKEY == SDLK_RIGHT) && (ISRR = true))
-		wolf_rotate(RC, _RAD(ISRB ? (ROT_BOOST * -ROT_INC) : -ROT_INC));
+	if (SEKEY == SDLK_w || SEKEY == SDLK_UP)
+		ISR->is_move_forward = false;
+	if (SEKEY == SDLK_a || SEKEY == SDLK_LEFT)
+		ISR->is_rotate_left = false;
+	if (SEKEY == SDLK_s || SEKEY == SDLK_DOWN)
+		ISR->is_move_backward = false;
+	if (SEKEY == SDLK_d || SEKEY == SDLK_RIGHT)
+		ISR->is_rotate_right = false;
 }
 
 static void	add_mouse_moves(t_env *env)
@@ -53,6 +61,18 @@ static void	add_mouse_moves(t_env *env)
 	}
 }
 
+static void	add_loop_isr(t_env *env)
+{
+	if (ISR->is_move_forward)
+		wolf_move(env, ISRB ? (MOVE_BOOST * MOVE_INC) : MOVE_INC);
+	if (ISR->is_rotate_left)
+		wolf_rotate(RC, _RAD(ISRB ? (ROT_BOOST * ROT_INC) : ROT_INC));
+	if (ISR->is_move_backward)
+		wolf_move(env, ISRB ? (MOVE_BOOST * -MOVE_INC) : -MOVE_INC);
+	if (ISR->is_rotate_right)
+		wolf_rotate(RC, _RAD(ISRB ? (ROT_BOOST * -ROT_INC) : -ROT_INC));
+}
+
 void		wolf_sdl_loop(t_env *env)
 {
 	bool	exit;
@@ -62,18 +82,19 @@ void		wolf_sdl_loop(t_env *env)
 	{
 		while (SDL_PollEvent(&SEVENT) > 0)
 		{
-			ISRR = false;
 			if (SETYPE == SDL_QUIT)
 				exit = true;
 			if (SETYPE == SDL_KEYDOWN)
 			{
 				if (SEKEY == SDLK_ESCAPE)
 					exit = true;
-				add_actions(env);
-				add_is_draw_bonus(env);
+				add_keys_down(env);
 			}
+			if (SETYPE == SDL_KEYUP)
+				add_keys_up(env);
 			add_mouse_moves(env);
 		}
+		add_loop_isr(env);
 		wolf_rendering_rc(env);
 	}
 	wolf_free(&env);

@@ -6,17 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 14:05:02 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/18 15:32:43 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
-
-static void		add_draw_bonus(t_env *env)
-{
-	if (ISRMM)
-		wolf_draw_minimap(env);
-}
 
 static float	add_fog_freq(void)
 {
@@ -53,6 +47,6 @@ void			wolf_rendering_rc(t_env *env)
 		wolf_dist_to_wall(RC);
 		ISRT ? wolf_render_textured(env, &p) : wolf_render_colored(env, &p);
 	}
-	add_draw_bonus(env);
+	ISRMM ? wolf_draw_minimap(env) : 0;
 	SDL_UpdateWindowSurface(SWIN);
 }

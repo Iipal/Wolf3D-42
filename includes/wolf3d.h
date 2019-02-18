@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 14:00:31 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/18 15:25:53 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,10 @@ typedef struct	s_isrender
 	bool	is_textured;
 	bool	is_draw_minimap;
 	bool	is_render_fog;
+	bool	is_move_forward;
+	bool	is_move_backward;
+	bool	is_rotate_right;
+	bool	is_rotate_left;
 }				t_isr;
 
 typedef struct	s_map
@@ -172,7 +176,7 @@ void			wolf_init_rc_n_randomize_pos(t_env *env);
 
 void			wolf_draw_minimap(t_env *env);
 Uint32			wolf_fog(double dist, Uint32 src_color,
-						Uint32 fog_color, double fog_dist);
+						Uint32 fog_color, double max_fog_dist);
 Uint32			wolf_fog_change(t_clrs *c);
 
 void			wolf_sdl_loop(t_env *env);

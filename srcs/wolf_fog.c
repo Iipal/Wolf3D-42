@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 19:10:46 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 14:22:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/18 15:17:29 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Uint32	wolf_fog_change(t_clrs *c)
 }
 
 Uint32	wolf_fog(double dist, Uint32 src_color,
-				Uint32 fog_color, double fog_dist)
+				Uint32 fog_color, double max_fog_dist)
 {
 	float		fog_amount;
 	Uint32		dest_color;
@@ -36,10 +36,10 @@ Uint32	wolf_fog(double dist, Uint32 src_color,
 	fog_rgb = (SDL_Color){fog_color >> 16,
 		(fog_color >> 8) & 0xff, fog_color & 0xff, 0};
 	dest_color = src_color;
-	if (dist >= fog_dist)
+	if (dist >= max_fog_dist)
 		fog_amount = 1.0;
 	else
-		fog_amount = dist / fog_dist;
+		fog_amount = dist / max_fog_dist;
 	if (fog_amount <= 1.00f && fog_amount > 0.00f)
 	{
 		out_rgb = (SDL_Color){
