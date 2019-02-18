@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 16:10:41 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/18 20:41:32 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,21 @@
 static float	add_fog_freq(void)
 {
 	static int	fog_dist_freq;
-	const float	freqs[] = {4.2, 4.25, 4.15, 4.1, 4.3, 4.2, 4.1, 4.0};
-
-	if (fog_dist_freq > 7)
+	const float	freqs[] = {4.2, 4.22, 4.23, 4.31, 4.30, 4.31, 4.16, 4.15,
+		4.14, 4.32, 4.31, 4.30, 4.29, 4.32, 4.39, 4.40, 4.41, 4.39};
+	
+	if ((ull)fog_dist_freq > (sizeof(freqs) / sizeof(*freqs)) - 1)
 		fog_dist_freq = 0;
 	return (freqs[fog_dist_freq++]);
+}
+
+static void		add_fps(t_fps *fps)
+{
+	fps->told = fps->time;
+	fps->time = SDL_GetTicks();
+	fps->tframe = (fps->time - fps->told) / 1000.0;
+	fps->move = fps->tframe * MOVE_INC;
+	fps->rot = fps->tframe * ROT_INC;
 }
 
 void			wolf_rendering_rc(t_env *env)
@@ -28,10 +38,8 @@ void			wolf_rendering_rc(t_env *env)
 
 	p.x = -1;
 	SDL_FillRect(SWINS, NULL, IRGB_BLACK);
-	if (ISRF)
-		RC->fog_dist = add_fog_freq();
-	if (!ISRT)
-		wolf_fill_floor_if_colored_rc(env->sdl);
+	(ISRF) ? (RC->fog_dist = add_fog_freq()) : 0;
+	(!ISRT) ? wolf_fill_floor_if_colored_rc(env->sdl) : 0;
 	while (++(p.x) < WIN_X)
 	{
 		*(RC) = (t_rc){{RC->pos.y, RC->pos.x}, {RC->dir.y, RC->dir.x},
@@ -48,5 +56,6 @@ void			wolf_rendering_rc(t_env *env)
 		ISRT ? wolf_render_textured(env, &p) : wolf_render_colored(env, &p);
 	}
 	ISRMM ? wolf_draw_minimap(env) : 0;
+	add_fps(&FPS);
 	SDL_UpdateWindowSurface(SWIN);
 }

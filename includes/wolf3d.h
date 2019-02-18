@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 17:27:23 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/18 20:31:47 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,14 @@ typedef struct	s_mouse
 	int		curr;
 }				t_mouse;
 
+typedef struct	s_fps
+{
+	double	time;
+	double	told;
+	double	tframe;
+	double	move;
+	double	rot;
+}				t_fps;
 
 typedef struct	s_wolf3d_environment
 {
@@ -141,6 +149,7 @@ typedef struct	s_wolf3d_environment
 	t_rc		*rc;
 	t_tex		*textures;
 	t_mouse		*mouse;
+	t_fps		fps;
 }				t_env;
 
 /*

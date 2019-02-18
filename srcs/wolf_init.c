@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 17:29:40 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/18 20:34:10 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static bool	add_init_textures(t_env *env)
 
 bool		wolf_init(t_env *env)
 {
-	*env = (t_env){NULL, NULL, NULL, NULL, NULL, NULL};
+	*env = (t_env){NULL, NULL, NULL, NULL, NULL, NULL, {0, 0, 0, 0, 0}};
 	_NOTIS_F(env->sdl = (t_sdl*)malloc(sizeof(t_sdl)));
 	_NOTIS(SDL_GetError(),
 		SDL_Init(SDL_INIT_EVERYTHING) >= 0, exit(EXIT_FAILURE), false);

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 15:55:58 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/18 20:42:23 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@
 
 # define FCL            0x7F7F7F
 
-# define MOVE_INC       0.066f
-# define MOVE_BOOST     3.33f
-# define ROT_INC        2.0f
-# define ROT_BOOST      2.22f
+# define MOVE_INC       2.42f
+# define MOVE_BOOST     1.9f
+# define ROT_INC        62.00f
+# define ROT_BOOST      1.8f
 # define ROT_MOUSE_INC  0.0012f
 # define MMAP_PRECISION 0.05f
 
@@ -107,5 +107,7 @@
 # define MOUSE  env->mouse
 
 # define RC     env->rc
+
+# define FPS    env->fps
 
 #endif
