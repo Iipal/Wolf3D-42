@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 16:11:04 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/18 17:27:23 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ typedef struct	s_isrender
 	bool	is_move_backward;
 	bool	is_rotate_right;
 	bool	is_rotate_left;
+	bool	is_change_fog_color;
 }				t_isr;
 
 typedef struct	s_map
