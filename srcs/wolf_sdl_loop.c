@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 22:59:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 16:23:29 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/18 16:48:08 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,5 @@ void		wolf_sdl_events_loop(t_env *env)
 		wolf_rendering_rc(env);
 	}
 	SDL_DestroyWindow(SWIN);
-	SDL_Quit();
 	wolf_free(&env);
 }
