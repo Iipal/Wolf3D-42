@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/02/19 12:53:26 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/02/19 18:41:43 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ ifeq ($(UNAME_S),Linux)
 	SDLFRAMEWORK = -lSDL2 -lm
 endif
 ifeq ($(UNAME_S),Darwin)
-	SDLFRAMEWORK = -framework SDL2 -lm
+	SDLINCLUDE = -I./frameworks/SDL2.framework/Headers/
+	SDLFRAMEWORK = -F./frameworks -rpath ./frameworks -framework SDL2
 endif
 
 CC = gcc -march=native
@@ -44,7 +45,7 @@ all: $(NAME)
 
 $(OBJ): %.o: %.c
 	@echo -n '+'
-	@$(CC) -c $(CFLAGS) $< -o $@
+	@$(CC) -c $(CFLAGS) $(SDLINCLUDE) $< -o $@
 
 $(LIBFT):
 	@$(LMAKE)

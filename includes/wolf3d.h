@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/19 15:21:11 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/19 18:41:31 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,15 @@
 # define WOLF3D_H
 
 # ifdef __APPLE__
+#  include "../frameworks/SDL2.framework/Headers/SDL.h"
+
 #  define WIN_X		1500
 #  define WIN_Y		750
 # endif
 
 # ifdef __linux__
+#  include <SDL2/SDL.h>
+
 #  define WIN_X		1000
 #  define WIN_Y		500
 # endif
@@ -26,7 +30,6 @@
 # include "wolf3d_defines.h"
 # include "wolf3d_errno.h"
 # include "../libft/includes/libft.h"
-# include <SDL2/SDL.h>
 # include <fcntl.h>
 # include <math.h>
 # include <mlx.h>
