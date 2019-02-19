@@ -37,7 +37,7 @@ When you have already installed SDL2 library you can use this simple rules:
 ```
 
 - `[W | S]` - Moving forward | backward (or Arrows `[UP | DOWN]`).
-- `[A | D]` - Rotate left | right (or Arrows `[LEFT | RIGHT]`).
+- `[A | D]` - Rotate left | right (also Arrows `[LEFT | RIGHT]` or `Mouse`).
 - `[T]` - Toggle Textured\\Flat rendering method.
 - `[M]` - Toggle mini-map drawing.
 - `[F]` - Toggle Fog drawing.
