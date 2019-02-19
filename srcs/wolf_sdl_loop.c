@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 22:59:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 20:33:40 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/19 10:43:01 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ static void	add_keys_press(t_env *env, bool *exit)
 		(SEKEY == SDLK_f) ? (ISRF = !ISRF) : 0;
 		(SEKEY == SDLK_m) ? (ISRMM = !ISRMM) : 0;
 		(SEKEY == SDLK_t) ? (ISRT = !ISRT) : 0;
-		(SEKEY == SDLK_c) ? (ISR->is_change_fog_color = true) : 0;
+		(SEKEY == SDLK_r) ? (ISRDT = !ISRDT) : 0;
+		if (SEKEY == SDLK_c)
+			RC->fog_color = wolf_fog_change(&(RC->clr));
 	}
 }
 
@@ -45,7 +47,6 @@ static void	add_keys_release(t_env *env)
 			ISR->is_move_backward = false;
 		if (SEKEY == SDLK_d || SEKEY == SDLK_RIGHT)
 			ISR->is_rotate_right = false;
-		(SEKEY == SDLK_c) ? (ISR->is_change_fog_color = false) : 0;
 		(SEKEY == SDLK_LSHIFT) ? (ISRB = false) : 0;
 	}
 }
@@ -60,9 +61,7 @@ static void	add_mouse_moves(t_env *env)
 	MOUSE->last = MOUSE->curr;
 	MOUSE->curr = SEVENT.motion.x;
 	if (MOUSE->is_pressed_mouse)
-	{
 		wolf_rotate(RC, -(SEVENT.motion.x - MOUSE->last) * ROT_MOUSE_INC);
-	}
 }
 
 static void	add_loop_isr(t_env *env)
@@ -75,8 +74,6 @@ static void	add_loop_isr(t_env *env)
 		wolf_move(env, ISRB ? (MOVE_BOOST * -FPS.move) : -FPS.move);
 	if (ISR->is_rotate_right)
 		wolf_rotate(RC, _RAD(ISRB ? (ROT_BOOST * -FPS.rot) : -FPS.rot));
-	if (ISR->is_change_fog_color)
-		RC->fog_color = wolf_fog_change(&(RC->clr));
 }
 
 void		wolf_sdl_events_loop(t_env *env)

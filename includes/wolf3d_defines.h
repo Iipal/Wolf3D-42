@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 20:42:23 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/19 11:20:05 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # define WIN_TITTLE     "Wolfenstein 3D"
 
 # define WOLF_FILE_EXT	".w3d"
-
 
 # define MAX_FOG_DIST   4.2
 
@@ -38,11 +37,11 @@
 
 # define FCL            0x7F7F7F
 
-# define MOVE_INC       2.42f
-# define MOVE_BOOST     1.9f
-# define ROT_INC        62.00f
+# define MOVE_INC       2.0f
+# define MOVE_BOOST     2.1f
+# define ROT_INC        65.00f
 # define ROT_BOOST      1.8f
-# define ROT_MOUSE_INC  0.0012f
+# define ROT_MOUSE_INC  0.0015f
 # define MMAP_PRECISION 0.05f
 
 # define MAX_TEXTURES   8
@@ -61,6 +60,14 @@
 # define YTEX           64
 # define XTEX           64
 # define TEX            env->textures
+# define MAX_TORCH      6
+# define TORCH1         "resources/torch/torch1.bmp"
+# define TORCH2         "resources/torch/torch2.bmp"
+# define TORCH3         "resources/torch/torch3.bmp"
+# define TORCH4         "resources/torch/torch4.bmp"
+# define TORCH5         "resources/torch/torch5.bmp"
+# define TORCH6         "resources/torch/torch6.bmp"
+# define TORCH          env->torch
 
 # define _ISARGS(ac, av) {--ac;++av;_NOTIS(E_USAGE, !(ac != 1), exit(-1), 0);}
 
@@ -83,6 +90,7 @@
 # define _BOOL      typedef enum e_bool         bool
 # define _IARR      typedef int*                iarr
 # define _ITAB      typedef int**               itab
+# define _UIARR     typedef unsigned int*       uiarr
 # define _UINT      typedef unsigned int        uint
 # define _ULL       typedef unsigned long long  ull
 
@@ -103,6 +111,7 @@
 # define ISRT   env->isr->is_textured
 # define ISRMM  env->isr->is_draw_minimap
 # define ISRF   env->isr->is_render_fog
+# define ISRDT  env->isr->is_render_torch
 
 # define MOUSE  env->mouse
 

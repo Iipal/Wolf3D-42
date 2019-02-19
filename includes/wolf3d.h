@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 20:31:47 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/19 11:16:17 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define WOLF3D_H
 
 # ifdef __APPLE__
-#  define WIN_X		2000
-#  define WIN_Y		1000
+#  define WIN_X		1600
+#  define WIN_Y		800
 # endif
 
 # ifdef __linux__
@@ -63,6 +63,7 @@ typedef struct	s_fpoint
 _FPOINT;
 _POINT;
 _BOOL;
+_UIARR;
 _IARR;
 _ITAB;
 _UINT;
@@ -86,7 +87,7 @@ typedef struct	s_isrender
 	bool	is_move_backward;
 	bool	is_rotate_right;
 	bool	is_rotate_left;
-	bool	is_change_fog_color;
+	bool	is_render_torch;
 }				t_isr;
 
 typedef struct	s_map
@@ -117,12 +118,13 @@ typedef struct	s_ray_caster
 	t_clrs	clr;
 	Uint32	fog_color;
 	double	fog_dist;
+	int		freq;
 }				t_rc;
 
 typedef struct	s_textures
 {
 	SDL_Surface	*surf;
-	iarr		pixels;
+	uiarr		pixels;
 }				t_tex;
 
 typedef struct	s_mouse
@@ -150,6 +152,7 @@ typedef struct	s_wolf3d_environment
 	t_tex		*textures;
 	t_mouse		*mouse;
 	t_fps		fps;
+	t_tex		*torch;
 }				t_env;
 
 /*

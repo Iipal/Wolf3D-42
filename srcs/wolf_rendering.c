@@ -6,21 +6,21 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 20:41:32 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/19 11:19:39 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
 
-static float	add_fog_freq(void)
+static float	add_fog_freq(int *freq)
 {
-	static int	fog_dist_freq;
-	const float	freqs[] = {4.2, 4.22, 4.23, 4.31, 4.30, 4.31, 4.16, 4.15,
-		4.14, 4.32, 4.31, 4.30, 4.29, 4.32, 4.39, 4.40, 4.41, 4.39};
-	
-	if ((ull)fog_dist_freq > (sizeof(freqs) / sizeof(*freqs)) - 1)
-		fog_dist_freq = 0;
-	return (freqs[fog_dist_freq++]);
+	const float	freqs[] = {4.2, 4.22, 4.23, 4.21, 4.4, 4.35, 4.31, 4.16,
+	4.15, 4.14, 4.32, 4.31, 4.30, 4.29, 4.32, 4.39, 4.40, 4.45, 4.39, 4.15,
+	4.30, 4.25, 4.24, 4.21, 4.1, 4.2, 4.24, 4.6, 4.4, 4.45, 4.1};
+
+	if ((ull)(*freq) > (sizeof(freqs) / sizeof(*freqs)) - 1)
+		*freq = 0;
+	return (freqs[(*freq)++]);
 }
 
 static void		add_fps(t_fps *fps)
@@ -32,19 +32,36 @@ static void		add_fps(t_fps *fps)
 	fps->rot = fps->tframe * ROT_INC;
 }
 
+static void		add_draw_torch(t_env *env)
+{
+	static int	torch_frame;
+	point		p;
+
+	if (ISRF)
+		torch_frame = ft_rand(MAX_TORCH);
+	p.y = -1;
+	while (++(p.y) < TORCH[torch_frame].surf->h && (p.x = -1))
+		while (++(p.x) < TORCH[torch_frame].surf->w)
+			if (!(TORCH[torch_frame].pixels[
+			p.y * TORCH[torch_frame].surf->w + p.x] == 0xff000000)
+			&& (p.y > 0 && p.x > 0 && p.x < WIN_X - 1 && p.y < WIN_Y - 1))
+				SWINP[p.y * WIN_X + p.x] =
+		TORCH[torch_frame].pixels[p.y * TORCH[torch_frame].surf->w + p.x];
+}
+
 void			wolf_rendering_rc(t_env *env)
 {
 	point			p;
 
 	p.x = -1;
 	SDL_FillRect(SWINS, NULL, IRGB_BLACK);
-	(ISRF) ? (RC->fog_dist = add_fog_freq()) : 0;
+	(ISRF) ? (RC->fog_dist = add_fog_freq(&RC->freq)) : 0;
 	(!ISRT) ? wolf_fill_floor_if_colored_rc(env->sdl) : 0;
 	while (++(p.x) < WIN_X)
 	{
 		*(RC) = (t_rc){{RC->pos.y, RC->pos.x}, {RC->dir.y, RC->dir.x},
-		{RC->plane.y, RC->plane.x}, 0, {0, 0}, {0, 0}, {0, 0}, {0, 0},
-		0, {0, 0}, false, false, 0, 0, 0, RC->clr, RC->fog_color, RC->fog_dist};
+	{RC->plane.y, RC->plane.x}, 0, {0, 0}, {0, 0}, {0, 0}, {0, 0}, 0, {0, 0},
+	false, false, 0, 0, 0, RC->clr, RC->fog_color, RC->fog_dist, RC->freq};
 		RC->xcamera = 2 * p.x / (double)WIN_X - 1;
 		RC->raydir = (fpoint){RC->dir.y + RC->plane.y * RC->xcamera,
 			RC->dir.x + RC->plane.x * RC->xcamera };
@@ -57,5 +74,6 @@ void			wolf_rendering_rc(t_env *env)
 	}
 	ISRMM ? wolf_draw_minimap(env) : 0;
 	add_fps(&FPS);
+	ISRDT ? add_draw_torch(env) : 0;
 	SDL_UpdateWindowSurface(SWIN);
 }
