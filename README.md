@@ -42,6 +42,7 @@ When you have already installed SDL2 library you can use this simple rules:
 - `[M]` - Toggle mini-map drawing.
 - `[F]` - Toggle Fog drawing.
 - `[C]` - Switch Fog colors.
+- `[R]` - Toogle torch drawing.
 - `[ESC]` - Close Wolf3D.
 
 #### MLX

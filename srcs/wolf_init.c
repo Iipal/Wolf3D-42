@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/19 11:13:37 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/19 11:27:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	wolf_usage(void)
 	_MSGN("  [M] - Toggle mini-map drawing.");
 	_MSGN("  [F] - Toggle Fog drawing.");
 	_MSGN("  [C] - Switch Fog colors");
+	_MSGN("  [R] - Toogle torch drawing");
 	_MSGN("  [LShift] - BOOST");
 	_MSGN("  [ESC] - exit.");
 }
