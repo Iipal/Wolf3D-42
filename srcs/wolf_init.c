@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/19 14:34:32 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/19 15:24:26 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static void	wolf_usage(void)
 	_MSGN("  [M] - Toggle mini-map drawing.");
 	_MSGN("  [F] - Toggle Fog drawing.");
 	_MSGN("  [C] - Switch Fog colors");
-	_MSGN("  [R] - Toogle torch drawing");
 	_MSGN("  [LShift] - BOOST");
 	_MSGN("  [ESC] - exit.");
 }
@@ -83,8 +82,7 @@ bool		wolf_init(t_env *env)
 		SWINS = SDL_GetWindowSurface(SWIN), exit(EXIT_FAILURE), false);
 	_NOTIS_F(SWINP = SWINS->pixels);
 	_NOTIS_F(env->isr = (t_isr*)malloc(sizeof(t_isr)));
-	*(env->isr) = (t_isr){false, true, true, true, false, false, false, false,
-		true};
+	*(env->isr) = (t_isr){false, true, true, true, false, false, false, false};
 	_NOTIS_F(env->map = (t_map*)malloc(sizeof(t_map)));
 	_NOTIS_F(env->rc = (t_rc*)malloc(sizeof(t_rc)));
 	_NOTIS_F(MOUSE = (t_mouse*)malloc(sizeof(t_mouse)));

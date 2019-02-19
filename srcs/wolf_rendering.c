@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/19 13:49:37 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/19 15:21:34 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void			wolf_rendering_rc(t_env *env)
 		ISRT ? wolf_render_textured(env, &p) : wolf_render_colored(env, &p);
 	}
 	ISRMM ? wolf_draw_minimap(env) : 0;
-	ISRDT ? add_draw_torch(env) : 0;
+	ISRF ? add_draw_torch(env) : 0;
 	SDL_UpdateWindowSurface(SWIN);
 	add_fps(&FPS);
 }
