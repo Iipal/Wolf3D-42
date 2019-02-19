@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 11:59:37 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 12:02:30 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/19 13:15:11 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,15 @@ void	wolf_render_textured_help(t_env *env, point *p, t_texhelper *h)
 		if (RC->is_side)
 			h->currtcolor = (h->currtcolor >> 1) & 8355711;
 		if (ISRF)
-			SWINP[(p->y)++ * WIN_X + p->x] =
-				wolf_fog(RC->pwd, h->currtcolor, RC->fog_color, RC->fog_dist);
+		{
+			if (RC->pwd >= RC->fog_dist)
+				SWINP[p->y * WIN_X + p->x] = RC->fog_color;
+			else
+				SWINP[p->y * WIN_X + p->x] =
+			wolf_fog(RC->pwd, h->currtcolor, RC->fog_color, RC->fog_dist);
+		}
 		else
-			SWINP[(p->y)++ * WIN_X + p->x] = h->currtcolor;
+			SWINP[p->y * WIN_X + p->x] = h->currtcolor;
+		++p->y;
 	}
 }

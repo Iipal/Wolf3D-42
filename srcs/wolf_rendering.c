@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/19 11:19:39 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/19 13:16:30 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,20 @@ static void		add_draw_torch(t_env *env)
 {
 	static int	torch_frame;
 	point		p;
+	point		tp;
 
 	if (ISRF)
 		torch_frame = ft_rand(MAX_TORCH);
-	p.y = -1;
-	while (++(p.y) < TORCH[torch_frame].surf->h && (p.x = -1))
-		while (++(p.x) < TORCH[torch_frame].surf->w)
+	tp.y = -1;
+	p.y = TORCH_SHIFT_Y;
+	while (++(p.y) && ++(tp.y) < TORCH[torch_frame].surf->h && (tp.x = -1)
+		&& (p.x = TORCH_SHIFT_X))
+		while (++(p.x) && ++(tp.x) < TORCH[torch_frame].surf->w)
 			if (!(TORCH[torch_frame].pixels[
-			p.y * TORCH[torch_frame].surf->w + p.x] == 0xff000000)
-			&& (p.y > 0 && p.x > 0 && p.x < WIN_X - 1 && p.y < WIN_Y - 1))
-				SWINP[p.y * WIN_X + p.x] =
-		TORCH[torch_frame].pixels[p.y * TORCH[torch_frame].surf->w + p.x];
+				tp.y * TORCH[torch_frame].surf->w + tp.x] == 0xff000000)
+				&& _ISSCREEN(p.y, p.x))
+				SWINP[p.y * WIN_X + p.x] = TORCH[torch_frame].pixels[
+					tp.y * TORCH[torch_frame].surf->w + tp.x];
 }
 
 void			wolf_rendering_rc(t_env *env)
@@ -73,7 +76,7 @@ void			wolf_rendering_rc(t_env *env)
 		ISRT ? wolf_render_textured(env, &p) : wolf_render_colored(env, &p);
 	}
 	ISRMM ? wolf_draw_minimap(env) : 0;
-	add_fps(&FPS);
 	ISRDT ? add_draw_torch(env) : 0;
 	SDL_UpdateWindowSurface(SWIN);
+	add_fps(&FPS);
 }

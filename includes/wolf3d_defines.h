@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/19 11:20:05 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/19 13:06:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # define WOLF_FILE_EXT	".w3d"
 
 # define MAX_FOG_DIST   4.2
+
+# define TORCH_SHIFT_X  ((WIN_X + TORCH[torch_frame].surf->w) / 1.6)
+# define TORCH_SHIFT_Y  (WIN_Y - TORCH[torch_frame].surf->h)
 
 # define IRGB_BLACK     0x00
 # define IRGB_MAP_RAY   0x00B37A
@@ -70,6 +73,8 @@
 # define TORCH          env->torch
 
 # define _ISARGS(ac, av) {--ac;++av;_NOTIS(E_USAGE, !(ac != 1), exit(-1), 0);}
+
+# define _ISSCREEN(y, x) (y >= 0 && x >= 0 && y < WIN_Y && x < WIN_X)
 
 # define _MSG(msg) ft_putstr(msg);
 # define _MSGN(msg) ft_putendl(msg);

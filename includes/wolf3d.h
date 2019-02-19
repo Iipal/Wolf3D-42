@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/19 11:16:17 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/19 13:07:55 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define WOLF3D_H
 
 # ifdef __APPLE__
-#  define WIN_X		1600
-#  define WIN_Y		800
+#  define WIN_X		1500
+#  define WIN_Y		750
 # endif
 
 # ifdef __linux__
@@ -28,7 +28,6 @@
 # include "../libft/includes/libft.h"
 # include <SDL2/SDL.h>
 # include <fcntl.h>
-# include <stdio.h>
 # include <math.h>
 # include <mlx.h>
 

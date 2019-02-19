@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 15:41:02 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 12:01:51 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/19 13:18:51 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,30 @@ static void	add_render_floor_init_fpos(t_env *env, t_texhelper *tx,
 
 static void	add_is_render_fog(t_floorhelper *h, t_env *env, point *p, float d)
 {
-	Uint32	currfloor;
-	Uint32	currsky;
-	int		fscreen;
-	int		sscreen;
+	Uint32	cfloor;
+	Uint32	csky;
 
-	fscreen = p->y * WIN_X + p->x;
-	sscreen = (WIN_Y - p->y) * WIN_X + p->x;
-	currfloor = (TEX[TFLOOR].pixels[h->ftex.y * XTEX + h->ftex.x] >> 1) & FCL;
-	currsky = TEX[TSKY].pixels[XTEX * h->ftex.y + h->ftex.x];
+	cfloor = (TEX[TFLOOR].pixels[h->ftex.y * XTEX + h->ftex.x] >> 1) & FCL;
+	csky = TEX[TSKY].pixels[XTEX * h->ftex.y + h->ftex.x];
 	if (ISRF)
 	{
-		SWINP[fscreen] = wolf_fog(d, currfloor, RC->fog_color, RC->fog_dist);
-		SWINP[sscreen] = wolf_fog(d, currsky, RC->fog_color, RC->fog_dist);
+		if (d >= RC->fog_dist)
+		{
+			SWINP[p->y * WIN_X + p->x] = RC->fog_color;
+			SWINP[(WIN_Y - p->y) * WIN_X + p->x] = RC->fog_color;
+		}
+		else
+		{
+			SWINP[p->y * WIN_X + p->x] =
+				wolf_fog(d, cfloor, RC->fog_color, RC->fog_dist);
+			SWINP[(WIN_Y - p->y) * WIN_X + p->x] =
+				wolf_fog(d, csky, RC->fog_color, RC->fog_dist);
+		}
 	}
 	else
 	{
-		SWINP[fscreen] = currfloor;
-		SWINP[sscreen] = currsky;
+		SWINP[p->y * WIN_X + p->x] = cfloor;
+		SWINP[(WIN_Y - p->y) * WIN_X + p->x] = csky;
 	}
 }
 
