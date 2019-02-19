@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/19 13:16:30 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/19 13:49:37 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ static void		add_draw_torch(t_env *env)
 	point		p;
 	point		tp;
 
-	if (ISRF)
-		torch_frame = ft_rand(MAX_TORCH);
+	if (!((RC->freq + 1) % MAX_TORCH))
+		torch_frame = ft_rand(MAX_TORCH - 1);
 	tp.y = -1;
 	p.y = TORCH_SHIFT_Y;
 	while (++(p.y) && ++(tp.y) < TORCH[torch_frame].surf->h && (tp.x = -1)

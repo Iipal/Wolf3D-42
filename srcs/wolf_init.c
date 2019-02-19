@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/19 11:27:15 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/19 13:59:56 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ void		wolf_init_rc_n_randomize_pos(t_env *env)
 		if (!MAP[(int)RC->pos.y][(int)RC->pos.x])
 			break ;
 	}
-	if (!MAP[(int)RC->pos.y][(int)(RC->pos.x + MOVE_INC)])
-		RC->pos.x += MOVE_INC;
-	if (!MAP[(int)(RC->pos.y + MOVE_INC)][(int)RC->pos.x])
-		RC->pos.y += MOVE_INC;
+	if (!MAP[(int)RC->pos.y][(int)(RC->pos.x + 0.05f)])
+		RC->pos.x += 0.05f;
+	if (!MAP[(int)(RC->pos.y + 0.05f)][(int)RC->pos.x])
+		RC->pos.y += 0.05f;
 	wolf_usage();
 }
 

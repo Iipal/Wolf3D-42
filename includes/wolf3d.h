@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/19 13:07:55 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/19 13:44:47 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,12 +102,12 @@ typedef struct	s_ray_caster
 	fpoint	pos;
 	fpoint	dir;
 	fpoint	plane;
-	double	xcamera;
+	float	xcamera;
 	fpoint	raydir;
 	point	map;
 	fpoint	side_dist;
 	fpoint	ddist;
-	double	pwd;
+	float	pwd;
 	point	step;
 	bool	is_hit;
 	bool	is_side;
@@ -116,7 +116,7 @@ typedef struct	s_ray_caster
 	int		draw_end;
 	t_clrs	clr;
 	Uint32	fog_color;
-	double	fog_dist;
+	float	fog_dist;
 	int		freq;
 }				t_rc;
 
@@ -135,11 +135,11 @@ typedef struct	s_mouse
 
 typedef struct	s_fps
 {
-	double	time;
-	double	told;
-	double	tframe;
-	double	move;
-	double	rot;
+	float	time;
+	float	told;
+	float	tframe;
+	float	move;
+	float	rot;
 }				t_fps;
 
 typedef struct	s_wolf3d_environment
@@ -186,8 +186,8 @@ bool			wolf_init(t_env *env);
 void			wolf_init_rc_n_randomize_pos(t_env *env);
 
 void			wolf_draw_minimap(t_env *env);
-Uint32			wolf_fog(double dist, Uint32 src_color,
-						Uint32 fog_color, double max_fog_dist);
+Uint32			wolf_fog(float dist, Uint32 src_color,
+						Uint32 fog_color, float max_fog_dist);
 Uint32			wolf_fog_change(t_clrs *c);
 
 void			wolf_sdl_events_loop(t_env *env);
