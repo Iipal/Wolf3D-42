@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/19 15:24:46 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/19 19:55:36 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,8 @@
 # define ISRT   env->isr->is_textured
 # define ISRMM  env->isr->is_draw_minimap
 # define ISRF   env->isr->is_render_fog
+
+# define CP TORCH[torch_frame].pixels[tp.y * TORCH[torch_frame].surf->w + tp.x]
 
 # define MOUSE  env->mouse
 
