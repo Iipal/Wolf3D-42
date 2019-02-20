@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 11:27:37 by tmaluh            #+#    #+#              #
-#    Updated: 2019/02/20 17:54:46 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/02/20 20:27:55 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,20 +56,20 @@ OBJS = $(SRCS:%.c=%.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@echo -n '    <=-=> ./libft/$(NAME): '
+	@$(ECHO) -n '    <=-=> ./libft/$(NAME): '
 	@$(LC) $(NAME) $(OBJS)
-	@echo "$(INVERT)[$(GREEN)✓$(WHITE)$(INVERT)]$(WHITE)"
+	@$(ECHO) "$(INVERT)[$(GREEN)✓$(WHITE)$(INVERT)]$(WHITE)"
 
 $(OBJS): %.o: %.c
-	@echo -n '$@: '
+	@$(ECHO) -n '$@: '
 	@$(CC) -c $(CFLAGS) $< -o $@
-	@echo "[$(GREEN)✓$(WHITE)]"
+	@$(ECHO) "[$(GREEN)✓$(WHITE)]"
 clean:
 	@$(DEL) $(OBJS)
 
 fclean: clean
 	@$(DEL) $(NAME)
-	@echo "$(RED)deleted$(WHITE): libft.a"
+	@$(ECHO) "$(RED)deleted$(WHITE): libft.a"
 
 re: fclean all
 
