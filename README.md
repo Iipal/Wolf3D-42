@@ -1,6 +1,7 @@
 # Wolf3D
 ###### made by tmaluh __(\_ipal)__
 
+[![Video preview](https://github.com/Iipal/Wolf3D-42/blob/master/screenshot.png)](https://youtu.be/s2rnZQIKDzw)
 ## Installation:
 
 #### SDL2
