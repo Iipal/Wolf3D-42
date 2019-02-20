@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 11:27:37 by tmaluh            #+#    #+#              #
-#    Updated: 2019/02/20 08:38:01 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/02/20 10:04:39 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ SRCS = srcs/ctype/ft_isalnum.c srcs/ctype/ft_isalpha.c srcs/ctype/ft_isascii.c \
 		srcs/str/ft_strmap.c srcs/str/ft_strmapi.c srcs/str/ft_strncat.c srcs/str/ft_strncmp.c \
 		srcs/str/ft_strncpy.c srcs/str/ft_strndup.c srcs/str/ft_strnequ.c srcs/str/ft_strnew.c \
 		srcs/str/ft_strnstr.c srcs/str/ft_strrchr.c srcs/str/ft_strsplit.c srcs/str/ft_strstr.c \
-		srcs/str/ft_strsub.c srcs/str/ft_strtrim.c srcs/lft/ft_gnl.c srcs/lft/ft_rand.c srcs/lft/ft_is_one_of.c
+		srcs/str/ft_strsub.c srcs/str/ft_strtrim.c srcs/lft/ft_gnl.c srcs/lft/ft_rand.c srcs/lft/ft_is_one_of_n.c
 
 OBJS = $(SRCS:%.c=%.o)
 
