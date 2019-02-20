@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/20 10:08:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/20 23:11:20 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void		add_draw_torch(t_env *env)
 	point		p;
 	point		tp;
 
-	if (!((RC->freq + 1) % MAX_TORCH))
+	if (!((FOG.freq + 1) % MAX_TORCH))
 		torch_frame = ft_rand(MAX_TORCH - 1);
 	tp.y = -1;
 	p.y = TORCH_SHIFT_Y;
@@ -59,13 +59,13 @@ void			wolf_rendering_rc(t_env *env)
 
 	p.x = -1;
 	SDL_FillRect(SWINS, NULL, IRGB_BLACK);
-	(ISRF) ? (RC->fog_dist = add_fog_freq(&RC->freq)) : 0;
+	(ISRF) ? (FOG.fog_dist = add_fog_freq(&FOG.freq)) : 0;
 	(!ISRT) ? wolf_fill_floor_if_colored_rc(env->sdl) : 0;
 	while (++(p.x) < WIN_X)
 	{
 		*(RC) = (t_rc){{RC->pos.y, RC->pos.x}, {RC->dir.y, RC->dir.x},
-	{RC->plane.y, RC->plane.x}, 0, {0, 0}, {0, 0}, {0, 0}, {0, 0}, 0, {0, 0},
-	false, false, 0, 0, 0, RC->clr, RC->fog_color, RC->fog_dist, RC->freq};
+		{RC->plane.y, RC->plane.x}, 0, {0, 0}, {0, 0}, {0, 0}, {0, 0}, 0,
+		{0, 0}, false, false, 0, 0, 0};
 		RC->xcamera = 2 * p.x / (double)WIN_X - 1;
 		RC->raydir = (fpoint){RC->dir.y + RC->plane.y * RC->xcamera,
 			RC->dir.x + RC->plane.x * RC->xcamera };

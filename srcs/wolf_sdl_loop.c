@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 22:59:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/19 18:29:48 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/20 23:09:52 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	add_keys_press(t_env *env, bool *exit)
 		(SEKEY == SDLK_m) ? (ISRMM = !ISRMM) : 0;
 		(SEKEY == SDLK_t) ? (ISRT = !ISRT) : 0;
 		if (SEKEY == SDLK_c)
-			RC->fog_color = wolf_fog_change(&(RC->clr));
+			FOG.fog_color = wolf_fog_change(&(FOG.clr));
 	}
 }
 

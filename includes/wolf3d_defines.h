@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/20 15:23:49 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/20 23:03:17 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,7 @@
 # define RC     env->rc
 
 # define FPS    env->fps
+
+# define FOG    env->fog
 
 #endif

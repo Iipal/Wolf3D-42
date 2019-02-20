@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/20 08:35:00 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/20 23:05:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,10 +113,6 @@ typedef struct	s_ray_caster
 	int		hline;
 	int		draw_start;
 	int		draw_end;
-	t_clrs	clr;
-	Uint32	fog_color;
-	float	fog_dist;
-	int		freq;
 }				t_rc;
 
 typedef struct	s_textures
@@ -141,6 +137,15 @@ typedef struct	s_fps
 	float	rot;
 }				t_fps;
 
+typedef struct	s_fog
+{
+	t_clrs	clr;
+	Uint32	fog_color;
+	float	fog_dist;
+	int		freq;
+}				t_fog;
+
+
 typedef struct	s_wolf3d_environment
 {
 	t_sdl		*sdl;
@@ -150,14 +155,16 @@ typedef struct	s_wolf3d_environment
 	t_tex		*textures;
 	t_mouse		*mouse;
 	t_fps		fps;
+	t_fog		fog;
 	t_tex		*torch;
 }				t_env;
 
 /*
-**	t_helper using only for make texture rendering process
-**		function avoid to norme.
+**		NORME HELP CODE START.
+**
+**	t_texhelper && t_floorhelper using only for
+**		make texture rendering process function avoid to norme.
 */
-
 typedef struct	s_texture_render_helper
 {
 	int		d;
@@ -175,6 +182,9 @@ typedef struct	s_floor_render_helper
 	float	weight;
 	point	ftex;
 }				t_floorhelper;
+/*
+**		NORME HELP CODE END.
+*/
 
 bool			wolf_readnsave(string map_name, t_env *env);
 
@@ -182,11 +192,10 @@ SDL_Surface		*wolf_optimize_surf_load(string bmp_path,
 								const SDL_PixelFormat *format);
 
 bool			wolf_init(t_env *env);
-void			wolf_init_rc_n_randomize_pos(t_env *env);
+void			wolf_setup_rc(t_env *env);
 
 void			wolf_draw_minimap(t_env *env);
-Uint32			wolf_fog(float dist, Uint32 src_color,
-						Uint32 fog_color, float max_fog_dist);
+Uint32			wolf_fog(float dist, Uint32 src_color, t_fog *fog);
 Uint32			wolf_fog_change(t_clrs *c);
 
 void			wolf_sdl_events_loop(t_env *env);

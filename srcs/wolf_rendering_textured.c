@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 15:41:02 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/19 13:31:45 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/20 23:07:40 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,15 @@ static void	add_is_render_fog(t_floorhelper *h, t_env *env, point *p, float d)
 	csky = TEX[TSKY].pixels[XTEX * h->ftex.y + h->ftex.x];
 	if (ISRF)
 	{
-		if (d >= RC->fog_dist)
+		if (d >= FOG.fog_dist)
 		{
-			SWINP[p->y * WIN_X + p->x] = RC->fog_color;
-			SWINP[(WIN_Y - p->y) * WIN_X + p->x] = RC->fog_color;
+			SWINP[p->y * WIN_X + p->x] = FOG.fog_color;
+			SWINP[(WIN_Y - p->y) * WIN_X + p->x] = FOG.fog_color;
 		}
 		else
 		{
-			SWINP[p->y * WIN_X + p->x] =
-				wolf_fog(d, cfloor, RC->fog_color, RC->fog_dist);
-			SWINP[(WIN_Y - p->y) * WIN_X + p->x] =
-				wolf_fog(d, csky, RC->fog_color, RC->fog_dist);
+			SWINP[p->y * WIN_X + p->x] = wolf_fog(d, cfloor, &FOG);
+			SWINP[(WIN_Y - p->y) * WIN_X + p->x] = wolf_fog(d, csky, &FOG);
 		}
 	}
 	else

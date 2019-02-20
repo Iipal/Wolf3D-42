@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 19:10:46 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/19 13:37:22 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/20 23:06:03 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ Uint32	wolf_fog_change(t_clrs *c)
 	return (colors[*c]);
 }
 
-Uint32	wolf_fog(float dist, Uint32 src_color,
-				Uint32 fog_color, float max_fog_dist)
+Uint32	wolf_fog(float dist, Uint32 src_color, t_fog *fog)
 {
 	float		fog_amount;
 	Uint32		dest_color;
@@ -33,13 +32,13 @@ Uint32	wolf_fog(float dist, Uint32 src_color,
 
 	src_rgb = (SDL_Color){src_color >> 16,
 		(src_color >> 8) & 0xff, src_color & 0xff, 0};
-	fog_rgb = (SDL_Color){fog_color >> 16,
-		(fog_color >> 8) & 0xff, fog_color & 0xff, 0};
+	fog_rgb = (SDL_Color){fog->fog_color >> 16,
+		(fog->fog_color >> 8) & 0xff, fog->fog_color & 0xff, 0};
 	dest_color = src_color;
-	if (dist >= max_fog_dist)
+	if (dist >= fog->fog_dist)
 		fog_amount = 1.0;
 	else
-		fog_amount = dist / max_fog_dist;
+		fog_amount = dist / fog->fog_dist;
 	if (fog_amount <= 1.00f && fog_amount > 0.00f)
 	{
 		out_rgb = (SDL_Color){
