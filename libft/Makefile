@@ -6,11 +6,19 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 11:27:37 by tmaluh            #+#    #+#              #
-#    Updated: 2019/02/20 17:51:58 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/02/20 17:54:46 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
+
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Linux)
+	ECHO = echo -e
+endif
+ifeq ($(UNAME_S),Darwin)
+	ECHO = echo
+endif
 
 CC = gcc
 LC = ar rcs
