@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/02/19 18:41:43 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/02/20 10:36:53 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ ifeq ($(UNAME_S),Darwin)
 endif
 
 CC = gcc -march=native
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -Ofast
 
 SRC = srcs/main.c srcs/wolf_init.c srcs/wolf_map_reader.c srcs/wolf_free.c \
 srcs/wolf_rendering.c srcs/wolf_rotatenmove.c srcs/wolf_raycaster.c \
@@ -44,15 +44,16 @@ DEL = rm -rf
 all: $(NAME)
 
 $(OBJ): %.o: %.c
-	@echo -n '+'
+	@echo -n '$@: '
 	@$(CC) -c $(CFLAGS) $(SDLINCLUDE) $< -o $@
+	@echo "$(GREEN)Compiled.$(WHITE)"
 
 $(LIBFT):
 	@$(LMAKE)
 
 $(NAME): $(LIBFT) $(OBJ)
 	@$(CC) $(OBJ) $(SDLFRAMEWORK) $(LIBFT) -o $(NAME)
-	@echo "> $(NAME) $(GREEN)Compiled$(WHITE)"
+	@echo "==================== > $(GREEN)Compiled$(WHITE): $(NAME)"
 
 del:
 	@$(DEL) $(OBJ)

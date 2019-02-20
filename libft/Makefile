@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 11:27:37 by tmaluh            #+#    #+#              #
-#    Updated: 2019/02/20 10:04:39 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/02/20 10:36:31 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ GREEN=\033[32m
 RED=\033[31m
 
 DEL = rm -rf
-# 69
+
 SRCS = srcs/ctype/ft_isalnum.c srcs/ctype/ft_isalpha.c srcs/ctype/ft_isascii.c \
 		srcs/ctype/ft_isblank.c srcs/ctype/ft_isdigit.c srcs/ctype/ft_islower.c \
 		srcs/ctype/ft_isprint.c srcs/ctype/ft_isupper.c srcs/ctype/ft_toupper.c \
@@ -48,11 +48,12 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@$(LC) $(NAME) $(OBJS)
-	@echo "> $(GREEN)libft$(WHITE) compiled."
+	@echo "==================== > $(GREEN)Compiled$(WHITE): libft.a"
 
 $(OBJS): %.o: %.c
-	@echo -n '+'
+	@echo -n '$@: '
 	@$(CC) -c $(CFLAGS) $< -o $@
+	@echo "$(GREEN)Compiled.$(WHITE)"
 clean:
 	@$(DEL) $(OBJS)
 
