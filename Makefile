@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/02/20 11:27:47 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/02/20 17:01:32 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ ifeq ($(UNAME_S),Linux)
 	SDLFRAMEWORK = -lSDL2 -lm
 endif
 ifeq ($(UNAME_S),Darwin)
-	SDLINCLUDE = -I./frameworks/SDL2.framework/Headers/
+	SDLINCLUDE = -F ./frameworks
 	SDLFRAMEWORK = -F./frameworks -rpath ./frameworks -framework SDL2
 endif
 
