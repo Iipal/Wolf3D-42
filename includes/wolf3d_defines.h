@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/20 10:12:43 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/20 15:23:49 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@
 
 # define MOVE_INC       2.0f
 # define MOVE_BOOST     2.1f
-# define ROT_INC        65.00f
+# define ROT_INC        90.00f
 # define ROT_BOOST      1.8f
 # define ROT_MOUSE_INC  0.002f
 # define MMAP_PRECISION 0.05f
