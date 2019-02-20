@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/02/20 17:01:32 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/02/20 17:53:55 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,11 @@ NAME = wolf3d
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
+	ECHO = echo -e
 	SDLFRAMEWORK = -lSDL2 -lm
 endif
 ifeq ($(UNAME_S),Darwin)
+	ECHO = echo
 	SDLINCLUDE = -F ./frameworks
 	SDLFRAMEWORK = -F./frameworks -rpath ./frameworks -framework SDL2
 endif
@@ -36,25 +38,27 @@ LIBFT = libft/libft.a
 LMAKE = make -C libft
 
 WHITE=\033[0m
+BGREEN=\033[42m
 GREEN=\033[32m
 RED=\033[31m
+INVERT=\033[7m
 
 DEL = rm -rf
 
 all: $(NAME)
 
 $(OBJ): %.o: %.c
-	@echo -n '$@: '
+	@$(ECHO) -n '$@: '
 	@$(CC) -c $(CFLAGS) $(SDLINCLUDE) $< -o $@
-	@echo "[$(GREEN)✓$(WHITE)]"
+	@$(ECHO) "[$(GREEN)✓$(WHITE)]"
 
 $(LIBFT):
 	@$(LMAKE)
 
 $(NAME): $(LIBFT) $(OBJ)
-	@echo -n '	<=-=> ./$(NAME):'
+	@$(ECHO) -n '    <=-=> ./$(NAME): '
 	@$(CC) $(OBJ) $(SDLFRAMEWORK) $(LIBFT) -o $(NAME)
-	@echo "[$(GREEN)✓$(WHITE)]"
+	@$(ECHO) "$(INVERT)[$(GREEN)✓$(WHITE)$(INVERT)]$(WHITE)"
 
 del:
 	@$(DEL) $(OBJ)
@@ -66,7 +70,7 @@ clean:
 fclean: clean
 	@$(LMAKE) fclean
 	@$(DEL) $(NAME)
-	@echo "$(RED)deleted$(WHITE): ./$(NAME)"
+	@$(ECHO) "$(RED)deleted$(WHITE): ./$(NAME)"
 
 re: fclean all
 

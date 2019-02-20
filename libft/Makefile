@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 11:27:37 by tmaluh            #+#    #+#              #
-#    Updated: 2019/02/20 11:27:44 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/02/20 17:51:58 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ CFLAGS = -Wall -Wextra -Werror
 WHITE=\033[0m
 GREEN=\033[32m
 RED=\033[31m
+INVERT=\033[7m
 
 DEL = rm -rf
 
@@ -47,9 +48,9 @@ OBJS = $(SRCS:%.c=%.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@echo -n '	<=-=> ./libft/$(NAME):'
+	@echo -n '    <=-=> ./libft/$(NAME): '
 	@$(LC) $(NAME) $(OBJS)
-	@echo "[$(GREEN)✓$(WHITE)]"
+	@echo "$(INVERT)[$(GREEN)✓$(WHITE)$(INVERT)]$(WHITE)"
 
 $(OBJS): %.o: %.c
 	@echo -n '$@: '
