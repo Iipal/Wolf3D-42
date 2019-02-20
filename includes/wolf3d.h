@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/19 20:04:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/20 08:35:00 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@
 # include <fcntl.h>
 # include <math.h>
 # include <mlx.h>
-
-enum	e_bool {false, true} __attribute__((packed));
 
 typedef enum	e_colors
 {
@@ -64,7 +62,6 @@ typedef struct	s_fpoint
 
 _FPOINT;
 _POINT;
-_BOOL;
 _UIARR;
 _IARR;
 _ITAB;

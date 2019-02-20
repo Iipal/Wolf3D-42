@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/19 20:42:44 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/20 08:47:41 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void		add_draw_torch(t_env *env)
 	while (++(p.y) < WIN_Y && ++(tp.y) < TORCH[torch_frame].surf->h
 			&& (tp.x = -1) && (p.x = TORCH_SHIFT_X))
 		while (++(p.x) < WIN_X && ++(tp.x) < TORCH[torch_frame].surf->w)
-			if (!(CP == 0xff000000 || CP == 0))
+			if (!(ft_is_one_of(TORCH[torch_frame].pixels[tp.y * TORCH[torch_frame].surf->w + tp.x], 0xff000000, 0)))
 				SWINP[p.y * WIN_X + p.x] = TORCH[torch_frame].pixels[
 					tp.y * TORCH[torch_frame].surf->w + tp.x];
 }

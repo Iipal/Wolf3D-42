@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/19 20:42:58 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/20 08:47:51 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@
 
 # define _FPOINT    typedef t_fp                fpoint
 # define _POINT     typedef t_p                 point
-# define _BOOL      typedef enum e_bool         bool
 # define _IARR      typedef int*                iarr
 # define _ITAB      typedef int**               itab
 # define _UIARR     typedef unsigned int*       uiarr

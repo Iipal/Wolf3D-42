@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 10:04:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/11 01:56:26 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/20 08:49:08 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,19 @@
 # include "lft_put.h"
 # include "lft_ctype.h"
 
+# include <stdarg.h>
+
 # define BUFF_SIZE 2048
+
+enum	e_bool {false, true} __attribute__((packed));
+
+# define _BOOL  typedef enum e_bool bool
+
+_BOOL;
+
 
 int		ft_gnl(const int fd, char **line);
 size_t	ft_rand(size_t limits);
+bool	ft_is_one_of(long cmp, ...);
 
 #endif
