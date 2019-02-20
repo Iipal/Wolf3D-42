@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/02/20 10:36:53 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/02/20 11:27:47 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,11 +24,11 @@ endif
 CC = gcc -march=native
 CFLAGS = -Wall -Wextra -Werror -Ofast
 
-SRC = srcs/main.c srcs/wolf_init.c srcs/wolf_map_reader.c srcs/wolf_free.c \
-srcs/wolf_rendering.c srcs/wolf_rotatenmove.c srcs/wolf_raycaster.c \
-srcs/wolf_rendering_textured.c srcs/wolf_rendering_colored.c srcs/wolf_minimap.c \
-srcs/wolf_sdl_loop.c srcs/wolf_sdl_optimizing_surface_load.c srcs/wolf_fog.c \
-srcs/wolf_rendering_textured_help_fck_norme.c
+SRC = srcs/main.c srcs/wolf_init.c srcs/wolf_sdl_optimizing_surface_load.c \
+srcs/wolf_map_reader.c srcs/wolf_sdl_loop.c srcs/wolf_raycaster.c \
+srcs/wolf_rendering_colored.c srcs/wolf_rendering.c srcs/wolf_rendering_textured.c \
+srcs/wolf_rendering_textured_help_fck_norme.c srcs/wolf_rotatenmove.c \
+srcs/wolf_minimap.c srcs/wolf_fog.c srcs/wolf_free.c 
 
 OBJ = $(SRC:.c=.o)
 
@@ -46,14 +46,15 @@ all: $(NAME)
 $(OBJ): %.o: %.c
 	@echo -n '$@: '
 	@$(CC) -c $(CFLAGS) $(SDLINCLUDE) $< -o $@
-	@echo "$(GREEN)Compiled.$(WHITE)"
+	@echo "[$(GREEN)✓$(WHITE)]"
 
 $(LIBFT):
 	@$(LMAKE)
 
 $(NAME): $(LIBFT) $(OBJ)
+	@echo -n '	<=-=> ./$(NAME):'
 	@$(CC) $(OBJ) $(SDLFRAMEWORK) $(LIBFT) -o $(NAME)
-	@echo "==================== > $(GREEN)Compiled$(WHITE): $(NAME)"
+	@echo "[$(GREEN)✓$(WHITE)]"
 
 del:
 	@$(DEL) $(OBJ)

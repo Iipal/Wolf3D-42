@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 11:27:37 by tmaluh            #+#    #+#              #
-#    Updated: 2019/02/20 10:36:31 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/02/20 11:27:44 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,13 +47,14 @@ OBJS = $(SRCS:%.c=%.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
+	@echo -n '	<=-=> ./libft/$(NAME):'
 	@$(LC) $(NAME) $(OBJS)
-	@echo "==================== > $(GREEN)Compiled$(WHITE): libft.a"
+	@echo "[$(GREEN)✓$(WHITE)]"
 
 $(OBJS): %.o: %.c
 	@echo -n '$@: '
 	@$(CC) -c $(CFLAGS) $< -o $@
-	@echo "$(GREEN)Compiled.$(WHITE)"
+	@echo "[$(GREEN)✓$(WHITE)]"
 clean:
 	@$(DEL) $(OBJS)
 
