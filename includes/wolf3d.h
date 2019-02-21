@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/21 10:46:20 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/21 21:54:12 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,8 +131,8 @@ typedef struct	s_mouse
 typedef struct	s_fps
 {
 	float	time;
-	float	told;
-	float	tframe;
+	float	t_old;
+	float	t_frame;
 	float	move;
 	float	rot;
 }				t_fps;

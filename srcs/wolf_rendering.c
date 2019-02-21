@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/20 23:11:20 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/21 22:27:27 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ static float	add_fog_freq(int *freq)
 
 static void		add_fps(t_fps *fps)
 {
-	fps->told = fps->time;
+	fps->t_old = fps->time;
 	fps->time = SDL_GetTicks();
-	fps->tframe = (fps->time - fps->told) / 1000.0;
-	fps->move = fps->tframe * MOVE_INC;
-	fps->rot = fps->tframe * ROT_INC;
+	fps->t_frame = (fps->time - fps->t_old) / 1000.0;
+	fps->move = fps->t_frame * MOVE_INC;
+	fps->rot = fps->t_frame * ROT_INC;
 }
 
 static void		add_draw_torch(t_env *env)
