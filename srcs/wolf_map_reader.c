@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 17:18:56 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/18 17:24:41 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/21 22:54:50 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,26 +65,27 @@ static int		add_valid_inline_numbers(string line)
 
 static bool		add_valid_info(string info_line, t_map *map, string map_name)
 {
-	strtab	info_tab;
 	int		i;
 
 	_NOTIS_F(!ft_strcmp(map_name +
 		(ft_strlen(map_name) - ft_strlen(WOLF_FILE_EXT)), WOLF_FILE_EXT));
-	_NOTIS_F(info_tab = ft_strsplit(info_line, ' '));
-	_NOTIS_F(map->ysize = ft_atoi(info_tab[0]));
-	_NOTIS_F(map->xsize = ft_atoi(info_tab[1]));
-	_NOTIS_F(!info_tab[2]);
+	_NOTIS_F(map->ysize = ft_atoi(info_line));
+	i = 0;
+	while (info_line[i] && ft_isdigit(info_line[i]))
+		++i;
+	_NOTIS_F(i);
+	_NOTIS_F(map->xsize = ft_atoi(info_line + ++i));
+	while (info_line[i] && ft_isdigit(info_line[i]))
+		++i;
+	_NOTIS_F(!info_line[i]);
 	_NOTIS_F(map->tab = (itab)malloc(sizeof(iarr) * map->ysize));
 	_NOTIS_F(map->colors = (itab)malloc(sizeof(iarr) * map->ysize));
 	i = -1;
 	while (++i < map->ysize)
 	{
-		if (i < 2)
-			ft_strdel(&(info_tab[i]));
 		_NOTIS_F(map->tab[i] = (iarr)malloc(sizeof(int) * map->xsize));
 		_NOTIS_F(map->colors[i] = (iarr)malloc(sizeof(int) * map->xsize));
 	}
-	_FREE(info_tab, free);
 	ft_strdel(&info_line);
 	return (true);
 }
