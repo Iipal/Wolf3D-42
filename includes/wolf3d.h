@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/20 23:05:13 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/21 10:46:20 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,6 @@ typedef struct	s_fog
 	float	fog_dist;
 	int		freq;
 }				t_fog;
-
 
 typedef struct	s_wolf3d_environment
 {

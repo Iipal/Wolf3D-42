@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/20 23:09:25 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/21 10:45:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static bool	add_init_textures(t_env *env)
 
 bool		wolf_init(t_env *env)
 {
-	*env = (t_env){NULL, NULL, NULL, NULL, NULL, NULL, {0, 0, 0, 0, 0}, 
+	*env = (t_env){NULL, NULL, NULL, NULL, NULL, NULL, {0, 0, 0, 0, 0},
 		{8, IRGB_BLACK, 4.2, 0}, NULL};
 	_NOTIS(SDL_GetError(),
 		SDL_Init(SDL_INIT_EVERYTHING) >= 0, exit(EXIT_FAILURE), false);
