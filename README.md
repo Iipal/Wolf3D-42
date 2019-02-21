@@ -1,24 +1,31 @@
 # Wolf3D
 ###### made by tmaluh __(\_ipal)__
 
-[![Video preview](https://github.com/Iipal/Wolf3D-42/blob/master/screenshot.png)](https://youtu.be/s2rnZQIKDzw)
+[![Video preview](https://raw.githubusercontent.com/Iipal/Wolf3D-42/master/screenshot.png)](https://youtu.be/s2rnZQIKDzw)
 ## Installation:
 
-#### SDL2
+#### *SDL2*
 
-__Ubuntu:__
+__*Ubuntu:*__
 
 ```bash
 sudo apt-get install libsdl2-dev
 ```
-__Fedora:__
+
+__*Fedora:*__
 
 ```bash
 sudo yum install SDL2-devel
 ```
-__MacOS__:
 
-Use [this](http://lazyfoo.net/tutorials/SDL/01_hello_SDL/mac/index.php) instruction. (Or if you are student school42 - dont do anything, you already have installed SDL2).
+__*MacOS:*__
+
+All ready for use. Just type **make**.
+
+__*Windows:*__
+
+- [MinGW](http://lazyfoo.net/tutorials/SDL/01_hello_SDL/windows/mingw/index.php).
+- [Visual Studio](http://lazyfoo.net/tutorials/SDL/01_hello_SDL/windows/msvsnet2010u/index.php).
 
 ## Compiling
 
@@ -34,19 +41,19 @@ When you have already installed SDL2 library you can use this simple rules:
 ## Usage:
 
 ```bash
-./wolf3d maps/<map_name>.w3d
+./wolf3d maps/map_name.w3d
 ```
 
-- `[W | S]` - Moving forward | backward (or Arrows `[UP | DOWN]`).
-- `[A | D]` - Rotate left | right (also Arrows `[LEFT | RIGHT]` or `Mouse`).
-- `[T]` - Toggle Textured\\Flat rendering method.
-- `[M]` - Toggle mini-map drawing.
-- `[F]` - Toggle Fog drawing.
-- `[C]` - Switch Fog colors.
-- `[R]` - Toogle torch drawing.
-- `[ESC]` - Close Wolf3D.
+- `[W | S]`: Moving forward | backward (or Arrows `[UP | DOWN]`).
+- `[A | D]`: Rotate left | right (also Arrows `[LEFT | RIGHT]` or `Mouse`).
+- `[T]`: Toggle Textured\\Flat rendering method.
+- `[M]`: Toggle mini-map drawing.
+- `[F]`: Toggle Fog drawing.
+- `[C]`: Switch Fog colors.
+- `[LShift]`: Step & rotate boost.
+- `[ESC]`: Close Wolf3D.
 
-#### MLX
+#### <===> MLX <===>
 
 If you are crazy and want to run this project using MLX library and without many features - follow this rules:
 
