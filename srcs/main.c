@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:19:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/20 23:01:50 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/21 10:14:33 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static void	wolf_usage(void)
 	_MSGN("  [T] - Toggle Textured\\Flat rendering method.");
 	_MSGN("  [M] - Toggle mini-map drawing.");
 	_MSGN("  [F] - Toggle Fog drawing.");
-	_MSGN("  [C] - Switch Fog colors");
-	_MSGN("  [LShift] - BOOST");
+	_MSGN("  [C] - Switch Fog colors.");
+	_MSGN("  [LShift] - Step & rotate boost.");
 	_MSGN("  [ESC] - exit.");
 }
 
@@ -47,7 +47,7 @@ int			main(int argc, string argv[])
 **	Fast, short description:
 **
 **	For beginning need to validate executable path for correct textures loading
-**		(macro on line 19).
+**		(macro on line 33).
 **	Next step is validate arguments for program (only 1 must to be).
 **	Allocating memory for 'main' structure & initialize SDL2/Loading textures.
 **	After that we can save our map from file to `env->map`.
