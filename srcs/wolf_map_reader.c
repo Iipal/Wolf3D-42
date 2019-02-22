@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 17:18:56 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/22 15:17:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/22 20:45:53 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,15 @@ static bool		add_valid_info(string info_line, t_map *map, string map_name)
 
 	_NOTIS_F(!ft_strcmp(map_name +
 		(ft_strlen(map_name) - ft_strlen(WOLF_FILE_EXT)), WOLF_FILE_EXT));
-	_NOTIS_F(!(!(map->ysize = ft_atoi(info_line)) || map->ysize < 0));
+	_IS_F(!(map->ysize = ft_atoi(info_line)) || map->ysize < 0);
 	i = 0;
 	while (info_line[i] && ft_isdigit(info_line[i]))
 		++i;
 	_NOTIS_F(i);
-	_NOTIS_F(!(!(map->xsize = ft_atoi(info_line + ++i)) || map->xsize < 0));
+	_IS_F(!(map->xsize = ft_atoi(info_line + ++i)) || map->xsize < 0);
 	while (info_line[i] && ft_isdigit(info_line[i]))
 		++i;
-	_NOTIS_F(!info_line[i]);
+	_IS_F(info_line[i]);
 	_NOTIS_F(map->tab = (itab)malloc(sizeof(iarr) * map->ysize));
 	_NOTIS_F(map->colors = (itab)malloc(sizeof(iarr) * map->ysize));
 	i = -1;
@@ -100,7 +100,7 @@ static bool		add_endofmap(t_env *env, int y,
 	{
 		while (++y < map_max.y - 1 && (i = -1))
 			while (++i < map_max.x)
-				if (MAP[y][i] == 0)
+				if (!MAP[y][i])
 					return (true);
 		return (false);
 	}
@@ -127,12 +127,12 @@ bool			wolf_readnsave(string map_name, t_env *env)
 
 	i = -1;
 	gnl_temp = NULL;
-	_NOTIS_F(!(!(fd = open(map_name, O_RDONLY)) || fd < 0));
-	_NOTIS_F(!(ft_gnl(fd, &gnl_temp) < 0));
+	_IS_F(!(fd = open(map_name, O_RDONLY)) || fd < 0);
+	_IS_F(ft_gnl(fd, &gnl_temp) < 0);
 	_NOTIS_F(add_valid_info(gnl_temp, env->map, map_name));
 	while ((gnl_ret = ft_gnl(fd, &gnl_temp)) && ++i < MAPY)
 	{
-		_NOTIS(E_IMAP, !(add_valid_inline_numbers(gnl_temp) != MAPX),
+		_ISM(E_IMAP, add_valid_inline_numbers(gnl_temp) != MAPX,
 			ft_strdel(&gnl_temp), false);
 		_NOTIS(E_IMAP, add_save_map(gnl_temp, MAP[i], MAPC[i], MAPX),
 			ft_strdel(&gnl_temp), false);
@@ -140,8 +140,8 @@ bool			wolf_readnsave(string map_name, t_env *env)
 			ft_strdel(&gnl_temp), false);
 		ft_strdel(&gnl_temp);
 	}
-	_NOTIS(E_IMAP, !(gnl_ret || gnl_temp), exit(EXIT_FAILURE), false);
-	_NOTIS_F(!(++i != MAPY));
+	_ISM(E_IMAP, gnl_ret || gnl_temp, exit(EXIT_FAILURE), false);
+	_IS_F(++i != MAPY);
 	_NOTIS(E_NOFLOOR, add_endofmap(env, 0, (point){MAPY, MAPX}, true),
 		exit(EXIT_FAILURE), 0);
 	return (true);
