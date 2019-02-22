@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/02/20 17:53:55 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/02/22 09:56:02 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,8 @@ ifeq ($(UNAME_S),Darwin)
 	SDLFRAMEWORK = -F./frameworks -rpath ./frameworks -framework SDL2
 endif
 
-CC = gcc -march=native
-CFLAGS = -Wall -Wextra -Werror -Ofast
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
 
 SRC = srcs/main.c srcs/wolf_init.c srcs/wolf_sdl_optimizing_surface_load.c \
 srcs/wolf_map_reader.c srcs/wolf_sdl_loop.c srcs/wolf_raycaster.c \
