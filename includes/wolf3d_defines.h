@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/20 23:03:17 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/22 20:16:52 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,10 @@
 # define _NOTIS(msg, ex, do, ret) if (!(ex)) {_MSGN(msg);do;return (ret);}
 # define _NOTIS_N(ex) if (!(ex)) return (NULL)
 # define _NOTIS_F(ex) if (!(ex)) return (false)
+# define _IS(ex, do, ret) if (ex) {do; return (ret);}
+# define _ISM(msg, ex, do, ret) if (ex) {_MSGN(msg);do;return (ret);}
+# define _IS_N(ex) if (ex) return (NULL)
+# define _IS_F(ex) if (ex) return (false)
 
 # define _FREE(trash, del)	if ((trash)) {del(trash); trash = NULL;}
 
