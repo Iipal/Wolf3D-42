@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 17:18:56 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/22 15:05:46 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/22 15:17:06 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,12 @@ static bool		add_valid_info(string info_line, t_map *map, string map_name)
 
 	_NOTIS_F(!ft_strcmp(map_name +
 		(ft_strlen(map_name) - ft_strlen(WOLF_FILE_EXT)), WOLF_FILE_EXT));
-	_NOTIS_F((map->ysize = ft_atoi(info_line) || map->ysize >= 0));
+	_NOTIS_F(!(!(map->ysize = ft_atoi(info_line)) || map->ysize < 0));
 	i = 0;
 	while (info_line[i] && ft_isdigit(info_line[i]))
 		++i;
 	_NOTIS_F(i);
-	_NOTIS_F((map->xsize = ft_atoi(info_line + ++i) || map->xsize >= 0));
+	_NOTIS_F(!(!(map->xsize = ft_atoi(info_line + ++i)) || map->xsize < 0));
 	while (info_line[i] && ft_isdigit(info_line[i]))
 		++i;
 	_NOTIS_F(!info_line[i]);
