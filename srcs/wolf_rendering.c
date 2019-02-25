@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/25 15:12:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/25 15:58:36 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static float	add_fog_freq(int *freq, t_time *time)
 {
-	const float	freqs[] = {4.2, 4.24, 4.19, 4.21, 4.4, 4.35, 4.31, 4.16};
+	const float	freqs[] = {4.2, 4.25, 4.15, 4.17, 4.22, 4.3, 4.1, 4.16};
 
-	if (time->res_time > 0.15)
+	if (time->res_time > REFRESH_TORCH_FOG_FREQ)
 	{
 		time->res_time = 0;
 		*freq = ft_rand((sizeof(freqs) / sizeof(*freqs)) - 1);
