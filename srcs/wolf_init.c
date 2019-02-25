@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/22 20:32:21 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/25 14:53:49 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void		wolf_setup_rc(t_env *env)
 		RC->pos.x += 0.05f;
 	if (!MAP[(int)(RC->pos.y + 0.05f)][(int)RC->pos.x])
 		RC->pos.y += 0.05f;
+	env->torch->time = (t_time){SDL_GetTicks(), 0, 0};
 }
 
 static bool	add_init_textures(t_env *env)
@@ -44,10 +45,10 @@ static bool	add_init_textures(t_env *env)
 		_NOTIS_F(TEX[i].pixels = TEX[i].surf->pixels);
 		if (i < MAX_TORCH)
 		{
-			_NOTIS_F(TORCH[i].surf =
+			_NOTIS_F(TORCH->tex[i].surf =
 				wolf_optimize_surf_load(torch[i], SWINS->format));
-			SDL_SetSurfaceBlendMode(TORCH[i].surf, SDL_BLENDMODE_BLEND);
-			_NOTIS_F(TORCH[i].pixels = TORCH[i].surf->pixels);
+			SDL_SetSurfaceBlendMode(TORCH->tex[i].surf, SDL_BLENDMODE_BLEND);
+			_NOTIS_F(TORCH->tex[i].pixels = TORCH->tex[i].surf->pixels);
 		}
 	}
 	return (true);
@@ -55,7 +56,7 @@ static bool	add_init_textures(t_env *env)
 
 bool		wolf_init(t_env *env)
 {
-	*env = (t_env){NULL, NULL, NULL, NULL, NULL, NULL, {0, 0, 0, 0, 0},
+	*env = (t_env){NULL, NULL, NULL, NULL, NULL, NULL, {{0, 0, 0}, 0, 0},
 		{8, IRGB_BLACK, 4.2, 0}, NULL};
 	_ISM(SDL_GetError(), SDL_Init(SDL_INIT_EVERYTHING) < 0, exit(1), false);
 	_NOTIS_F(env->sdl = (t_sdl*)malloc(sizeof(t_sdl)));
@@ -72,7 +73,8 @@ bool		wolf_init(t_env *env)
 	_NOTIS_F(env->rc = (t_rc*)malloc(sizeof(t_rc)));
 	_NOTIS_F(MOUSE = (t_mouse*)malloc(sizeof(t_mouse)));
 	_NOTIS_F(TEX = (t_tex*)malloc(sizeof(t_tex) * (MAX_TEXTURES + 2)));
-	_NOTIS_F(TORCH = (t_tex*)malloc(sizeof(t_tex) * MAX_TORCH));
+	_NOTIS_F(TORCH = (t_torch*)malloc(sizeof(t_torch)));
+	_NOTIS_F(TORCH->tex = (t_tex*)malloc(sizeof(t_tex) * MAX_TORCH));
 	_NOTIS_F(add_init_textures(env));
 	return (true);
 }

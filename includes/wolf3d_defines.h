@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/22 20:16:52 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/25 14:24:24 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 
 # define MAX_FOG_DIST   4.2
 
-# define TORCH_SHIFT_X  ((WIN_X + TORCH[torch_frame].surf->w) / 1.6)
-# define TORCH_SHIFT_Y  (WIN_Y - TORCH[torch_frame].surf->h)
+# define TORCH_SHIFT_X  ((WIN_X + TORCH->tex[torch_frame].surf->w) / 1.6)
+# define TORCH_SHIFT_Y  (WIN_Y - TORCH->tex[torch_frame].surf->h)
 
 # define IRGB_BLACK     0x00
 # define IRGB_MAP_RAY   0x00B37A

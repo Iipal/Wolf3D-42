@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/19 11:25:09 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/25 14:26:09 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,10 @@ void		wolf_free(t_env **env)
 	if ((*env)->textures)
 		add_free_textures(&((*env)->textures));
 	if ((*env)->torch)
-		add_free_torch(&((*env)->torch));
+	{
+		add_free_torch(&((*env)->torch->tex));
+		_FREE((*env)->torch, free);
+	}
 	_FREE((*env)->isr, free);
 	_FREE((*env)->rc, free);
 	_FREE((*env)->sdl, free);

@@ -6,51 +6,68 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/21 22:27:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/25 15:12:54 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
 
-static float	add_fog_freq(int *freq)
+static float	add_fog_freq(int *freq, t_time *time)
 {
-	const float	freqs[] = {4.2, 4.22, 4.23, 4.21, 4.4, 4.35, 4.31, 4.16,
-	4.15, 4.14, 4.32, 4.31, 4.30, 4.29, 4.32, 4.39, 4.40, 4.45, 4.39, 4.15,
-	4.30, 4.25, 4.24, 4.21, 4.1, 4.2, 4.24, 4.6, 4.4, 4.45, 4.1};
+	const float	freqs[] = {4.2, 4.24, 4.19, 4.21, 4.4, 4.35, 4.31, 4.16};
 
-	if ((ull)(*freq) > (sizeof(freqs) / sizeof(*freqs)) - 1)
-		*freq = 0;
-	return (freqs[(*freq)++]);
-}
-
-static void		add_fps(t_fps *fps)
-{
-	fps->t_old = fps->time;
-	fps->time = SDL_GetTicks();
-	fps->t_frame = (fps->time - fps->t_old) / 1000.0;
-	fps->move = fps->t_frame * MOVE_INC;
-	fps->rot = fps->t_frame * ROT_INC;
+	if (time->res_time > 0.15)
+	{
+		time->res_time = 0;
+		*freq = ft_rand((sizeof(freqs) / sizeof(*freqs)) - 1);
+	}
+	else
+	{
+		time->old_time = time->current_time;
+		time->current_time = SDL_GetTicks();
+		time->res_time += (time->current_time - time->old_time) / 1000.0;
+	}
+	return (freqs[(*freq)]);
 }
 
 static void		add_draw_torch(t_env *env)
 {
+	static int	old_torch_frame;
 	static int	torch_frame;
 	point		p;
 	point		tp;
 
-	if (!((FOG.freq + 1) % MAX_TORCH))
+	if (old_torch_frame != FOG.freq)
+	{
 		torch_frame = ft_rand(MAX_TORCH - 1);
+		old_torch_frame = FOG.freq;
+	}
 	tp.y = -1;
 	p.y = TORCH_SHIFT_Y;
-	while (++(p.y) < WIN_Y && ++(tp.y) < TORCH[torch_frame].surf->h
+	while (++(p.y) < WIN_Y && ++(tp.y) < TORCH->tex[torch_frame].surf->h
 		&& (tp.x = -1)
 		&& (p.x = TORCH_SHIFT_X))
-		while (++(p.x) < WIN_X && ++(tp.x) < TORCH[torch_frame].surf->w)
-			if (!(ft_is_one_of_n(TORCH[torch_frame].pixels[
-				tp.y * TORCH[torch_frame].surf->w + tp.x],
+		while (++(p.x) < WIN_X && ++(tp.x) < TORCH->tex[torch_frame].surf->w)
+			if (!(ft_is_one_of_n(TORCH->tex[torch_frame].pixels[
+				tp.y * TORCH->tex[torch_frame].surf->w + tp.x],
 				2, (long)0xff000000, (long)0x00)))
-				SWINP[p.y * WIN_X + p.x] = TORCH[torch_frame].pixels[
-					tp.y * TORCH[torch_frame].surf->w + tp.x];
+				SWINP[p.y * WIN_X + p.x] = TORCH->tex[torch_frame].pixels[
+					tp.y * TORCH->tex[torch_frame].surf->w + tp.x];
+}
+
+static void		add_draw_bonus(t_env *env)
+{
+	ISRMM ? wolf_draw_minimap(env) : 0;
+	ISRF ? add_draw_torch(env) : 0;
+}
+
+static void		add_fps(t_fps *fps)
+{
+	fps->time.old_time = fps->time.current_time;
+	fps->time.current_time = SDL_GetTicks();
+	fps->time.res_time = (fps->time.current_time - fps->time.old_time) / 1000.0;
+	fps->move = fps->time.res_time * MOVE_INC;
+	fps->rot = fps->time.res_time * ROT_INC;
 }
 
 void			wolf_rendering_rc(t_env *env)
@@ -59,7 +76,7 @@ void			wolf_rendering_rc(t_env *env)
 
 	p.x = -1;
 	SDL_FillRect(SWINS, NULL, IRGB_BLACK);
-	(ISRF) ? (FOG.fog_dist = add_fog_freq(&FOG.freq)) : 0;
+	(ISRF) ? (FOG.fog_dist = add_fog_freq(&FOG.freq, &TORCH->time)) : 0;
 	(!ISRT) ? wolf_fill_floor_if_colored_rc(env->sdl) : 0;
 	while (++(p.x) < WIN_X)
 	{
@@ -76,8 +93,7 @@ void			wolf_rendering_rc(t_env *env)
 		wolf_dist_to_wall(RC);
 		ISRT ? wolf_render_textured(env, &p) : wolf_render_colored(env, &p);
 	}
-	ISRMM ? wolf_draw_minimap(env) : 0;
-	ISRF ? add_draw_torch(env) : 0;
-	SDL_UpdateWindowSurface(SWIN);
+	add_draw_bonus(env);
 	add_fps(&FPS);
+	SDL_UpdateWindowSurface(SWIN);
 }
