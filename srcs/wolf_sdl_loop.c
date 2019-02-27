@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 22:59:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/20 23:09:52 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/27 10:22:48 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,34 @@
 
 static void	add_keys_press(t_env *env, bool *exit)
 {
-	if (SETYPE == SDL_KEYDOWN)
-	{
-		(SEKEY == SDLK_ESCAPE) ? (*exit = true) : 0;
-		if (SEKEY == SDLK_w || SEKEY == SDLK_UP)
-			ISR->is_move_forward = true;
-		if (SEKEY == SDLK_a || SEKEY == SDLK_LEFT)
-			ISR->is_rotate_left = true;
-		if (SEKEY == SDLK_s || SEKEY == SDLK_DOWN)
-			ISR->is_move_backward = true;
-		if (SEKEY == SDLK_d || SEKEY == SDLK_RIGHT)
-			ISR->is_rotate_right = true;
-		(SEKEY == SDLK_LSHIFT) ? (ISRB = true) : 0;
-		(SEKEY == SDLK_f) ? (ISRF = !ISRF) : 0;
-		(SEKEY == SDLK_m) ? (ISRMM = !ISRMM) : 0;
-		(SEKEY == SDLK_t) ? (ISRT = !ISRT) : 0;
-		if (SEKEY == SDLK_c)
-			FOG.fog_color = wolf_fog_change(&(FOG.clr));
-	}
+	(SEKEY == SDLK_ESCAPE) ? (*exit = true) : 0;
+	if (SEKEY == SDLK_w || SEKEY == SDLK_UP)
+		ISR->is_move_forward = true;
+	if (SEKEY == SDLK_a || SEKEY == SDLK_LEFT)
+		ISR->is_rotate_left = true;
+	if (SEKEY == SDLK_s || SEKEY == SDLK_DOWN)
+		ISR->is_move_backward = true;
+	if (SEKEY == SDLK_d || SEKEY == SDLK_RIGHT)
+		ISR->is_rotate_right = true;
+	(SEKEY == SDLK_LSHIFT) ? (ISRB = true) : 0;
+	(SEKEY == SDLK_f) ? (ISRF = !ISRF) : 0;
+	(SEKEY == SDLK_m) ? (ISRMM = !ISRMM) : 0;
+	(SEKEY == SDLK_t) ? (ISRT = !ISRT) : 0;
+	if (SEKEY == SDLK_c)
+		FOG.fog_color = wolf_fog_change(&(FOG.clr));
 }
 
 static void	add_keys_release(t_env *env)
 {
-	if (SETYPE == SDL_KEYUP)
-	{
-		if (SEKEY == SDLK_w || SEKEY == SDLK_UP)
-			ISR->is_move_forward = false;
-		if (SEKEY == SDLK_a || SEKEY == SDLK_LEFT)
-			ISR->is_rotate_left = false;
-		if (SEKEY == SDLK_s || SEKEY == SDLK_DOWN)
-			ISR->is_move_backward = false;
-		if (SEKEY == SDLK_d || SEKEY == SDLK_RIGHT)
-			ISR->is_rotate_right = false;
-		(SEKEY == SDLK_LSHIFT) ? (ISRB = false) : 0;
-	}
+	if (SEKEY == SDLK_w || SEKEY == SDLK_UP)
+		ISR->is_move_forward = false;
+	if (SEKEY == SDLK_a || SEKEY == SDLK_LEFT)
+		ISR->is_rotate_left = false;
+	if (SEKEY == SDLK_s || SEKEY == SDLK_DOWN)
+		ISR->is_move_backward = false;
+	if (SEKEY == SDLK_d || SEKEY == SDLK_RIGHT)
+		ISR->is_rotate_right = false;
+	(SEKEY == SDLK_LSHIFT) ? (ISRB = false) : 0;
 }
 
 static void	add_mouse_moves(t_env *env)
@@ -85,8 +79,10 @@ void		wolf_sdl_events_loop(t_env *env)
 		while (SDL_PollEvent(&SEVENT) > 0)
 		{
 			(SETYPE == SDL_QUIT) ? (exit = true) : 0;
-			add_keys_press(env, &exit);
-			add_keys_release(env);
+			if (SETYPE == SDL_KEYDOWN)
+				add_keys_press(env, &exit);
+			if (SETYPE == SDL_KEYUP)
+				add_keys_release(env);
 			add_mouse_moves(env);
 		}
 		add_loop_isr(env);
