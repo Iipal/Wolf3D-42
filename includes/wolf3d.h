@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/25 14:55:46 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/27 11:03:40 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,8 +209,10 @@ Uint32			wolf_fog(float dist, Uint32 src_color, t_fog *fog);
 Uint32			wolf_fog_change(t_clrs *c);
 
 void			wolf_sdl_events_loop(t_env *env);
+void			wolf_sdl_mainmenu_loop(t_env *env);
 
 void			wolf_rendering_rc(t_env *env);
+void			wolf_rendering_mainmenu(t_env *env);
 
 void			wolf_render_textured_help(t_env *env, point *p, t_texhelper *h);
 void			wolf_render_textured(t_env *env, point *p);
