@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/27 17:32:12 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/27 20:43:08 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,6 @@
 # define TORCH_SHIFT_X  ((WIN_X + TORCH->tex[torch_frame].surf->w) / 1.6)
 # define TORCH_SHIFT_Y  (WIN_Y - TORCH->tex[torch_frame].surf->h)
 
-# define TEXT_SHIFT_X   (WIN_X - MENU->text->surf->w) / 2.0
-# define TEXT_SHIFT_Y   (WIN_Y - MENU->text->surf->h) / 2.0
-
 # define MAX_TEXTURES   8
 # define TEXWALL1       "resources/wall_textures/wall1.bmp"
 # define TEXWALL2       "resources/wall_textures/wall2.bmp"
@@ -91,7 +88,6 @@
 # define TORCH5         "resources/torch/torch5.bmp"
 # define TORCH6         "resources/torch/torch6.bmp"
 # define TORCH          env->torch
-# define MTEXT          "resources/main_menu/menu_text.bmp"
 
 # define _ISARGS(ac, av) {--ac;++av;_NOTIS(E_USAGE, !(ac != 1), exit(-1), 0);}
 
@@ -149,6 +145,5 @@
 
 # define MENU   env->menu
 # define MENUP  env->menu->bg->pixels
-# define MTEXTP env->menu->text->pixels
 
 #endif

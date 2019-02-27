@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/27 14:00:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/27 20:42:34 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,6 @@ typedef struct	s_fog
 typedef struct	s_menu
 {
 	t_tex	*bg;
-	t_tex	*text;
 }				t_menu;
 
 typedef struct	s_torch
