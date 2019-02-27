@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:19:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/25 14:27:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/27 17:34:02 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,15 @@ int			main(int argc, string argv[])
 {
 	t_env	*env;
 
-	_NOTIS(E_DIR, ft_strlen(*argv) == 8
-		&& !ft_strncmp(*argv, "./wolf3d", 8), exit(EXIT_FAILURE), 0);
+	_ISM(E_DIR, ft_strcmp(*argv, WOLF_EXE_PATH), exit(EXIT_FAILURE), 0);
 	_ISARGS(argc, argv);
 	_NOTIS(E_ALLOC, env = (t_env*)malloc(sizeof(t_env)), exit(EXIT_FAILURE), 0);
 	_NOTIS(E_ALLOC, wolf_init(env), wolf_free(&env), EXIT_FAILURE);
 	_NOTIS(E_FILER, wolf_readnsave(*argv, env), exit(EXIT_FAILURE), 0);
 	wolf_setup_rc(env);
 	wolf_usage();
-	wolf_rendering_rc(env);
-	wolf_sdl_events_loop(env);
+	wolf_rendering_mainmenu(env);
+	wolf_sdl_mainmenu_loop(env);
 	SDL_Quit();
 }
 

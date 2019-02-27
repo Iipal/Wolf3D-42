@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/27 11:03:40 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/27 14:00:27 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,10 @@
 
 # ifdef __APPLE__
 #  include "../frameworks/SDL2.framework/Headers/SDL.h"
-
-#  define WIN_X		1500
-#  define WIN_Y		750
 # endif
 
 # ifdef __linux__
 #  include <SDL2/SDL.h>
-
-#  define WIN_X		1000
-#  define WIN_Y		500
 # endif
 
 # include "wolf3d_defines.h"
@@ -150,6 +144,12 @@ typedef struct	s_fog
 	int		freq;
 }				t_fog;
 
+typedef struct	s_menu
+{
+	t_tex	*bg;
+	t_tex	*text;
+}				t_menu;
+
 typedef struct	s_torch
 {
 	t_time	time;
@@ -166,6 +166,7 @@ typedef struct	s_wolf3d_environment
 	t_mouse		*mouse;
 	t_fps		fps;
 	t_fog		fog;
+	t_menu		*menu;
 	t_torch		*torch;
 }				t_env;
 
