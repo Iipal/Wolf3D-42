@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/27 20:43:08 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/27 23:03:50 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@
 
 # define _FREE(trash, del)	if ((trash)) {del(trash); trash = NULL;}
 
-# define PI             3.141592
+# define PI 3.141592
 # define _ABS(var) ((var) < 0) ? -(var) : (var)
 # define _RAD(deg) (((deg) * PI) / 180.0)
 # define _COSR(angle) cos(_RAD(angle))
@@ -125,25 +125,14 @@
 # define SEKEY  env->sdl->event.key.keysym.sym
 
 # define MAPY   env->map->ysize
-# define MAPX   env->map->xsize
 # define MAP    env->map->tab
 # define MAPC   env->map->colors
 
-# define ISR    env->isr
-# define ISRB   env->isr->is_boost_step
 # define ISRT   env->isr->is_textured
-# define ISRMM  env->isr->is_draw_minimap
 # define ISRF   env->isr->is_render_fog
-
-# define MOUSE  env->mouse
 
 # define RC     env->rc
 
-# define FPS    env->fps
-
 # define FOG    env->fog
-
-# define MENU   env->menu
-# define MENUP  env->menu->bg->pixels
 
 #endif

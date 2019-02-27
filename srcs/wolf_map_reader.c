@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 17:18:56 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/22 20:45:53 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/27 23:01:19 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,20 +100,21 @@ static bool		add_endofmap(t_env *env, int y,
 	{
 		while (++y < map_max.y - 1 && (i = -1))
 			while (++i < map_max.x)
-				if (!MAP[y][i])
+				if (!env->map->tab[y][i])
 					return (true);
 		return (false);
 	}
 	else if (!y || y == map_max.y - 1)
 	{
 		while (i < map_max.x)
-			if (MAP[y][i] > 0)
+			if (env->map->tab[y][i] > 0)
 				++i;
 			else
 				break ;
 		return ((i != map_max.x) ? false : true);
 	}
-	else if (!MAP[y][0] || !MAP[y][map_max.x - 1])
+	else if (!env->map->tab[y][0]
+	|| !env->map->tab[y][map_max.x - 1])
 		return (false);
 	return (true);
 }
@@ -130,19 +131,19 @@ bool			wolf_readnsave(string map_name, t_env *env)
 	_IS_F(!(fd = open(map_name, O_RDONLY)) || fd < 0);
 	_IS_F(ft_gnl(fd, &gnl_temp) < 0);
 	_NOTIS_F(add_valid_info(gnl_temp, env->map, map_name));
-	while ((gnl_ret = ft_gnl(fd, &gnl_temp)) && ++i < MAPY)
+	while ((gnl_ret = ft_gnl(fd, &gnl_temp)) && ++i < env->map->ysize)
 	{
-		_ISM(E_IMAP, add_valid_inline_numbers(gnl_temp) != MAPX,
+		_ISM(E_IMAP, add_valid_inline_numbers(gnl_temp) != env->map->xsize,
 			ft_strdel(&gnl_temp), false);
-		_NOTIS(E_IMAP, add_save_map(gnl_temp, MAP[i], MAPC[i], MAPX),
+		_NOTIS(E_IMAP, add_save_map(gnl_temp, MAP[i], MAPC[i], env->map->xsize),
 			ft_strdel(&gnl_temp), false);
-		_NOTIS(E_ENDMAP, add_endofmap(env, i, (point){MAPY, MAPX}, false),
-			ft_strdel(&gnl_temp), false);
+		_NOTIS(E_ENDMAP, add_endofmap(env, i, (point){MAPY, env->map->xsize},
+			false), ft_strdel(&gnl_temp), false);
 		ft_strdel(&gnl_temp);
 	}
 	_ISM(E_IMAP, gnl_ret || gnl_temp, exit(EXIT_FAILURE), false);
-	_IS_F(++i != MAPY);
-	_NOTIS(E_NOFLOOR, add_endofmap(env, 0, (point){MAPY, MAPX}, true),
-		exit(EXIT_FAILURE), 0);
+	_IS_F(++i != env->map->ysize);
+	_NOTIS(E_NOFLOOR, add_endofmap(env, 0, (point){env->map->ysize,
+		env->map->xsize}, true), exit(EXIT_FAILURE), 0);
 	return (true);
 }

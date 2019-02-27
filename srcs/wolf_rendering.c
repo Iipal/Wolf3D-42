@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/25 15:58:36 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/27 22:27:18 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ static void		add_draw_torch(t_env *env)
 {
 	static int	old_torch_frame;
 	static int	torch_frame;
+	const float	torch_shift_x = TORCH_SHIFT_X;
+	const float torch_shift_y = TORCH_SHIFT_Y;
 	point		p;
 	point		tp;
 
@@ -43,22 +45,24 @@ static void		add_draw_torch(t_env *env)
 		old_torch_frame = FOG.freq;
 	}
 	tp.y = -1;
-	p.y = TORCH_SHIFT_Y;
-	while (++(p.y) < WIN_Y && ++(tp.y) < TORCH->tex[torch_frame].surf->h
+	p.y = torch_shift_y;
+	while (++(p.y) < WIN_Y && ++(tp.y) < env->torch->tex[torch_frame].surf->h
 		&& (tp.x = -1)
-		&& (p.x = TORCH_SHIFT_X))
-		while (++(p.x) < WIN_X && ++(tp.x) < TORCH->tex[torch_frame].surf->w)
-			if (!(ft_is_one_of_n(TORCH->tex[torch_frame].pixels[
-				tp.y * TORCH->tex[torch_frame].surf->w + tp.x],
+		&& (p.x = torch_shift_x))
+		while (++(p.x) < WIN_X
+			&& ++(tp.x) < env->torch->tex[torch_frame].surf->w)
+			if (!(ft_is_one_of_n(env->torch->tex[torch_frame].pixels[
+				tp.y * env->torch->tex[torch_frame].surf->w + tp.x],
 				2, (long)0xff000000, (long)0x00)))
-				SWINP[p.y * WIN_X + p.x] = TORCH->tex[torch_frame].pixels[
-					tp.y * TORCH->tex[torch_frame].surf->w + tp.x];
+				env->sdl->win_pixels[p.y * WIN_X + p.x] =
+					env->torch->tex[torch_frame].pixels[tp.y * env->torch->tex[
+						torch_frame].surf->w + tp.x];
 }
 
 static void		add_draw_bonus(t_env *env)
 {
-	ISRMM ? wolf_draw_minimap(env) : 0;
-	ISRF ? add_draw_torch(env) : 0;
+	env->isr->is_draw_minimap ? wolf_draw_minimap(env) : 0;
+	env->isr->is_render_fog ? add_draw_torch(env) : 0;
 }
 
 static void		add_fps(t_fps *fps)
@@ -75,25 +79,25 @@ void			wolf_rendering_rc(t_env *env)
 	point			p;
 
 	p.x = -1;
-	SDL_FillRect(SWINS, NULL, IRGB_BLACK);
-	(ISRF) ? (FOG.fog_dist = add_fog_freq(&FOG.freq, &TORCH->time)) : 0;
-	(!ISRT) ? wolf_fill_floor_if_colored_rc(env->sdl) : 0;
+	SDL_FillRect(env->sdl->win_surface, NULL, IRGB_BLACK);
+	(ISRF) ? (FOG.fog_dist = add_fog_freq(&FOG.freq, &(env->torch->time))) : 0;
+	(!env->isr->is_textured) ? wolf_fill_floor_if_colored_rc(env->sdl) : 0;
 	while (++(p.x) < WIN_X)
 	{
-		*(RC) = (t_rc){{RC->pos.y, RC->pos.x}, {RC->dir.y, RC->dir.x},
+		*(env->rc) = (t_rc){{RC->pos.y, RC->pos.x}, {RC->dir.y, RC->dir.x},
 		{RC->plane.y, RC->plane.x}, 0, {0, 0}, {0, 0}, {0, 0}, {0, 0}, 0,
 		{0, 0}, false, false, 0, 0, 0};
 		RC->xcamera = 2 * p.x / (double)WIN_X - 1;
-		RC->raydir = (fpoint){RC->dir.y + RC->plane.y * RC->xcamera,
-			RC->dir.x + RC->plane.x * RC->xcamera };
-		RC->map = (point){(int)RC->pos.y, (int)RC->pos.x};
+		env->rc->raydir = (fpoint){RC->dir.y + RC->plane.y * RC->xcamera,
+			env->rc->dir.x + env->rc->plane.x * env->rc->xcamera };
+		env->rc->map = (point){(int)env->rc->pos.y, (int)env->rc->pos.x};
 		RC->ddist = (fpoint){_ABS(1 / RC->raydir.y), _ABS(1 / RC->raydir.x)};
-		wolf_set_diststep(RC);
-		wolf_check_hit(RC, MAP);
-		wolf_dist_to_wall(RC);
+		wolf_set_diststep(env->rc);
+		wolf_check_hit(env->rc, env->map->tab);
+		wolf_dist_to_wall(env->rc);
 		ISRT ? wolf_render_textured(env, &p) : wolf_render_colored(env, &p);
 	}
 	add_draw_bonus(env);
-	add_fps(&FPS);
-	SDL_UpdateWindowSurface(SWIN);
+	add_fps(&(env->fps));
+	SDL_UpdateWindowSurface(env->sdl->win);
 }

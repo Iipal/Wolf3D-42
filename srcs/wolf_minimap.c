@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 22:33:18 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/17 08:56:08 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/27 22:18:02 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	add_draw_square(t_env *env, int size, fpoint pos, int color)
 
 static void	add_draw_ray(t_env *env, int size, fpoint p)
 {
-	while (wolf_is_tile(env->map, p) && !MAP[(int)p.y][(int)p.x])
+	while (wolf_is_tile(env->map, p) && !env->map->tab[(int)p.y][(int)p.x])
 		p = (fpoint) {p.y + RC->dir.y * MMAP_PRECISION,
 			p.x + RC->dir.x * MMAP_PRECISION};
 	add_draw_square(env, size, p, IRGB_MAP_RAY);
@@ -45,9 +45,9 @@ void		wolf_draw_minimap(t_env *env)
 	int		size;
 
 	p.y = -1;
-	size = WIN_X / 10 / MAPX;
-	while (++(p.y) < MAPY && (p.x = -1))
-		while (++(p.x) < MAPX)
+	size = WIN_X / 10 / env->map->xsize;
+	while (++(p.y) < env->map->ysize && (p.x = -1))
+		while (++(p.x) < env->map->xsize)
 			if (!wolf_is_tile(env->map, (fpoint){p.y, p.x}))
 				add_draw_square(env, size, p, IRGB_MAP_BG);
 	p = (fpoint){RC->pos.y, RC->pos.x};
