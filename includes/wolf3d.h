@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/27 20:48:10 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/28 11:19:39 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,7 @@ typedef struct	s_menu
 {
 	t_tex	*bg;
 	t_tex	*selector;
+	short	selector_shift;
 }				t_menu;
 
 typedef struct	s_torch
@@ -169,6 +170,8 @@ typedef struct	s_wolf3d_environment
 	t_menu		*menu;
 	t_torch		*torch;
 }				t_env;
+
+typedef void (*fn_selector)(t_env*);
 
 /*
 **		NORME HELP CODE START.
@@ -209,7 +212,7 @@ void			wolf_draw_minimap(t_env *env);
 Uint32			wolf_fog(float dist, Uint32 src_color, t_fog *fog);
 Uint32			wolf_fog_change(t_clrs *c);
 
-void			wolf_sdl_events_loop(t_env *env);
+void			wolf_sdl_rendering_loop(t_env *env);
 void			wolf_sdl_mainmenu_loop(t_env *env);
 
 void			wolf_rendering_rc(t_env *env);
@@ -228,6 +231,8 @@ bool			wolf_is_tile(t_map *map, fpoint pos);
 
 void			wolf_rotate(t_rc *rc, float angle);
 void			wolf_move(t_env *env, float dist);
+
+void			wolf_press_selector(t_env *env);
 
 void			wolf_free(t_env **env);
 void			wolf_free_map(t_map **map);

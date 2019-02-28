@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/27 23:03:50 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/28 10:41:50 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # ifdef __APPLE__
 #  define WIN_X 1500
 #  define WIN_Y 750
+
+#  define SELECTOR_X    250
+#  define SELECTOR_Y    3
 
 #  define MENU_BG   "resources/main_menu/1500x750_menu_bg.bmp"
 # endif
@@ -61,8 +64,10 @@
 
 # define REFRESH_TORCH_FOG_FREQ .33f
 
-# define TORCH_SHIFT_X  ((WIN_X + TORCH->tex[torch_frame].surf->w) / 1.6)
-# define TORCH_SHIFT_Y  (WIN_Y - TORCH->tex[torch_frame].surf->h)
+# define TORCH_SHIFT_X      ((WIN_X + TORCH->tex[torch_frame].surf->w) / 1.6)
+# define TORCH_SHIFT_Y      (WIN_Y - TORCH->tex[torch_frame].surf->h)
+# define SELECTOR_START_X   ((WIN_X - SELECTOR_X) / 2.0)
+# define SELECTOR_START_Y   ((WIN_Y - SELECTOR_Y) / 2.0)
 
 # define MAX_TEXTURES   8
 # define TEXWALL1       "resources/wall_textures/wall1.bmp"

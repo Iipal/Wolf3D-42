@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/25 14:26:09 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/28 11:34:54 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,21 @@ static void	add_free_torch(t_tex **tex)
 	_FREE(*tex, free);
 }
 
+static void	add_free_menu(t_menu **menu)
+{
+	if ((*menu)->bg)
+	{
+		_FREE((*menu)->bg->surf, SDL_FreeSurface);
+		_FREE((*menu)->bg, free);
+	}
+	if ((*menu)->selector)
+	{
+		_FREE((*menu)->selector->surf, SDL_FreeSurface);
+		_FREE((*menu)->selector, free);
+	}
+	_FREE(*menu, free);
+}
+
 void		wolf_free(t_env **env)
 {
 	if ((*env)->map)
@@ -69,6 +84,8 @@ void		wolf_free(t_env **env)
 		add_free_torch(&((*env)->torch->tex));
 		_FREE((*env)->torch, free);
 	}
+	if ((*env)->menu)
+		add_free_menu(&((*env)->menu));
 	_FREE((*env)->isr, free);
 	_FREE((*env)->rc, free);
 	_FREE((*env)->sdl, free);

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/27 23:00:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/28 11:33:11 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ static bool	add_init_textures(t_env *env)
 	i = -1;
 	while (++i < (MAX_TEXTURES + 2))
 	{
-		_NOTIS_F(env->textures[i].surf =
-			wolf_optimize_surf_load(textures[i], env->sdl->win_surface->format));
+		_NOTIS_F(env->textures[i].surf = wolf_optimize_surf_load(textures[i],
+			env->sdl->win_surface->format));
 		_NOTIS_F(env->textures[i].pixels = env->textures[i].surf->pixels);
 		if (i < MAX_TORCH)
 		{
@@ -59,13 +59,13 @@ static bool	add_init_textures(t_env *env)
 static bool	add_init_menu(t_env *env)
 {
 	_NOTIS_F(env->menu = (t_menu*)malloc(sizeof(t_menu)));
-	*(env->menu) = (t_menu){NULL};
+	*(env->menu) = (t_menu){NULL, NULL, 0};
 	_NOTIS_F(env->menu->bg = (t_tex*)malloc(sizeof(t_tex)));
 	_NOTIS_F(env->menu->selector = (t_tex*)malloc(sizeof(t_tex)));
 	_NOTIS_F(env->menu->bg->surf =
 		wolf_optimize_surf_load(MENU_BG, env->sdl->win_surface->format));
 	_NOTIS_F(env->menu->selector->surf =
-		SDL_CreateRGBSurface(0, 155, 3, 32, 0, 0, 0, 0));
+		SDL_CreateRGBSurface(0, SELECTOR_X, SELECTOR_Y, 32, 0, 0, 0, 0));
 	SDL_FillRect(env->menu->selector->surf, NULL, IRGB_WHITE);
 	_NOTIS_F(env->menu->selector->pixels = env->menu->selector->surf->pixels);
 	_NOTIS_F(env->menu->bg->pixels = env->menu->bg->surf->pixels);

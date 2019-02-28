@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wolf_sdl_loop.c                                    :+:      :+:    :+:   */
+/*   wolf_sdl_rendering_loop.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 22:59:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/27 23:02:51 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/28 11:26:54 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static void	add_loop_isr(t_env *env)
 			? (ROT_BOOST * -env->fps.rot) : -env->fps.rot));
 }
 
-void		wolf_sdl_events_loop(t_env *env)
+void		wolf_sdl_rendering_loop(t_env *env)
 {
 	bool	exit;
 
@@ -95,6 +95,4 @@ void		wolf_sdl_events_loop(t_env *env)
 		add_loop_isr(env);
 		wolf_rendering_rc(env);
 	}
-	SDL_DestroyWindow(env->sdl->win);
-	wolf_free(&env);
 }

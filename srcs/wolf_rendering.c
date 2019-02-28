@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/27 22:27:18 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/28 09:40:51 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,11 @@ static float	add_fog_freq(int *freq, t_time *time)
 
 static void		add_draw_torch(t_env *env)
 {
-	static int	old_torch_frame;
-	static int	torch_frame;
-	const float	torch_shift_x = TORCH_SHIFT_X;
-	const float torch_shift_y = TORCH_SHIFT_Y;
-	point		p;
-	point		tp;
+	static int		old_torch_frame;
+	static int		torch_frame;
+	const fpoint	torch_shift = {TORCH_SHIFT_Y, TORCH_SHIFT_X};
+	point			p;
+	point			tp;
 
 	if (old_torch_frame != FOG.freq)
 	{
@@ -45,10 +44,10 @@ static void		add_draw_torch(t_env *env)
 		old_torch_frame = FOG.freq;
 	}
 	tp.y = -1;
-	p.y = torch_shift_y;
+	p.y = torch_shift.y;
 	while (++(p.y) < WIN_Y && ++(tp.y) < env->torch->tex[torch_frame].surf->h
 		&& (tp.x = -1)
-		&& (p.x = torch_shift_x))
+		&& (p.x = torch_shift.x))
 		while (++(p.x) < WIN_X
 			&& ++(tp.x) < env->torch->tex[torch_frame].surf->w)
 			if (!(ft_is_one_of_n(env->torch->tex[torch_frame].pixels[

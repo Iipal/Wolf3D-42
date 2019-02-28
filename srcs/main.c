@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:19:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/27 17:34:02 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/28 11:36:16 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int			main(int argc, string argv[])
 	wolf_usage();
 	wolf_rendering_mainmenu(env);
 	wolf_sdl_mainmenu_loop(env);
-	SDL_Quit();
 }
 
 /*

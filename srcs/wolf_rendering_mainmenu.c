@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 11:01:40 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/27 22:31:35 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/28 10:48:38 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,22 @@ static void	add_draw_bg_text(t_env *env)
 
 static void	add_draw_selector(t_env *env)
 {
-	point	p;
+	const int		selector_shifts[] = {-45, 35, 115};
+	const fpoint	selector_range = {SELECTOR_START_Y +
+		selector_shifts[env->menu->selector_shift], SELECTOR_START_X};
+	point			p;
+	point			tp;
 
-	p.y = -1;
-	while (++(p.y) < env->menu->selector->surf->h && (p.x = -1))
-		while (++(p.x) < env->menu->selector->surf->w)
+	p.y = selector_range.y;
+	tp.y = 0;
+	while (++(p.y) < selector_range.y + SELECTOR_Y && (p.x = selector_range.x)
+		&& (tp.x = -1))
+	{
+		while (++(p.x) < selector_range.x + SELECTOR_X)
 			env->sdl->win_pixels[p.y * WIN_X + p.x] =
-				env->menu->selector->pixels[
-					p.y * env->menu->selector->surf->w + p.x];
+				env->menu->selector->pixels[tp.y * SELECTOR_X + ++(tp.x)];
+		++(tp.y);
+	}
 }
 
 void		wolf_rendering_mainmenu(t_env *env)
