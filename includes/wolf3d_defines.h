@@ -33,8 +33,8 @@
 #  define SELECTOR_X    100
 #  define SELECTOR_Y    2
 
-#  define SPOS_START    -30
-#  define SPOS_EXIT     70
+#  define SPOS_START    13
+#  define SPOS_EXIT     60
 
 #  define MENU_BG   "resources/main_menu/1000x500_menu_bg.bmp"
 # endif
