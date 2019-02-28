@@ -6,19 +6,25 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 11:02:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/28 11:48:47 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/28 14:14:14 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
 
-static void	add_move_selector(short *current_selector_shift, short move)
+void		wolf_exit(t_env *env)
 {
-	*current_selector_shift += move;
-	if (*current_selector_shift < 0)
-		*current_selector_shift = 0;
-	if (*current_selector_shift > 2)
-		*current_selector_shift = 2;
+	wolf_free(&env);
+	SDL_Quit();
+	exit(EXIT_SUCCESS);
+}
+
+static void	add_press_selector(t_env *env)
+{
+	if (env->menu->is_selector_start)
+		wolf_sdl_rendering_loop(env);
+	else
+		wolf_exit(env);
 }
 
 void		wolf_sdl_mainmenu_loop(t_env *env)
@@ -36,16 +42,14 @@ void		wolf_sdl_mainmenu_loop(t_env *env)
 				if (env->sdl->event.key.keysym.sym == SDLK_ESCAPE)
 					exit = true;
 				if (env->sdl->event.key.keysym.sym == SDLK_UP)
-					add_move_selector(&(env->menu->selector_shift), -1);
+					env->menu->is_selector_start = true;
 				if (env->sdl->event.key.keysym.sym == SDLK_DOWN)
-					add_move_selector(&(env->menu->selector_shift), 1);
+					env->menu->is_selector_start = false;
 				if (env->sdl->event.key.keysym.sym == 13)
-					wolf_press_selector(env);
+					add_press_selector(env);
 			}
 		}
 		wolf_rendering_mainmenu(env);
 	}
-	SDL_DestroyWindow(env->sdl->win);
-	wolf_free(&env);
-	SDL_Quit();
+	wolf_exit(env);
 }

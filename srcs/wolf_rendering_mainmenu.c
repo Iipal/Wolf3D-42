@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 11:01:40 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/28 12:05:37 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/28 14:03:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
 
-static void	add_draw_bg_text(t_env *env)
+static void	add_draw_background_and_text(t_env *env)
 {
 	point	p;
 
@@ -25,13 +25,13 @@ static void	add_draw_bg_text(t_env *env)
 
 static void	add_draw_selector(t_env *env)
 {
-	const int	selector_shifts[] = {SPOS_START, SPOS_OPTIONS, SPOS_EXIT};
+	const int	selector_shifts[] = {SPOS_EXIT, SPOS_START};
 	fpoint		selector_range;
 	point		p;
 	point		tp;
 
 	selector_range = (fpoint){SELECTOR_START_Y +
-		selector_shifts[env->menu->selector_shift], SELECTOR_START_X};
+		selector_shifts[env->menu->is_selector_start], SELECTOR_START_X};
 	p.y = selector_range.y;
 	tp.y = 0;
 	while (++(p.y) < selector_range.y + SELECTOR_Y && (p.x = selector_range.x)
@@ -46,7 +46,7 @@ static void	add_draw_selector(t_env *env)
 
 void		wolf_rendering_mainmenu(t_env *env)
 {
-	add_draw_bg_text(env);
+	add_draw_background_and_text(env);
 	add_draw_selector(env);
 	SDL_UpdateWindowSurface(env->sdl->win);
 }

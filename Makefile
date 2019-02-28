@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/02/28 11:47:01 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/02/28 14:09:27 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,8 @@ CFLAGS = -Wall -Wextra -Werror -Ofast
 
 SRC = srcs/main.c srcs/wolf_init.c srcs/wolf_map_reader.c \
 srcs/wolf_sdl_optimizing_surface_load.c srcs/wolf_sdl_mainmenu_loop.c \
-srcs/wolf_sdl_rendering_loop.c srcs/wolf_sdl_mainmenu_events.c srcs/wolf_raycaster.c \
-srcs/wolf_rendering.c srcs/wolf_rendering_mainmenu.c srcs/wolf_rendering_colored.c \
+srcs/wolf_sdl_rendering_loop.c srcs/wolf_raycaster.c srcs/wolf_rendering.c \
+srcs/wolf_rendering_mainmenu.c srcs/wolf_rendering_colored.c \
 srcs/wolf_rendering_textured.c srcs/wolf_rendering_textured_help_fck_norme.c \
 srcs/wolf_rotatenmove.c srcs/wolf_minimap.c srcs/wolf_fog.c srcs/wolf_free.c
 

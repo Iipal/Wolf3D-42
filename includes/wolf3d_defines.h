@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/28 12:12:00 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/28 14:05:52 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,11 @@
 #  define WIN_X 1500
 #  define WIN_Y 750
 
-#  define SELECTOR_X    250
+#  define SELECTOR_X    150
 #  define SELECTOR_Y    3
 
-#  define SPOS_START    -45
-#  define SPOS_OPTIONS  30
-#  define SPOS_EXIT     105
+#  define SPOS_START    20
+#  define SPOS_EXIT     90
 
 #  define MENU_BG   "resources/main_menu/1500x750_menu_bg.bmp"
 # endif
@@ -31,11 +30,10 @@
 #  define WIN_X 1000
 #  define WIN_Y 500
 
-#  define SELECTOR_X    150
+#  define SELECTOR_X    100
 #  define SELECTOR_Y    2
 
 #  define SPOS_START    -30
-#  define SPOS_OPTIONS  20
 #  define SPOS_EXIT     70
 
 #  define MENU_BG   "resources/main_menu/1000x500_menu_bg.bmp"
@@ -132,7 +130,6 @@
 # define _UIARR     typedef unsigned int*       uiarr
 # define _UINT      typedef unsigned int        uint
 # define _ULL       typedef unsigned long long  ull
-# define _FNPTR     typedef void (*fn_selector)(t_env*)
 
 # define SWIN   env->sdl->win
 # define SWINS  env->sdl->win_surface

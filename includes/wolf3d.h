@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/28 11:39:43 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/28 14:05:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ typedef struct	s_menu
 {
 	t_tex	*bg;
 	t_tex	*selector;
-	short	selector_shift;
+	bool	is_selector_start;
 }				t_menu;
 
 typedef struct	s_torch
@@ -170,8 +170,6 @@ typedef struct	s_wolf3d_environment
 	t_menu		*menu;
 	t_torch		*torch;
 }				t_env;
-
-_FNPTR;
 
 /*
 **		NORME HELP CODE START.
@@ -236,5 +234,7 @@ void			wolf_press_selector(t_env *env);
 
 void			wolf_free(t_env **env);
 void			wolf_free_map(t_map **map);
+
+void			wolf_exit(t_env *env);
 
 #endif

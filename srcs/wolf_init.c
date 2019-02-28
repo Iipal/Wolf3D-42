@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/28 11:33:11 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/28 14:04:29 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static bool	add_init_textures(t_env *env)
 static bool	add_init_menu(t_env *env)
 {
 	_NOTIS_F(env->menu = (t_menu*)malloc(sizeof(t_menu)));
-	*(env->menu) = (t_menu){NULL, NULL, 0};
+	*(env->menu) = (t_menu){NULL, NULL, true};
 	_NOTIS_F(env->menu->bg = (t_tex*)malloc(sizeof(t_tex)));
 	_NOTIS_F(env->menu->selector = (t_tex*)malloc(sizeof(t_tex)));
 	_NOTIS_F(env->menu->bg->surf =
