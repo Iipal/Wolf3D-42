@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 11:01:40 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/28 16:33:36 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/28 18:26:44 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
 
-static void	add_draw_menu(t_env *env)
+void		wolf_rendering_mainmenu(t_env *env)
 {
 	const int	selector_shifts[] = {SPOS_EXIT, SPOS_START};
 	fpoint		selector_range;
@@ -20,10 +20,9 @@ static void	add_draw_menu(t_env *env)
 	point		tp;
 
 	p.y = -1;
-	selector_range = (fpoint){
-		SELECTOR_START_Y + selector_shifts[env->menu->is_selector_start],
-		SELECTOR_START_X};
 	tp.y = 0;
+	selector_range = (fpoint){SELECTOR_START_Y +
+	 selector_shifts[env->menu->is_selector_start], SELECTOR_START_X};
 	while (++(p.y) < WIN_Y && (p.x = -1)
 		&& (tp.x = -1))
 	{
@@ -39,10 +38,5 @@ static void	add_draw_menu(t_env *env)
 		if (p.y >= selector_range.y && p.y < selector_range.y + SELECTOR_Y)
 			++(tp.y);
 	}
-}
-
-void		wolf_rendering_mainmenu(t_env *env)
-{
-	add_draw_menu(env);
 	SDL_UpdateWindowSurface(env->sdl->win);
 }
