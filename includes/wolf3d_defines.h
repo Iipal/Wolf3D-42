@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/28 11:45:47 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/28 12:05:46 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,23 @@
 #  define SELECTOR_X    250
 #  define SELECTOR_Y    3
 
+#  define SPOS_START    -45
+#  define SPOS_OPTIONS  30
+#  define SPOS_EXIT     105
+
 #  define MENU_BG   "resources/main_menu/1500x750_menu_bg.bmp"
 # endif
 
 # ifdef __linux__
 #  define WIN_X 1000
 #  define WIN_Y 500
+
+#  define SELECTOR_X    250
+#  define SELECTOR_Y    3
+
+#  define SPOS_START    -45
+#  define SPOS_OPTIONS  30
+#  define SPOS_EXIT     105
 
 #  define MENU_BG   "resources/main_menu/1000x500_menu_bg.bmp"
 # endif

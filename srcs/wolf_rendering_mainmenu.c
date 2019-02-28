@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 11:01:40 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/28 11:41:55 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/28 12:05:37 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	add_draw_bg_text(t_env *env)
 
 static void	add_draw_selector(t_env *env)
 {
-	const int	selector_shifts[] = {-45, 35, 115};
+	const int	selector_shifts[] = {SPOS_START, SPOS_OPTIONS, SPOS_EXIT};
 	fpoint		selector_range;
 	point		p;
 	point		tp;
