@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 11:01:40 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/28 10:48:38 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/28 11:41:55 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@ static void	add_draw_bg_text(t_env *env)
 
 static void	add_draw_selector(t_env *env)
 {
-	const int		selector_shifts[] = {-45, 35, 115};
-	const fpoint	selector_range = {SELECTOR_START_Y +
-		selector_shifts[env->menu->selector_shift], SELECTOR_START_X};
-	point			p;
-	point			tp;
+	const int	selector_shifts[] = {-45, 35, 115};
+	fpoint		selector_range;
+	point		p;
+	point		tp;
 
+	selector_range = (fpoint){SELECTOR_START_Y +
+		selector_shifts[env->menu->selector_shift], SELECTOR_START_X};
 	p.y = selector_range.y;
 	tp.y = 0;
 	while (++(p.y) < selector_range.y + SELECTOR_Y && (p.x = selector_range.x)

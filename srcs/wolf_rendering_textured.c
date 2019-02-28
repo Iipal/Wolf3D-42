@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 15:41:02 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/28 09:44:28 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/28 11:47:57 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,11 @@ static void	add_render_floor_init_fpos(t_env *env, t_texhelper *tx,
 			env->rc->map.x + tx->where_is_hit};
 }
 
-static void	add_is_render_fog(t_floorhelper *h, t_env *env, point *p, float fog_distance)
+static void	add_is_render_fog(t_floorhelper *h, t_env *env,
+								point *p, float fog_distance)
 {
-	const Uint32	curr_floor = (TEX[TFLOOR].pixels[h->ftex.y * XTEX + h->ftex.x] >> 1) & FCL;
-	const Uint32	curr_sky = TEX[TSKY].pixels[h->ftex.y * XTEX + h->ftex.x];
+	const Uint32	curr_floor = (TEX[TFLOOR].pixels[POS] >> 1) & FCL;
+	const Uint32	curr_sky = TEX[TSKY].pixels[POS];
 	const Uint32	fog_color = env->fog.fog_color;
 
 	if (env->isr->is_render_fog)

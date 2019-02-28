@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/28 10:41:50 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/28 11:45:47 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@
 # define _UIARR     typedef unsigned int*       uiarr
 # define _UINT      typedef unsigned int        uint
 # define _ULL       typedef unsigned long long  ull
+# define _FNPTR     typedef void (*fn_selector)(t_env*)
 
 # define SWIN   env->sdl->win
 # define SWINS  env->sdl->win_surface
@@ -139,5 +140,7 @@
 # define RC     env->rc
 
 # define FOG    env->fog
+
+# define POS    h->ftex.y * XTEX + h->ftex.x
 
 #endif

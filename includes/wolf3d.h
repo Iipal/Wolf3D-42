@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/28 11:19:39 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/28 11:39:43 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,7 +171,7 @@ typedef struct	s_wolf3d_environment
 	t_torch		*torch;
 }				t_env;
 
-typedef void (*fn_selector)(t_env*);
+_FNPTR;
 
 /*
 **		NORME HELP CODE START.
