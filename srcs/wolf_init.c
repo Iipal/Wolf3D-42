@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/25 14:53:49 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/28 14:04:29 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,21 @@
 
 void		wolf_setup_rc(t_env *env)
 {
-	*(RC) = (t_rc){{0, 0}, {0, -1}, {0.65, 0}, 0,
+	*(env->rc) = (t_rc){{0, 0}, {0, -1}, {0.65, 0}, 0,
 		{0, 0}, {0, 0}, {0, 0}, {0, 0}, 0, {0, 0},
 		false, false, 0, 0, 0};
 	while (1)
 	{
-		RC->pos = (fpoint){ft_rand(MAPY - 1), ft_rand(MAPX - 1)};
-		if (!MAP[(int)RC->pos.y][(int)RC->pos.x])
+		env->rc->pos = (fpoint){ft_rand(env->map->ysize - 1),
+			ft_rand(env->map->xsize - 1)};
+		if (!env->map->tab[(int)env->rc->pos.y][(int)env->rc->pos.x])
 			break ;
 	}
-	if (!MAP[(int)RC->pos.y][(int)(RC->pos.x + 0.05f)])
-		RC->pos.x += 0.05f;
-	if (!MAP[(int)(RC->pos.y + 0.05f)][(int)RC->pos.x])
-		RC->pos.y += 0.05f;
-	env->torch->time = (t_time){SDL_GetTicks(), 0, 0};
+	if (!env->map->tab[(int)env->rc->pos.y][(int)(env->rc->pos.x + 0.05f)])
+		env->rc->pos.x += 0.05f;
+	if (!env->map->tab[(int)(env->rc->pos.y + 0.05f)][(int)env->rc->pos.x])
+		env->rc->pos.y += 0.05f;
+	env->torch->time = (t_time){0, 0, 0};
 }
 
 static bool	add_init_textures(t_env *env)
@@ -40,41 +41,61 @@ static bool	add_init_textures(t_env *env)
 	i = -1;
 	while (++i < (MAX_TEXTURES + 2))
 	{
-		_NOTIS_F(TEX[i].surf =
-			wolf_optimize_surf_load(textures[i], SWINS->format));
-		_NOTIS_F(TEX[i].pixels = TEX[i].surf->pixels);
+		_NOTIS_F(env->textures[i].surf = wolf_optimize_surf_load(textures[i],
+			env->sdl->win_surface->format));
+		_NOTIS_F(env->textures[i].pixels = env->textures[i].surf->pixels);
 		if (i < MAX_TORCH)
 		{
-			_NOTIS_F(TORCH->tex[i].surf =
-				wolf_optimize_surf_load(torch[i], SWINS->format));
-			SDL_SetSurfaceBlendMode(TORCH->tex[i].surf, SDL_BLENDMODE_BLEND);
-			_NOTIS_F(TORCH->tex[i].pixels = TORCH->tex[i].surf->pixels);
+			_NOTIS_F(env->torch->tex[i].surf =
+				wolf_optimize_surf_load(torch[i],
+				env->sdl->win_surface->format));
+			_NOTIS_F(env->torch->tex[i].pixels =
+				env->torch->tex[i].surf->pixels);
 		}
 	}
+	return (true);
+}
+
+static bool	add_init_menu(t_env *env)
+{
+	_NOTIS_F(env->menu = (t_menu*)malloc(sizeof(t_menu)));
+	*(env->menu) = (t_menu){NULL, NULL, true};
+	_NOTIS_F(env->menu->bg = (t_tex*)malloc(sizeof(t_tex)));
+	_NOTIS_F(env->menu->selector = (t_tex*)malloc(sizeof(t_tex)));
+	_NOTIS_F(env->menu->bg->surf =
+		wolf_optimize_surf_load(MENU_BG, env->sdl->win_surface->format));
+	_NOTIS_F(env->menu->selector->surf =
+		SDL_CreateRGBSurface(0, SELECTOR_X, SELECTOR_Y, 32, 0, 0, 0, 0));
+	SDL_FillRect(env->menu->selector->surf, NULL, IRGB_WHITE);
+	_NOTIS_F(env->menu->selector->pixels = env->menu->selector->surf->pixels);
+	_NOTIS_F(env->menu->bg->pixels = env->menu->bg->surf->pixels);
 	return (true);
 }
 
 bool		wolf_init(t_env *env)
 {
 	*env = (t_env){NULL, NULL, NULL, NULL, NULL, NULL, {{0, 0, 0}, 0, 0},
-		{8, IRGB_BLACK, 4.2, 0}, NULL};
+		{8, IRGB_BLACK, 4.2, 0}, NULL, NULL};
 	_ISM(SDL_GetError(), SDL_Init(SDL_INIT_EVERYTHING) < 0, exit(1), false);
 	_NOTIS_F(env->sdl = (t_sdl*)malloc(sizeof(t_sdl)));
 	_NOTIS(SDL_GetError(),
-		SWIN = SDL_CreateWindow(WIN_TITTLE, SDL_WINDOWPOS_CENTERED,
+		env->sdl->win = SDL_CreateWindow(WOLF_TITTLE, SDL_WINDOWPOS_CENTERED,
 			SDL_WINDOWPOS_CENTERED, WIN_X, WIN_Y,
 			SDL_WINDOW_SHOWN), exit(EXIT_FAILURE), false);
 	_NOTIS(SDL_GetError(),
-		SWINS = SDL_GetWindowSurface(SWIN), exit(EXIT_FAILURE), false);
-	_NOTIS_F(SWINP = SWINS->pixels);
+		env->sdl->win_surface =
+			SDL_GetWindowSurface(SWIN), exit(1), false);
+	_NOTIS_F(env->sdl->win_pixels = env->sdl->win_surface->pixels);
 	_NOTIS_F(env->isr = (t_isr*)malloc(sizeof(t_isr)));
 	*(env->isr) = (t_isr){false, true, true, true, false, false, false, false};
 	_NOTIS_F(env->map = (t_map*)malloc(sizeof(t_map)));
 	_NOTIS_F(env->rc = (t_rc*)malloc(sizeof(t_rc)));
-	_NOTIS_F(MOUSE = (t_mouse*)malloc(sizeof(t_mouse)));
-	_NOTIS_F(TEX = (t_tex*)malloc(sizeof(t_tex) * (MAX_TEXTURES + 2)));
-	_NOTIS_F(TORCH = (t_torch*)malloc(sizeof(t_torch)));
-	_NOTIS_F(TORCH->tex = (t_tex*)malloc(sizeof(t_tex) * MAX_TORCH));
+	_NOTIS_F(env->mouse = (t_mouse*)malloc(sizeof(t_mouse)));
+	_NOTIS_F(env->textures =
+		(t_tex*)malloc(sizeof(t_tex) * (MAX_TEXTURES + 2)));
+	_NOTIS_F(env->torch = (t_torch*)malloc(sizeof(t_torch)));
+	_NOTIS_F(env->torch->tex = (t_tex*)malloc(sizeof(t_tex) * MAX_TORCH));
 	_NOTIS_F(add_init_textures(env));
+	_NOTIS_F(add_init_menu(env));
 	return (true);
 }

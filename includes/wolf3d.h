@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/25 14:55:46 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/28 14:05:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,10 @@
 
 # ifdef __APPLE__
 #  include "../frameworks/SDL2.framework/Headers/SDL.h"
-
-#  define WIN_X		1500
-#  define WIN_Y		750
 # endif
 
 # ifdef __linux__
 #  include <SDL2/SDL.h>
-
-#  define WIN_X		1000
-#  define WIN_Y		500
 # endif
 
 # include "wolf3d_defines.h"
@@ -150,6 +144,13 @@ typedef struct	s_fog
 	int		freq;
 }				t_fog;
 
+typedef struct	s_menu
+{
+	t_tex	*bg;
+	t_tex	*selector;
+	bool	is_selector_start;
+}				t_menu;
+
 typedef struct	s_torch
 {
 	t_time	time;
@@ -166,6 +167,7 @@ typedef struct	s_wolf3d_environment
 	t_mouse		*mouse;
 	t_fps		fps;
 	t_fog		fog;
+	t_menu		*menu;
 	t_torch		*torch;
 }				t_env;
 
@@ -208,9 +210,11 @@ void			wolf_draw_minimap(t_env *env);
 Uint32			wolf_fog(float dist, Uint32 src_color, t_fog *fog);
 Uint32			wolf_fog_change(t_clrs *c);
 
-void			wolf_sdl_events_loop(t_env *env);
+void			wolf_sdl_rendering_loop(t_env *env);
+void			wolf_sdl_mainmenu_loop(t_env *env);
 
 void			wolf_rendering_rc(t_env *env);
+void			wolf_rendering_mainmenu(t_env *env);
 
 void			wolf_render_textured_help(t_env *env, point *p, t_texhelper *h);
 void			wolf_render_textured(t_env *env, point *p);
@@ -226,7 +230,11 @@ bool			wolf_is_tile(t_map *map, fpoint pos);
 void			wolf_rotate(t_rc *rc, float angle);
 void			wolf_move(t_env *env, float dist);
 
+void			wolf_press_selector(t_env *env);
+
 void			wolf_free(t_env **env);
 void			wolf_free_map(t_map **map);
+
+void			wolf_exit(t_env *env);
 
 #endif

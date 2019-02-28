@@ -6,23 +6,42 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/25 15:55:02 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/28 14:05:52 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WOLF3D_DEFINES_H
 # define WOLF3D_DEFINES_H
 
-# define WIN_TITTLE     "Wolfenstein 3D"
+# ifdef __APPLE__
+#  define WIN_X 1500
+#  define WIN_Y 750
 
+#  define SELECTOR_X    150
+#  define SELECTOR_Y    3
+
+#  define SPOS_START    20
+#  define SPOS_EXIT     90
+
+#  define MENU_BG   "resources/main_menu/1500x750_menu_bg.bmp"
+# endif
+
+# ifdef __linux__
+#  define WIN_X 1000
+#  define WIN_Y 500
+
+#  define SELECTOR_X    100
+#  define SELECTOR_Y    2
+
+#  define SPOS_START    13
+#  define SPOS_EXIT     60
+
+#  define MENU_BG   "resources/main_menu/1000x500_menu_bg.bmp"
+# endif
+
+# define WOLF_TITTLE    "Wolfenstein 3D"
+# define WOLF_EXE_PATH  "./wolf3d"
 # define WOLF_FILE_EXT	".w3d"
-
-# define MAX_FOG_DIST   4.2
-
-# define TORCH_SHIFT_X  ((WIN_X + TORCH->tex[torch_frame].surf->w) / 1.6)
-# define TORCH_SHIFT_Y  (WIN_Y - TORCH->tex[torch_frame].surf->h)
-
-# define REFRESH_TORCH_FOG_FREQ .33f
 
 # define IRGB_BLACK     0x00
 # define IRGB_MAP_RAY   0x00B37A
@@ -32,6 +51,7 @@
 # define IRGB_FLOOR     0x242424
 # define IRGB_COLORS    8
 # define IRGB_WHITE     0xFFFFFF
+# define IARGB_WHITE    0xFFFFFFFF
 # define IRGB_RED       0xF21856
 # define IRGB_ORANGE    0xFFB833
 # define IRGB_LIME      0x7FFF00
@@ -49,17 +69,26 @@
 # define ROT_MOUSE_INC  0.002f
 # define MMAP_PRECISION 0.05f
 
+# define MAX_FOG_DIST   4.2
+
+# define REFRESH_TORCH_FOG_FREQ .33f
+
+# define TORCH_SHIFT_X      ((WIN_X + TORCH->tex[torch_frame].surf->w) / 1.6)
+# define TORCH_SHIFT_Y      (WIN_Y - TORCH->tex[torch_frame].surf->h)
+# define SELECTOR_START_X   ((WIN_X - SELECTOR_X) / 2.0)
+# define SELECTOR_START_Y   ((WIN_Y - SELECTOR_Y) / 2.0)
+
 # define MAX_TEXTURES   8
-# define TEXWALL1       "resources/wall1.bmp"
-# define TEXWALL2       "resources/wall2.bmp"
-# define TEXWALL3       "resources/wall3.bmp"
-# define TEXWALL4       "resources/wall4.bmp"
-# define TEXWALL5       "resources/wall5.bmp"
-# define TEXWALL6       "resources/wall6.bmp"
-# define TEXWALL7       "resources/wall7.bmp"
-# define TEXWALL8       "resources/wall8.bmp"
-# define TEXFLOOR       "resources/floor.bmp"
-# define TEXSKY         "resources/sky.bmp"
+# define TEXWALL1       "resources/wall_textures/wall1.bmp"
+# define TEXWALL2       "resources/wall_textures/wall2.bmp"
+# define TEXWALL3       "resources/wall_textures/wall3.bmp"
+# define TEXWALL4       "resources/wall_textures/wall4.bmp"
+# define TEXWALL5       "resources/wall_textures/wall5.bmp"
+# define TEXWALL6       "resources/wall_textures/wall6.bmp"
+# define TEXWALL7       "resources/wall_textures/wall7.bmp"
+# define TEXWALL8       "resources/wall_textures/wall8.bmp"
+# define TEXFLOOR       "resources/floor_and_sky/floor.bmp"
+# define TEXSKY         "resources/floor_and_sky/sky.bmp"
 # define TFLOOR         MAX_TEXTURES
 # define TSKY           TFLOOR + 1
 # define YTEX           64
@@ -88,7 +117,7 @@
 
 # define _FREE(trash, del)	if ((trash)) {del(trash); trash = NULL;}
 
-# define PI             3.141592
+# define PI 3.141592
 # define _ABS(var) ((var) < 0) ? -(var) : (var)
 # define _RAD(deg) (((deg) * PI) / 180.0)
 # define _COSR(angle) cos(_RAD(angle))
@@ -110,22 +139,16 @@
 # define SEKEY  env->sdl->event.key.keysym.sym
 
 # define MAPY   env->map->ysize
-# define MAPX   env->map->xsize
 # define MAP    env->map->tab
 # define MAPC   env->map->colors
 
-# define ISR    env->isr
-# define ISRB   env->isr->is_boost_step
 # define ISRT   env->isr->is_textured
-# define ISRMM  env->isr->is_draw_minimap
 # define ISRF   env->isr->is_render_fog
-
-# define MOUSE  env->mouse
 
 # define RC     env->rc
 
-# define FPS    env->fps
-
 # define FOG    env->fog
+
+# define POS    h->ftex.y * XTEX + h->ftex.x
 
 #endif
