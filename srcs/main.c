@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:19:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/28 14:08:05 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/02/28 15:27:24 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,5 @@ int			main(int argc, string argv[])
 **	After that we can save our map from file to `env->map`.
 **	Then we can set-up default settings for RayCastring structure
 **		& randomize position for bonus.
-**	If all was great we can print usage & start RC rendering proccess.
-**	And start main 'endless' loop where we will hook events & re-drawing all.
+**	If all was great we can print usage & show main menu on window to start.
 */
