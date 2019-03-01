@@ -49,7 +49,7 @@ DEL = rm -rf
 all: $(NAME)
 
 $(OBJ): %.o: %.c
-	@$(ECHO) -n '$@: '
+	@$(ECHO) -n ' $@: '
 	@$(CC) -c $(CFLAGS) $(SDLINCLUDE) $< -o $@
 	@$(ECHO) "[$(GREEN)✓$(WHITE)]"
 

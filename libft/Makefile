@@ -61,7 +61,7 @@ $(NAME): $(OBJS)
 	@$(ECHO) "$(INVERT)[$(GREEN)✓$(WHITE)$(INVERT)]$(WHITE)"
 
 $(OBJS): %.o: %.c
-	@$(ECHO) -n '$@: '
+	@$(ECHO) -n ' $@: '
 	@$(CC) -c $(CFLAGS) $< -o $@
 	@$(ECHO) "[$(GREEN)✓$(WHITE)]"
 clean:
