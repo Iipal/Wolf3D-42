@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/28 14:05:58 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/02 20:43:04 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 # include "../libft/includes/libft.h"
 # include <fcntl.h>
 # include <math.h>
-# include <mlx.h>
 
 typedef enum	e_colors
 {
