@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/03 22:13:26 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/03 22:24:50 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,22 +77,21 @@ static bool	add_init_audio(t_env *env)
 {
 	_ISM(Mix_GetError(),
 		Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0, exit(1), false);
-	_NOTIS_F(env->menu_sfx = (t_menu_sfx*)malloc(sizeof(t_menu_sfx)));
-	*(env->menu_sfx) = (t_menu_sfx){NULL, NULL, NULL, NULL, NULL};
+	_NOTIS_F(env->sfx = (t_sfx*)malloc(sizeof(t_sfx)));
+	*(env->sfx) = (t_sfx){NULL, NULL, NULL, NULL, NULL};
 	_NOTIS(Mix_GetError(),
-		env->menu_sfx->ambient_bg = Mix_LoadMUS(AMBIENT_BG), exit(1), false);
+		env->sfx->ambient_bg = Mix_LoadMUS(AMBIENT_BG), exit(1), false);
 	_NOTIS(Mix_GetError(),
-		env->menu_sfx->start = Mix_LoadWAV(MSTART), exit(1), false);
+		env->sfx->start = Mix_LoadWAV(MSTART), exit(1), false);
+	_NOTIS(Mix_GetError(), env->sfx->exit = Mix_LoadWAV(MEXIT), exit(1), false);
 	_NOTIS(Mix_GetError(),
-		env->menu_sfx->exit = Mix_LoadWAV(MEXIT), exit(1), false);
+		env->sfx->selector = Mix_LoadWAV(MSELECTOR), exit(1), false);
 	_NOTIS(Mix_GetError(),
-		env->menu_sfx->selector = Mix_LoadWAV(MSELECTOR), exit(1), false);
-	_NOTIS(Mix_GetError(),
-		env->menu_sfx->selector_err = Mix_LoadWAV(MSERROR), exit(1), false);
-	Mix_PlayMusic(env->menu_sfx->ambient_bg, -1);
+		env->sfx->selector_err = Mix_LoadWAV(MSERROR), exit(1), false);
+	Mix_PlayMusic(env->sfx->ambient_bg, -1);
 	Mix_FadeOutMusic(0);
 	Mix_VolumeMusic(60);
-	Mix_PlayChannel(-1, env->menu_sfx->start, 0);
+	Mix_PlayChannel(-1, env->sfx->start, 0);
 	return (true);
 }
 
@@ -107,8 +106,7 @@ bool		wolf_init(t_env *env)
 			SDL_WINDOWPOS_CENTERED, WIN_X, WIN_Y,
 			SDL_WINDOW_SHOWN), exit(EXIT_FAILURE), false);
 	_NOTIS(SDL_GetError(),
-		env->sdl->win_surface =
-			SDL_GetWindowSurface(SWIN), exit(1), false);
+		env->sdl->win_surface = SDL_GetWindowSurface(SWIN), exit(1), false);
 	_NOTIS_F(env->sdl->win_pixels = env->sdl->win_surface->pixels);
 	_NOTIS_F(env->isr = (t_isr*)malloc(sizeof(t_isr)));
 	*(env->isr) = (t_isr){false, true, true, true, false, false, false, false};

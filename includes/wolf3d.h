@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/03 21:44:57 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/03 22:21:52 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,14 +157,14 @@ typedef struct	s_torch
 	t_tex	*tex;
 }				t_torch;
 
-typedef struct	s_menu_sfx
+typedef struct	s_sfx
 {
 	Mix_Chunk	*start;
 	Mix_Chunk	*selector;
 	Mix_Chunk	*selector_err;
 	Mix_Chunk	*exit;
 	Mix_Music	*ambient_bg;
-}				t_menu_sfx;
+}				t_sfx;
 
 typedef struct	s_wolf3d_environment
 {
@@ -178,7 +178,7 @@ typedef struct	s_wolf3d_environment
 	t_fog		fog;
 	t_menu		*menu;
 	t_torch		*torch;
-	t_menu_sfx	*menu_sfx;
+	t_sfx		*sfx;
 }				t_env;
 
 /*
