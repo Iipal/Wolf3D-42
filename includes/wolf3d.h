@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/02 20:43:04 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/03 17:57:03 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 # ifdef __linux__
 #  include <SDL2/SDL.h>
+#  include <SDL2/SDL_mixer.h>
 # endif
 
 # include "wolf3d_defines.h"
@@ -233,7 +234,5 @@ void			wolf_press_selector(t_env *env);
 
 void			wolf_free(t_env **env);
 void			wolf_free_map(t_map **map);
-
-void			wolf_exit(t_env *env);
 
 #endif

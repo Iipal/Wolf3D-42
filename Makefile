@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/02/28 14:09:27 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/03/03 17:54:45 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = wolf3d
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
 	ECHO = echo -e
-	SDLFRAMEWORK = -lSDL2 -lm
+	SDLFRAMEWORK = -lSDL2 -lSDL2_mixer -lm
 endif
 ifeq ($(UNAME_S),Darwin)
 	ECHO = echo

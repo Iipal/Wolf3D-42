@@ -6,25 +6,18 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 11:02:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/28 14:14:14 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/03 17:58:42 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
 
-void		wolf_exit(t_env *env)
-{
-	wolf_free(&env);
-	SDL_Quit();
-	exit(EXIT_SUCCESS);
-}
-
-static void	add_press_selector(t_env *env)
+static void	add_press_selector(t_env *env, bool *exit)
 {
 	if (env->menu->is_selector_start)
 		wolf_sdl_rendering_loop(env);
 	else
-		wolf_exit(env);
+		*exit = true;
 }
 
 void		wolf_sdl_mainmenu_loop(t_env *env)
@@ -46,10 +39,10 @@ void		wolf_sdl_mainmenu_loop(t_env *env)
 				if (env->sdl->event.key.keysym.sym == SDLK_DOWN)
 					env->menu->is_selector_start = false;
 				if (env->sdl->event.key.keysym.sym == 13)
-					add_press_selector(env);
+					add_press_selector(env, &exit);
 			}
 		}
 		wolf_rendering_mainmenu(env);
 	}
-	wolf_exit(env);
+	wolf_free(&env);
 }

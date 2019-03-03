@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/28 14:04:29 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/03 17:55:16 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ bool		wolf_init(t_env *env)
 	*env = (t_env){NULL, NULL, NULL, NULL, NULL, NULL, {{0, 0, 0}, 0, 0},
 		{8, IRGB_BLACK, 4.2, 0}, NULL, NULL};
 	_ISM(SDL_GetError(), SDL_Init(SDL_INIT_EVERYTHING) < 0, exit(1), false);
+	_ISM(Mix_GetError(), Mix_Init(MIX_INIT_MOD) < 0, exit(1), false);
 	_NOTIS_F(env->sdl = (t_sdl*)malloc(sizeof(t_sdl)));
 	_NOTIS(SDL_GetError(),
 		env->sdl->win = SDL_CreateWindow(WOLF_TITTLE, SDL_WINDOWPOS_CENTERED,
