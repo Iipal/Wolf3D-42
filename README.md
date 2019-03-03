@@ -9,13 +9,13 @@
 __*Ubuntu:*__
 
 ```bash
-sudo apt-get install libsdl2-dev
+sudo apt-get install libsdl2-dev libsdl2-mixer-dev
 ```
 
 __*Fedora:*__
 
 ```bash
-sudo yum install SDL2-devel
+sudo dnf install SDL2-devel SDL2_mixer-devel
 ```
 
 __*MacOS:*__
