@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 22:59:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/28 11:26:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/03 22:10:07 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,5 @@ void		wolf_sdl_rendering_loop(t_env *env)
 		add_loop_isr(env);
 		wolf_rendering_rc(env);
 	}
+	Mix_FadeOutMusic(MUSIC_FADE_OUT);
 }

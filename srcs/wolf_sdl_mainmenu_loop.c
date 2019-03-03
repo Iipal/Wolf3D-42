@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 11:02:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/03 17:58:42 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/03 22:05:04 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,32 @@
 static void	add_press_selector(t_env *env, bool *exit)
 {
 	if (env->menu->is_selector_start)
+	{
+		Mix_FadeInMusic(env->menu_sfx->ambient_bg, -1, MUSIC_FADE_IN);
 		wolf_sdl_rendering_loop(env);
+	}
 	else
 		*exit = true;
+}
+
+static void	add_press_keys(t_env *env)
+{
+	if (env->sdl->event.key.keysym.sym == SDLK_DOWN
+	&& !env->menu->is_selector_start)
+		Mix_PlayChannel(-1, env->menu_sfx->selector_err, 0);
+	else if (env->sdl->event.key.keysym.sym == SDLK_UP
+	&& env->menu->is_selector_start)
+		Mix_PlayChannel(-1, env->menu_sfx->selector_err, 0);
+	else if (env->sdl->event.key.keysym.sym == SDLK_UP)
+	{
+		env->menu->is_selector_start = true;
+		Mix_PlayChannel(-1, env->menu_sfx->selector, 0);
+	}
+	else if (env->sdl->event.key.keysym.sym == SDLK_DOWN)
+	{
+		env->menu->is_selector_start = false;
+		Mix_PlayChannel(-1, env->menu_sfx->selector, 0);
+	}
 }
 
 void		wolf_sdl_mainmenu_loop(t_env *env)
@@ -34,15 +57,15 @@ void		wolf_sdl_mainmenu_loop(t_env *env)
 			{
 				if (env->sdl->event.key.keysym.sym == SDLK_ESCAPE)
 					exit = true;
-				if (env->sdl->event.key.keysym.sym == SDLK_UP)
-					env->menu->is_selector_start = true;
-				if (env->sdl->event.key.keysym.sym == SDLK_DOWN)
-					env->menu->is_selector_start = false;
-				if (env->sdl->event.key.keysym.sym == 13)
+				else
+					add_press_keys(env);
+				if (env->sdl->event.key.keysym.sym == SDLK_RETURN)
 					add_press_selector(env, &exit);
 			}
 		}
 		wolf_rendering_mainmenu(env);
 	}
+	Mix_PlayChannel(-1, env->menu_sfx->exit, 0);
+	SDL_Delay(2200);
 	wolf_free(&env);
 }
