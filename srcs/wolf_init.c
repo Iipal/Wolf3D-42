@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/03 22:24:50 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/04 16:11:27 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ static bool	add_init_audio(t_env *env)
 	_NOTIS(Mix_GetError(),
 		env->sfx->selector_err = Mix_LoadWAV(MSERROR), exit(1), false);
 	Mix_PlayMusic(env->sfx->ambient_bg, -1);
-	Mix_FadeOutMusic(0);
+	Mix_PauseMusic();
 	Mix_VolumeMusic(60);
 	Mix_PlayChannel(-1, env->sfx->start, 0);
 	return (true);

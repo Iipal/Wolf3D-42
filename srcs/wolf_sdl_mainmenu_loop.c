@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 11:02:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/03 22:26:10 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/04 16:12:06 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	add_press_selector(t_env *env, bool *exit)
 {
 	if (env->menu->is_selector_start)
 	{
-		Mix_FadeInMusic(env->sfx->ambient_bg, -1, MUSIC_FADE_IN);
+		Mix_ResumeMusic();
 		wolf_sdl_rendering_loop(env);
 	}
 	else
