@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/06 22:14:50 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/06 23:44:43 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ typedef struct	s_sdl
 
 typedef struct	s_isrender
 {
+	bool	is_play_steps;
 	bool	is_play_music;
 	bool	is_boost_step;
 	bool	is_textured;
@@ -165,6 +166,9 @@ typedef struct	s_sfx
 	Mix_Chunk	*selector_err;
 	Mix_Chunk	*exit;
 	Mix_Music	*ambient_bg;
+	Mix_Chunk	*lstep;
+	Mix_Chunk	*rstep;
+	t_time		step_sfx_timeout;
 	short		bg_volume;
 }				t_sfx;
 
@@ -241,6 +245,8 @@ bool			wolf_is_tile(t_map *map, fpoint pos);
 
 void			wolf_rotate(t_rc *rc, float angle);
 void			wolf_move(t_env *env, float dist);
+
+void			wolf_playing_steps(t_sfx *sfx, bool is_boost);
 
 void			wolf_press_selector(t_env *env);
 

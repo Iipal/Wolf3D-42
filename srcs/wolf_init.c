@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/06 22:16:10 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/06 23:44:04 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ static bool	add_init_audio(t_env *env)
 	_ISM(Mix_GetError(),
 		Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0, exit(1), false);
 	_NOTIS_F(env->sfx = (t_sfx*)malloc(sizeof(t_sfx)));
-	*(env->sfx) = (t_sfx){NULL, NULL, NULL, NULL, NULL, BG_VOL_DEF};
+	*(env->sfx) = (t_sfx){NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+		{0, 0, 0}, BG_VOL_DEF};
 	_NOTIS(Mix_GetError(),
 		env->sfx->ambient_bg = Mix_LoadMUS(AMBIENT_BG), exit(1), false);
 	_NOTIS(Mix_GetError(),
@@ -88,6 +89,12 @@ static bool	add_init_audio(t_env *env)
 		env->sfx->selector = Mix_LoadWAV(MSELECTOR), exit(1), false);
 	_NOTIS(Mix_GetError(),
 		env->sfx->selector_err = Mix_LoadWAV(MSERROR), exit(1), false);
+	_NOTIS(Mix_GetError(),
+		env->sfx->lstep = Mix_LoadWAV(GAME_LSTEP), exit(1), false);
+	_NOTIS(Mix_GetError(),
+		env->sfx->rstep = Mix_LoadWAV(GAME_RSTEP), exit(1), false);
+	Mix_VolumeChunk(env->sfx->lstep, 50);
+	Mix_VolumeChunk(env->sfx->rstep, 50);
 	Mix_PlayMusic(env->sfx->ambient_bg, -1);
 	Mix_PauseMusic();
 	Mix_VolumeMusic(env->sfx->bg_volume);
@@ -109,7 +116,7 @@ bool		wolf_init(t_env *env)
 		env->sdl->win_surface = SDL_GetWindowSurface(SWIN), exit(1), false);
 	_NOTIS_F(env->sdl->win_pixels = env->sdl->win_surface->pixels);
 	_NOTIS_F(env->isr = (t_isr*)malloc(sizeof(t_isr)));
-	*(env->isr) = (t_isr){true, false, true, true, true, false, false, 0, 0};
+	*(env->isr) = (t_isr){1, 1, false, true, true, true, false, false, 0, 0};
 	_NOTIS_F(env->map = (t_map*)malloc(sizeof(t_map)));
 	_NOTIS_F(env->rc = (t_rc*)malloc(sizeof(t_rc)));
 	_NOTIS_F(env->mouse = (t_mouse*)malloc(sizeof(t_mouse)));

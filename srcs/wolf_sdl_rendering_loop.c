@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 22:59:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/06 22:25:20 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/06 23:44:27 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ static void	add_keys_press(t_env *env, bool *exit)
 		(env->sfx->bg_volume - BG_VOL_INC <= BG_VOL_MIN)
 			? (env->sfx->bg_volume = BG_VOL_MIN)
 			: (env->sfx->bg_volume -= BG_VOL_INC);
+	if (SEKEY == SDLK_z)
+		env->isr->is_play_steps = !env->isr->is_play_steps;
 }
 
 static void	add_keys_release(t_env *env)
@@ -72,6 +74,9 @@ static void	add_mouse_moves(t_env *env)
 
 static void	add_loop_isr(t_env *env)
 {
+	if ((env->isr->is_move_backward || env->isr->is_move_forward)
+		&& env->isr->is_play_steps)
+		wolf_playing_steps(env->sfx, env->isr->is_boost_step);
 	if (env->isr->is_move_forward)
 		wolf_move(env, env->isr->is_boost_step
 			? (MOVE_BOOST * env->fps.move) : env->fps.move);
