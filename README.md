@@ -51,6 +51,7 @@ When you have already installed SDL2 library you can use this simple rules:
 - `[F]`: Toggle Fog drawing.
 - `[C]`: Switch Fog colors.
 - `[LShift]`: Step & rotate boost.
+- `[Z]` - Stop\\Play steps sounds.
 - `[Q]`: Stop\Play background in-game music.
 - `[+ | -]`: Inc\Decrease background volume.
 - `[ESC]`: Close Wolf3D.

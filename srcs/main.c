@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:19:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/06 22:28:00 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/06 23:50:35 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	wolf_usage(void)
 	_MSGN("  [F] - Toggle Fog drawing.");
 	_MSGN("  [C] - Switch Fog colors.");
 	_MSGN("  [LShift] - Step & rotate boost.");
+	_MSGN("  [Z] - Stop\\Play steps sounds.");
 	_MSGN("  [Q] - Stop\\Play background in-game music.");
 	_MSGN("  [+ | -] - Inc\\Decrease background volume.");
 	_MSGN("  [ESC] - exit.");
