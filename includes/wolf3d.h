@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/03 22:21:52 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/06 22:14:50 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ typedef struct	s_sdl
 
 typedef struct	s_isrender
 {
+	bool	is_play_music;
 	bool	is_boost_step;
 	bool	is_textured;
 	bool	is_draw_minimap;
@@ -164,6 +165,7 @@ typedef struct	s_sfx
 	Mix_Chunk	*selector_err;
 	Mix_Chunk	*exit;
 	Mix_Music	*ambient_bg;
+	short		bg_volume;
 }				t_sfx;
 
 typedef struct	s_wolf3d_environment

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/03 22:04:58 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/06 22:15:48 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,10 @@
 # define MSERROR        "resources/music/selector_err.wav"
 # define MEXIT          "resources/music/exit.wav"
 # define AMBIENT_BG     "resources/music/ambient_game_bg.mp3"
-# define MUSIC_FADE_IN  500
-# define MUSIC_FADE_OUT MUSIC_FADE_IN / 2
+# define BG_VOL_DEF     60
+# define BG_VOL_MAX     100
+# define BG_VOL_MIN     10
+# define BG_VOL_INC     5
 
 # define _ISARGS(ac, av) {--ac;++av;_NOTIS(E_USAGE, !(ac != 1), exit(-1), 0);}
 

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 22:59:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/04 16:11:50 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/06 22:25:20 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,20 @@ static void	add_keys_press(t_env *env, bool *exit)
 		env->isr->is_render_fog = !env->isr->is_render_fog;
 	if (SEKEY == SDLK_m)
 		env->isr->is_draw_minimap = !env->isr->is_draw_minimap;
+	if (SEKEY == SDLK_q)
+		env->isr->is_play_music = !env->isr->is_play_music;
 	(SEKEY == SDLK_LSHIFT) ? (env->isr->is_boost_step = true) : 0;
 	(SEKEY == SDLK_t) ? (env->isr->is_textured = !env->isr->is_textured) : 0;
 	if (SEKEY == SDLK_c)
 		env->fog.fog_color = wolf_fog_change(&(env->fog.clr));
+	if (SEKEY == SDLK_EQUALS)
+		(env->sfx->bg_volume + BG_VOL_INC >= BG_VOL_MAX)
+			? (env->sfx->bg_volume = BG_VOL_MAX)
+			: (env->sfx->bg_volume += BG_VOL_INC);
+	if (SEKEY == SDLK_MINUS)
+		(env->sfx->bg_volume - BG_VOL_INC <= BG_VOL_MIN)
+			? (env->sfx->bg_volume = BG_VOL_MIN)
+			: (env->sfx->bg_volume -= BG_VOL_INC);
 }
 
 static void	add_keys_release(t_env *env)
@@ -74,6 +84,8 @@ static void	add_loop_isr(t_env *env)
 	if (env->isr->is_rotate_right)
 		wolf_rotate(env->rc, _RAD(env->isr->is_boost_step
 			? (ROT_BOOST * -env->fps.rot) : -env->fps.rot));
+	Mix_VolumeMusic(env->sfx->bg_volume);
+	(env->isr->is_play_music) ? Mix_ResumeMusic() : Mix_PauseMusic();
 }
 
 void		wolf_sdl_rendering_loop(t_env *env)
@@ -95,5 +107,5 @@ void		wolf_sdl_rendering_loop(t_env *env)
 		add_loop_isr(env);
 		wolf_rendering_rc(env);
 	}
-	Mix_PauseMusic();
+	(env->isr->is_play_music) ? Mix_PauseMusic() : 0;
 }
