@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/03 22:23:02 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/07 00:13:43 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ static void	add_free_menu_sfx(t_sfx **sfx)
 	_FREE((*sfx)->selector, Mix_FreeChunk);
 	_FREE((*sfx)->selector_err, Mix_FreeChunk);
 	_FREE((*sfx)->exit, Mix_FreeChunk);
+	_FREE((*sfx)->lstep, Mix_FreeChunk);
+	_FREE((*sfx)->rstep, Mix_FreeChunk);
 	Mix_HaltMusic();
 	_FREE((*sfx)->ambient_bg, Mix_FreeMusic);
 	_FREE((*sfx), free);
