@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/07 12:26:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/07 13:11:29 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,6 @@
 # define MSTART         "resources/music/start.wav"
 # define MSELECTOR      "resources/music/selector.wav"
 # define MSERROR        "resources/music/selector_err.wav"
-# define MEXIT          "resources/music/exit.wav"
 # define AMBIENT_BG     "resources/music/ambient_game_bg.mp3"
 # define GAME_LSTEP     "resources/music/lstep.wav"
 # define GAME_RSTEP     "resources/music/rstep.wav"

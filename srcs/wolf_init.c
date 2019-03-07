@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/07 12:26:33 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/07 13:11:46 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,11 @@ static bool	add_init_audio(t_env *env)
 	_ISM(Mix_GetError(),
 		Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0, exit(1), false);
 	_NOTIS_F(env->sfx = (t_sfx*)malloc(sizeof(t_sfx)));
-	*(env->sfx) = (t_sfx){NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-		{0, 0, 0}, BG_VOL_DEF};
+	*(env->sfx) = (t_sfx){NULL, NULL, NULL, NULL, NULL, NULL, {0, 0, 0}, BG_VOL_DEF};
 	_NOTIS(Mix_GetError(),
 		env->sfx->ambient_bg = Mix_LoadMUS(AMBIENT_BG), exit(1), false);
 	_NOTIS(Mix_GetError(),
 		env->sfx->start = Mix_LoadWAV(MSTART), exit(1), false);
-	_NOTIS(Mix_GetError(), env->sfx->exit = Mix_LoadWAV(MEXIT), exit(1), false);
 	_NOTIS(Mix_GetError(),
 		env->sfx->selector = Mix_LoadWAV(MSELECTOR), exit(1), false);
 	_NOTIS(Mix_GetError(),

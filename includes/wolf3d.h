@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/07 13:08:18 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/07 13:11:21 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,6 @@ typedef struct	s_sfx
 	Mix_Chunk	*start;
 	Mix_Chunk	*selector;
 	Mix_Chunk	*selector_err;
-	Mix_Chunk	*exit;
 	Mix_Music	*ambient_bg;
 	Mix_Chunk	*lstep;
 	Mix_Chunk	*rstep;
