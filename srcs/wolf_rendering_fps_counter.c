@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 14:42:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/07 17:00:35 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/07 17:27:49 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,17 @@ static void	add_render_fps(SDL_Surface *text, iarr screen, bool pos)
 void	wolf_rendering_fps_counter(t_env *env)
 {
 	string			data[2];
+	string			temp[2];
 	SDL_Surface		*text;
 	int				i;
 
 	i = -1;
 	data[0] = ft_itoa(1.0 / env->fps.time.res_time);
-	data[0] = ft_strcat(data[0], " fps");
+	temp[0] = data[0];
+	data[0] = ft_strjoin(data[0], " fps");
 	data[1] = ft_itoa(env->fps.time.res_time * 1000);
-	data[1] = ft_strcat(data[1], " ms");
+	temp[1] = data[1];
+	data[1] = ft_strjoin(data[1], " ms");
 	while (++i < 2)
 	{
 		text = wolf_optimize_font_load(data[i], (SDL_Color){127, 255, 0, 0},
@@ -49,6 +52,8 @@ void	wolf_rendering_fps_counter(t_env *env)
 		add_render_fps(text, env->sdl->win_pixels, i);
 		SDL_FreeSurface(text);
 	}
+	ft_strdel(&(temp[0]));
 	ft_strdel(&(data[0]));
+	ft_strdel(&(temp[1]));
 	ft_strdel(&(data[1]));
 }
