@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/03/06 23:19:41 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/03/07 10:59:22 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ endif
 ifeq ($(UNAME_S),Darwin)
 	ECHO = echo
 	SDLINCLUDE = -F ./frameworks
-	SDLFRAMEWORK = -F./frameworks -rpath ./frameworks -framework SDL2
+	SDLFRAMEWORK = -F./frameworks -rpath ./frameworks -framework SDL2 -framework SDL2_mixer
 endif
 
 CC = gcc -march=native

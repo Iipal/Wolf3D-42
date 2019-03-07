@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/06 23:44:43 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/07 10:59:08 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # ifdef __APPLE__
 #  include "../frameworks/SDL2.framework/Headers/SDL.h"
+#  include "../frameworks/SDL2_mixer.framework/Headers/SDL_mixer.h"
 # endif
 
 # ifdef __linux__
