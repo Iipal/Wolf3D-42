@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/07 13:11:29 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/07 14:31:01 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@
 # define BG_VOL_INC     5
 # define REFRESH_STEP_SFX_FREQ  .33f
 # define REFRESH_RUN_SFX_FREQ   .22f
+# define FPS_FONT       "resources/04B_03__.TTF"
 
 # define _ISARGS(ac, av) {--ac;++av;_NOTIS(E_USAGE, !(ac != 1), exit(-1), 0);}
 

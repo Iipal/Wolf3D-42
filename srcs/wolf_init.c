@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/07 13:11:46 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/07 16:11:30 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static bool	add_init_textures(t_env *env)
 	return (true);
 }
 
-static bool	add_init_menu(t_env *env)
+static bool	add_init_menu_and_text(t_env *env)
 {
 	_NOTIS_F(env->menu = (t_menu*)malloc(sizeof(t_menu)));
 	*(env->menu) = (t_menu){NULL, NULL, true};
@@ -70,6 +70,8 @@ static bool	add_init_menu(t_env *env)
 	SDL_FillRect(env->menu->selector->surf, NULL, IRGB_WHITE);
 	_NOTIS_F(env->menu->selector->pixels = env->menu->selector->surf->pixels);
 	_NOTIS_F(env->menu->bg->pixels = env->menu->bg->surf->pixels);
+	_NOTIS(TTF_GetError(),
+		env->sdl->font = TTF_OpenFont(FPS_FONT, 20), exit(EXIT_FAILURE), false);
 	return (true);
 }
 
@@ -104,6 +106,7 @@ bool		wolf_init(t_env *env)
 	*env = (t_env){NULL, NULL, NULL, NULL, NULL, NULL, {{0, 0, 0}, 0, 0},
 		{8, IRGB_BLACK, 4.2, 0}, NULL, NULL, NULL};
 	_ISM(SDL_GetError(), SDL_Init(SDL_INIT_EVERYTHING) < 0, exit(1), false);
+	_ISM(TTF_GetError(), TTF_Init() < 0, exit(1), false);
 	_NOTIS_F(env->sdl = (t_sdl*)malloc(sizeof(t_sdl)));
 	_NOTIS(SDL_GetError(),
 		env->sdl->win = SDL_CreateWindow(WOLF_TITTLE, SDL_WINDOWPOS_CENTERED,
@@ -113,7 +116,7 @@ bool		wolf_init(t_env *env)
 		env->sdl->win_surface = SDL_GetWindowSurface(SWIN), exit(1), false);
 	_NOTIS_F(env->sdl->win_pixels = env->sdl->win_surface->pixels);
 	_NOTIS_F(env->isr = (t_isr*)malloc(sizeof(t_isr)));
-	*(env->isr) = (t_isr){1, 1, false, true, true, true, false, false, 0, 0};
+	*(env->isr) = (t_isr){1, 1, false, true, true, true, 0, false, false, 0, 0};
 	_NOTIS_F(env->map = (t_map*)malloc(sizeof(t_map)));
 	_NOTIS_F(env->rc = (t_rc*)malloc(sizeof(t_rc)));
 	_NOTIS_F(env->mouse = (t_mouse*)malloc(sizeof(t_mouse)));
@@ -122,7 +125,7 @@ bool		wolf_init(t_env *env)
 	_NOTIS_F(env->torch = (t_torch*)malloc(sizeof(t_torch)));
 	_NOTIS_F(env->torch->tex = (t_tex*)malloc(sizeof(t_tex) * MAX_TORCH));
 	_NOTIS_F(add_init_textures(env));
-	_NOTIS_F(add_init_menu(env));
+	_NOTIS_F(add_init_menu_and_text(env));
 	_NOTIS_F(add_init_audio(env));
 	return (true);
 }

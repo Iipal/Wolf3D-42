@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/28 09:40:51 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/07 15:00:08 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static float	add_fog_freq(int *freq, t_time *time)
 	return (freqs[(*freq)]);
 }
 
-static void		add_draw_torch(t_env *env)
+static void		add_rendering_torch(t_env *env)
 {
 	static int		old_torch_frame;
 	static int		torch_frame;
@@ -58,10 +58,10 @@ static void		add_draw_torch(t_env *env)
 						torch_frame].surf->w + tp.x];
 }
 
-static void		add_draw_bonus(t_env *env)
+static void		add_rendering_bonus(t_env *env)
 {
-	env->isr->is_draw_minimap ? wolf_draw_minimap(env) : 0;
-	env->isr->is_render_fog ? add_draw_torch(env) : 0;
+	env->isr->is_render_minimap ? wolf_rendering_minimap(env) : 0;
+	env->isr->is_render_fog ? add_rendering_torch(env) : 0;
 }
 
 static void		add_fps(t_fps *fps)
@@ -96,7 +96,8 @@ void			wolf_rendering_rc(t_env *env)
 		wolf_dist_to_wall(env->rc);
 		ISRT ? wolf_render_textured(env, &p) : wolf_render_colored(env, &p);
 	}
-	add_draw_bonus(env);
+	add_rendering_bonus(env);
 	add_fps(&(env->fps));
+	env->isr->is_render_fps ? wolf_rendering_fps_counter(env) : 0;
 	SDL_UpdateWindowSurface(env->sdl->win);
 }
