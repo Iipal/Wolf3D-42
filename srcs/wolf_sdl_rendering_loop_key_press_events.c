@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 11:26:54 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/07 12:24:10 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/07 13:08:23 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,17 @@ void	wofl_rendering_loop_keys_sfx_press(t_env *env)
 			: (env->sfx->bg_volume -= BG_VOL_INC);
 	if (SEKEY == SDLK_z)
 		env->isr->is_play_steps = !env->isr->is_play_steps;
+}
+
+void	wofl_rendering_loop_keys_release(t_env *env)
+{
+	if (SEKEY == SDLK_w || SEKEY == SDLK_UP)
+		env->isr->is_move_forward = false;
+	if (SEKEY == SDLK_a || SEKEY == SDLK_LEFT)
+		env->isr->is_rotate_left = false;
+	if (SEKEY == SDLK_s || SEKEY == SDLK_DOWN)
+		env->isr->is_move_backward = false;
+	if (SEKEY == SDLK_d || SEKEY == SDLK_RIGHT)
+		env->isr->is_rotate_right = false;
+	(SEKEY == SDLK_LSHIFT) ? (env->isr->is_boost_step = false) : 0;
 }

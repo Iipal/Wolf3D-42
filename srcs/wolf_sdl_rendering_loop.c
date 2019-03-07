@@ -6,24 +6,12 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 22:59:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/07 12:26:32 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/07 13:08:05 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
 
-static void	add_keys_release(t_env *env)
-{
-	if (SEKEY == SDLK_w || SEKEY == SDLK_UP)
-		env->isr->is_move_forward = false;
-	if (SEKEY == SDLK_a || SEKEY == SDLK_LEFT)
-		env->isr->is_rotate_left = false;
-	if (SEKEY == SDLK_s || SEKEY == SDLK_DOWN)
-		env->isr->is_move_backward = false;
-	if (SEKEY == SDLK_d || SEKEY == SDLK_RIGHT)
-		env->isr->is_rotate_right = false;
-	(SEKEY == SDLK_LSHIFT) ? (env->isr->is_boost_step = false) : 0;
-}
 
 static void	add_mouse_moves(t_env *env)
 {
@@ -76,7 +64,7 @@ void		wolf_sdl_rendering_loop(t_env *env)
 				wofl_rendering_loop_keys_sfx_press(env);
 			}
 			if (env->sdl->event.type == SDL_KEYUP)
-				add_keys_release(env);
+				wofl_rendering_loop_keys_release(env);
 			add_mouse_moves(env);
 		}
 		add_loop_isr(env);
