@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 11:59:37 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/27 22:42:01 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/07 14:01:12 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	wolf_render_textured_help(t_env *env, point *p, t_texhelper *h)
 	{
 		h->d = p->y * 256 - WIN_Y * 128 + env->rc->hline * 128;
 		h->pos_on_tex.y = ((h->d * YTEX) / env->rc->hline) / 256;
+		if (h->pos_on_tex.y < 0)
+			h->pos_on_tex.y = 0;
 		h->currtcolor =
 			env->textures[h->curr_tex].pixels[
 				h->pos_on_tex.y * YTEX + h->pos_on_tex.x];
