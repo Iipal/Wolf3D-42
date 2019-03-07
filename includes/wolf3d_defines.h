@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/28 14:05:52 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/07 12:26:27 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,20 @@
 # define TORCH5         "resources/torch/torch5.bmp"
 # define TORCH6         "resources/torch/torch6.bmp"
 # define TORCH          env->torch
+# define MSTART         "resources/music/start.wav"
+# define MSELECTOR      "resources/music/selector.wav"
+# define MSERROR        "resources/music/selector_err.wav"
+# define MEXIT          "resources/music/exit.wav"
+# define AMBIENT_BG     "resources/music/ambient_game_bg.mp3"
+# define GAME_LSTEP     "resources/music/lstep.wav"
+# define GAME_RSTEP     "resources/music/rstep.wav"
+# define BG_VOL_MUTE    3
+# define BG_VOL_DEF     60
+# define BG_VOL_MAX     100
+# define BG_VOL_MIN     10
+# define BG_VOL_INC     5
+# define REFRESH_STEP_SFX_FREQ  .33f
+# define REFRESH_RUN_SFX_FREQ   .22f
 
 # define _ISARGS(ac, av) {--ac;++av;_NOTIS(E_USAGE, !(ac != 1), exit(-1), 0);}
 

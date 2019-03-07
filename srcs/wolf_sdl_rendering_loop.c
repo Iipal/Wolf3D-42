@@ -6,32 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 22:59:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/28 11:26:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/07 12:26:32 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
-
-static void	add_keys_press(t_env *env, bool *exit)
-{
-	(SEKEY == SDLK_ESCAPE) ? (*exit = true) : 0;
-	if (SEKEY == SDLK_w || SEKEY == SDLK_UP)
-		env->isr->is_move_forward = true;
-	if (SEKEY == SDLK_a || SEKEY == SDLK_LEFT)
-		env->isr->is_rotate_left = true;
-	if (SEKEY == SDLK_s || SEKEY == SDLK_DOWN)
-		env->isr->is_move_backward = true;
-	if (SEKEY == SDLK_d || SEKEY == SDLK_RIGHT)
-		env->isr->is_rotate_right = true;
-	if (SEKEY == SDLK_f)
-		env->isr->is_render_fog = !env->isr->is_render_fog;
-	if (SEKEY == SDLK_m)
-		env->isr->is_draw_minimap = !env->isr->is_draw_minimap;
-	(SEKEY == SDLK_LSHIFT) ? (env->isr->is_boost_step = true) : 0;
-	(SEKEY == SDLK_t) ? (env->isr->is_textured = !env->isr->is_textured) : 0;
-	if (SEKEY == SDLK_c)
-		env->fog.fog_color = wolf_fog_change(&(env->fog.clr));
-}
 
 static void	add_keys_release(t_env *env)
 {
@@ -62,6 +41,9 @@ static void	add_mouse_moves(t_env *env)
 
 static void	add_loop_isr(t_env *env)
 {
+	if ((env->isr->is_move_backward || env->isr->is_move_forward)
+		&& env->isr->is_play_steps)
+		wolf_playing_steps(env->sfx, env->isr->is_boost_step);
 	if (env->isr->is_move_forward)
 		wolf_move(env, env->isr->is_boost_step
 			? (MOVE_BOOST * env->fps.move) : env->fps.move);
@@ -74,6 +56,8 @@ static void	add_loop_isr(t_env *env)
 	if (env->isr->is_rotate_right)
 		wolf_rotate(env->rc, _RAD(env->isr->is_boost_step
 			? (ROT_BOOST * -env->fps.rot) : -env->fps.rot));
+	Mix_VolumeMusic(env->sfx->bg_volume);
+	(env->isr->is_play_music) ? Mix_ResumeMusic() : Mix_PauseMusic();
 }
 
 void		wolf_sdl_rendering_loop(t_env *env)
@@ -87,7 +71,10 @@ void		wolf_sdl_rendering_loop(t_env *env)
 		{
 			(env->sdl->event.type == SDL_QUIT) ? (exit = true) : 0;
 			if (env->sdl->event.type == SDL_KEYDOWN)
-				add_keys_press(env, &exit);
+			{
+				wofl_rendering_loop_keys_press(env, &exit);
+				wofl_rendering_loop_keys_sfx_press(env);
+			}
 			if (env->sdl->event.type == SDL_KEYUP)
 				add_keys_release(env);
 			add_mouse_moves(env);
@@ -95,4 +82,6 @@ void		wolf_sdl_rendering_loop(t_env *env)
 		add_loop_isr(env);
 		wolf_rendering_rc(env);
 	}
+	(env->isr->is_play_music) ?
+		Mix_VolumeMusic(env->sfx->bg_volume / BG_VOL_MUTE) : 0;
 }

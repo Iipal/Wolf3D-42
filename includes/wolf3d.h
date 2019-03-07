@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/02 20:43:04 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/07 11:28:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 
 # ifdef __APPLE__
 #  include "../frameworks/SDL2.framework/Headers/SDL.h"
+#  include "../frameworks/SDL2_mixer.framework/Headers/SDL_mixer.h"
 # endif
 
 # ifdef __linux__
 #  include <SDL2/SDL.h>
+#  include <SDL2/SDL_mixer.h>
 # endif
 
 # include "wolf3d_defines.h"
@@ -71,6 +73,8 @@ typedef struct	s_sdl
 
 typedef struct	s_isrender
 {
+	bool	is_play_steps;
+	bool	is_play_music;
 	bool	is_boost_step;
 	bool	is_textured;
 	bool	is_draw_minimap;
@@ -156,6 +160,19 @@ typedef struct	s_torch
 	t_tex	*tex;
 }				t_torch;
 
+typedef struct	s_sfx
+{
+	Mix_Chunk	*start;
+	Mix_Chunk	*selector;
+	Mix_Chunk	*selector_err;
+	Mix_Chunk	*exit;
+	Mix_Music	*ambient_bg;
+	Mix_Chunk	*lstep;
+	Mix_Chunk	*rstep;
+	t_time		step_sfx_timeout;
+	short		bg_volume;
+}				t_sfx;
+
 typedef struct	s_wolf3d_environment
 {
 	t_sdl		*sdl;
@@ -168,6 +185,7 @@ typedef struct	s_wolf3d_environment
 	t_fog		fog;
 	t_menu		*menu;
 	t_torch		*torch;
+	t_sfx		*sfx;
 }				t_env;
 
 /*
@@ -209,6 +227,9 @@ void			wolf_draw_minimap(t_env *env);
 Uint32			wolf_fog(float dist, Uint32 src_color, t_fog *fog);
 Uint32			wolf_fog_change(t_clrs *c);
 
+void			wofl_rendering_loop_keys_press(t_env *env, bool *exit);
+void			wofl_rendering_loop_keys_sfx_press(t_env *env);
+
 void			wolf_sdl_rendering_loop(t_env *env);
 void			wolf_sdl_mainmenu_loop(t_env *env);
 
@@ -229,11 +250,11 @@ bool			wolf_is_tile(t_map *map, fpoint pos);
 void			wolf_rotate(t_rc *rc, float angle);
 void			wolf_move(t_env *env, float dist);
 
+void			wolf_playing_steps(t_sfx *sfx, bool is_boost);
+
 void			wolf_press_selector(t_env *env);
 
 void			wolf_free(t_env **env);
 void			wolf_free_map(t_map **map);
-
-void			wolf_exit(t_env *env);
 
 #endif
