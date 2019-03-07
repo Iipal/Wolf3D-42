@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 11:02:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/07 16:03:03 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/07 18:16:17 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void		wolf_sdl_mainmenu_loop(t_env *env)
 					add_press_selector(env, &exit);
 			}
 		}
-		(env->isr->is_play_music) ? Mix_ResumeMusic() : Mix_PauseMusic();		
+		(env->isr->is_play_music) ? Mix_ResumeMusic() : Mix_PauseMusic();
 		wolf_rendering_mainmenu(env);
 	}
 	wolf_free(&env);
