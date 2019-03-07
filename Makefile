@@ -15,7 +15,7 @@ NAME = wolf3d
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
 	ECHO = echo -e
-	SDLFRAMEWORK = -lSDL2 -lSDL2_mixer -lm
+	SDLFRAMEWORK = -lSDL2 -lSDL2_mixer -lSDL2_ttf -lm
 endif
 ifeq ($(UNAME_S),Darwin)
 	ECHO = echo
