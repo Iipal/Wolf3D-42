@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 23:17:49 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/06 23:47:32 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/07 11:04:16 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	wolf_playing_steps(t_sfx *sfx, bool is_boost)
 							: REFRESH_STEP_SFX_FREQ))
 	{
 		lr_step ? Mix_PlayChannel(-1, sfx->lstep, 0)
-			: Mix_PlayChannel(-1, sfx->rstep, 0); 
+			: Mix_PlayChannel(-1, sfx->rstep, 0);
 		lr_step = !lr_step;
 		sfx->step_sfx_timeout.res_time = 0;
 	}

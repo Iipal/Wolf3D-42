@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/06 23:44:04 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/07 11:33:28 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ static bool	add_init_audio(t_env *env)
 		env->sfx->lstep = Mix_LoadWAV(GAME_LSTEP), exit(1), false);
 	_NOTIS(Mix_GetError(),
 		env->sfx->rstep = Mix_LoadWAV(GAME_RSTEP), exit(1), false);
-	Mix_VolumeChunk(env->sfx->lstep, 50);
-	Mix_VolumeChunk(env->sfx->rstep, 50);
+	Mix_VolumeChunk(env->sfx->lstep, 35);
+	Mix_VolumeChunk(env->sfx->rstep, 35);
 	Mix_PlayMusic(env->sfx->ambient_bg, -1);
 	Mix_PauseMusic();
 	Mix_VolumeMusic(env->sfx->bg_volume);

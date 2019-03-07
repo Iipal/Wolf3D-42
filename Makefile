@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/03/07 10:59:22 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/03/07 11:34:24 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,10 +28,11 @@ CFLAGS = -Wall -Wextra -Werror -Ofast
 
 SRC = srcs/main.c srcs/wolf_init.c srcs/wolf_map_reader.c \
 srcs/wolf_sdl_optimizing_surface_load.c srcs/wolf_sdl_mainmenu_loop.c \
-srcs/wolf_sdl_rendering_loop.c srcs/wolf_sfx_steps.c srcs/wolf_raycaster.c \
-srcs/wolf_rendering.c srcs/wolf_rendering_mainmenu.c srcs/wolf_rendering_colored.c \
-srcs/wolf_rendering_textured.c srcs/wolf_rendering_textured_help_fck_norme.c \
-srcs/wolf_rotatenmove.c srcs/wolf_minimap.c srcs/wolf_fog.c srcs/wolf_free.c
+srcs/wolf_sdl_rendering_loop.c srcs/wolf_sdl_rendering_loop_key_press_events.c \
+srcs/wolf_sfx_steps.c srcs/wolf_raycaster.c srcs/wolf_rendering.c \
+srcs/wolf_rendering_mainmenu.c srcs/wolf_rendering_colored.c srcs/wolf_rendering_textured.c \
+srcs/wolf_rendering_textured_help_fck_norme.c srcs/wolf_rotatenmove.c srcs/wolf_minimap.c \
+srcs/wolf_fog.c srcs/wolf_free.c
 
 OBJ = $(SRC:.c=.o)
 
