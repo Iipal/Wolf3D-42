@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/07 00:13:43 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/07 11:35:29 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ static void	add_free_menu(t_menu **menu)
 
 static void	add_free_menu_sfx(t_sfx **sfx)
 {
+	_FREE((*sfx)->start, Mix_FreeChunk);
 	_FREE((*sfx)->exit, Mix_FreeChunk);
 	_FREE((*sfx)->selector, Mix_FreeChunk);
 	_FREE((*sfx)->selector_err, Mix_FreeChunk);
@@ -95,5 +96,6 @@ void		wolf_free(t_env **env)
 	_FREE(*env, free);
 	Mix_Quit();
 	SDL_Quit();
+	system("leaks wolf3d");
 	exit(EXIT_SUCCESS);
 }
