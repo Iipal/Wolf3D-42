@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 11:26:54 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/07 13:08:23 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/07 15:09:06 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ void	wofl_rendering_loop_keys_press(t_env *env, bool *exit)
 		env->isr->is_rotate_right = true;
 	if (SEKEY == SDLK_f)
 		env->isr->is_render_fog = !env->isr->is_render_fog;
+	if (SEKEY == SDLK_r)
+		env->isr->is_render_fps = !env->isr->is_render_fps;
 	if (SEKEY == SDLK_m)
-		env->isr->is_draw_minimap = !env->isr->is_draw_minimap;
+		env->isr->is_render_minimap = !env->isr->is_render_minimap;
 	(SEKEY == SDLK_LSHIFT) ? (env->isr->is_boost_step = true) : 0;
 	(SEKEY == SDLK_t) ? (env->isr->is_textured = !env->isr->is_textured) : 0;
 	if (SEKEY == SDLK_c)

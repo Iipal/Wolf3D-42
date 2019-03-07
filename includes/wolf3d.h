@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/07 13:11:21 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/07 16:13:34 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@
 # ifdef __APPLE__
 #  include "../frameworks/SDL2.framework/Headers/SDL.h"
 #  include "../frameworks/SDL2_mixer.framework/Headers/SDL_mixer.h"
+#  include "../frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h"
 # endif
 
 # ifdef __linux__
 #  include <SDL2/SDL.h>
 #  include <SDL2/SDL_mixer.h>
+#  include <SDL2/SDL_ttf.h>
 # endif
 
 # include "wolf3d_defines.h"
@@ -69,6 +71,8 @@ typedef struct	s_sdl
 	SDL_Surface	*win_surface;
 	SDL_Event	event;
 	iarr		win_pixels;
+	TTF_Font	*font;
+	SDL_Surface	*font_surface;
 }				t_sdl;
 
 typedef struct	s_isrender
@@ -77,8 +81,9 @@ typedef struct	s_isrender
 	bool	is_play_music;
 	bool	is_boost_step;
 	bool	is_textured;
-	bool	is_draw_minimap;
+	bool	is_render_minimap;
 	bool	is_render_fog;
+	bool	is_render_fps;
 	bool	is_move_forward;
 	bool	is_move_backward;
 	bool	is_rotate_right;
@@ -149,9 +154,9 @@ typedef struct	s_fog
 
 typedef struct	s_menu
 {
-	t_tex	*bg;
-	t_tex	*selector;
-	bool	is_selector_start;
+	t_tex		*bg;
+	t_tex		*selector;
+	bool		is_selector_start;
 }				t_menu;
 
 typedef struct	s_torch
@@ -218,11 +223,14 @@ bool			wolf_readnsave(string map_name, t_env *env);
 
 SDL_Surface		*wolf_optimize_surf_load(string bmp_path,
 								const SDL_PixelFormat *format);
+SDL_Surface		*wolf_optimize_font_load(string text, SDL_Color text_color,
+								TTF_Font *font, SDL_PixelFormat *format);
 
 bool			wolf_init(t_env *env);
 void			wolf_setup_rc(t_env *env);
 
-void			wolf_draw_minimap(t_env *env);
+void			wolf_rendering_fps_counter(t_env *env);
+void			wolf_rendering_minimap(t_env *env);
 Uint32			wolf_fog(float dist, Uint32 src_color, t_fog *fog);
 Uint32			wolf_fog_change(t_clrs *c);
 

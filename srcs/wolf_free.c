@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/07 13:48:00 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/07 16:45:05 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ static void	add_free_menu_sfx(t_sfx **sfx)
 	Mix_HaltMusic();
 	_FREE((*sfx)->ambient_bg, Mix_FreeMusic);
 	_FREE((*sfx), free);
+	Mix_Quit();
 }
 
 void		wolf_free(t_env **env)
@@ -89,10 +90,11 @@ void		wolf_free(t_env **env)
 		add_free_menu_sfx(&((*env)->sfx));
 	_FREE((*env)->isr, free);
 	_FREE((*env)->rc, free);
+	_FREE((*env)->sdl->font, TTF_CloseFont);
+	_FREE((*env)->sdl->win, SDL_DestroyWindow);
 	_FREE((*env)->sdl, free);
 	_FREE((*env)->mouse, free);
 	_FREE(*env, free);
-	Mix_Quit();
 	SDL_Quit();
 	exit(EXIT_SUCCESS);
 }
