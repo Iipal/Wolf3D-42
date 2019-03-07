@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/07 16:16:15 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/07 16:45:05 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void		wolf_free(t_env **env)
 	_FREE((*env)->isr, free);
 	_FREE((*env)->rc, free);
 	_FREE((*env)->sdl->font, TTF_CloseFont);
+	_FREE((*env)->sdl->win, SDL_DestroyWindow);
 	_FREE((*env)->sdl, free);
 	_FREE((*env)->mouse, free);
 	_FREE(*env, free);

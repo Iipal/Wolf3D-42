@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/03/07 16:10:21 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/03/07 16:44:30 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ ifeq ($(UNAME_S),Darwin)
 endif
 
 CC = gcc -march=native
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -Ofast
 
 SRC = srcs/main.c srcs/wolf_init.c srcs/wolf_map_reader.c \
 srcs/wolf_sdl_optimizing_load.c srcs/wolf_sdl_mainmenu_loop.c \

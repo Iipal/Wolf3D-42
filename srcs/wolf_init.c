@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/07 16:11:30 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/07 16:44:25 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,10 +108,10 @@ bool		wolf_init(t_env *env)
 	_ISM(SDL_GetError(), SDL_Init(SDL_INIT_EVERYTHING) < 0, exit(1), false);
 	_ISM(TTF_GetError(), TTF_Init() < 0, exit(1), false);
 	_NOTIS_F(env->sdl = (t_sdl*)malloc(sizeof(t_sdl)));
+	*(env->sdl) = (t_sdl){NULL, NULL, {0}, NULL, NULL, NULL};
 	_NOTIS(SDL_GetError(),
 		env->sdl->win = SDL_CreateWindow(WOLF_TITTLE, SDL_WINDOWPOS_CENTERED,
-			SDL_WINDOWPOS_CENTERED, WIN_X, WIN_Y,
-			SDL_WINDOW_SHOWN), exit(EXIT_FAILURE), false);
+		SDL_WINDOWPOS_CENTERED, WIN_X, WIN_Y, 4), exit(1), false);
 	_NOTIS(SDL_GetError(),
 		env->sdl->win_surface = SDL_GetWindowSurface(SWIN), exit(1), false);
 	_NOTIS_F(env->sdl->win_pixels = env->sdl->win_surface->pixels);
