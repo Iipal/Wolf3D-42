@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/07 11:35:29 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/07 12:18:49 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,5 @@ void		wolf_free(t_env **env)
 	_FREE(*env, free);
 	Mix_Quit();
 	SDL_Quit();
-	system("leaks wolf3d");
 	exit(EXIT_SUCCESS);
 }

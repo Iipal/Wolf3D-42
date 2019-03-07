@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/07 11:33:28 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/07 12:26:33 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,7 @@ static bool	add_init_audio(t_env *env)
 	Mix_VolumeChunk(env->sfx->lstep, 35);
 	Mix_VolumeChunk(env->sfx->rstep, 35);
 	Mix_PlayMusic(env->sfx->ambient_bg, -1);
-	Mix_PauseMusic();
-	Mix_VolumeMusic(env->sfx->bg_volume);
+	Mix_VolumeMusic(env->sfx->bg_volume / BG_VOL_MUTE);
 	Mix_PlayChannel(-1, env->sfx->start, 0);
 	return (true);
 }

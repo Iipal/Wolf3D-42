@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/06 23:43:00 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/07 12:26:27 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@
 # define AMBIENT_BG     "resources/music/ambient_game_bg.mp3"
 # define GAME_LSTEP     "resources/music/lstep.wav"
 # define GAME_RSTEP     "resources/music/rstep.wav"
+# define BG_VOL_MUTE    3
 # define BG_VOL_DEF     60
 # define BG_VOL_MAX     100
 # define BG_VOL_MIN     10

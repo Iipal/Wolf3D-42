@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 11:02:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/04 16:12:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/07 12:26:29 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	add_press_selector(t_env *env, bool *exit)
 {
 	if (env->menu->is_selector_start)
 	{
-		Mix_ResumeMusic();
+		Mix_VolumeMusic(env->sfx->bg_volume);
 		wolf_sdl_rendering_loop(env);
 	}
 	else
@@ -41,6 +41,8 @@ static void	add_press_keys(t_env *env)
 		env->menu->is_selector_start = false;
 		Mix_PlayChannel(-1, env->sfx->selector, 0);
 	}
+	if (SEKEY == SDLK_q)
+		env->isr->is_play_music = !env->isr->is_play_music;
 }
 
 void		wolf_sdl_mainmenu_loop(t_env *env)
@@ -63,6 +65,7 @@ void		wolf_sdl_mainmenu_loop(t_env *env)
 					add_press_selector(env, &exit);
 			}
 		}
+		(env->isr->is_play_music) ? Mix_ResumeMusic() : Mix_PauseMusic();		
 		wolf_rendering_mainmenu(env);
 	}
 	Mix_PlayChannel(-1, env->sfx->exit, 0);
