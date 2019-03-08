@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 10:04:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/20 10:09:34 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/08 10:11:52 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define LIBFT_H
 
 # include "lft_str.h"
-# include "lft_lst.h"
 # include "lft_mem.h"
 # include "lft_put.h"
 # include "lft_ctype.h"

@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 11:27:37 by tmaluh            #+#    #+#              #
-#    Updated: 2019/02/25 13:51:24 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/03/08 10:12:02 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,8 +40,7 @@ SRCS = srcs/ctype/ft_isalnum.c srcs/ctype/ft_isalpha.c srcs/ctype/ft_isascii.c \
 		srcs/mem/ft_memchr.c srcs/mem/ft_memcmp.c srcs/mem/ft_memdel.c \
 		srcs/put/ft_putchar.c srcs/put/ft_putchar_fd.c srcs/put/ft_putendl.c \
 		srcs/put/ft_putendl_fd.c srcs/put/ft_putnbr.c srcs/put/ft_putnbr_fd.c \
-		srcs/put/ft_putstr.c srcs/put/ft_putstr_fd.c srcs/lst/ft_lstadd.c srcs/lst/ft_lstdel.c srcs/lst/ft_lstdelone.c \
-		srcs/lst/ft_lstiter.c srcs/lst/ft_lstmap.c srcs/lst/ft_lstnew.c srcs/str/ft_atoi.c srcs/str/ft_strrepchr.c \
+		srcs/put/ft_putstr.c srcs/put/ft_putstr_fd.c srcs/str/ft_atoi.c srcs/str/ft_strrepchr.c \
 		srcs/str/ft_atoi_base.c srcs/str/ft_count_if.c srcs/str/ft_itoa.c srcs/str/ft_strcat.c \
 		srcs/str/ft_strchr.c srcs/str/ft_strclr.c srcs/str/ft_strcmp.c srcs/str/ft_strcpy.c srcs/str/ft_strdel.c \
 		srcs/str/ft_strdup.c srcs/str/ft_strequ.c srcs/str/ft_striter.c srcs/str/ft_striteri.c \
