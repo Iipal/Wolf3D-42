@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wolf_fog.c                                         :+:      :+:    :+:   */
+/*   wolf_rendering_fog.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 19:10:46 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/25 14:20:30 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/09 11:39:02 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
 
-Uint32	wolf_fog_change(t_clrs *c)
+Uint32	wolf_fog_change(t_colors *c)
 {
 	const int	colors[] = {IRGB_WHITE, IRGB_RED, IRGB_ORANGE, IRGB_LIME,
 				IRGB_AQUA, IRGB_PURPLE, IRGB_MINT, IRGB_DARK_BLUE, IRGB_BLACK};
@@ -22,7 +22,7 @@ Uint32	wolf_fog_change(t_clrs *c)
 	return (colors[*c]);
 }
 
-Uint32	wolf_fog(float dist, Uint32 src_color, t_fog *fog)
+Uint32	wolf_fog(float dist_to_obj, Uint32 src_color, t_fog *fog)
 {
 	float		fog_amount;
 	Uint32		dest_color;
@@ -35,10 +35,10 @@ Uint32	wolf_fog(float dist, Uint32 src_color, t_fog *fog)
 	fog_rgb = (SDL_Color){fog->fog_color >> 16,
 		(fog->fog_color >> 8) & 0xff, fog->fog_color & 0xff, 0};
 	dest_color = src_color;
-	if (dist >= fog->fog_dist)
+	if (dist_to_obj >= fog->fog_dist)
 		fog_amount = 1.0;
 	else
-		fog_amount = dist / fog->fog_dist;
+		fog_amount = dist_to_obj / fog->fog_dist;
 	if (fog_amount <= 1.00f && fog_amount > 0.00f)
 	{
 		out_rgb = (SDL_Color){

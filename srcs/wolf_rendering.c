@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/07 15:00:08 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/09 11:31:34 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@ static float	add_fog_freq(int *freq, t_time *time)
 {
 	const float	freqs[] = {4.2, 4.25, 4.15, 4.17, 4.22, 4.3, 4.1, 4.16};
 
-	if (time->res_time > REFRESH_TORCH_FOG_FREQ)
+	if (time->res > REFRESH_TORCH_FOG_FREQ)
 	{
-		time->res_time = 0;
+		time->res = 0;
 		*freq = ft_rand((sizeof(freqs) / sizeof(*freqs)) - 1);
 	}
 	else
 	{
-		time->old_time = time->current_time;
-		time->current_time = SDL_GetTicks();
-		time->res_time += (time->current_time - time->old_time) / 1000.0;
+		time->old = time->current;
+		time->current = SDL_GetTicks();
+		time->res += (time->current - time->old) / 1000.0;
 	}
 	return (freqs[(*freq)]);
 }
@@ -66,11 +66,11 @@ static void		add_rendering_bonus(t_env *env)
 
 static void		add_fps(t_fps *fps)
 {
-	fps->time.old_time = fps->time.current_time;
-	fps->time.current_time = SDL_GetTicks();
-	fps->time.res_time = (fps->time.current_time - fps->time.old_time) / 1000.0;
-	fps->move = fps->time.res_time * MOVE_INC;
-	fps->rot = fps->time.res_time * ROT_INC;
+	fps->time.old = fps->time.current;
+	fps->time.current = SDL_GetTicks();
+	fps->time.res = (fps->time.current - fps->time.old) / 1000.0;
+	fps->move = fps->time.res * MOVE_INC;
+	fps->rot = fps->time.res * ROT_INC;
 }
 
 void			wolf_rendering_rc(t_env *env)

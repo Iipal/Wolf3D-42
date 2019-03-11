@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 23:17:49 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/07 14:34:37 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/09 11:31:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@ void	wolf_playing_steps(t_sfx *sfx, bool is_boost)
 {
 	static bool	lr_step;
 
-	if (sfx->step_sfx_timeout.res_time > (is_boost ? REFRESH_RUN_SFX_FREQ
+	if (sfx->step_sfx_timeout.res > (is_boost ? REFRESH_RUN_SFX_FREQ
 							: REFRESH_STEP_SFX_FREQ))
 	{
 		lr_step ? Mix_PlayChannel(-1, sfx->lstep, 0)
 			: Mix_PlayChannel(-1, sfx->rstep, 0);
 		lr_step = !lr_step;
-		sfx->step_sfx_timeout.res_time = 0;
+		sfx->step_sfx_timeout.res = 0;
 	}
 	else
 	{
-		sfx->step_sfx_timeout.old_time = sfx->step_sfx_timeout.current_time;
-		sfx->step_sfx_timeout.current_time = SDL_GetTicks();
-		sfx->step_sfx_timeout.res_time += (sfx->step_sfx_timeout.current_time
-			- sfx->step_sfx_timeout.old_time) / 1000;
+		sfx->step_sfx_timeout.old = sfx->step_sfx_timeout.current;
+		sfx->step_sfx_timeout.current = SDL_GetTicks();
+		sfx->step_sfx_timeout.res += (sfx->step_sfx_timeout.current
+			- sfx->step_sfx_timeout.old) / 1000;
 	}
 }

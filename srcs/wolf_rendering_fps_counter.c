@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 14:42:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/07 18:15:43 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/09 11:32:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void		wolf_rendering_fps_counter(t_env *env)
 	i = -1;
 	while (++i < 2)
 	{
-		data[i] = i ? ft_itoa(env->fps.time.res_time * 1000)
-			: ft_itoa(1.0 / env->fps.time.res_time);
+		data[i] = i ? ft_itoa(env->fps.time.res * 1000)
+			: ft_itoa(1.0 / env->fps.time.res);
 		temp[i] = data[i];
 		data[i] = ft_strjoin(data[i], data_info[i]);
 		text = wolf_optimize_font_load(data[i], (SDL_Color){127, 255, 0, 0},

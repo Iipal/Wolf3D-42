@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/07 16:13:34 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/09 11:38:16 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef enum	e_colors
 	dark_blue,
 	dark,
 	max_colors
-} __attribute__((packed))				t_clrs;
+} __attribute__((packed))				t_colors;
 
 typedef struct	s_point
 {
@@ -132,9 +132,9 @@ typedef struct	s_mouse
 
 typedef struct	s_time
 {
-	float	current_time;
-	float	old_time;
-	float	res_time;
+	float	current;
+	float	old;
+	float	res;
 }				t_time;
 
 typedef struct	s_fps
@@ -146,10 +146,10 @@ typedef struct	s_fps
 
 typedef struct	s_fog
 {
-	t_clrs	clr;
-	Uint32	fog_color;
-	float	fog_dist;
-	int		freq;
+	t_colors	color;
+	Uint32		fog_color;
+	float		fog_dist;
+	int			freq;
 }				t_fog;
 
 typedef struct	s_menu
@@ -231,8 +231,8 @@ void			wolf_setup_rc(t_env *env);
 
 void			wolf_rendering_fps_counter(t_env *env);
 void			wolf_rendering_minimap(t_env *env);
-Uint32			wolf_fog(float dist, Uint32 src_color, t_fog *fog);
-Uint32			wolf_fog_change(t_clrs *c);
+Uint32			wolf_fog(float dist_to_obj, Uint32 src_color, t_fog *fog);
+Uint32			wolf_fog_change(t_colors *c);
 
 void			wofl_rendering_loop_keys_press(t_env *env, bool *exit);
 void			wofl_rendering_loop_keys_sfx_press(t_env *env);
