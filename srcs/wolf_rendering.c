@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/13 12:34:55 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/13 15:26:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,9 @@ static void		add_rendering_torch(t_env *env)
 static void		add_rendering_bonus(t_env *env)
 {
 	env->isr->is_render_minimap ? wolf_rendering_minimap(env) : 0;
-	env->isr->is_render_fog ? add_rendering_torch(env) : 0;
+	(env->isr->is_render_fog && !env->isr->is_render_weapon) ?
+	add_rendering_torch(env) : 0;
+	env->isr->is_render_weapon ? wolf_rendering_waepons(env) : 0;
 }
 
 static void		add_fps(t_fps *fps)

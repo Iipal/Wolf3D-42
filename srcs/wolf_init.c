@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/09 10:35:57 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/13 15:27:08 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ bool		wolf_init(t_env *env)
 		env->sdl->win_surface = SDL_GetWindowSurface(SWIN), exit(1), false);
 	_NOTIS_F(env->sdl->win_pixels = env->sdl->win_surface->pixels);
 	_NOTIS_F(env->isr = (t_isr*)malloc(sizeof(t_isr)));
-	*(env->isr) = (t_isr){1, 1, false, true, true, true, 0, false, false, 0, 0};
+	*(env->isr) = (t_isr){1, 1, false, true, true, true, 0, 0, 0, 0, 0, 0};
 	_NOTIS_F(env->map = (t_map*)malloc(sizeof(t_map)));
 	_NOTIS_F(env->rc = (t_rc*)malloc(sizeof(t_rc)));
 	_NOTIS_F(env->mouse = (t_mouse*)malloc(sizeof(t_mouse)));

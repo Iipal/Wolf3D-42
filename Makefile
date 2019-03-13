@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/03/09 11:32:38 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/03/13 15:27:34 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ srcs/wolf_sdl_rendering_loop.c srcs/wolf_sdl_rendering_loop_key_press_events.c \
 srcs/wolf_sdl_sfx_steps.c srcs/wolf_raycaster.c srcs/wolf_rendering.c \
 srcs/wolf_rendering_mainmenu.c srcs/wolf_rendering_colored.c srcs/wolf_rendering_textured.c \
 srcs/wolf_rendering_textured_help_fck_norme.c srcs/wolf_rendering_minimap.c \
-srcs/wolf_rendering_fps_counter.c srcs/wolf_rendering_fog.c srcs/wolf_rotatenmove.c srcs/wolf_free.c
+srcs/wolf_rendering_weapons.c srcs/wolf_rendering_fps_counter.c srcs/wolf_rendering_fog.c \
+srcs/wolf_rotatenmove.c srcs/wolf_free.c
 
 OBJ = $(SRC:.c=.o)
 

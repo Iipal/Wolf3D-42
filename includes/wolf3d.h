@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/09 11:38:16 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/13 15:23:22 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ typedef struct	s_isrender
 	bool	is_move_backward;
 	bool	is_rotate_right;
 	bool	is_rotate_left;
+	bool	is_render_weapon;
 }				t_isr;
 
 typedef struct	s_map
@@ -240,6 +241,8 @@ void			wofl_rendering_loop_keys_release(t_env *env);
 
 void			wolf_sdl_rendering_loop(t_env *env);
 void			wolf_sdl_mainmenu_loop(t_env *env);
+
+void			wolf_rendering_waepons(t_env *env);
 
 void			wolf_rendering_rc(t_env *env);
 void			wolf_rendering_mainmenu(t_env *env);
