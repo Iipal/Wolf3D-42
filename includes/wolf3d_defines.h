@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/09 10:33:15 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/13 19:17:23 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,15 @@
 # define REFRESH_STEP_SFX_FREQ  .33f
 # define REFRESH_RUN_SFX_FREQ   .22f
 # define FPS_FONT       "resources/04B_03__.TTF"
+# define FLOORNSKY      "resources/floor_and_sky/floor_and_sky.bmp"
+# define FSTARTX        0
+# define FSTARTY        0
+# define FENDX          64
+# define FENDY          64
+# define SSTARTX        64
+# define SSTARTY        0
+# define SENDX          128
+# define SENDY          64
 
 # define _ISARGS(ac, av) {--ac;++av;_NOTIS(E_USAGE, !(ac != 1), exit(-1), 0);}
 
@@ -128,6 +137,8 @@
 # define _ISM(msg, ex, do, ret) if (ex) {_MSGN(msg);do;return (ret);}
 # define _IS_N(ex) if (ex) return (NULL)
 # define _IS_F(ex) if (ex) return (false)
+
+# define _NOTIS_F(ex) if (!(ex)) return (false)
 
 # define _FREE(trash, del)	if ((trash)) {del(trash); trash = NULL;}
 

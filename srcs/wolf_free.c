@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/07 16:45:05 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/13 19:29:14 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,11 @@ void		wolf_free(t_env **env)
 		add_free_menu(&((*env)->menu));
 	if ((*env)->sfx)
 		add_free_menu_sfx(&((*env)->sfx));
+	if ((*env)->floor_and_sky)
+	{
+		SDL_FreeSurface((*env)->floor_and_sky->surf);
+		_FREE((*env)->floor_and_sky, free);
+	}
 	_FREE((*env)->isr, free);
 	_FREE((*env)->rc, free);
 	_FREE((*env)->sdl->font, TTF_CloseFont);
@@ -96,5 +101,4 @@ void		wolf_free(t_env **env)
 	_FREE((*env)->mouse, free);
 	_FREE(*env, free);
 	SDL_Quit();
-	exit(EXIT_SUCCESS);
 }

@@ -8,3 +8,4 @@ test/
 .VScode
 .vscode
 **.cpp
+**.xcf

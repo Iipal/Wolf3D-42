@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/13 15:23:22 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/13 17:08:23 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,6 +184,7 @@ typedef struct	s_wolf3d_environment
 	t_isr		*isr;
 	t_map		*map;
 	t_rc		*rc;
+	t_tex		*floor_and_sky;
 	t_tex		*textures;
 	t_mouse		*mouse;
 	t_fps		fps;
