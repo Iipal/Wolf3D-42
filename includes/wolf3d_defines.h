@@ -6,12 +6,14 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/13 19:17:23 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/14 12:29:52 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WOLF3D_DEFINES_H
 # define WOLF3D_DEFINES_H
+
+# include "wolf3d_textures.h"
 
 # ifdef __APPLE__
 #  define WIN_X 1500
@@ -73,58 +75,13 @@
 
 # define REFRESH_TORCH_FOG_FREQ .33f
 
+# define REFRESH_STEP_SFX_FREQ  .33f
+# define REFRESH_RUN_SFX_FREQ   .22f
+
 # define TORCH_SHIFT_X      ((WIN_X + TORCH->tex[torch_frame].surf->w) / 1.6)
 # define TORCH_SHIFT_Y      (WIN_Y - TORCH->tex[torch_frame].surf->h)
 # define SELECTOR_START_X   ((WIN_X - SELECTOR_X) / 2.0)
 # define SELECTOR_START_Y   ((WIN_Y - SELECTOR_Y) / 2.0)
-
-# define MAX_TEXTURES   8
-# define TEXWALL1       "resources/wall_textures/wall1.bmp"
-# define TEXWALL2       "resources/wall_textures/wall2.bmp"
-# define TEXWALL3       "resources/wall_textures/wall3.bmp"
-# define TEXWALL4       "resources/wall_textures/wall4.bmp"
-# define TEXWALL5       "resources/wall_textures/wall5.bmp"
-# define TEXWALL6       "resources/wall_textures/wall6.bmp"
-# define TEXWALL7       "resources/wall_textures/wall7.bmp"
-# define TEXWALL8       "resources/wall_textures/wall8.bmp"
-# define TEXFLOOR       "resources/floor_and_sky/floor.bmp"
-# define TEXSKY         "resources/floor_and_sky/sky.bmp"
-# define TFLOOR         MAX_TEXTURES
-# define TSKY           TFLOOR + 1
-# define YTEX           64
-# define XTEX           64
-# define TEX            env->textures
-# define MAX_TORCH      6
-# define TORCH1         "resources/torch/torch1.bmp"
-# define TORCH2         "resources/torch/torch2.bmp"
-# define TORCH3         "resources/torch/torch3.bmp"
-# define TORCH4         "resources/torch/torch4.bmp"
-# define TORCH5         "resources/torch/torch5.bmp"
-# define TORCH6         "resources/torch/torch6.bmp"
-# define TORCH          env->torch
-# define MSTART         "resources/music/start.wav"
-# define MSELECTOR      "resources/music/selector.wav"
-# define MSERROR        "resources/music/selector_err.wav"
-# define AMBIENT_BG     "resources/music/ambient_game_bg.mp3"
-# define GAME_LSTEP     "resources/music/lstep.wav"
-# define GAME_RSTEP     "resources/music/rstep.wav"
-# define BG_VOL_MUTE    3
-# define BG_VOL_DEF     60
-# define BG_VOL_MAX     100
-# define BG_VOL_MIN     10
-# define BG_VOL_INC     5
-# define REFRESH_STEP_SFX_FREQ  .33f
-# define REFRESH_RUN_SFX_FREQ   .22f
-# define FPS_FONT       "resources/04B_03__.TTF"
-# define FLOORNSKY      "resources/floor_and_sky/floor_and_sky.bmp"
-# define FSTARTX        0
-# define FSTARTY        0
-# define FENDX          64
-# define FENDY          64
-# define SSTARTX        64
-# define SSTARTY        0
-# define SENDX          128
-# define SENDY          64
 
 # define _ISARGS(ac, av) {--ac;++av;_NOTIS(E_USAGE, !(ac != 1), exit(-1), 0);}
 
@@ -138,7 +95,8 @@
 # define _IS_N(ex) if (ex) return (NULL)
 # define _IS_F(ex) if (ex) return (false)
 
-# define _NOTIS_F(ex) if (!(ex)) return (false)
+# define _Z(type, dest, x) ft_bzero(dest, sizeof(type) * (x))
+# define _ISZ(t, d, x) _NOTIS_F(d = (t*)malloc(sizeof(t)*(x))); _Z(t, d, x)
 
 # define _FREE(trash, del)	if ((trash)) {del(trash); trash = NULL;}
 
@@ -173,7 +131,5 @@
 # define RC     env->rc
 
 # define FOG    env->fog
-
-# define POS    h->ftex.y * XTEX + h->ftex.x
 
 #endif
