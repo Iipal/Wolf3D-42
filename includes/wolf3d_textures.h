@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 10:23:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/14 18:00:20 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/14 19:15:08 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,6 @@
 # define TORCH5         "resources/torch/torch5.bmp"
 # define TORCH6         "resources/torch/torch6.bmp"
 # define TORCH          env->torch
-# define MSTART         "resources/music/start.wav"
-# define MSELECTOR      "resources/music/selector.wav"
-# define MSERROR        "resources/music/selector_err.wav"
-# define AMBIENT_BG     "resources/music/ambient_game_bg.mp3"
-# define GAME_LSTEP     "resources/music/lstep.wav"
-# define GAME_RSTEP     "resources/music/rstep.wav"
-# define BG_VOL_MUTE    3
-# define BG_VOL_DEF     60
-# define BG_VOL_MAX     100
-# define BG_VOL_MIN     10
-# define BG_VOL_INC     5
-
 
 # define FPS_FONT       "resources/04B_03__.TTF"
 

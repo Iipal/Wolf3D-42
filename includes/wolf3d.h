@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/14 16:36:15 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/14 19:17:57 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,9 +182,7 @@ typedef struct	s_walls
 {
 	t_tex	*data;
 	point	start[MAX_TEXTURES];
-	point	end[MAX_TEXTURES];
 }				t_walls;
-
 
 typedef struct	s_wolf3d_environment
 {

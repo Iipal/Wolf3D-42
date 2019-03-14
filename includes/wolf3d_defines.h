@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/14 12:29:52 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/14 19:15:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,18 @@
 
 #  define MENU_BG   "resources/main_menu/1000x500_menu_bg.bmp"
 # endif
+
+# define MSTART         "resources/music/start.wav"
+# define MSELECTOR      "resources/music/selector.wav"
+# define MSERROR        "resources/music/selector_err.wav"
+# define AMBIENT_BG     "resources/music/ambient_game_bg.mp3"
+# define GAME_LSTEP     "resources/music/lstep.wav"
+# define GAME_RSTEP     "resources/music/rstep.wav"
+# define BG_VOL_MUTE    3
+# define BG_VOL_DEF     60
+# define BG_VOL_MAX     100
+# define BG_VOL_MIN     10
+# define BG_VOL_INC     5
 
 # define WOLF_TITTLE    "Wolfenstein 3D"
 # define WOLF_EXE_PATH  "./wolf3d"
