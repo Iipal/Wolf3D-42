@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 10:23:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/14 10:25:35 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/14 18:00:20 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@
 # define TEXSKY         "resources/floor_and_sky/sky.bmp"
 # define TFLOOR         MAX_TEXTURES
 # define TSKY           TFLOOR + 1
-# define YTEX           64
-# define XTEX           64
 # define TEX            env->textures
 # define MAX_TORCH      6
 # define TORCH1         "resources/torch/torch1.bmp"
@@ -64,5 +62,10 @@
 
 # define FPOS   (h->ftex.y + FSTARTY) * 128 + (h->ftex.x + FSTARTX)
 # define SPOS   (h->ftex.y + SSTARTY) * 128 + (h->ftex.x + SSTARTX)
+
+# define WALLTEXTURES       "resources/wall_textures/wall_textures.bmp"
+# define WALLS_BLOCK_SIZE   64
+# define WT_XSIZE   env->walls->data->surf->w
+# define WT_YSIZE   env->walls->data->surf->h
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/13 19:29:14 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/14 17:15:14 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,19 +75,14 @@ static void	add_free_menu_sfx(t_sfx **sfx)
 
 void		wolf_free(t_env **env)
 {
-	if ((*env)->map)
-		wolf_free_map(&((*env)->map));
-	if ((*env)->textures)
-		add_free_surfaces(&((*env)->textures), MAX_TEXTURES + 2);
+	((*env)->map) ? wolf_free_map(&((*env)->map)) : 0;
 	if ((*env)->torch)
 	{
 		add_free_surfaces(&((*env)->torch->tex), MAX_TORCH);
 		_FREE((*env)->torch, free);
 	}
-	if ((*env)->menu)
-		add_free_menu(&((*env)->menu));
-	if ((*env)->sfx)
-		add_free_menu_sfx(&((*env)->sfx));
+	((*env)->menu) ? add_free_menu(&((*env)->menu)) : 0;
+	((*env)->sfx) ? add_free_menu_sfx(&((*env)->sfx)) : 0;
 	if ((*env)->floor_and_sky)
 	{
 		SDL_FreeSurface((*env)->floor_and_sky->surf);

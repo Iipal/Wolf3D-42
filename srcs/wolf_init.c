@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/14 12:36:35 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/14 17:59:56 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,30 +34,36 @@ void		wolf_setup_rc(t_env *env)
 
 static bool	add_init_textures(t_env *env)
 {
-	const string	textures[] = {TEXWALL1, TEXWALL2, TEXWALL3, TEXWALL4,
-		TEXWALL5, TEXWALL6, TEXWALL7, TEXWALL8, TEXFLOOR, TEXSKY};
 	const string	torch[] = {TORCH1, TORCH2, TORCH3, TORCH4, TORCH5, TORCH6};
 	int				i;
+	point			p;
 
 	i = -1;
-	while (++i < (MAX_TEXTURES + 2))
-	{
-		_NOTIS_F(env->textures[i].surf = wolf_optimize_surf_load(textures[i],
-			env->sdl->win_surface->format));
-		_NOTIS_F(env->textures[i].pixels = env->textures[i].surf->pixels);
-		if (i < MAX_TORCH)
-		{
-			_NOTIS_F(env->torch->tex[i].surf =
-				wolf_optimize_surf_load(torch[i],
-				env->sdl->win_surface->format));
-			_NOTIS_F(env->torch->tex[i].pixels =
-				env->torch->tex[i].surf->pixels);
-		}
-	}
+	while (++i < MAX_TORCH)
+		_NOTIS_F((env->torch->tex[i].surf =
+			wolf_optimize_surf_load(torch[i], env->sdl->win_surface->format))
+			&& (env->torch->tex[i].pixels = env->torch->tex[i].surf->pixels));
 	_ISZ(t_tex, env->floor_and_sky, 1);
 	_NOTIS_F(env->floor_and_sky->surf =
 		wolf_optimize_surf_load(FLOORNSKY, env->sdl->win_surface->format));
 	_NOTIS_F(env->floor_and_sky->pixels = env->floor_and_sky->surf->pixels);
+	_ISZ(t_walls, env->walls, 1);
+	_ISZ(t_tex, env->walls->data, 1);
+	_NOTIS_F(env->walls->data->surf =
+		wolf_optimize_surf_load(WALLTEXTURES, env->sdl->win_surface->format));
+	_NOTIS_F(env->walls->data->pixels = env->walls->data->surf->pixels);
+	i = -1;
+	ft_bzero(&p, sizeof(point));
+	while (++i < MAX_TEXTURES)
+	{
+		env->walls->start[i] = (point){p.y, p.x};
+		env->walls->end[i] = (point){p.y + WALLS_BLOCK_SIZE,
+			p.x + WALLS_BLOCK_SIZE};
+		if (i + 1 == MAX_TEXTURES / 2)
+			p = (point){p.y + WALLS_BLOCK_SIZE, 0};
+		else
+			p.x += WALLS_BLOCK_SIZE;
+	}
 	return (true);
 }
 
@@ -122,7 +128,6 @@ bool		wolf_init(t_env *env)
 	_ISZ(t_map, env->map, 1);
 	_ISZ(t_rc, env->rc, 1);
 	_ISZ(t_mouse, env->mouse, 1);
-	_ISZ(t_tex, env->textures, MAX_TEXTURES + 2);
 	_ISZ(t_torch, env->torch, 1);
 	_ISZ(t_tex, env->torch->tex, MAX_TORCH);
 	_NOTIS_F(add_init_textures(env));

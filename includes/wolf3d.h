@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/13 17:08:23 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/14 16:36:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,6 +178,14 @@ typedef struct	s_sfx
 	short		bg_volume;
 }				t_sfx;
 
+typedef struct	s_walls
+{
+	t_tex	*data;
+	point	start[MAX_TEXTURES];
+	point	end[MAX_TEXTURES];
+}				t_walls;
+
+
 typedef struct	s_wolf3d_environment
 {
 	t_sdl		*sdl;
@@ -185,7 +193,7 @@ typedef struct	s_wolf3d_environment
 	t_map		*map;
 	t_rc		*rc;
 	t_tex		*floor_and_sky;
-	t_tex		*textures;
+	t_walls		*walls;
 	t_mouse		*mouse;
 	t_fps		fps;
 	t_fog		fog;
