@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 10:38:52 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/15 11:52:00 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/15 12:26:51 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,9 @@ static bool	add_init_textures_map(t_env *env)
 	while (++i < env->walls->max_textures)
 	{
 		env->walls->start[i] = (point){p.y, p.x};
-		if (i + 1 == env->walls->max_textures / env->walls->in_column)
+		p.x += WALLS_BLOCK_SIZE;
+		if (!((i + 1) % (env->walls->max_textures / env->walls->in_column)))
 			p = (point){p.y + WALLS_BLOCK_SIZE, 0};
-		else
-			p.x += WALLS_BLOCK_SIZE;
 	}
 	return (true);
 }
