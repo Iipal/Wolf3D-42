@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/14 19:17:57 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/15 10:57:21 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,9 @@ typedef struct	s_walls
 {
 	t_tex	*data;
 	point	start[MAX_TEXTURES];
+	int		in_row;
+	int		in_column;
+	int		max_textures;
 }				t_walls;
 
 typedef struct	s_wolf3d_environment
@@ -235,6 +238,7 @@ SDL_Surface		*wolf_optimize_font_load(string text, SDL_Color text_color,
 								TTF_Font *font, SDL_PixelFormat *format);
 
 bool			wolf_init(t_env *env);
+bool			wolf_init_textures(t_env *env);
 void			wolf_setup_rc(t_env *env);
 
 void			wolf_rendering_fps_counter(t_env *env);

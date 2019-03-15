@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/03/14 17:59:22 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/03/15 10:58:32 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ endif
 CC = gcc -march=native
 CFLAGS = -Wall -Wextra -Werror -Ofast
 
-SRC = srcs/main.c srcs/wolf_init.c srcs/wolf_map_reader.c \
+SRC = srcs/main.c srcs/wolf_init.c srcs/wolf_init_textures.c srcs/wolf_map_reader.c \
 srcs/wolf_sdl_optimizing_load.c srcs/wolf_sdl_mainmenu_loop.c \
 srcs/wolf_sdl_rendering_loop.c srcs/wolf_sdl_rendering_loop_key_press_events.c \
 srcs/wolf_sdl_sfx_steps.c srcs/wolf_raycaster.c srcs/wolf_rendering.c \
