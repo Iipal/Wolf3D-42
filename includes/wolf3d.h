@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/15 10:57:21 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/15 11:21:30 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,7 +181,7 @@ typedef struct	s_sfx
 typedef struct	s_walls
 {
 	t_tex	*data;
-	point	start[MAX_TEXTURES];
+	point	*start;
 	int		in_row;
 	int		in_column;
 	int		max_textures;
