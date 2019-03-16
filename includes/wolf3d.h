@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/15 11:21:30 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/16 22:09:11 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -241,10 +241,11 @@ bool			wolf_init(t_env *env);
 bool			wolf_init_textures(t_env *env);
 void			wolf_setup_rc(t_env *env);
 
+void			wolf_rendering_mainmenu(t_env *env);
+
 void			wolf_rendering_fps_counter(t_env *env);
 void			wolf_rendering_minimap(t_env *env);
-Uint32			wolf_fog(float dist_to_obj, Uint32 src_color, t_fog *fog);
-Uint32			wolf_fog_change(t_colors *c);
+void			wolf_rendering_torch(t_env *env);
 
 void			wofl_rendering_loop_keys_press(t_env *env, bool *exit);
 void			wofl_rendering_loop_keys_sfx_press(t_env *env);
@@ -253,19 +254,19 @@ void			wofl_rendering_loop_keys_release(t_env *env);
 void			wolf_sdl_rendering_loop(t_env *env);
 void			wolf_sdl_mainmenu_loop(t_env *env);
 
-void			wolf_rendering_waepons(t_env *env);
+void			wolf_rendering_weapons(t_env *env);
 
-void			wolf_rendering_rc(t_env *env);
-void			wolf_rendering_mainmenu(t_env *env);
+void			wolf_rendering(t_env *env);
+void			wolf_raycaster(t_env *env);
+
+Uint32			wolf_fog(float dist_to_obj, Uint32 src_color, t_fog *fog);
+Uint32			wolf_fog_change(t_colors *c);
+float			wolf_fog_freq(int *freq, t_time *time);
 
 void			wolf_render_textured_help(t_env *env, point *p, t_texhelper *h);
 void			wolf_render_textured(t_env *env, point *p);
 void			wolf_render_colored(t_env *env, point *p);
 void			wolf_fill_floor_if_colored_rc(t_sdl *sdl);
-
-void			wolf_set_diststep(t_rc *rc);
-void			wolf_check_hit(t_rc *rc, itab map);
-void			wolf_dist_to_wall(t_rc *rc);
 
 bool			wolf_is_tile(t_map *map, fpoint pos);
 
@@ -273,7 +274,6 @@ void			wolf_rotate(t_rc *rc, float angle);
 void			wolf_move(t_env *env, float dist);
 
 void			wolf_playing_steps(t_sfx *sfx, bool is_boost);
-
 void			wolf_press_selector(t_env *env);
 
 void			wolf_free(t_env **env);
