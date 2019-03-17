@@ -6,11 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 17:18:56 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/09 11:31:01 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/16 21:27:25 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/wolf3d.h"
+#include "wolf3d.h"
 
 static bool		add_save_map(string line, iarr map_line,
 						iarr colors_line, int map_x)

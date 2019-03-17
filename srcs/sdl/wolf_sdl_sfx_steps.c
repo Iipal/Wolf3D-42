@@ -6,11 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 23:17:49 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/09 11:31:59 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/16 21:25:32 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/wolf3d.h"
+#include "wolf3d.h"
 
 void	wolf_playing_steps(t_sfx *sfx, bool is_boost)
 {

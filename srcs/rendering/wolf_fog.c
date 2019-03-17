@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wolf_rendering_fog.c                               :+:      :+:    :+:   */
+/*   wolf_fog.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 19:10:46 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/09 11:39:02 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/16 22:08:02 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/wolf3d.h"
+#include "wolf3d.h"
 
 Uint32	wolf_fog_change(t_colors *c)
 {
@@ -20,6 +20,24 @@ Uint32	wolf_fog_change(t_colors *c)
 	if (++*c >= max_colors)
 		*c = white;
 	return (colors[*c]);
+}
+
+float	wolf_fog_freq(int *freq, t_time *time)
+{
+	const float	freqs[] = {4.2, 4.25, 4.15, 4.17, 4.22, 4.3, 4.1, 4.16};
+
+	if (time->res > REFRESH_TORCH_FOG_FREQ)
+	{
+		time->res = 0;
+		*freq = ft_rand((sizeof(freqs) / sizeof(*freqs)) - 1);
+	}
+	else
+	{
+		time->old = time->current;
+		time->current = SDL_GetTicks();
+		time->res += (time->current - time->old) / 1000.0;
+	}
+	return (freqs[(*freq)]);
 }
 
 Uint32	wolf_fog(float dist_to_obj, Uint32 src_color, t_fog *fog)

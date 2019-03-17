@@ -6,11 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 09:51:17 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/07 16:12:49 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/16 21:26:04 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/wolf3d.h"
+#include "wolf3d.h"
 
 SDL_Surface	*wolf_optimize_surf_load(string bmp_path,
 							const SDL_PixelFormat *format)

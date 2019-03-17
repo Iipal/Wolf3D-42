@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wolf_rendering_colored.c                           :+:      :+:    :+:   */
+/*   wolf_colored.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 13:22:34 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/27 22:32:52 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/16 22:22:34 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/wolf3d.h"
+#include "wolf3d.h"
 
 static int	add_choose_current_color(t_env *env)
 {
@@ -43,15 +43,4 @@ void		wolf_render_colored(t_env *env, point *p)
 		}
 		else
 			env->sdl->win_pixels[p->y * WIN_X + p->x] = current_color;
-}
-
-void		wolf_fill_floor_if_colored_rc(t_sdl *sdl)
-{
-	point	p;
-
-	p.y = -1;
-	while (++(p.y) < WIN_Y && (p.x = -1))
-		while (++(p.x) < WIN_X)
-			sdl->win_pixels[p.y * WIN_X + p.x] =
-				(p.y >= WIN_Y / 2) ? IRGB_FLOOR : IRGB_SKY;
 }

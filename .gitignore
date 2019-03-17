@@ -1,6 +1,5 @@
 #ignore object files in source folders
-srcs/*.o
-libft/srcs/*/*.o
+**.o
 libft/libft.a
 wolf3d
 **.DS_Store
@@ -8,3 +7,4 @@ test/
 .VScode
 .vscode
 **.cpp
+**.xcf

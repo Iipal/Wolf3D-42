@@ -6,11 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 01:03:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/27 22:43:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/16 22:05:27 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/wolf3d.h"
+#include "wolf3d.h"
 
 bool		wolf_is_tile(t_map *map, fpoint pos)
 {

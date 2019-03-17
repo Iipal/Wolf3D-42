@@ -6,11 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/07 16:45:05 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/16 22:20:04 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/wolf3d.h"
+#include "wolf3d.h"
 
 void		wolf_free_map(t_map **map)
 {
@@ -75,19 +75,26 @@ static void	add_free_menu_sfx(t_sfx **sfx)
 
 void		wolf_free(t_env **env)
 {
-	if ((*env)->map)
-		wolf_free_map(&((*env)->map));
-	if ((*env)->textures)
-		add_free_surfaces(&((*env)->textures), MAX_TEXTURES + 2);
+	((*env)->map) ? wolf_free_map(&((*env)->map)) : 0;
 	if ((*env)->torch)
 	{
 		add_free_surfaces(&((*env)->torch->tex), MAX_TORCH);
 		_FREE((*env)->torch, free);
 	}
-	if ((*env)->menu)
-		add_free_menu(&((*env)->menu));
-	if ((*env)->sfx)
-		add_free_menu_sfx(&((*env)->sfx));
+	((*env)->menu) ? add_free_menu(&((*env)->menu)) : 0;
+	((*env)->sfx) ? add_free_menu_sfx(&((*env)->sfx)) : 0;
+	if ((*env)->floor_and_sky)
+	{
+		SDL_FreeSurface((*env)->floor_and_sky->surf);
+		_FREE((*env)->floor_and_sky, free);
+	}
+	if ((*env)->walls)
+	{
+		SDL_FreeSurface((*env)->walls->data->surf);
+		_FREE((*env)->walls->data, free);
+		_FREE((*env)->walls->start, free);
+		_FREE((*env)->walls, free);
+	}
 	_FREE((*env)->isr, free);
 	_FREE((*env)->rc, free);
 	_FREE((*env)->sdl->font, TTF_CloseFont);
@@ -96,5 +103,4 @@ void		wolf_free(t_env **env)
 	_FREE((*env)->mouse, free);
 	_FREE(*env, free);
 	SDL_Quit();
-	exit(EXIT_SUCCESS);
 }

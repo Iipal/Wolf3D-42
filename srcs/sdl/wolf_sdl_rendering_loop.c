@@ -6,11 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 22:59:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/07 18:16:42 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/16 21:43:51 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/wolf3d.h"
+#include "wolf3d.h"
 
 static void	add_mouse_moves(t_env *env)
 {
@@ -67,7 +67,7 @@ void		wolf_sdl_rendering_loop(t_env *env)
 			add_mouse_moves(env);
 		}
 		add_loop_isr(env);
-		wolf_rendering_rc(env);
+		wolf_rendering(env);
 	}
 	(env->isr->is_play_music) ?
 		Mix_VolumeMusic(env->sfx->bg_volume / BG_VOL_MUTE) : 0;

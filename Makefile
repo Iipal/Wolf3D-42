@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/03/09 11:32:38 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/03/16 22:22:38 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,14 +26,18 @@ endif
 
 CC = gcc -march=native
 CFLAGS = -Wall -Wextra -Werror -Ofast
+INC = -I $(CURDIR)/includes/
 
-SRC = srcs/main.c srcs/wolf_init.c srcs/wolf_map_reader.c \
-srcs/wolf_sdl_optimizing_load.c srcs/wolf_sdl_mainmenu_loop.c \
-srcs/wolf_sdl_rendering_loop.c srcs/wolf_sdl_rendering_loop_key_press_events.c \
-srcs/wolf_sdl_sfx_steps.c srcs/wolf_raycaster.c srcs/wolf_rendering.c \
-srcs/wolf_rendering_mainmenu.c srcs/wolf_rendering_colored.c srcs/wolf_rendering_textured.c \
-srcs/wolf_rendering_textured_help_fck_norme.c srcs/wolf_rendering_minimap.c \
-srcs/wolf_rendering_fps_counter.c srcs/wolf_rendering_fog.c srcs/wolf_rotatenmove.c srcs/wolf_free.c
+SRC = srcs/main.c srcs/wolf_map_reader.c srcs/free/wolf_free.c srcs/init/wolf_init.c srcs/init/wolf_init_textures.c \
+srcs/sdl/wolf_sdl_optimizing_load.c \
+srcs/sdl/wolf_sdl_mainmenu_loop.c srcs/sdl/wolf_sdl_rendering_loop.c \
+srcs/sdl/wolf_sdl_rendering_loop_key_press_events.c \
+srcs/sdl/wolf_sdl_sfx_steps.c srcs/raycaster/wolf_raycaster.c srcs/raycaster/wolf_rotatenmove.c \
+srcs/rendering/wolf_rendering.c srcs/rendering/wolf_main_menu.c \
+srcs/rendering/wolf_colored.c srcs/rendering/wolf_textured.c \
+srcs/rendering/wolf_textured_help_fck_norme.c srcs/rendering/wolf_minimap.c \
+srcs/rendering/wolf_weapons.c srcs/rendering/wolf_torch.c srcs/rendering/wolf_fps_counter.c \
+srcs/rendering/wolf_fog.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -52,7 +56,7 @@ all: $(NAME)
 
 $(OBJ): %.o: %.c
 	@$(ECHO) -n ' $@: '
-	@$(CC) -c $(CFLAGS) $(SDLINCLUDE) $< -o $@
+	@$(CC) -c $(CFLAGS) $(SDLINCLUDE) $(INC) $< -o $@
 	@$(ECHO) "[$(GREEN)✓$(WHITE)]"
 
 $(LIBFT):

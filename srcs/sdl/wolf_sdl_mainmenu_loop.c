@@ -6,11 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 11:02:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/07 18:16:17 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/16 21:26:07 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/wolf3d.h"
+#include "wolf3d.h"
 
 static void	add_press_selector(t_env *env, bool *exit)
 {

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wolf_rendering_fps_counter.c                       :+:      :+:    :+:   */
+/*   wolf_fps_counter.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 14:42:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/09 11:32:13 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/16 22:08:04 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/wolf3d.h"
+#include "wolf3d.h"
 
 static void	add_render_fps(SDL_Surface *text, iarr screen, bool pos)
 {

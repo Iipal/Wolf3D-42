@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wolf_rendering_minimap.c                           :+:      :+:    :+:   */
+/*   wolf_minimap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 22:33:18 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/07 14:36:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/16 22:08:09 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/wolf3d.h"
+#include "wolf3d.h"
 
 static void	add_rendering_square(t_env *env, int size, fpoint pos, int color)
 {

@@ -6,11 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 15:41:02 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/02/28 11:47:57 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/16 21:25:24 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/wolf3d.h"
+#include "wolf3d.h"
 
 static void	add_render_floor_init_fpos(t_env *env, t_texhelper *tx,
 										t_floorhelper *h)
@@ -30,8 +30,8 @@ static void	add_render_floor_init_fpos(t_env *env, t_texhelper *tx,
 static void	add_is_render_fog(t_floorhelper *h, t_env *env,
 								point *p, float fog_distance)
 {
-	const Uint32	curr_floor = (TEX[TFLOOR].pixels[POS] >> 1) & FCL;
-	const Uint32	curr_sky = TEX[TSKY].pixels[POS];
+	const Uint32	curr_floor = (env->floor_and_sky->pixels[FPOS] >> 1) & FCL;
+	const Uint32	curr_sky = env->floor_and_sky->pixels[SPOS];
 	const Uint32	fog_color = env->fog.fog_color;
 
 	if (env->isr->is_render_fog)
@@ -70,8 +70,8 @@ static void	add_render_floornceiling(t_env *env, t_texhelper *tx, point *p)
 		h.weight = (h.currd - 0.0) / (env->rc->pwd - 0.0);
 		h.fcur.y = h.weight * h.fpos.y + (1.0 - h.weight) * env->rc->pos.y;
 		h.fcur.x = h.weight * h.fpos.x + (1.0 - h.weight) * env->rc->pos.x;
-		h.ftex = (point){(int)(h.fcur.y * YTEX) % YTEX,
-			(int)(h.fcur.x * XTEX) % XTEX};
+		h.ftex = (point){(int)(h.fcur.y * WALLS_BLOCK_SIZE) % WALLS_BLOCK_SIZE,
+			(int)(h.fcur.x * WALLS_BLOCK_SIZE) % WALLS_BLOCK_SIZE};
 		add_is_render_fog(&h, env, p, h.currd);
 		++(p->y);
 	}
@@ -87,8 +87,8 @@ static void	add_choose_current_texture(t_env *env, t_texhelper *h)
 	if (env->rc->is_side)
 		(env->rc->step.y < 0) ? (tex = 2)
 			: (tex = 3);
-	if ((h->curr_tex += tex) > MAX_TEXTURES + 1)
-		h->curr_tex -= (MAX_TEXTURES + 1);
+	if ((h->curr_tex += tex) > env->walls->max_textures - 1)
+		h->curr_tex -= (env->walls->max_textures - 1);
 }
 
 void		wolf_render_textured(t_env *env, point *p)
@@ -101,10 +101,10 @@ void		wolf_render_textured(t_env *env, point *p)
 	else
 		h.where_is_hit = env->rc->pos.x + env->rc->pwd * env->rc->raydir.x;
 	h.where_is_hit -= (int)h.where_is_hit;
-	h.pos_on_tex.x = (int)(h.where_is_hit * XTEX);
+	h.pos_on_tex.x = (int)(h.where_is_hit * WALLS_BLOCK_SIZE);
 	if ((!env->rc->is_side && env->rc->raydir.x > 0)
 	|| (env->rc->is_side && env->rc->raydir.y > 0))
-		h.pos_on_tex.x = XTEX - h.pos_on_tex.x - 1;
+		h.pos_on_tex.x = WALLS_BLOCK_SIZE - h.pos_on_tex.x - 1;
 	wolf_render_textured_help(env, p, &h);
 	add_render_floornceiling(env, &h, p);
 }
