@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/16 22:09:11 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/17 22:03:55 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,6 +258,8 @@ void			wolf_rendering_weapons(t_env *env);
 
 void			wolf_rendering(t_env *env);
 void			wolf_raycaster(t_env *env);
+
+void			wolf_blur(point size, iarr src, float value);
 
 Uint32			wolf_fog(float dist_to_obj, Uint32 src_color, t_fog *fog);
 Uint32			wolf_fog_change(t_colors *c);
