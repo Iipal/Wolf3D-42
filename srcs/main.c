@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:19:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/16 21:26:51 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/18 23:33:38 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ static void	wolf_usage(void)
 	_MSGN("  [Z] - Stop\\Play steps sounds.");
 	_MSGN("  [Q] - Stop\\Play background in-game music.");
 	_MSGN("  [+ | -] - Inc\\Decrease background volume.");
-	_MSGN("  [R] - Toggle FPS\\ms rendering info");
+	_MSGN("  [R] - Toggle FPS\\ms rendering info.");
+	_MSGN("  [H] - Toggle blur effect rendering.");
+	_MSGN("  [Y | N] - Inc\\Decreaase bluring effect.");
 	_MSGN("  [ESC] - exit.");
 }
 

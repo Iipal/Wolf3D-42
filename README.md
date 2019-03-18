@@ -46,15 +46,17 @@ When you have already installed SDL2 library you can use this simple rules:
 
 - `[W | S]`: Moving forward | backward (or Arrows `[UP | DOWN]`).
 - `[A | D]`: Rotate left | right (also Arrows `[LEFT | RIGHT]` or `Mouse`).
-- `[T]`: Toggle Textured\\Flat rendering method.
+- `[T]`: Toggle Textured\Flat rendering method.
 - `[M]`: Toggle mini-map rendering.
 - `[F]`: Toggle Fog rendering.
 - `[C]`: Switch Fog colors.
 - `[LShift]`: Step & rotate boost.
-- `[Z]` - Stop\\Play steps sounds.
+- `[Z]` - Stop\Play steps sounds.
 - `[Q]`: Stop\Play background in-game music.
 - `[+ | -]`: Inc\Decrease background volume.
 - `[R]`: Toggle FPS\ms rendering info.
+- `[H]`: Toggle blur effect rendering.
+- `[Y | N]`: Inc\Decreaase bluring effect.
 - `[ESC]`: Close Wolf3D.
 
 #### <===> MLX <===>

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/14 19:15:15 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/18 23:23:03 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,11 @@
 # define REFRESH_STEP_SFX_FREQ  .33f
 # define REFRESH_RUN_SFX_FREQ   .22f
 
+# define BLUR_DEF   5
+# define BLUR_MAX   50
+# define BLUR_INC   1
+# define BLUR_MIN   3
+
 # define TORCH_SHIFT_X      ((WIN_X + TORCH->tex[torch_frame].surf->w) / 1.6)
 # define TORCH_SHIFT_Y      (WIN_Y - TORCH->tex[torch_frame].surf->h)
 # define SELECTOR_START_X   ((WIN_X - SELECTOR_X) / 2.0)
@@ -117,6 +122,9 @@
 # define _RAD(deg) (((deg) * PI) / 180.0)
 # define _COSR(angle) cos(_RAD(angle))
 # define _SINR(angle) sin(_RAD(angle))
+# define MIN(a,b) (((a)<(b))?(a):(b))
+# define MAX(a,b) (((a)>(b))?(a):(b))
+
 
 # define _FPOINT    typedef t_fp                fpoint
 # define _POINT     typedef t_p                 point
@@ -125,6 +133,7 @@
 # define _UIARR     typedef unsigned int*       uiarr
 # define _UINT      typedef unsigned int        uint
 # define _ULL       typedef unsigned long long  ull
+# define _FCOLOR    typedef t_fcolor            FColor
 
 # define SWIN   env->sdl->win
 # define SWINS  env->sdl->win_surface
