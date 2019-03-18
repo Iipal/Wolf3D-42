@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 11:26:54 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/16 21:25:41 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/18 23:27:35 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,14 @@ void	wofl_rendering_loop_keys_press(t_env *env, bool *exit)
 		env->fog.fog_color = wolf_fog_change(&(env->fog.color));
 	if (SEKEY == SDLK_g)
 		env->isr->is_render_weapon = !env->isr->is_render_weapon;
+	if (SEKEY == SDLK_h)
+		env->isr->is_render_blur = !env->isr->is_render_blur;
+	if (SEKEY == SDLK_y)
+		(env->bsize + BLUR_INC > BLUR_MAX) ? (env->bsize = BLUR_MAX)
+		: (env->bsize += BLUR_INC);
+	if (SEKEY == SDLK_n)
+		(env->bsize - BLUR_INC < BLUR_MIN) ? (env->bsize = BLUR_MIN)
+		: (env->bsize -= BLUR_INC);
 }
 
 void	wofl_rendering_loop_keys_sfx_press(t_env *env)

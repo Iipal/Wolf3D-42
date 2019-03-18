@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/03/17 22:03:12 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/03/18 23:31:40 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ srcs/rendering/wolf_rendering.c srcs/rendering/wolf_main_menu.c \
 srcs/rendering/wolf_colored.c srcs/rendering/wolf_textured.c \
 srcs/rendering/wolf_textured_help_fck_norme.c srcs/rendering/wolf_minimap.c \
 srcs/rendering/wolf_weapons.c srcs/rendering/wolf_torch.c srcs/rendering/wolf_fps_counter.c \
-srcs/rendering/wolf_fog.c srcs/blur/wolf_blur.c
+srcs/rendering/wolf_fog.c srcs/rendering/wolf_blur.c
 
 OBJ = $(SRC:.c=.o)
 

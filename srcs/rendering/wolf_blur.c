@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 17:47:08 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/18 20:17:33 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/18 23:17:52 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 };
 
 double factor = 1.0;
-double bias = 0.0;
+double dimmed = 0.0;
 
 int main(int argc, char *argv[])
 {
@@ -57,9 +57,9 @@ int main(int argc, char *argv[])
     }
 
     //truncate values smaller than zero and larger than 255
-    result[y * w + x].r = min(max(int(factor * red + bias), 0), 255);
-    result[y * w + x].g = min(max(int(factor * green + bias), 0), 255);
-    result[y * w + x].b = min(max(int(factor * blue + bias), 0), 255);
+    result[y * w + x].r = min(max(int(factor * red + dimmed), 0), 255);
+    result[y * w + x].g = min(max(int(factor * green + dimmed), 0), 255);
+    result[y * w + x].b = min(max(int(factor * blue + dimmed), 0), 255);
   }
 
   //draw the result buffer to the screen
@@ -75,18 +75,21 @@ int main(int argc, char *argv[])
 }
 */
 
-static void	add_fill_blur_mask(float *bmap, point size, float value)
+static int	add_fill_blur_mask(float *bmap, point size, float value)
 {
 	point	p;
 	int		max_fill_range;
 	int		fill_range;
+	int		fill_cells;
 
 	p.y = -1;
+	fill_cells = 0;
 	max_fill_range = (size.x % 2) ? 1 : 2;
 	while (++(p.y) < size.y)
 	{
 		if (max_fill_range > size.x)
 			max_fill_range = size.x;
+		fill_cells += max_fill_range;
 		p.x = (size.x - max_fill_range) / 2;
 		fill_range = size.x - (p.x * 2);
 		while (fill_range--)
@@ -96,50 +99,48 @@ static void	add_fill_blur_mask(float *bmap, point size, float value)
 		else
 			max_fill_range -= 2;
 	}
+	return (fill_cells);
 }
 
-void		wolf_blur(point size, iarr src, float value)
+static void	add_blur_proccesing(t_bhelp b)
+{
+	FColor		fc;
+	SDL_Color	srcc;
+	point		i;
+	point		f;
+	SDL_Color	outc;
+
+	f.y = -1;
+	fc = (FColor){0.0, 0.0, 0.0};
+	while (++(f.y) < b.size.y && (f.x = -1))
+		while (++(f.x) < b.size.x)
+		{
+			i.x = (b.p->x - b.size.x / 2 + f.x + WIN_X) % WIN_X;
+			i.y = (b.p->y - b.size.y / 2 + f.y + WIN_Y) % WIN_Y;
+			srcc.r = b.src[i.y * WIN_X + i.x] >> 16;
+			srcc.g = (b.src[i.y * WIN_X + i.x] >> 8) & 0xff;
+			srcc.b = b.src[i.y * WIN_X + i.x] & 0xff;
+			fc.r += srcc.r * b.bmap[f.y * b.size.x + f.x];
+			fc.g += srcc.g * b.bmap[f.y * b.size.x + f.x];
+			fc.b += srcc.b * b.bmap[f.y * b.size.x + f.x];
+		}
+	outc.r = MIN(MAX((int)(b.factor * fc.r + b.dimm), 0), 255);
+	outc.g = MIN(MAX((int)(b.factor * fc.g + b.dimm), 0), 255);
+	outc.b = MIN(MAX((int)(b.factor * fc.b + b.dimm), 0), 255);
+	b.src[b.p->y * WIN_X + b.p->x] = (outc.r << 16 | outc.g << 8 | outc.b);
+}
+
+void		wolf_blur(point size, iarr src, float value, float dimmed)
 {
 	float		bmap[size.y][size.x];
-	FColor		fcolor;
-	point		psrc;
-	point		pfilter;
-	point		pimg;
-	SDL_Color	src_color;
-	SDL_Color	out_color;
+	point		p;
 	float		factor;
-	float		bias;
 
 	ft_bzero((float**)bmap, sizeof(float) * (size.y * size.x));
-	add_fill_blur_mask((float*)&(bmap[0][0]), size, value);
-	factor = 1.0 / 13.0;
-	bias = 0.0;
-	psrc.y = -1;
-	while (++(psrc.y) < WIN_Y && (psrc.x = -1))
-	{
-		while (++(psrc.x) < WIN_X)
-		{
-			fcolor = (FColor){0.0, 0.0, 0.0};
-			pfilter.y = -1;
-			while (++(pfilter.y) < size.y && (pfilter.x = -1))
-				while (++(pfilter.x) < size.x)
-				{
-					pimg.x = (psrc.x - size.x / 2 + pfilter.x + WIN_X) % WIN_X;
-					pimg.y = (psrc.y - size.y / 2 + pfilter.y + WIN_Y) % WIN_Y;
-					src_color = (SDL_Color){
-						src[pimg.y * WIN_X + pimg.x] >> 16,
-						(src[pimg.y * WIN_X + pimg.x] >> 8) & 0xff,
-						src[pimg.y * WIN_X + pimg.x] & 0xff, 0};
-					fcolor = (FColor){
-						fcolor.r + src_color.r * bmap[pfilter.y][pfilter.x],
-						fcolor.g + src_color.g * bmap[pfilter.y][pfilter.x],
-						fcolor.b + src_color.b * bmap[pfilter.y][pfilter.x]};
-				}
-			out_color.r = MIN(MAX((int)(factor * fcolor.r + bias), 0), 255);
-			out_color.g = MIN(MAX((int)(factor * fcolor.g + bias), 0), 255);
-			out_color.b = MIN(MAX((int)(factor * fcolor.b + bias), 0), 255);
-			src[psrc.y * WIN_X + psrc.x] = (out_color.r << 16 |
-				out_color.g << 8 | out_color.b);
-		}
-	}
+	factor = 1.0 / add_fill_blur_mask((float*)&(bmap[0][0]), size, value);
+	p.y = -1;
+	while (++(p.y) < WIN_Y && (p.x = -1))
+		while (++(p.x) < WIN_X)
+			add_blur_proccesing((t_bhelp){
+				&p, src, (float*)&(bmap[0][0]), dimmed, factor, size});
 }

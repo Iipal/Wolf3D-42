@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/18 19:43:26 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/18 23:26:01 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ typedef struct	s_isrender
 	bool	is_rotate_right;
 	bool	is_rotate_left;
 	bool	is_render_weapon;
+	bool	is_render_blur;
 }				t_isr;
 
 typedef struct	s_map
@@ -209,6 +210,7 @@ typedef struct	s_wolf3d_environment
 	t_menu		*menu;
 	t_torch		*torch;
 	t_sfx		*sfx;
+	int			bsize;
 }				t_env;
 
 /*
@@ -234,6 +236,17 @@ typedef struct	s_floor_render_helper
 	float	weight;
 	point	ftex;
 }				t_floorhelper;
+
+typedef struct	s_bhelp
+{
+	point	*p;
+	int		*src;
+	float	*bmap;
+	float	dimm;
+	float	factor;
+	point	size;
+}				t_bhelp;
+
 /*
 **		NORME HELP CODE END.
 */
@@ -267,7 +280,7 @@ void			wolf_rendering_weapons(t_env *env);
 void			wolf_rendering(t_env *env);
 void			wolf_raycaster(t_env *env);
 
-void			wolf_blur(point size, iarr src, float value);
+void			wolf_blur(point size, iarr src, float value, float dimmed);
 
 Uint32			wolf_fog(float dist_to_obj, Uint32 src_color, t_fog *fog);
 Uint32			wolf_fog_change(t_colors *c);

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/18 20:11:47 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/18 23:23:03 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,11 @@
 
 # define REFRESH_STEP_SFX_FREQ  .33f
 # define REFRESH_RUN_SFX_FREQ   .22f
+
+# define BLUR_DEF   5
+# define BLUR_MAX   50
+# define BLUR_INC   1
+# define BLUR_MIN   3
 
 # define TORCH_SHIFT_X      ((WIN_X + TORCH->tex[torch_frame].surf->w) / 1.6)
 # define TORCH_SHIFT_Y      (WIN_Y - TORCH->tex[torch_frame].surf->h)

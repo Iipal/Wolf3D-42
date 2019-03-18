@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/18 20:16:09 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/18 23:27:12 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ void			wolf_rendering(t_env *env)
 	add_fps(&(env->fps));
 	if (env->isr->is_render_fps)
 		wolf_rendering_fps_counter(env);
+	if (env->isr->is_render_blur)
+		wolf_blur((point){env->bsize, env->bsize}, env->sdl->win_pixels, 1, 0);
 	SDL_UpdateWindowSurface(env->sdl->win);
 }

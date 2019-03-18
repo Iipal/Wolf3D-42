@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/16 21:27:05 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/18 23:29:28 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ static bool	add_init_audio(t_env *env)
 bool		wolf_init(t_env *env)
 {
 	env->fog = (t_fog){dark, IRGB_BLACK, 4.2, 0};
+	env->bsize = BLUR_DEF;
 	_ISM(SDL_GetError(), SDL_Init(SDL_INIT_EVERYTHING) < 0, exit(1), false);
 	_ISM(TTF_GetError(), TTF_Init() < 0, exit(1), false);
 	_ISZ(t_sdl, env->sdl, 1);
@@ -89,7 +90,7 @@ bool		wolf_init(t_env *env)
 		env->sdl->win_surface = SDL_GetWindowSurface(SWIN), exit(1), false);
 	_NOTIS_F(env->sdl->win_pixels = env->sdl->win_surface->pixels);
 	_ISZ(t_isr, env->isr, 1);
-	*(env->isr) = (t_isr){1, 1, false, true, true, true, 0, 0, 0, 0, 0, 0};
+	*(env->isr) = (t_isr){1, 1, false, true, true, true, 0, 0, 0, 0, 0, 0, 0};
 	_ISZ(t_map, env->map, 1);
 	_ISZ(t_rc, env->rc, 1);
 	_ISZ(t_mouse, env->mouse, 1);
