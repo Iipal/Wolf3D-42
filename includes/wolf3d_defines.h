@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/17 17:55:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/18 20:11:47 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,9 @@
 # define _RAD(deg) (((deg) * PI) / 180.0)
 # define _COSR(angle) cos(_RAD(angle))
 # define _SINR(angle) sin(_RAD(angle))
+# define MIN(a,b) (((a)<(b))?(a):(b))
+# define MAX(a,b) (((a)>(b))?(a):(b))
+
 
 # define _FPOINT    typedef t_fp                fpoint
 # define _POINT     typedef t_p                 point
@@ -125,6 +128,7 @@
 # define _UIARR     typedef unsigned int*       uiarr
 # define _UINT      typedef unsigned int        uint
 # define _ULL       typedef unsigned long long  ull
+# define _FCOLOR    typedef t_fcolor            FColor
 
 # define SWIN   env->sdl->win
 # define SWINS  env->sdl->win_surface

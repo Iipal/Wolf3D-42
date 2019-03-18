@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/17 22:03:55 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/18 19:43:26 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,14 @@ typedef struct	s_fpoint
 	float	x;
 }				t_fp;
 
+typedef struct	s_fcolor
+{
+	float	r;
+	float	g;
+	float	b;
+}				t_fcolor;
+
+_FCOLOR;
 _FPOINT;
 _POINT;
 _UIARR;
