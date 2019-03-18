@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 11:01:40 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/18 20:16:16 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/03/18 21:03:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ void		wolf_rendering_mainmenu(t_env *env)
 		if (p.y >= selector_range.y && p.y < selector_range.y + SELECTOR_Y)
 			++(tp.y);
 	}
-	wolf_blur((point){10, 10}, env->sdl->win_pixels, 1);
+	wolf_blur((point){5, 5}, env->sdl->win_pixels, 1);
 	SDL_UpdateWindowSurface(env->sdl->win);
 }
