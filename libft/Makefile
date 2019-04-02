@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 11:27:37 by tmaluh            #+#    #+#              #
-#    Updated: 2019/04/02 19:44:38 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/04/02 20:14:55 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ endif
 
 CC := gcc -flto
 LC := ar rcs
-CFLAGS := -Wall -Wextra -Werror -Ofast
+CFLAGS := -Wall -Wextra -Werror -Ofast -fno-strict-aliasing
 
 SRC_D := srcs/
 SRCS := $(abspath $(wildcard $(SRC_D)/*/*.c))
