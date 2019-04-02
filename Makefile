@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/03/22 23:22:17 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/04/02 19:46:49 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,13 +25,12 @@ ifeq ($(UNAME_S),Darwin)
 		-framework SDL2_mixer -framework SDL2_ttf
 endif
 
-CC := gcc -march=native
-CFLAGS := -Wall -Wextra -Werror -Ofast
-INC := -I $(CURDIR)/includes/
+CC := gcc -march=native -flto
+CFLAGS := -Wall -Wextra -Werror -Ofast -fno-strict-aliasing
+IFLAGS := -I $(CURDIR)/includes/
 
 SRC := $(abspath $(wildcard srcs/*.c))
 SRC += $(abspath $(wildcard srcs/*/*.c))
-
 OBJ := $(SRC:.c=.o)
 
 LIBFT := libft/libft.a
@@ -43,14 +42,16 @@ GREEN := \033[32m
 RED := \033[31m
 INVERT := \033[7m
 
+SUCCESS = [$(GREEN)✓$(WHITE)]
+
 DEL := rm -rf
 
 all: $(NAME)
 
 $(OBJ): %.o: %.c
 	@$(ECHO) -n ' $@: '
-	@$(CC) -c $(CFLAGS) $(SDLINCLUDE) $(INC) $< -o $@
-	@$(ECHO) "[$(GREEN)✓$(WHITE)]"
+	@$(CC) -c $(CFLAGS) $(SDLINCLUDE) $(IFLAGS) $< -o $@
+	@$(ECHO) "$(SUCCESS)"
 
 $(LIBFT):
 	@$(LMAKE)

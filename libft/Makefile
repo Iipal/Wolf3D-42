@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 11:27:37 by tmaluh            #+#    #+#              #
-#    Updated: 2019/03/22 23:21:38 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/04/02 19:44:38 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,22 +21,22 @@ ifeq ($(UNAME_S),Darwin)
 	ECHO := echo
 endif
 
-CC := gcc
+CC := gcc -flto
 LC := ar rcs
+CFLAGS := -Wall -Wextra -Werror -Ofast
 
-CFLAGS := -Wall -Wextra -Werror
+SRC_D := srcs/
+SRCS := $(abspath $(wildcard $(SRC_D)/*/*.c))
+OBJS := $(SRCS:%.c=%.o)
+
+DEL := rm -rf
 
 WHITE := \033[0m
 GREEN := \033[32m
 RED := \033[31m
 INVERT := \033[7m
 
-DEL := rm -rf
-
-SRC_D := srcs/
-SRCS := $(abspath $(wildcard $(SRC_D)/*/*.c))
-
-OBJS := $(SRCS:%.c=%.o)
+SUCCESS = [$(GREEN)✓$(WHITE)]
 
 all: $(NAME)
 
@@ -50,7 +50,7 @@ $(NAME): $(OBJS)
 $(OBJS): %.o: %.c
 	@$(ECHO) -n ' $@: '
 	@$(CC) -c $(CFLAGS) $< -o $@
-	@$(ECHO) "$(WHITE)[✓]"
+	@$(ECHO) "$(SUCCESS)"
 clean:
 	@$(DEL) $(OBJS)
 
