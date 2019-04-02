@@ -6,20 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/02 20:20:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/02 20:24:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-
-static void		add_fps(t_fps *fps)
-{
-	fps->time.old = fps->time.current;
-	fps->time.current = SDL_GetTicks();
-	fps->time.res = (fps->time.current - fps->time.old) / 1000.0;
-	fps->move = fps->time.res * MOVE_INC;
-	fps->rot = fps->time.res * ROT_INC;
-}
 
 void			wolf_rendering(t_env *env)
 {
@@ -32,10 +23,10 @@ void			wolf_rendering(t_env *env)
 	}
 	if (env->isr->is_render_minimap)
 		wolf_rendering_minimap(env);
-	add_fps(&(env->fps));
-	if (env->isr->is_render_fps)
-		wolf_rendering_fps_counter(env);
 	if (env->isr->is_render_blur)
 		wolf_blur((point){env->bsize, env->bsize}, env->sdl->win_pixels, 1, 0);
+	wolf_fps(&(env->fps));
+	if (env->isr->is_render_fps)
+		wolf_rendering_fps_counter(env);
 	SDL_UpdateWindowSurface(env->sdl->win);
 }

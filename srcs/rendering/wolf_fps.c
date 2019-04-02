@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wolf_fps_counter.c                                 :+:      :+:    :+:   */
+/*   wolf_fps.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 14:42:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/16 22:08:04 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/02 20:22:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,13 @@ void		wolf_rendering_fps_counter(t_env *env)
 		add_render_fps(text, env->sdl->win_pixels, i);
 		SDL_FreeSurface(text);
 	}
+}
+
+void		wolf_fps(t_fps *fps)
+{
+	fps->time.old = fps->time.current;
+	fps->time.current = SDL_GetTicks();
+	fps->time.res = (fps->time.current - fps->time.old) / 1000.0;
+	fps->move = fps->time.res * MOVE_INC;
+	fps->rot = fps->time.res * ROT_INC;
 }
