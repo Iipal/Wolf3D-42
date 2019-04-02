@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/18 23:27:12 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/02 20:20:06 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,8 @@ void			wolf_rendering(t_env *env)
 	if (env->isr->is_render_fog)
 	{
 		env->fog.fog_dist = wolf_fog_freq(&env->fog.freq, &env->torch->time);
-		if (!env->isr->is_render_weapon)
-			wolf_rendering_torch(env);
+		wolf_rendering_torch(env);
 	}
-	if (env->isr->is_render_weapon)
-		wolf_rendering_weapons(env);
 	if (env->isr->is_render_minimap)
 		wolf_rendering_minimap(env);
 	add_fps(&(env->fps));
