@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 01:03:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/16 22:05:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 00:27:41 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 bool		wolf_is_tile(t_map *map, fpoint pos)
 {
 	if (pos.x < 0 || pos.y < 0
-	|| pos.x > map->xsize - 1
-	|| pos.y > map->ysize - 1)
+	|| pos.x > map->size.x - 1
+	|| pos.y > map->size.y - 1)
 		return (false);
 	else if (map->tab[(int)pos.y][(int)pos.x])
 		return (false);

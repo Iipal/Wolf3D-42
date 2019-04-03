@@ -6,15 +6,15 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 13:22:34 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/16 22:22:34 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 00:30:50 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static int	add_choose_current_color(t_env *env)
+static Uint32	add_choose_current_color(t_env *env)
 {
-	int	tex;
+	Uint32	tex;
 
 	(env->rc->step.x < 0) ? (tex = 1)
 		: (tex = 2);
@@ -24,9 +24,9 @@ static int	add_choose_current_color(t_env *env)
 	return (env->map->colors[env->rc->map.y][env->rc->map.x] / tex);
 }
 
-void		wolf_render_colored(t_env *env, point *p)
+void			wolf_render_colored(t_env *env, point *p)
 {
-	int	current_color;
+	Uint32	current_color;
 
 	current_color = add_choose_current_color(env);
 	if (env->rc->is_side)

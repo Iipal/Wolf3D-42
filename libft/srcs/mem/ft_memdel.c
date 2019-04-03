@@ -6,11 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/26 15:45:49 by tmaluh            #+#    #+#             */
-/*   Updated: 2018/10/26 19:29:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 01:15:29 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lft_mem.h"
+#include "libft.h"
 
 void	ft_memdel(pvoid *ap)
 {

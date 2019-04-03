@@ -6,12 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/27 19:20:57 by tmaluh            #+#    #+#             */
-/*   Updated: 2018/10/28 10:01:24 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 01:34:41 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lft_str.h"
-#include "../../includes/lft_mem.h"
+#include "libft.h"
 
 size_t	ft_strlcpy(string dest, cstring str, size_t dstsize)
 {

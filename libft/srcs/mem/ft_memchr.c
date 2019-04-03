@@ -6,27 +6,24 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 15:04:22 by tmaluh            #+#    #+#             */
-/*   Updated: 2018/10/28 14:52:20 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 01:14:43 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lft_mem.h"
-#include "../../includes/lft_str.h"
+#include "libft.h"
 
-pvoid	ft_memchr(const pvoid s, int c, size_t n)
+pvoid	ft_memchr(const pvoid s, uint8_t c, size_t n)
 {
 	ustring			out;
-	unsigned char	ch;
-	int				i;
+	size_t			i;
 
 	i = 0;
-	ch = (unsigned char)c;
 	out = (ustring)s;
 	while (n--)
 	{
-		if (out[i] == ch)
+		if (out[i] == c)
 			return (out + i);
-		i++;
+		++i;
 	}
 	return (NULL);
 }

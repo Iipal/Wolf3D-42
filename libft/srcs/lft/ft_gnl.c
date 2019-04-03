@@ -6,16 +6,16 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/03 12:31:02 by tmaluh            #+#    #+#             */
-/*   Updated: 2018/12/30 00:35:45 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 01:06:41 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
-#include "../../includes/lft_str.h"
+#include "libft.h"
 
-static int	catline_recursive(int fd, string *data, string *line, int nbytes)
+static int32_t	catline_recursive(int32_t fd, string *data,
+								string *line, int32_t nbytes)
 {
-	int		to_nl;
+	int32_t	to_nl;
 	string	temp_nl;
 
 	to_nl = -1;
@@ -41,12 +41,12 @@ static int	catline_recursive(int fd, string *data, string *line, int nbytes)
 	return (1);
 }
 
-int			ft_gnl(const int fd, string *line)
+int32_t			ft_gnl(const int32_t fd, string *line)
 {
 	static string	data[255];
 	string			temp;
 	char			buff[BUFF_SIZE + 1];
-	int				nbytes;
+	int32_t			nbytes;
 
 	if (fd < 0 || !line)
 		return (-1);

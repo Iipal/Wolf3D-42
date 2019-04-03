@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 19:10:46 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/16 22:08:02 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 00:36:40 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Uint32	wolf_fog_change(t_colors *c)
 {
-	const int	colors[] = {IRGB_WHITE, IRGB_RED, IRGB_ORANGE, IRGB_LIME,
+	const int32_t	colors[] = {IRGB_WHITE, IRGB_RED, IRGB_ORANGE, IRGB_LIME,
 				IRGB_AQUA, IRGB_PURPLE, IRGB_MINT, IRGB_DARK_BLUE, IRGB_BLACK};
 
 	if (++*c >= max_colors)
@@ -22,7 +22,7 @@ Uint32	wolf_fog_change(t_colors *c)
 	return (colors[*c]);
 }
 
-float	wolf_fog_freq(int *freq, t_time *time)
+float	wolf_fog_freq(uint8_t *freq, t_time *time)
 {
 	const float	freqs[] = {4.2, 4.25, 4.15, 4.17, 4.22, 4.3, 4.1, 4.16};
 

@@ -6,26 +6,25 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 16:46:01 by tmaluh            #+#    #+#             */
-/*   Updated: 2018/11/21 16:46:02 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 01:23:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lft_str.h"
-#include "../../includes/lft_ctype.h"
+#include "libft.h"
 
-static int	isvalid(int c, int base)
+static bool	isvalid(uint8_t c, uint8_t base)
 {
 	char	*valid_lower;
 	char	*valid_upper;
-	int		is;
+	bool	is;
 
-	is = 0;
+	is = false;
 	valid_lower = ft_strdup("0123456789abcdef");
 	valid_upper = ft_strdup("0123456789ABCDEF");
 	while (base--)
 		if (valid_lower[base] == c || valid_upper[base] == c)
 		{
-			is = 1;
+			is = true;
 			break ;
 		}
 	ft_strdel(&valid_lower);
@@ -33,7 +32,7 @@ static int	isvalid(int c, int base)
 	return (is);
 }
 
-static int	value_of(int c)
+static int16_t	value_of(uint8_t c)
 {
 	if (ft_isdigit(c))
 		return (c - '0');
@@ -44,17 +43,17 @@ static int	value_of(int c)
 	return (0);
 }
 
-int			ft_atoi_base(cstring str, int base)
+int32_t			ft_atoi_base(cstring str, int8_t base)
 {
-	int	result;
-	int	sign;
+	int32_t	num;
+	int8_t	sign;
 
-	result = 0;
+	num = 0;
 	while (ft_isblank(*str))
 		++str;
 	sign = (*str == '-') ? -1 : 1;
 	(*str == '-' || *str == '+') ? ++str : 0;
 	while (isvalid(*str, base))
-		result = result * base + value_of(*str++);
-	return (result * sign);
+		num = num * base + value_of(*str++);
+	return (num * sign);
 }

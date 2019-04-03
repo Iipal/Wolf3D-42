@@ -6,11 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/26 17:30:32 by tmaluh            #+#    #+#             */
-/*   Updated: 2018/10/28 15:12:12 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 01:33:19 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lft_str.h"
+#include "libft.h"
 
 void	ft_striter(string s, void (*f)(string))
 {
@@ -18,8 +18,8 @@ void	ft_striter(string s, void (*f)(string))
 
 	if (!s || !f)
 		return ;
-	i = -1;
+	i = 0;
 	if (s)
-		while (s[++i])
-			f(&s[i]);
+		while (s[i])
+			f(&s[i++]);
 }

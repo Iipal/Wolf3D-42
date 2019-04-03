@@ -6,11 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 18:19:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2018/10/26 19:33:46 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 01:42:40 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lft_str.h"
+#include "libft.h"
 
 string	ft_strstr(cstring str, cstring to_find)
 {

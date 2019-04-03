@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 11:01:40 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/18 21:58:32 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 00:31:31 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void		wolf_rendering_mainmenu(t_env *env)
 {
-	const int	selector_shifts[] = {SPOS_EXIT, SPOS_START};
-	fpoint		selector_range;
-	point		p;
-	point		tp;
+	const int32_t	selector_shifts[] = {SPOS_EXIT, SPOS_START};
+	fpoint			selector_range;
+	point			tp;
+	point			p;
 
 	p.y = -1;
 	tp.y = 0;

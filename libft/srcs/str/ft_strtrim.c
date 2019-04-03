@@ -6,11 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/26 19:26:18 by tmaluh            #+#    #+#             */
-/*   Updated: 2018/10/26 20:03:00 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 01:44:02 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lft_str.h"
+#include "libft.h"
 
 string	ft_strtrim(char const *s)
 {

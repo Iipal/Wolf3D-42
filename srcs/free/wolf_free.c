@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/16 22:20:04 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 00:29:37 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void		wolf_free_map(t_map **map)
 {
-	int	i;
+	int32_t	i;
 
 	if ((*map)->tab)
 	{
 		i = -1;
-		while (++i < (*map)->ysize)
+		while (++i < (*map)->size.y)
 			if ((*map)->tab[i] != NULL)
 				_FREE((*map)->tab[i], free);
 		_FREE((*map)->tab, free);
@@ -27,7 +27,7 @@ void		wolf_free_map(t_map **map)
 	if ((*map)->colors)
 	{
 		i = -1;
-		while (++i < (*map)->ysize)
+		while (++i < (*map)->size.y)
 			if ((*map)->colors[i] != NULL)
 				_FREE((*map)->colors[i], free);
 		_FREE((*map)->colors, free);
@@ -35,9 +35,9 @@ void		wolf_free_map(t_map **map)
 	_FREE(*map, free);
 }
 
-static void	add_free_surfaces(t_tex **tex, int max)
+static void	add_free_surfaces(t_tex **tex, int32_t max)
 {
-	int	i;
+	int32_t	i;
 
 	i = -1;
 	while (++i < max)

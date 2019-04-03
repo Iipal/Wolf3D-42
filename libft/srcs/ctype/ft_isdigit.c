@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 09:47:57 by tmaluh            #+#    #+#             */
-/*   Updated: 2018/10/26 19:27:47 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 01:04:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lft_ctype.h"
+#include "libft.h"
 
-int		ft_isdigit(int c)
+bool	ft_isdigit(uint8_t c)
 {
 	return (c >= '0' && c <= '9');
 }

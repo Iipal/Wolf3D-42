@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 14:42:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/02 20:22:15 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 00:20:26 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void		wolf_rendering_fps_counter(t_env *env)
 	string			data[2];
 	string			temp[2];
 	SDL_Surface		*text;
-	int				i;
+	int8_t			i;
 
 	i = -1;
 	while (++i < 2)

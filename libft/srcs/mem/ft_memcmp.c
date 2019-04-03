@@ -6,12 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 15:13:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2018/10/26 19:28:47 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 01:14:57 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lft_mem.h"
-#include "../../includes/lft_str.h"
+#include "libft.h"
 
 int		ft_memcmp(const pvoid s1, const pvoid s2, size_t n)
 {

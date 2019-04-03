@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/02 20:19:50 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 00:28:12 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void		wolf_setup_rc(t_env *env)
 		false, false, 0, 0, 0};
 	while (1)
 	{
-		env->rc->pos = (fpoint){ft_rand(env->map->ysize - 1),
-			ft_rand(env->map->xsize - 1)};
+		env->rc->pos = (fpoint){ft_rand(env->map->size.y - 1),
+			ft_rand(env->map->size.x - 1)};
 		if (!env->map->tab[(int)env->rc->pos.y][(int)env->rc->pos.x])
 			break ;
 	}

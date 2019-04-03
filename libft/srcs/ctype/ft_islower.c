@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/28 10:04:05 by tmaluh            #+#    #+#             */
-/*   Updated: 2018/10/28 10:04:58 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 01:05:03 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lft_ctype.h"
+#include "libft.h"
 
-int		ft_islower(int c)
+bool	ft_islower(uint8_t c)
 {
 	return (c >= 'a' && c <= 'z');
 }

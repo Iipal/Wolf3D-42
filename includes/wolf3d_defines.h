@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/18 23:23:03 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 00:27:01 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,11 +128,10 @@
 
 # define _FPOINT    typedef t_fp                fpoint
 # define _POINT     typedef t_p                 point
-# define _IARR      typedef int*                iarr
-# define _ITAB      typedef int**               itab
-# define _UIARR     typedef unsigned int*       uiarr
-# define _UINT      typedef unsigned int        uint
-# define _ULL       typedef unsigned long long  ull
+# define _IARR      typedef int32_t*            iarr
+# define _ITAB      typedef int32_t**           itab
+# define _UIARR     typedef uint32_t*       	uiarr
+# define _UINT      typedef uint32_t        	uint
 # define _FCOLOR    typedef t_fcolor            FColor
 
 # define SWIN   env->sdl->win
@@ -142,7 +141,7 @@
 # define SETYPE env->sdl->event.type
 # define SEKEY  env->sdl->event.key.keysym.sym
 
-# define MAPY   env->map->ysize
+# define MAPY   env->map->size.y
 # define MAP    env->map->tab
 # define MAPC   env->map->colors
 
