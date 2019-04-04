@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/04/02 19:46:49 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/04/03 18:34:57 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,17 +16,17 @@ PPATH := $(CURDIR)/$(NAME)
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
 	ECHO := echo -e
-	SDLFRAMEWORK := -lSDL2 -lSDL2_mixer -lSDL2_ttf -lm
+	LIBS := -lSDL2 -lSDL2_mixer -lSDL2_ttf -lm
 endif
 ifeq ($(UNAME_S),Darwin)
 	ECHO := echo
-	SDLINCLUDE := -F $(CURDIR)/frameworks
-	SDLFRAMEWORK := -F $(CURDIR)/frameworks -rpath $(CURDIR)/frameworks -framework SDL2 \
+	LIBSINC := -F $(CURDIR)/frameworks
+	LIBS := -F $(CURDIR)/frameworks -rpath $(CURDIR)/frameworks -framework SDL2 \
 		-framework SDL2_mixer -framework SDL2_ttf
 endif
 
-CC := gcc -march=native -flto
-CFLAGS := -Wall -Wextra -Werror -Ofast -fno-strict-aliasing
+CC := gcc -Ofast -march=native -flto -fno-strict-aliasing
+CFLAGS := -Wall -Wextra -Werror
 IFLAGS := -I $(CURDIR)/includes/
 
 SRC := $(abspath $(wildcard srcs/*.c))
@@ -50,7 +50,7 @@ all: $(NAME)
 
 $(OBJ): %.o: %.c
 	@$(ECHO) -n ' $@: '
-	@$(CC) -c $(CFLAGS) $(SDLINCLUDE) $(IFLAGS) $< -o $@
+	@$(CC) -c $(CFLAGS) $(LIBSINC) $(IFLAGS) $< -o $@
 	@$(ECHO) "$(SUCCESS)"
 
 $(LIBFT):
@@ -59,7 +59,7 @@ $(LIBFT):
 $(NAME): $(LIBFT) $(OBJ)
 	@$(ECHO) "$(INVERT)$(GREEN)"
 	@$(ECHO) -n ' <q.p> | $(PPATH): '
-	@$(CC) $(OBJ) $(SDLFRAMEWORK) $(LIBFT) -o $(NAME)
+	@$(CC) $(OBJ) $(LIBS) $(LIBFT) -o $(NAME)
 	@$(ECHO) "[✓]$(WHITE)"
 
 del:
