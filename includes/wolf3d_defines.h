@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 00:27:01 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 12:49:45 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@
 # define REFRESH_STEP_SFX_FREQ  .33f
 # define REFRESH_RUN_SFX_FREQ   .22f
 
+# define REFRESH_FPS_COUNTER    .5f
+
 # define BLUR_DEF   5
 # define BLUR_MAX   50
 # define BLUR_INC   1
@@ -101,6 +103,8 @@
 # define SELECTOR_START_Y   ((WIN_Y - SELECTOR_Y) / 2.0)
 
 # define _ISARGS(ac, av) {--ac;++av;_NOTIS(E_USAGE, !(ac != 1), exit(-1), 0);}
+
+# define _IFDO(ex, do) if ((ex)) { do; }
 
 # define _MSG(msg) ft_putstr(msg);
 # define _MSGN(msg) ft_putendl(msg);

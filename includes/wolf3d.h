@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 00:37:10 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 10:49:12 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,8 +213,6 @@ typedef struct	s_wolf3d_environment
 /*
 **		NORME HELP CODE START.
 **
-**	t_texhelper && t_floorhelper using only for
-**		make texture rendering process function avoid to norme.
 */
 typedef struct	s_texture_render_helper
 {

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 22:59:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/16 21:43:51 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 11:29:02 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void		wolf_sdl_rendering_loop(t_env *env)
 	{
 		while (SDL_PollEvent(&env->sdl->event) > 0)
 		{
-			(env->sdl->event.type == SDL_QUIT) ? (exit = true) : 0;
+			_IFDO(env->sdl->event.type == SDL_QUIT, exit = true);
 			if (env->sdl->event.type == SDL_KEYDOWN)
 			{
 				wofl_rendering_loop_keys_press(env, &exit);
@@ -69,6 +69,6 @@ void		wolf_sdl_rendering_loop(t_env *env)
 		add_loop_isr(env);
 		wolf_rendering(env);
 	}
-	(env->isr->is_play_music) ?
-		Mix_VolumeMusic(env->sfx->bg_volume / BG_VOL_MUTE) : 0;
+	_IFDO(env->isr->is_play_music,
+		Mix_VolumeMusic(env->sfx->bg_volume / BG_VOL_MUTE));
 }

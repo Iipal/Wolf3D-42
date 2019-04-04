@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/04/04 10:20:15 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/04/04 10:21:11 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ $(LIBFT):
 
 $(NAME): $(LIBFT) $(OBJ)
 	@$(ECHO) -n ' <q.p> | $(PPATH): '
-	@$(CC) $(OBJ) $(SDLFRAMEWORK) $(LIBFT) -o $(NAME)
+	@$(CC) $(OBJ) $(LIBS) $(LIBFT) -o $(NAME)
 	@$(ECHO) "[$(INVERT)$(GREEN)✓$(WHITE)]"
 
 del:

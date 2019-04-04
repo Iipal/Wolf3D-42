@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 17:18:56 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 00:26:35 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 12:44:23 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,7 @@ static bool		add_endofmap(t_env *env, int y,
 	{
 		while (++y < map_max.y - 1 && (i = -1))
 			while (++i < map_max.x)
-				if (!env->map->tab[y][i])
-					return (true);
+				_IS(!env->map->tab[y][i], (void)i, true);
 		return (false);
 	}
 	else if (!y || y == map_max.y - 1)
@@ -135,8 +134,8 @@ bool			wolf_readnsave(string map_name, t_env *env)
 	{
 		_ISM(E_IMAP, add_valid_inline_numbers(gnl_temp) != env->map->size.x,
 			ft_strdel(&gnl_temp), false);
-		_NOTIS(E_IMAP, add_save_map(gnl_temp, MAP[i], MAPC[i], env->map->size.x),
-			ft_strdel(&gnl_temp), false);
+		_NOTIS(E_IMAP, add_save_map(gnl_temp, MAP[i], MAPC[i],
+			env->map->size.x), ft_strdel(&gnl_temp), false);
 		_NOTIS(E_ENDMAP, add_endofmap(env, i, (point){MAPY, env->map->size.x},
 			false), ft_strdel(&gnl_temp), false);
 		ft_strdel(&gnl_temp);

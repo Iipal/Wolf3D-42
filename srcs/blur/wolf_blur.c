@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 17:47:08 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 00:41:38 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 10:51:21 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int32_t	add_fill_blur_mask(float *bmap, point size, float value)
 	return (fill_cells);
 }
 
-static void	add_blur_proccesing(t_bhelp b)
+static void		add_blur_proccesing(t_bhelp b)
 {
 	FColor		fc;
 	SDL_Color	srcc;
@@ -67,7 +67,7 @@ static void	add_blur_proccesing(t_bhelp b)
 	b.src[b.p->y * WIN_X + b.p->x] = (outc.r << 16 | outc.g << 8 | outc.b);
 }
 
-void		wolf_blur(point size, iarr src, float value, float dimmed)
+void			wolf_blur(point size, iarr src, float value, float dimmed)
 {
 	float		bmap[size.y][size.x];
 	point		p;

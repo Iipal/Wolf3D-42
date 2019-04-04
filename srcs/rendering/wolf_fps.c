@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 14:42:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 00:20:26 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 12:49:47 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	add_render_fps(SDL_Surface *text, iarr screen, bool pos)
 	}
 }
 
-void		wolf_rendering_fps_counter(t_env *env)
+static void	add_fps_prepare_and_draw(float dfps, float dms, t_env *env)
 {
 	const string	data_info[] = {" fps", " ms"};
 	string			data[2];
@@ -43,8 +43,7 @@ void		wolf_rendering_fps_counter(t_env *env)
 	i = -1;
 	while (++i < 2)
 	{
-		data[i] = i ? ft_itoa(env->fps.time.res * 1000)
-			: ft_itoa(1.0 / env->fps.time.res);
+		data[i] = (i ? ft_itoa(dfps) : ft_itoa(dms));
 		temp[i] = data[i];
 		data[i] = ft_strjoin(data[i], data_info[i]);
 		text = wolf_optimize_font_load(data[i], (SDL_Color){127, 255, 0, 0},
@@ -54,6 +53,22 @@ void		wolf_rendering_fps_counter(t_env *env)
 		add_render_fps(text, env->sdl->win_pixels, i);
 		SDL_FreeSurface(text);
 	}
+}
+
+void		wolf_rendering_fps_counter(t_env *env)
+{
+	static float	delta;
+	static float	delta_fps;
+	static float	delta_ms;
+
+	(delta > REFRESH_FPS_COUNTER) ? (delta = 0) : 0;
+	if (!delta)
+	{
+		delta_fps = env->fps.time.res * 1000;
+		delta_ms = 1.0 / env->fps.time.res;
+	}
+	add_fps_prepare_and_draw(delta_fps, delta_ms, env);
+	delta += env->fps.time.res;
 }
 
 void		wolf_fps(t_fps *fps)

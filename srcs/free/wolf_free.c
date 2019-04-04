@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 00:29:37 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 12:39:57 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,14 @@ void		wolf_free_map(t_map **map)
 	{
 		i = -1;
 		while (++i < (*map)->size.y)
-			if ((*map)->tab[i] != NULL)
-				_FREE((*map)->tab[i], free);
+			_FREE((*map)->tab[i], free);
 		_FREE((*map)->tab, free);
 	}
 	if ((*map)->colors)
 	{
 		i = -1;
 		while (++i < (*map)->size.y)
-			if ((*map)->colors[i] != NULL)
-				_FREE((*map)->colors[i], free);
+			_FREE((*map)->colors[i], free);
 		_FREE((*map)->colors, free);
 	}
 	_FREE(*map, free);
@@ -76,7 +74,7 @@ static void	add_free_menu_sfx(t_sfx **sfx)
 void		wolf_free(t_env **env)
 {
 	((*env)->map) ? wolf_free_map(&((*env)->map)) : 0;
-	if ((*env)->torch)
+	if ((*env)->torch && (*env)->torch->tex)
 	{
 		add_free_surfaces(&((*env)->torch->tex), MAX_TORCH);
 		_FREE((*env)->torch, free);
@@ -88,13 +86,10 @@ void		wolf_free(t_env **env)
 		SDL_FreeSurface((*env)->floor_and_sky->surf);
 		_FREE((*env)->floor_and_sky, free);
 	}
-	if ((*env)->walls)
-	{
-		SDL_FreeSurface((*env)->walls->data->surf);
-		_FREE((*env)->walls->data, free);
-		_FREE((*env)->walls->start, free);
-		_FREE((*env)->walls, free);
-	}
+	SDL_FreeSurface((*env)->walls->data->surf);
+	_FREE((*env)->walls->data, free);
+	_FREE((*env)->walls->start, free);
+	_FREE((*env)->walls, free);
 	_FREE((*env)->isr, free);
 	_FREE((*env)->rc, free);
 	_FREE((*env)->sdl->font, TTF_CloseFont);

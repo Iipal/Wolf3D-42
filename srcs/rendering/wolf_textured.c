@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 15:41:02 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 00:34:04 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 12:00:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ static void	add_render_floornceiling(t_env *env, t_texhelper *tx, point *p)
 	t_floorhelper	h;
 
 	add_render_floor_init_fpos(env, tx, &h);
-	if (env->rc->draw_end < 0)
-		env->rc->draw_end = WIN_Y;
+	_IFDO(env->rc->draw_end < 0, env->rc->draw_end = WIN_Y);
 	p->y = env->rc->draw_end;
 	while (p->y < WIN_Y)
 	{
