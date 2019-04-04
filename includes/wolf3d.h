@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 10:49:12 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 12:50:47 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,7 +212,6 @@ typedef struct	s_wolf3d_environment
 
 /*
 **		NORME HELP CODE START.
-**
 */
 typedef struct	s_texture_render_helper
 {
@@ -241,7 +240,6 @@ typedef struct	s_bhelp
 	float	factor;
 	point	size;
 }				t_bhelp;
-
 /*
 **		NORME HELP CODE END.
 */

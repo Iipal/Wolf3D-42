@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 12:49:45 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 12:50:56 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,6 @@
 # define _SINR(angle) sin(_RAD(angle))
 # define MIN(a,b) (((a)<(b))?(a):(b))
 # define MAX(a,b) (((a)>(b))?(a):(b))
-
 
 # define _FPOINT    typedef t_fp                fpoint
 # define _POINT     typedef t_p                 point
