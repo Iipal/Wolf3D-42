@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 12:50:56 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 12:51:53 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@
 
 # define WOLF_TITTLE    "Wolfenstein 3D"
 # define WOLF_EXE_PATH  "./wolf3d"
-# define WOLF_FILE_EXT	".w3d"
+# define WOLF_FILE_EXT  ".w3d"
 
 # define IRGB_BLACK     0x00
 # define IRGB_MAP_RAY   0x00B37A
@@ -119,7 +119,7 @@
 # define _Z(type, dest, x) ft_bzero(dest, sizeof(type) * (x))
 # define _ISZ(t, d, x) _NOTIS_F(d = (t*)malloc(sizeof(t)*(x))); _Z(t, d, x)
 
-# define _FREE(trash, del)	if ((trash)) {del(trash); trash = NULL;}
+# define _FREE(trash, del) if ((trash)) {del(trash); trash = NULL;}
 
 # define PI 3.141592
 # define _ABS(var) ((var) < 0) ? -(var) : (var)
@@ -133,8 +133,8 @@
 # define _POINT     typedef t_p                 point
 # define _IARR      typedef int32_t*            iarr
 # define _ITAB      typedef int32_t**           itab
-# define _UIARR     typedef uint32_t*       	uiarr
-# define _UINT      typedef uint32_t        	uint
+# define _UIARR     typedef uint32_t*           uiarr
+# define _UINT      typedef uint32_t            uint
 # define _FCOLOR    typedef t_fcolor            FColor
 
 # define SWIN   env->sdl->win

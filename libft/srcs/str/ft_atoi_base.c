@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 16:46:01 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 01:23:15 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 12:53:37 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static bool	isvalid(uint8_t c, uint8_t base)
+static bool		isvalid(uint8_t c, uint8_t base)
 {
 	char	*valid_lower;
 	char	*valid_upper;

@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/26 17:53:34 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 01:36:37 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 12:54:39 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-string	ft_strmapi(char const *s, char (*f)(uint32_t, char))
+string	ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	string		src;
 	string		out;

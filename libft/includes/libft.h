@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 10:04:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 01:40:50 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 12:54:36 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@
 
 enum	e_bool {false, true} __attribute__((packed));
 
-# define _STR		typedef char*			string
-# define _CSTR		typedef const char*		cstring
-# define _USTR		typedef unsigned char*	ustring
-# define _UCHAR		typedef unsigned char	uchar
-# define _STRTAB	typedef char**			strtab
-# define _PVOID		typedef	void*			pvoid
-# define _BOOL		typedef enum e_bool		bool
+# define _STR       typedef char*           string
+# define _CSTR      typedef const char*     cstring
+# define _USTR      typedef unsigned char*  ustring
+# define _UCHAR     typedef unsigned char   uchar
+# define _STRTAB    typedef char**          strtab
+# define _PVOID     typedef void*           pvoid
+# define _BOOL      typedef enum e_bool     bool
 
 _STR;
 _CSTR;
@@ -80,7 +80,7 @@ bool	ft_tolower(uint8_t c);
 void	ft_strdel(string *as);
 void	ft_strclr(string s);
 void	ft_striter(string s, void (*f)(string));
-void	ft_striteri(string s, void (*f)(uint32_t, string));
+void	ft_striteri(string s, void (*f)(unsigned int, string));
 
 bool	ft_strequ(char const *s1, char const *s2);
 bool	ft_strnequ(char const *s1, char const *s2, size_t n);
@@ -110,7 +110,7 @@ string	ft_strstr(cstring str, cstring to_find);
 string	ft_strnstr(cstring str, cstring to_find, size_t len);
 string	ft_strnew(size_t size);
 string	ft_strmap(char const *s, char (*f)(char));
-string	ft_strmapi(char const *s, char (*f)(uint32_t, char));
+string	ft_strmapi(char const *s, char (*f)(unsigned int, char));
 string	ft_strsub(char const *s, uint32_t start, size_t len);
 string	ft_strjoin(char const *s1, char const *s2);
 string	ft_strtrim(char const *s);
