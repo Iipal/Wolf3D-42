@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/02 20:24:13 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 00:15:05 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void			wolf_rendering(t_env *env)
+void	wolf_rendering(t_env *env)
 {
 	SDL_FillRect(env->sdl->win_surface, NULL, IRGB_BLACK);
 	wolf_raycaster(env);

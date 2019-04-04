@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/28 10:13:34 by tmaluh            #+#    #+#             */
-/*   Updated: 2018/10/28 10:14:20 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 01:04:54 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lft_ctype.h"
+#include "libft.h"
 
-int		ft_isblank(int c)
+bool	ft_isblank(uint8_t c)
 {
 	return ((c >= 9 && c <= 13) || c == 32);
 }

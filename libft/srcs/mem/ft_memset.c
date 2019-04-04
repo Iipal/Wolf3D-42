@@ -6,12 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 11:17:58 by tmaluh            #+#    #+#             */
-/*   Updated: 2018/10/26 19:29:25 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 01:16:18 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lft_mem.h"
-#include "../../includes/lft_str.h"
+#include "libft.h"
 
 pvoid	ft_memset(pvoid b, int c, size_t len)
 {

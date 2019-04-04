@@ -6,12 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 13:43:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2018/10/26 19:29:16 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 01:16:08 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lft_mem.h"
-#include "../../includes/lft_str.h"
+#include "libft.h"
 
 pvoid	ft_memmove(pvoid dest, void const *src, size_t len)
 {
@@ -23,7 +22,7 @@ pvoid	ft_memmove(pvoid dest, void const *src, size_t len)
 	sc = (ustring)src;
 	i = -1;
 	if (sc < dst)
-		while ((int)(--len) >= 0)
+		while ((int64_t)(--len) >= 0)
 			dst[len] = sc[len];
 	else
 		while (++i < len)

@@ -3,39 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmaluh <tmaluh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/27 13:58:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2018/12/19 20:34:41 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 01:42:48 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lft_str.h"
+#include "libft.h"
 
-static inline int	ft_ss_words(cstring str, string ch)
+static int32_t	ft_ss_words(cstring str, string ch)
 {
-	int		counter;
-	int		is_word;
+	int32_t	counter;
+	bool	is_word;
 
 	counter = 0;
-	is_word = 0;
+	is_word = false;
 	while (*str)
 	{
 		if (is_word && *str == *ch)
-			is_word = 0;
+			is_word = true;
 		if (!is_word && *str != *ch)
 		{
 			counter++;
-			is_word = 1;
+			is_word = false;
 		}
 		str++;
 	}
 	return (counter);
 }
 
-static inline int	ft_ss_wlen(cstring str, char ch)
+static int32_t	ft_ss_wlen(cstring str, char ch)
 {
-	int		len;
+	int32_t	len;
 
 	len = 0;
 	while (*str != ch && *str++ != '\0')
@@ -43,17 +43,17 @@ static inline int	ft_ss_wlen(cstring str, char ch)
 	return (len);
 }
 
-strtab				ft_strsplit(char const *s, char c)
+strtab			ft_strsplit(char const *s, char c)
 {
 	strtab	out;
-	int		w_counter;
-	int		i;
+	int32_t	w_counter;
+	int32_t	i;
 
 	i = 0;
 	if (s == NULL)
 		return (NULL);
 	w_counter = ft_ss_words(s, &c);
-	if ((out = (string*)malloc(sizeof(string) * w_counter + 1)) == NULL)
+	if ((out = (string*)malloc(sizeof(string) * (w_counter + 1))) == NULL)
 		return (NULL);
 	while (w_counter--)
 	{

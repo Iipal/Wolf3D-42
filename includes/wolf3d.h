@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/02 20:23:29 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 00:37:10 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ typedef enum	e_colors
 
 typedef struct	s_point
 {
-	int	y;
-	int	x;
+	int32_t	y;
+	int32_t	x;
 }				t_p;
 
 typedef struct	s_fpoint
@@ -71,7 +71,6 @@ _UIARR;
 _IARR;
 _ITAB;
 _UINT;
-_ULL;
 
 typedef struct	s_sdl
 {
@@ -103,8 +102,7 @@ typedef struct	s_map
 {
 	itab	tab;
 	itab	colors;
-	int		xsize;
-	int		ysize;
+	point	size;
 }				t_map;
 
 typedef struct	s_ray_caster
@@ -121,9 +119,9 @@ typedef struct	s_ray_caster
 	point	step;
 	bool	is_hit;
 	bool	is_side;
-	int		hline;
-	int		draw_start;
-	int		draw_end;
+	int32_t	hline;
+	int32_t	draw_start;
+	int32_t	draw_end;
 }				t_rc;
 
 typedef struct	s_textures
@@ -135,8 +133,8 @@ typedef struct	s_textures
 typedef struct	s_mouse
 {
 	bool	is_pressed_mouse;
-	int		last;
-	int		curr;
+	int32_t	last;
+	int32_t	curr;
 }				t_mouse;
 
 typedef struct	s_time
@@ -158,7 +156,7 @@ typedef struct	s_fog
 	t_colors	color;
 	Uint32		fog_color;
 	float		fog_dist;
-	int			freq;
+	uint8_t		freq;
 }				t_fog;
 
 typedef struct	s_menu
@@ -183,16 +181,16 @@ typedef struct	s_sfx
 	Mix_Chunk	*lstep;
 	Mix_Chunk	*rstep;
 	t_time		step_sfx_timeout;
-	short		bg_volume;
+	int16_t		bg_volume;
 }				t_sfx;
 
 typedef struct	s_walls
 {
 	t_tex	*data;
 	point	*start;
-	int		in_row;
-	int		in_column;
-	int		max_textures;
+	int32_t	in_row;
+	int32_t	in_column;
+	int32_t	max_textures;
 }				t_walls;
 
 typedef struct	s_wolf3d_environment
@@ -209,7 +207,7 @@ typedef struct	s_wolf3d_environment
 	t_menu		*menu;
 	t_torch		*torch;
 	t_sfx		*sfx;
-	int			bsize;
+	int32_t		bsize;
 }				t_env;
 
 /*
@@ -220,9 +218,9 @@ typedef struct	s_wolf3d_environment
 */
 typedef struct	s_texture_render_helper
 {
-	int		d;
-	int		curr_tex;
-	int		currtcolor;
+	int32_t	d;
+	int32_t	curr_tex;
+	int32_t	currtcolor;
 	point	pos_on_tex;
 	float	where_is_hit;
 }				t_texhelper;
@@ -239,7 +237,7 @@ typedef struct	s_floor_render_helper
 typedef struct	s_bhelp
 {
 	point	*p;
-	int		*src;
+	iarr	src;
 	float	*bmap;
 	float	dimm;
 	float	factor;
@@ -282,7 +280,7 @@ void			wolf_blur(point size, iarr src, float value, float dimmed);
 
 Uint32			wolf_fog(float dist_to_obj, Uint32 src_color, t_fog *fog);
 Uint32			wolf_fog_change(t_colors *c);
-float			wolf_fog_freq(int *freq, t_time *time);
+float			wolf_fog_freq(uint8_t *freq, t_time *time);
 
 void			wolf_render_textured_help(t_env *env, point *p, t_texhelper *h);
 void			wolf_render_textured(t_env *env, point *p);

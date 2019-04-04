@@ -6,11 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 11:21:20 by tmaluh            #+#    #+#             */
-/*   Updated: 2018/10/26 19:27:03 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 01:10:57 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lft_mem.h"
+#include "libft.h"
 
 void	ft_bzero(pvoid s, size_t n)
 {

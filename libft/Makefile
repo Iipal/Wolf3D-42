@@ -6,24 +6,29 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 11:27:37 by tmaluh            #+#    #+#              #
-#    Updated: 2019/04/02 20:14:55 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/04/04 00:50:35 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := libft.a
 PPATH := $(CURDIR)/$(NAME)
 
+ECHO := echo
+
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
-	ECHO := echo -e
+	ECHO += -e
+	LC := gcc-ar
 endif
 ifeq ($(UNAME_S),Darwin)
-	ECHO := echo
+	LC := ar
 endif
 
+LC += rcs
+
 CC := gcc -flto
-LC := ar rcs
 CFLAGS := -Wall -Wextra -Werror -Ofast -fno-strict-aliasing
+INC := -I $(CURDIR)/includes/
 
 SRC_D := srcs/
 SRCS := $(abspath $(wildcard $(SRC_D)/*/*.c))
@@ -49,7 +54,7 @@ $(NAME): $(OBJS)
 
 $(OBJS): %.o: %.c
 	@$(ECHO) -n ' $@: '
-	@$(CC) -c $(CFLAGS) $< -o $@
+	@$(CC) -c $(CFLAGS) $(INC) $< -o $@
 	@$(ECHO) "$(SUCCESS)"
 clean:
 	@$(DEL) $(OBJS)

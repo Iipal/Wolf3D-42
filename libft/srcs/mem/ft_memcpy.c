@@ -6,12 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 11:04:50 by tmaluh            #+#    #+#             */
-/*   Updated: 2018/10/26 19:28:56 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 01:15:12 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lft_mem.h"
-#include "../../includes/lft_str.h"
+#include "libft.h"
 
 pvoid	ft_memcpy(pvoid dest, const pvoid src, size_t n)
 {
@@ -25,7 +24,7 @@ pvoid	ft_memcpy(pvoid dest, const pvoid src, size_t n)
 	while (i < n)
 	{
 		dst[i] = sc[i];
-		i++;
+		++i;
 	}
 	return (dest);
 }

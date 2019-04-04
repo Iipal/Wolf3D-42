@@ -6,29 +6,29 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/27 10:33:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/01/16 10:46:45 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 01:29:04 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lft_str.h"
+#include "libft.h"
 
-static inline long	ft_slen(long *in, long n)
+static int64_t	ft_slen(bool *sign, int64_t n)
 {
-	long	out;
+	int64_t	out;
 
 	out = 1;
 	if (n < 0)
-		*in = 1;
+		*sign = true;
 	while (n /= 10)
 		out++;
 	return (out);
 }
 
-string				ft_ltoa(long n)
+string			ft_ltoa(int64_t n)
 {
-	long	len;
-	long	sign;
+	int64_t	len;
 	string	out;
+	bool	sign;
 
 	if (!n)
 	{
@@ -36,7 +36,7 @@ string				ft_ltoa(long n)
 		out[0] = '0';
 		return (out);
 	}
-	sign = 0;
+	sign = false;
 	len = ft_slen(&sign, n);
 	if ((out = ft_strnew(len + sign)) == NULL)
 		return (NULL);

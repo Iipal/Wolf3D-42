@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 10:44:51 by tmaluh            #+#    #+#             */
-/*   Updated: 2018/10/26 19:27:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 01:05:21 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lft_ctype.h"
+#include "libft.h"
 
-int		ft_isprint(int c)
+bool	ft_isprint(uint8_t c)
 {
 	return (c >= 32 && c <= 126);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wolf_rendering_textured.c                          :+:      :+:    :+:   */
+/*   wolf_textured.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 15:41:02 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/16 21:25:24 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 00:34:04 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,9 @@ static void	add_render_floornceiling(t_env *env, t_texhelper *tx, point *p)
 		h.weight = (h.currd - 0.0) / (env->rc->pwd - 0.0);
 		h.fcur.y = h.weight * h.fpos.y + (1.0 - h.weight) * env->rc->pos.y;
 		h.fcur.x = h.weight * h.fpos.x + (1.0 - h.weight) * env->rc->pos.x;
-		h.ftex = (point){(int)(h.fcur.y * WALLS_BLOCK_SIZE) % WALLS_BLOCK_SIZE,
-			(int)(h.fcur.x * WALLS_BLOCK_SIZE) % WALLS_BLOCK_SIZE};
+		h.ftex = (point){(int32_t)(h.fcur.y * WALLS_BLOCK_SIZE)
+									% WALLS_BLOCK_SIZE,
+			(int32_t)(h.fcur.x * WALLS_BLOCK_SIZE) % WALLS_BLOCK_SIZE};
 		add_is_render_fog(&h, env, p, h.currd);
 		++(p->y);
 	}
@@ -79,7 +80,7 @@ static void	add_render_floornceiling(t_env *env, t_texhelper *tx, point *p)
 
 static void	add_choose_current_texture(t_env *env, t_texhelper *h)
 {
-	int	tex;
+	uint8_t	tex;
 
 	h->curr_tex = env->map->tab[RC->map.y][RC->map.x] - 1;
 	(env->rc->step.x < 0) ? (tex = 0)

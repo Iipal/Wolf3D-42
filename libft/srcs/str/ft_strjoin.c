@@ -6,11 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/26 19:11:48 by tmaluh            #+#    #+#             */
-/*   Updated: 2018/10/28 14:37:00 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 01:34:16 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lft_str.h"
+#include "libft.h"
 
 string	ft_strjoin(char const *s1, char const *s2)
 {

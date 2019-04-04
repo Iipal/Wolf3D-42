@@ -6,19 +6,19 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/27 13:39:34 by tmaluh            #+#    #+#             */
-/*   Updated: 2018/10/27 13:39:35 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 01:18:54 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lft_put.h"
+#include "libft.h"
 
-void	ft_putstr_fd(char const *s, int fd)
+void	ft_putstr_fd(char const *s, int32_t fd)
 {
-	unsigned int	i;
+	size_t	i;
 
-	i = -1;
+	i = 0;
 	if (s == NULL)
 		return ;
-	while (s[++i])
-		ft_putchar_fd(s[i], fd);
+	while (s[i])
+		ft_putchar_fd(s[i++], fd);
 }

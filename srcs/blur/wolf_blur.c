@@ -6,18 +6,18 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 17:47:08 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/02 20:18:29 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 00:41:38 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static int	add_fill_blur_mask(float *bmap, point size, float value)
+static int32_t	add_fill_blur_mask(float *bmap, point size, float value)
 {
 	point	p;
-	int		max_fill_range;
-	int		fill_range;
-	int		fill_cells;
+	int32_t	max_fill_range;
+	int32_t	fill_range;
+	int32_t	fill_cells;
 
 	p.y = -1;
 	fill_cells = 0;
@@ -61,9 +61,9 @@ static void	add_blur_proccesing(t_bhelp b)
 			fc.g += srcc.g * b.bmap[f.y * b.size.x + f.x];
 			fc.b += srcc.b * b.bmap[f.y * b.size.x + f.x];
 		}
-	outc.r = MIN(MAX((int)(b.factor * fc.r + b.dimm), 0), 255);
-	outc.g = MIN(MAX((int)(b.factor * fc.g + b.dimm), 0), 255);
-	outc.b = MIN(MAX((int)(b.factor * fc.b + b.dimm), 0), 255);
+	outc.r = MIN(MAX((int32_t)(b.factor * fc.r + b.dimm), 0), 255);
+	outc.g = MIN(MAX((int32_t)(b.factor * fc.g + b.dimm), 0), 255);
+	outc.b = MIN(MAX((int32_t)(b.factor * fc.b + b.dimm), 0), 255);
 	b.src[b.p->y * WIN_X + b.p->x] = (outc.r << 16 | outc.g << 8 | outc.b);
 }
 

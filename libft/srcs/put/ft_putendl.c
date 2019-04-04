@@ -6,11 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/27 13:39:47 by tmaluh            #+#    #+#             */
-/*   Updated: 2018/10/27 13:39:49 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 01:17:12 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lft_put.h"
+#include "libft.h"
 
 void	ft_putendl(char const *s)
 {

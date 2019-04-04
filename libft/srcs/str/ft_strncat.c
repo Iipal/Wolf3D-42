@@ -6,11 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 17:43:02 by tmaluh            #+#    #+#             */
-/*   Updated: 2018/10/26 19:32:17 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 01:36:46 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lft_str.h"
+#include "libft.h"
 
 string	ft_strncat(string dest, cstring src, size_t n)
 {

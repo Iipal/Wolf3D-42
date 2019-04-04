@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 10:38:52 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/03/16 21:27:13 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/04 00:30:03 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static bool	add_init_textures_map(t_env *env)
 {
 	point	p;
-	int		i;
+	int32_t	i;
 
 	i = -1;
 	_NOTIS_F(env->floor_and_sky->surf =
@@ -43,7 +43,7 @@ static bool	add_init_textures_map(t_env *env)
 bool		wolf_init_textures(t_env *env)
 {
 	const string	torch[] = {TORCH1, TORCH2, TORCH3, TORCH4, TORCH5, TORCH6};
-	int				i;
+	int32_t			i;
 
 	i = -1;
 	_ISZ(t_torch, env->torch, 1);
