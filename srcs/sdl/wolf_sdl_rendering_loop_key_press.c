@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 11:26:54 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/05 10:50:46 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/05 15:55:50 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,46 +14,46 @@
 
 void	wofl_rendering_loop_keys_press(t_env *env, bool *exit)
 {
-	_IFDO(SEKEY == SDLK_ESCAPE, *exit = true);
-	_IFDO(SEKEY == SDLK_w, env->isr->is_move_forward = 1);
-	_IFDO(SEKEY == SDLK_a, env->isr->is_rotate_left = 1);
-	_IFDO(SEKEY == SDLK_s, env->isr->is_move_backward = 1);
-	_IFDO(SEKEY == SDLK_d, env->isr->is_rotate_right = true);
-	_IFDO(SEKEY == SDLK_f, env->isr->is_render_fog = !env->isr->is_render_fog);
-	_IFDO(SEKEY == SDLK_r, env->isr->is_render_fps = !env->isr->is_render_fps);
-	_IFDO(SEKEY == SDLK_m,
+	IFDO(SEKEY == SDLK_ESCAPE, *exit = true);
+	IFDO(SEKEY == SDLK_w, env->isr->is_move_forward = 1);
+	IFDO(SEKEY == SDLK_a, env->isr->is_rotate_left = 1);
+	IFDO(SEKEY == SDLK_s, env->isr->is_move_backward = 1);
+	IFDO(SEKEY == SDLK_d, env->isr->is_rotate_right = true);
+	IFDO(SEKEY == SDLK_f, env->isr->is_render_fog = !env->isr->is_render_fog);
+	IFDO(SEKEY == SDLK_r, env->isr->is_render_fps = !env->isr->is_render_fps);
+	IFDO(SEKEY == SDLK_m,
 		env->isr->is_render_minimap = !env->isr->is_render_minimap);
-	_IFDO(SEKEY == SDLK_LSHIFT, env->isr->is_boost_step = true);
-	_IFDO(SEKEY == SDLK_t, env->isr->is_textured = !env->isr->is_textured);
-	_IFDO(SEKEY == SDLK_c,
+	IFDO(SEKEY == SDLK_LSHIFT, env->isr->is_boost_step = true);
+	IFDO(SEKEY == SDLK_t, env->isr->is_textured = !env->isr->is_textured);
+	IFDO(SEKEY == SDLK_c,
 		env->fog.fog_color = wolf_fog_change(&(env->fog.color)));
-	_IFDO(SEKEY == SDLK_h,
+	IFDO(SEKEY == SDLK_h,
 		env->isr->is_render_blur = !env->isr->is_render_blur);
-	_IFDO(SEKEY == SDLK_y,
+	IFDO(SEKEY == SDLK_y,
 		(env->bsize + BLUR_INC > BLUR_MAX) ? (env->bsize = BLUR_MAX)
 										: (env->bsize += BLUR_INC));
-	_IFDO(SEKEY == SDLK_n,
+	IFDO(SEKEY == SDLK_n,
 		(env->bsize - BLUR_INC < BLUR_MIN) ? (env->bsize = BLUR_MIN)
 										: (env->bsize -= BLUR_INC));
 }
 
 void	wofl_rendering_loop_keys_release(t_env *env)
 {
-	_IFDO(SEKEY == SDLK_w, env->isr->is_move_forward = false);
-	_IFDO(SEKEY == SDLK_a, env->isr->is_rotate_left = false);
-	_IFDO(SEKEY == SDLK_s, env->isr->is_move_backward = false);
-	_IFDO(SEKEY == SDLK_d, env->isr->is_rotate_right = false);
-	_IFDO(SEKEY == SDLK_LSHIFT, env->isr->is_boost_step = false);
+	IFDO(SEKEY == SDLK_w, env->isr->is_move_forward = false);
+	IFDO(SEKEY == SDLK_a, env->isr->is_rotate_left = false);
+	IFDO(SEKEY == SDLK_s, env->isr->is_move_backward = false);
+	IFDO(SEKEY == SDLK_d, env->isr->is_rotate_right = false);
+	IFDO(SEKEY == SDLK_LSHIFT, env->isr->is_boost_step = false);
 }
 
 void	wofl_rendering_loop_keys_sfx_press(t_env *env)
 {
-	_IFDO(SEKEY == SDLK_q, env->isr->is_play_music = !env->isr->is_play_music);
-	_IFDO(SEKEY == SDLK_EQUALS, (env->sfx->bg_volume + BG_VOL_INC >= BG_VOL_MAX)
+	IFDO(SEKEY == SDLK_q, env->isr->is_play_music = !env->isr->is_play_music);
+	IFDO(SEKEY == SDLK_EQUALS, (env->sfx->bg_volume + BG_VOL_INC >= BG_VOL_MAX)
 								? (env->sfx->bg_volume = BG_VOL_MAX)
 								: (env->sfx->bg_volume += BG_VOL_INC));
-	_IFDO(SEKEY == SDLK_MINUS, (env->sfx->bg_volume - BG_VOL_INC <= BG_VOL_MIN)
+	IFDO(SEKEY == SDLK_MINUS, (env->sfx->bg_volume - BG_VOL_INC <= BG_VOL_MIN)
 								? (env->sfx->bg_volume = BG_VOL_MIN)
 								: (env->sfx->bg_volume -= BG_VOL_INC));
-	_IFDO(SEKEY == SDLK_z, env->isr->is_play_steps = !env->isr->is_play_steps);
+	IFDO(SEKEY == SDLK_z, env->isr->is_play_steps = !env->isr->is_play_steps);
 }

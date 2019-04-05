@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/04/04 10:21:11 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/04/05 15:58:32 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,15 @@ ifeq ($(UNAME_S),Darwin)
 		-framework SDL2_mixer -framework SDL2_ttf
 endif
 
-CC := gcc -Ofast -march=native -flto -fno-strict-aliasing
-CFLAGS := -Wall -Wextra -Werror
+#	-march=native		- Setups compiler to use all available CPU instructions for
+#							optimizing compiling time
+#	-mtune=native		- Setups compiler to compiling all correctly for
+#							current system architecture on which project compiling
+#	-flto				- Enable Link Time Optimization
+#	-Ofast				- MAXIMUM OPTIMIZATION
+#	-fno-elide-type		- Do not elide types when printing diagnostics
+CC := clang -march=native -mtune=native -flto -Ofast
+CFLAGS := -Wall -Wextra -Werror -Wunused -fno-elide-type
 IFLAGS := -I $(CURDIR)/includes/
 
 SRC := $(abspath $(wildcard srcs/*.c))

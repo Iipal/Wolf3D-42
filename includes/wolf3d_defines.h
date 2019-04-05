@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 12:51:53 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/05 15:52:41 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,40 +102,40 @@
 # define SELECTOR_START_X   ((WIN_X - SELECTOR_X) / 2.0)
 # define SELECTOR_START_Y   ((WIN_Y - SELECTOR_Y) / 2.0)
 
-# define _ISARGS(ac, av) {--ac;++av;_NOTIS(E_USAGE, !(ac != 1), exit(-1), 0);}
+# define ISARGS(ac, av) {--ac;++av;NOTIS(E_USAGE, !(ac != 1), exit(-1), 0);}
 
-# define _IFDO(ex, do) if ((ex)) { do; }
+# define IFDO(ex, do) if ((ex)) { do; }
 
-# define _MSG(msg) ft_putstr(msg);
-# define _MSGN(msg) ft_putendl(msg);
-# define _NOTIS(msg, ex, do, ret) if (!(ex)) {_MSGN(msg);do;return (ret);}
-# define _NOTIS_N(ex) if (!(ex)) return (NULL)
-# define _NOTIS_F(ex) if (!(ex)) return (false)
-# define _IS(ex, do, ret) if (ex) {do; return (ret);}
-# define _ISM(msg, ex, do, ret) if (ex) {_MSGN(msg);do;return (ret);}
-# define _IS_N(ex) if (ex) return (NULL)
-# define _IS_F(ex) if (ex) return (false)
+# define MSG(msg) ft_putstr(msg)
+# define MSGN(msg) ft_putendl(msg)
+# define NOTIS(msg, ex, do, ret) if (!(ex)) {MSGN(msg);do;return (ret);}
+# define NOTIS_N(ex) if (!(ex)) return (NULL)
+# define NOTIS_F(ex) if (!(ex)) return (false)
+# define IS(ex, do, ret) if (ex) {do; return (ret);}
+# define ISM(msg, ex, do, ret) if (ex) {MSGN(msg);do;return (ret);}
+# define IS_N(ex) if (ex) return (NULL)
+# define IS_F(ex) if (ex) return (false)
 
-# define _Z(type, dest, x) ft_bzero(dest, sizeof(type) * (x))
-# define _ISZ(t, d, x) _NOTIS_F(d = (t*)malloc(sizeof(t)*(x))); _Z(t, d, x)
+# define Z(type, dest, x) ft_bzero(dest, sizeof(type) * (x))
+# define ISZ(t, d, x) NOTIS_F(d = (t*)malloc(sizeof(t)*(x))); Z(t, d, x)
 
-# define _FREE(trash, del) if ((trash)) {del(trash); trash = NULL;}
+# define FREE(trash, del) if ((trash)) {del(trash); trash = NULL;}
 
 # define PI 3.141592
-# define _ABS(var) ((var) < 0) ? -(var) : (var)
-# define _RAD(deg) (((deg) * PI) / 180.0)
-# define _COSR(angle) cos(_RAD(angle))
-# define _SINR(angle) sin(_RAD(angle))
+# define ABS(var) ((var) < 0) ? -(var) : (var)
+# define RAD(deg) (((deg) * PI) / 180.0)
+# define COSR(angle) cos(RAD(angle))
+# define SINR(angle) sin(RAD(angle))
 # define MIN(a,b) (((a)<(b))?(a):(b))
 # define MAX(a,b) (((a)>(b))?(a):(b))
 
-# define _FPOINT    typedef t_fp                fpoint
-# define _POINT     typedef t_p                 point
-# define _IARR      typedef int32_t*            iarr
-# define _ITAB      typedef int32_t**           itab
-# define _UIARR     typedef uint32_t*           uiarr
-# define _UINT      typedef uint32_t            uint
-# define _FCOLOR    typedef t_fcolor            FColor
+# define FPOINT    typedef t_fp                fpoint
+# define POINT     typedef t_p                 point
+# define IARR      typedef int32_t*            iarr
+# define ITAB      typedef int32_t**           itab
+# define UIARR     typedef uint32_t*           uiarr
+# define UINT      typedef uint32_t            uint
+# define FCOLOR    typedef t_fcolor            FColor
 
 # define SWIN   env->sdl->win
 # define SWINS  env->sdl->win_surface

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 10:04:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/05 13:36:09 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/05 14:17:05 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,21 @@
 
 enum	e_bool {false, true} __attribute__((packed));
 
-# define _STR       typedef char*           string
-# define _CSTR      typedef const char*     cstring
-# define _USTR      typedef unsigned char*  ustring
-# define _UCHAR     typedef unsigned char   uchar
-# define _STRTAB    typedef char**          strtab
-# define _PVOID     typedef void*           pvoid
-# define _BOOL      typedef enum e_bool     bool
+# define STR       typedef char*           string
+# define CSTR      typedef const char*     cstring
+# define USTR      typedef unsigned char*  ustring
+# define UCHAR     typedef unsigned char   uchar
+# define STRTAB    typedef char**          strtab
+# define PVOID     typedef void*           pvoid
+# define BOOL      typedef enum e_bool     bool
 
-_STR;
-_CSTR;
-_USTR;
-_UCHAR;
-_STRTAB;
-_PVOID;
-_BOOL;
+STR;
+CSTR;
+USTR;
+UCHAR;
+STRTAB;
+PVOID;
+BOOL;
 
 /*
 **	My utilite functions:

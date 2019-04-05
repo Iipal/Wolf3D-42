@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:19:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/05 13:42:39 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/05 15:52:42 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 static void	wolf_usage(void)
 {
-	_MSGN("Usage:");
-	_MSGN("  [W | S] - Moving forward | backward(or Arrows [UP | DOWN])");
-	_MSGN("  [A | D] - Rotate left | right"
+	MSGN("Usage:");
+	MSGN("  [W | S] - Moving forward | backward(or Arrows [UP | DOWN])");
+	MSGN("  [A | D] - Rotate left | right"
 		"(also Arrows [LEFT | RIGHT] or mouse)");
-	_MSGN("  [T] - Toggle Textured\\Flat rendering method.");
-	_MSGN("  [M] - Toggle mini-map rendering.");
-	_MSGN("  [F] - Toggle Fog rendering.");
-	_MSGN("  [C] - Switch Fog colors.");
-	_MSGN("  [LShift] - Step & rotate boost.");
-	_MSGN("  [Z] - Stop\\Play steps sounds.");
-	_MSGN("  [Q] - Stop\\Play background in-game music.");
-	_MSGN("  [+ | -] - Inc\\Decrease background volume.");
-	_MSGN("  [R] - Toggle FPS\\ms rendering info.");
-	_MSGN("  [H] - Toggle blur effect rendering.");
-	_MSGN("  [Y | N] - Inc\\Decreaase bluring effect.");
-	_MSGN("  [ESC] - exit.");
+	MSGN("  [T] - Toggle Textured\\Flat rendering method.");
+	MSGN("  [M] - Toggle mini-map rendering.");
+	MSGN("  [F] - Toggle Fog rendering.");
+	MSGN("  [C] - Switch Fog colors.");
+	MSGN("  [LShift] - Step & rotate boost.");
+	MSGN("  [Z] - Stop\\Play steps sounds.");
+	MSGN("  [Q] - Stop\\Play background in-game music.");
+	MSGN("  [+ | -] - Inc\\Decrease background volume.");
+	MSGN("  [R] - Toggle FPS\\ms rendering info.");
+	MSGN("  [H] - Toggle blur effect rendering.");
+	MSGN("  [Y | N] - Inc\\Decreaase bluring effect.");
+	MSGN("  [ESC] - exit.");
 }
 
 static void	add_start_game(t_env *env)
@@ -50,11 +50,11 @@ int			main(int argc, string argv[])
 {
 	t_env	*env;
 
-	_ISM(E_DIR, ft_strcmp(*argv, WOLF_EXE_PATH), exit(EXIT_FAILURE), 0);
-	_ISARGS(argc, argv);
-	_ISZ(t_env, env, 1);
-	_NOTIS(E_ALLOC, wolf_init(env), wolf_free(&env), EXIT_FAILURE);
-	_NOTIS(E_FILER, wolf_readnsave(*argv, env), exit(EXIT_FAILURE), 0);
+	ISM(E_DIR, ft_strcmp(*argv, WOLF_EXE_PATH), exit(EXIT_FAILURE), 0);
+	ISARGS(argc, argv);
+	ISZ(t_env, env, 1);
+	NOTIS(E_ALLOC, wolf_init(env), wolf_free(&env), EXIT_FAILURE);
+	NOTIS(E_FILER, wolf_readnsave(*argv, env), exit(EXIT_FAILURE), 0);
 	wolf_setup_rc(env);
 	wolf_usage();
 	wolf_rendering_mainmenu(env);

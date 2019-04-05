@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 11:13:19 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 12:38:21 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/05 15:56:31 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	add_check_hit(t_rc *rc, itab map)
 			rc->map.y += rc->step.y;
 			rc->is_side = true;
 		}
-		_IFDO(map[rc->map.y][rc->map.x] > 0, rc->is_hit = true);
+		IFDO(map[rc->map.y][rc->map.x] > 0, rc->is_hit = true);
 	}
 }
 
@@ -64,8 +64,8 @@ static void	add_dist_to_wall(t_rc *rc)
 	rc->hline = (int)(WIN_Y / rc->pwd);
 	rc->draw_start = -(rc->hline) / 2 + WIN_Y / 2;
 	rc->draw_end = rc->hline / 2 + WIN_Y / 2;
-	_IFDO(rc->draw_start < 0, rc->draw_start = 0);
-	_IFDO(rc->draw_end >= WIN_Y, rc->draw_end = WIN_Y - 1);
+	IFDO(rc->draw_start < 0, rc->draw_start = 0);
+	IFDO(rc->draw_end >= WIN_Y, rc->draw_end = WIN_Y - 1);
 }
 
 static void	add_fill_floornceiling(t_sdl *sdl)
@@ -84,7 +84,7 @@ void		wolf_raycaster(t_env *env)
 	point	p;
 
 	p.x = -1;
-	_IFDO(!env->isr->is_textured, add_fill_floornceiling(env->sdl));
+	IFDO(!env->isr->is_textured, add_fill_floornceiling(env->sdl));
 	while (++(p.x) < WIN_X)
 	{
 		*(env->rc) = (t_rc){{RC->pos.y, RC->pos.x}, {RC->dir.y, RC->dir.x},
@@ -94,7 +94,7 @@ void		wolf_raycaster(t_env *env)
 		env->rc->raydir = (fpoint){RC->dir.y + RC->plane.y * RC->xcamera,
 			env->rc->dir.x + env->rc->plane.x * env->rc->xcamera };
 		env->rc->map = (point){(int)env->rc->pos.y, (int)env->rc->pos.x};
-		RC->ddist = (fpoint){_ABS(1 / RC->raydir.y), _ABS(1 / RC->raydir.x)};
+		RC->ddist = (fpoint){ABS(1 / RC->raydir.y), ABS(1 / RC->raydir.x)};
 		add_set_diststep(env->rc);
 		add_check_hit(env->rc, env->map->tab);
 		add_dist_to_wall(env->rc);

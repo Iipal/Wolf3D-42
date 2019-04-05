@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 17:47:08 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/05 11:02:51 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/05 15:54:16 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int32_t	add_fill_blur_mask(float *bmap, point size, float value)
 	max_fill_range = (size.x % 2) ? 1 : 2;
 	while (++(p.y) < size.y)
 	{
-		_IFDO(max_fill_range > size.x, max_fill_range = size.x);
+		IFDO(max_fill_range > size.x, max_fill_range = size.x);
 		fill_cells += max_fill_range;
 		p.x = (size.x - max_fill_range) / 2;
 		fill_range = size.x - (p.x * 2);

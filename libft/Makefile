@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 11:27:37 by tmaluh            #+#    #+#              #
-#    Updated: 2019/04/04 00:50:35 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/04/05 15:34:22 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,8 @@ endif
 
 LC += rcs
 
-CC := gcc -flto
-CFLAGS := -Wall -Wextra -Werror -Ofast -fno-strict-aliasing
+CC := clang -march=native -mtune=native -flto -Ofast -std=c11
+CFLAGS := -Wall -Wextra -Werror -Wunused -fno-elide-type
 INC := -I $(CURDIR)/includes/
 
 SRC_D := srcs/

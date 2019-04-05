@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/05 11:04:31 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/05 15:53:32 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@
 # include "wolf3d_defines.h"
 # include "wolf3d_errno.h"
 # include "../libft/includes/libft.h"
-# include <fcntl.h>
 # include <math.h>
 
 typedef enum	e_colors
@@ -64,13 +63,13 @@ typedef struct	s_fcolor
 	float	b;
 }				t_fcolor;
 
-_FCOLOR;
-_FPOINT;
-_POINT;
-_UIARR;
-_IARR;
-_ITAB;
-_UINT;
+FCOLOR;
+FPOINT;
+POINT;
+UIARR;
+IARR;
+ITAB;
+UINT;
 
 typedef struct	s_sdl
 {

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 13:43:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 01:16:08 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/05 14:19:51 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,15 @@ pvoid	ft_memmove(pvoid dest, void const *src, size_t len)
 
 	dst = (ustring)dest;
 	sc = (ustring)src;
-	i = -1;
+	i = 0;
 	if (sc < dst)
 		while ((int64_t)(--len) >= 0)
 			dst[len] = sc[len];
 	else
-		while (++i < len)
+		while (i < len)
+		{
 			dst[i] = sc[i];
+			++i;
+		}
 	return (dest);
 }

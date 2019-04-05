@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 19:10:46 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 11:58:02 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/05 15:54:56 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Uint32	wolf_fog_change(t_colors *c)
 	const int32_t	colors[] = {IRGB_WHITE, IRGB_RED, IRGB_ORANGE, IRGB_LIME,
 				IRGB_AQUA, IRGB_PURPLE, IRGB_MINT, IRGB_DARK_BLUE, IRGB_BLACK};
 
-	_IFDO(++(*c) >= max_colors, *c = white);
+	IFDO(++(*c) >= max_colors, *c = white);
 	return (colors[*c]);
 }
 
