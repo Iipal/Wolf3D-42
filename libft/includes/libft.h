@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 10:04:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/05 12:55:28 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/05 13:36:09 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,6 @@ void	ft_strdel(string *as);
 void	ft_strrev(string str);
 
 bool	ft_strrepchr(cstring str, char find_sumbol, char replace_sumbol);
-bool	ft_strlwr(string str);
-bool	ft_strupr(string str);
 
 int32_t	ft_atoi(string str);
 int32_t	ft_atoi_base(cstring str, int8_t base);
@@ -97,6 +95,10 @@ size_t	ft_strlcat(string dest, cstring src,
 size_t	ft_strlcpy(string dest, cstring str, size_t dstsize);
 
 string	ft_itoa(int32_t n);
+
+string	ft_strlwr(string str);
+string	ft_strupr(string str);
+
 string	ft_strdup(cstring src);
 string	ft_strndup(cstring s1, size_t n);
 string	ft_strcpy(string dest, cstring str);
@@ -107,11 +109,13 @@ string	ft_strchr(cstring s, uint8_t c);
 string	ft_strrchr(cstring s, uint8_t c);
 string	ft_strstr(cstring str, cstring to_find);
 string	ft_strnstr(cstring str, cstring to_find, size_t len);
+
 string	ft_strnew(size_t size);
 string	ft_strsub(char const *s, uint32_t start, size_t len);
 string	ft_strjoin(char const *s1, char const *s2);
 string	ft_strtrim(char const *s);
 strtab	ft_strsplit(char const *s, char c);
+
 
 /*
 **	stdlib.h libc functions:

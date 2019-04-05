@@ -6,26 +6,21 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 12:08:57 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/05 12:39:53 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/05 13:42:19 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-bool	ft_strlwr(string str)
+string	ft_strlwr(string str)
 {
-	int32_t	i;
-	bool	is_alpha;
+	string	s;
 
-	i = -1;
-	is_alpha = false;
-	if (!str)
-		return false;
-	while (str[++i])
+	s = str;
+	while (*s)
 	{
-		if (!is_alpha && ft_isalpha(str[i]))
-			is_alpha = true;
-		str[i] = ft_tolower(str[i]);
+		*s = ft_tolower((uint8_t)*s);
+		++s;
 	}
-	return (is_alpha);
+	return str;
 }

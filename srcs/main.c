@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:19:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/05 12:52:30 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/05 13:42:39 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,7 @@ static void	add_start_game(t_env *env)
 int			main(int argc, string argv[])
 {
 	t_env	*env;
-	char	*s;
 
-	s = ft_strdup("Hello World!");
-	printf("%s\n", s);
-	ft_strrev(s);
-	printf("%s\n", s);
 	_ISM(E_DIR, ft_strcmp(*argv, WOLF_EXE_PATH), exit(EXIT_FAILURE), 0);
 	_ISARGS(argc, argv);
 	_ISZ(t_env, env, 1);
