@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/26 17:53:34 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 12:54:39 by tmaluh           ###   ########.fr       */
+/*   Created: 2019/04/05 12:39:29 by tmaluh            #+#    #+#             */
+/*   Updated: 2019/04/05 12:56:03 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-string	ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_strrev(string str)
 {
-	string		src;
-	string		out;
-	uint32_t	len;
-	uint32_t	i;
+	size_t	end;
+	size_t	start;
+	size_t	real_end;
 
-	i = 0;
-	if (!s)
-		return (NULL);
-	src = (string)s;
-	len = ft_strlen(s);
-	if ((out = ft_strnew(len)) == NULL)
-		return (NULL);
-	while (s[i])
-	{
-		out[i] = f(i, src[i]);
-		++i;
-	}
-	return (out);
+	start = -1;
+	end = ft_strlen(str);
+	real_end = end;
+	while (++start < real_end / 2)
+		ft_cwap(&str[start], &str[--end]);
 }

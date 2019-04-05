@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 10:04:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 12:54:36 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/05 12:55:28 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ _BOOL;
 int32_t	ft_gnl(const int32_t fd, char **line);
 size_t	ft_rand(size_t limits);
 bool	ft_is_one_of_n(int64_t cmp, int64_t n, ...);
+void	ft_swap(int32_t *a, int32_t *b);
+void	ft_cwap(char *a, char *b);
 
 /*
 **	Output functions:
@@ -75,22 +77,19 @@ bool	ft_toupper(uint8_t c);
 bool	ft_tolower(uint8_t c);
 
 /*
-**	strings.h libc\POSIX functions:
+**	strings.h libc\POSIX functions and ma stuff:
 */
 void	ft_strdel(string *as);
-void	ft_strclr(string s);
-void	ft_striter(string s, void (*f)(string));
-void	ft_striteri(string s, void (*f)(unsigned int, string));
+void	ft_strrev(string str);
 
-bool	ft_strequ(char const *s1, char const *s2);
-bool	ft_strnequ(char const *s1, char const *s2, size_t n);
 bool	ft_strrepchr(cstring str, char find_sumbol, char replace_sumbol);
+bool	ft_strlwr(string str);
+bool	ft_strupr(string str);
 
 int32_t	ft_atoi(string str);
 int32_t	ft_atoi_base(cstring str, int8_t base);
 int8_t	ft_strcmp(cstring s1, cstring s2);
 int8_t	ft_strncmp(cstring s1, cstring s2, size_t n);
-int32_t	ft_count_if(char const *str, uint8_t ch);
 
 size_t	ft_strlen(cstring str);
 size_t	ft_strlcat(string dest, cstring src,
@@ -109,8 +108,6 @@ string	ft_strrchr(cstring s, uint8_t c);
 string	ft_strstr(cstring str, cstring to_find);
 string	ft_strnstr(cstring str, cstring to_find, size_t len);
 string	ft_strnew(size_t size);
-string	ft_strmap(char const *s, char (*f)(char));
-string	ft_strmapi(char const *s, char (*f)(unsigned int, char));
 string	ft_strsub(char const *s, uint32_t start, size_t len);
 string	ft_strjoin(char const *s1, char const *s2);
 string	ft_strtrim(char const *s);

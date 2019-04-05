@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striter.c                                       :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/26 17:30:32 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 01:33:19 by tmaluh           ###   ########.fr       */
+/*   Created: 2019/04/05 12:46:54 by tmaluh            #+#    #+#             */
+/*   Updated: 2019/04/05 12:48:11 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striter(string s, void (*f)(string))
+void	ft_swap(int32_t *a, int32_t *b)
 {
-	size_t	i;
+	int32_t	temp;
 
-	if (!s || !f)
-		return ;
-	i = 0;
-	if (s)
-		while (s[i])
-			f(&s[i++]);
+	temp = *a;
+	*a = *b;
+	*b = temp;
 }

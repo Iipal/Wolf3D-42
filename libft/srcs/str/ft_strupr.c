@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_strupr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/26 17:35:59 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 12:54:23 by tmaluh           ###   ########.fr       */
+/*   Created: 2019/04/05 12:08:57 by tmaluh            #+#    #+#             */
+/*   Updated: 2019/04/05 12:39:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(string s, void (*f)(unsigned int, string))
+bool	ft_strlwr(string str)
 {
-	uint32_t	i;
+	int32_t	i;
+	bool	is_alpha;
 
-	i = 0;
-	if (!s || !f)
-		return ;
-	if (s)
-		while (s[i])
-		{
-			f(i, &s[i]);
-			++i;
-		}
+	i = -1;
+	is_alpha = false;
+	if (!str)
+		return false;
+	while (str[++i])
+	{
+		if (!is_alpha && ft_isalpha(str[i]))
+			is_alpha = true;
+		str[i] = ft_toupper(str[i]);
+	}
+	return (is_alpha);
 }
