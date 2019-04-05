@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 11:02:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 11:30:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/05 10:47:28 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static void	add_press_selector(t_env *env, bool *exit)
+static void	add_press_selector(t_env *env, bool *exit_)
 {
 	if (env->menu->is_selector_start)
 	{
@@ -20,7 +20,7 @@ static void	add_press_selector(t_env *env, bool *exit)
 		wolf_sdl_rendering_loop(env);
 	}
 	else
-		*exit = true;
+		*exit_ = true;
 }
 
 static void	add_press_keys(t_env *env)
@@ -45,28 +45,16 @@ static void	add_press_keys(t_env *env)
 		env->isr->is_play_music = !env->isr->is_play_music;
 }
 
-void		wolf_sdl_mainmenu_loop(t_env *env)
+void		wolf_sdl_mainmenu_loop(t_env *env, bool *exit_)
 {
-	bool	exit;
-
-	exit = false;
-	while (!exit)
+	(env->sdl->event.type == SDL_QUIT) ? (*exit_ = true) : 0;
+	if (env->sdl->event.type == SDL_KEYDOWN)
 	{
-		while (SDL_PollEvent(&(env->sdl->event)) > 0)
-		{
-			(env->sdl->event.type == SDL_QUIT) ? (exit = true) : 0;
-			if (env->sdl->event.type == SDL_KEYDOWN)
-			{
-				if (env->sdl->event.key.keysym.sym == SDLK_ESCAPE)
-					exit = true;
-				else
-					add_press_keys(env);
-				if (env->sdl->event.key.keysym.sym == SDLK_RETURN)
-					add_press_selector(env, &exit);
-			}
-		}
-		(env->isr->is_play_music) ? Mix_ResumeMusic() : Mix_PauseMusic();
-		wolf_rendering_mainmenu(env);
+		if (env->sdl->event.key.keysym.sym == SDLK_ESCAPE)
+			*exit_ = true;
+		else
+			add_press_keys(env);
+		if (env->sdl->event.key.keysym.sym == SDLK_RETURN)
+			add_press_selector(env, exit_);
 	}
-	wolf_free(&env);
 }

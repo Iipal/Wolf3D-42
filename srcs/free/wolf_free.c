@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 12:39:57 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/05 11:12:43 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ static void	add_free_menu(t_menu **menu)
 
 static void	add_free_menu_sfx(t_sfx **sfx)
 {
+	Mix_HaltMusic();
 	_FREE((*sfx)->start, Mix_FreeChunk);
 	_FREE((*sfx)->selector, Mix_FreeChunk);
 	_FREE((*sfx)->selector_err, Mix_FreeChunk);
 	_FREE((*sfx)->lstep, Mix_FreeChunk);
 	_FREE((*sfx)->rstep, Mix_FreeChunk);
-	Mix_HaltMusic();
 	_FREE((*sfx)->ambient_bg, Mix_FreeMusic);
 	_FREE((*sfx), free);
 	Mix_Quit();
@@ -73,14 +73,14 @@ static void	add_free_menu_sfx(t_sfx **sfx)
 
 void		wolf_free(t_env **env)
 {
-	((*env)->map) ? wolf_free_map(&((*env)->map)) : 0;
+	_IFDO((*env)->map, wolf_free_map(&((*env)->map)));
 	if ((*env)->torch && (*env)->torch->tex)
 	{
 		add_free_surfaces(&((*env)->torch->tex), MAX_TORCH);
 		_FREE((*env)->torch, free);
 	}
-	((*env)->menu) ? add_free_menu(&((*env)->menu)) : 0;
-	((*env)->sfx) ? add_free_menu_sfx(&((*env)->sfx)) : 0;
+	_IFDO((*env)->menu, add_free_menu(&((*env)->menu)));
+	_IFDO((*env)->sfx, add_free_menu_sfx(&((*env)->sfx)));
 	if ((*env)->floor_and_sky)
 	{
 		SDL_FreeSurface((*env)->floor_and_sky->surf);

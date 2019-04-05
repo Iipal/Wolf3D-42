@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 17:18:56 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 12:44:23 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/05 10:39:28 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static bool		add_valid_info(string info_line, t_map *map, string map_name)
 }
 
 static bool		add_endofmap(t_env *env, int y,
-								point map_max, bool valid_all)
+						point map_max, bool valid_all)
 {
 	int	i;
 

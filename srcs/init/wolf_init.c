@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 00:28:12 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/05 11:07:04 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,14 @@ void		wolf_setup_rc(t_env *env)
 	{
 		env->rc->pos = (fpoint){ft_rand(env->map->size.y - 1),
 			ft_rand(env->map->size.x - 1)};
-		if (!env->map->tab[(int)env->rc->pos.y][(int)env->rc->pos.x])
+		if (!env->map->tab[(int32_t)env->rc->pos.y][(int32_t)env->rc->pos.x])
 			break ;
 	}
-	if (!env->map->tab[(int)env->rc->pos.y][(int)(env->rc->pos.x + 0.05f)])
+	if (!env->map->tab[(int32_t)env->rc->pos.y]
+		[(int32_t)(env->rc->pos.x + 0.05f)])
 		env->rc->pos.x += 0.05f;
-	if (!env->map->tab[(int)(env->rc->pos.y + 0.05f)][(int)env->rc->pos.x])
+	if (!env->map->tab[(int32_t)(env->rc->pos.y + 0.05f)]
+		[(int32_t)env->rc->pos.x])
 		env->rc->pos.y += 0.05f;
 	env->torch->time = (t_time){0, 0, 0};
 	env->mouse->is_pressed_mouse = false;

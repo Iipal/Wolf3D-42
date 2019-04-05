@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 11:01:40 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 00:31:31 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/05 11:05:34 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void		wolf_rendering_mainmenu(t_env *env)
 	selector_range = (fpoint){SELECTOR_START_Y +
 		selector_shifts[env->menu->is_selector_start], SELECTOR_START_X};
 	while (++(p.y) < WIN_Y && (p.x = -1)
-		&& (tp.x = -1))
+	&& (tp.x = -1))
 	{
 		while (++(p.x) < WIN_X)
 		{

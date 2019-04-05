@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 12:50:47 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/05 11:04:31 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -267,7 +267,7 @@ void			wofl_rendering_loop_keys_sfx_press(t_env *env);
 void			wofl_rendering_loop_keys_release(t_env *env);
 
 void			wolf_sdl_rendering_loop(t_env *env);
-void			wolf_sdl_mainmenu_loop(t_env *env);
+void			wolf_sdl_mainmenu_loop(t_env *env, bool *exit_);
 
 void			wolf_rendering(t_env *env);
 void			wolf_raycaster(t_env *env);
@@ -278,7 +278,8 @@ Uint32			wolf_fog(float dist_to_obj, Uint32 src_color, t_fog *fog);
 Uint32			wolf_fog_change(t_colors *c);
 float			wolf_fog_freq(uint8_t *freq, t_time *time);
 
-void			wolf_render_textured_help(t_env *env, point *p, t_texhelper *h);
+void			wolf_render_textured_draw_line(t_env *env, point *p,
+												t_texhelper *h);
 void			wolf_render_textured(t_env *env, point *p);
 void			wolf_render_colored(t_env *env, point *p);
 void			wolf_fill_floor_if_colored_rc(t_sdl *sdl);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wolf_sdl_rendering_loop_key_press_events.c         :+:      :+:    :+:   */
+/*   wolf_sdl_rendering_loop_key_press.c                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 11:26:54 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 11:14:02 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/05 10:50:46 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,15 @@ void	wofl_rendering_loop_keys_press(t_env *env, bool *exit)
 										: (env->bsize -= BLUR_INC));
 }
 
+void	wofl_rendering_loop_keys_release(t_env *env)
+{
+	_IFDO(SEKEY == SDLK_w, env->isr->is_move_forward = false);
+	_IFDO(SEKEY == SDLK_a, env->isr->is_rotate_left = false);
+	_IFDO(SEKEY == SDLK_s, env->isr->is_move_backward = false);
+	_IFDO(SEKEY == SDLK_d, env->isr->is_rotate_right = false);
+	_IFDO(SEKEY == SDLK_LSHIFT, env->isr->is_boost_step = false);
+}
+
 void	wofl_rendering_loop_keys_sfx_press(t_env *env)
 {
 	_IFDO(SEKEY == SDLK_q, env->isr->is_play_music = !env->isr->is_play_music);
@@ -47,13 +56,4 @@ void	wofl_rendering_loop_keys_sfx_press(t_env *env)
 								? (env->sfx->bg_volume = BG_VOL_MIN)
 								: (env->sfx->bg_volume -= BG_VOL_INC));
 	_IFDO(SEKEY == SDLK_z, env->isr->is_play_steps = !env->isr->is_play_steps);
-}
-
-void	wofl_rendering_loop_keys_release(t_env *env)
-{
-	_IFDO(SEKEY == SDLK_w, env->isr->is_move_forward = false);
-	_IFDO(SEKEY == SDLK_a, env->isr->is_rotate_left = false);
-	_IFDO(SEKEY == SDLK_s, env->isr->is_move_backward = false);
-	_IFDO(SEKEY == SDLK_d, env->isr->is_rotate_right = false);
-	_IFDO(SEKEY == SDLK_LSHIFT, env->isr->is_boost_step = false);
 }

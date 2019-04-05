@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 17:47:08 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 10:51:21 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/05 11:02:51 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ static int32_t	add_fill_blur_mask(float *bmap, point size, float value)
 	max_fill_range = (size.x % 2) ? 1 : 2;
 	while (++(p.y) < size.y)
 	{
-		if (max_fill_range > size.x)
-			max_fill_range = size.x;
+		_IFDO(max_fill_range > size.x, max_fill_range = size.x);
 		fill_cells += max_fill_range;
 		p.x = (size.x - max_fill_range) / 2;
 		fill_range = size.x - (p.x * 2);
@@ -41,10 +40,10 @@ static int32_t	add_fill_blur_mask(float *bmap, point size, float value)
 
 static void		add_blur_proccesing(t_bhelp b)
 {
-	FColor		fc;
-	SDL_Color	srcc;
 	point		i;
 	point		f;
+	FColor		fc;
+	SDL_Color	srcc;
 	SDL_Color	outc;
 
 	f.y = -1;
@@ -70,12 +69,12 @@ static void		add_blur_proccesing(t_bhelp b)
 void			wolf_blur(point size, iarr src, float value, float dimmed)
 {
 	float		bmap[size.y][size.x];
-	point		p;
 	float		factor;
+	point		p;
 
+	p.y = -1;
 	ft_bzero((float**)bmap, sizeof(float) * (size.y * size.x));
 	factor = 1.0 / add_fill_blur_mask((float*)&(bmap[0][0]), size, value);
-	p.y = -1;
 	while (++(p.y) < WIN_Y && (p.x = -1))
 		while (++(p.x) < WIN_X)
 			add_blur_proccesing((t_bhelp){

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 14:42:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 12:49:47 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/05 11:05:46 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	add_render_fps(SDL_Surface *text, iarr screen, bool pos)
 	if (pos)
 		tp.y = 20;
 	while (++(p.y) < text->h && (p.x = -1)
-		&& (tp.x = -1))
+	&& (tp.x = -1))
 	{
 		while (++(p.x) < text->w)
 			screen[tp.y * WIN_X + ++(tp.x)] = pixels[p.y * text->w + p.x];

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 15:41:02 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 12:00:13 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/05 11:05:07 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,11 +100,11 @@ void		wolf_render_textured(t_env *env, point *p)
 		h.where_is_hit = env->rc->pos.y + env->rc->pwd * env->rc->raydir.y;
 	else
 		h.where_is_hit = env->rc->pos.x + env->rc->pwd * env->rc->raydir.x;
-	h.where_is_hit -= (int)h.where_is_hit;
-	h.pos_on_tex.x = (int)(h.where_is_hit * WALLS_BLOCK_SIZE);
+	h.where_is_hit -= (int32_t)h.where_is_hit;
+	h.pos_on_tex.x = (int32_t)(h.where_is_hit * WALLS_BLOCK_SIZE);
 	if ((!env->rc->is_side && env->rc->raydir.x > 0)
 	|| (env->rc->is_side && env->rc->raydir.y > 0))
 		h.pos_on_tex.x = WALLS_BLOCK_SIZE - h.pos_on_tex.x - 1;
-	wolf_render_textured_help(env, p, &h);
+	wolf_render_textured_draw_line(env, p, &h);
 	add_render_floornceiling(env, &h, p);
 }
