@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 23:17:49 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/06 17:37:56 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/07 00:59:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-inline void	wolf_playing_steps(t_sfx *sfx, bool is_boost)
+void	wolf_playing_steps(t_sfx *sfx, bool is_boost)
 {
 	static bool	lr_step;
 

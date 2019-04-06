@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 01:03:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/06 17:36:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/07 00:50:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-inline bool			wolf_is_tile(t_map *map, fpoint pos)
+bool		wolf_is_tile(t_map *map, fpoint pos)
 {
 	if (pos.x < 0 || pos.y < 0
 	|| pos.x > map->size.x - 1
@@ -23,7 +23,7 @@ inline bool			wolf_is_tile(t_map *map, fpoint pos)
 	return (true);
 }
 
-void				wolf_move(t_env *env, float dist)
+void		wolf_move(t_env *env, float dist)
 {
 	if (wolf_is_tile(env->map,
 		(fpoint){env->rc->pos.y, env->rc->pos.x + (dist * 2) * env->rc->dir.x}))
@@ -33,7 +33,7 @@ void				wolf_move(t_env *env, float dist)
 		env->rc->pos.y += dist * env->rc->dir.y;
 }
 
-static inline void	add_rotate(fpoint *fp, float angle)
+static void	add_rotate(fpoint *fp, float angle)
 {
 	float	xtemp;
 	float	xcos;
@@ -46,7 +46,7 @@ static inline void	add_rotate(fpoint *fp, float angle)
 	fp->y = xtemp * xsin + fp->y * xcos;
 }
 
-void				wolf_rotate(t_rc *rc, float angle)
+void		wolf_rotate(t_rc *rc, float angle)
 {
 	add_rotate(&(rc->plane), angle);
 	add_rotate(&(rc->dir), angle);

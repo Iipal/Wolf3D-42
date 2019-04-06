@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 11:13:19 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/06 17:29:42 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/07 00:50:44 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static inline void	add_set_diststep(t_rc *rc)
+static void	add_set_diststep(t_rc *rc)
 {
 	if (rc->raydir.x < 0)
 	{
@@ -36,7 +36,7 @@ static inline void	add_set_diststep(t_rc *rc)
 	}
 }
 
-static inline void	add_dist_to_wall(t_rc *rc)
+static void	add_dist_to_wall(t_rc *rc)
 {
 	if (0 == rc->is_side)
 		rc->pwd = (rc->map.x - rc->pos.x + (1 - rc->step.x) / 2) / rc->raydir.x;
@@ -49,7 +49,7 @@ static inline void	add_dist_to_wall(t_rc *rc)
 	IFDO(rc->draw_end >= WIN_Y, rc->draw_end = WIN_Y - 1);
 }
 
-static void			add_check_hit(t_rc *rc, itab map)
+static void	add_check_hit(t_rc *rc, itab map)
 {
 	while (!rc->is_hit)
 	{
@@ -69,7 +69,7 @@ static void			add_check_hit(t_rc *rc, itab map)
 	}
 }
 
-static void			add_fill_floornceiling(t_sdl *sdl)
+static void	add_fill_floornceiling(t_sdl *sdl)
 {
 	point	p;
 

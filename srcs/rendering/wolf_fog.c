@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 19:10:46 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/06 17:26:31 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/07 00:57:50 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-Uint32			wolf_fog_change(t_colors *c)
+Uint32	wolf_fog_change(t_colors *c)
 {
 	const int32_t	colors[] = {IRGB_WHITE, IRGB_RED, IRGB_ORANGE, IRGB_LIME,
 				IRGB_AQUA, IRGB_PURPLE, IRGB_MINT, IRGB_DARK_BLUE, IRGB_BLACK};
@@ -21,7 +21,7 @@ Uint32			wolf_fog_change(t_colors *c)
 	return (colors[*c]);
 }
 
-inline float	wolf_fog_freq(uint8_t *freq, t_time *time)
+float	wolf_fog_freq(uint8_t *freq, t_time *time)
 {
 	const float	freqs[] = {4.2, 4.25, 4.15, 4.17, 4.22, 4.3, 4.1, 4.16};
 
@@ -39,7 +39,7 @@ inline float	wolf_fog_freq(uint8_t *freq, t_time *time)
 	return (freqs[(*freq)]);
 }
 
-Uint32			wolf_fog(float dist_to_obj, Uint32 src_color, t_fog *fog)
+Uint32	wolf_fog(float dist_to_obj, Uint32 src_color, t_fog *fog)
 {
 	float		fog_amount;
 	Uint32		dest_color;
