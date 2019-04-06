@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 11:26:54 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/06 17:39:00 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/06 18:04:10 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void	wolf_rendering_loop_keys_press(t_env *env, bool *exit)
+inline void	wolf_rendering_loop_keys_press(t_env *env, bool *exit)
 {
 	IFDO(SEKEY == SDLK_ESCAPE, *exit = true);
 	IFDO(SEKEY == SDLK_w, env->isr->is_move_forward = 1);
@@ -30,14 +30,12 @@ void	wolf_rendering_loop_keys_press(t_env *env, bool *exit)
 	IFDO(SEKEY == SDLK_h,
 		env->isr->is_render_blur = !env->isr->is_render_blur);
 	IFDO(SEKEY == SDLK_y,
-		(env->bsize + BLUR_INC > BLUR_MAX) ? (env->bsize = BLUR_MAX)
-										: (env->bsize += BLUR_INC));
+		IFDO(!(env->bsize + BLUR_INC > BLUR_MAX), env->bsize += BLUR_INC));
 	IFDO(SEKEY == SDLK_n,
-		(env->bsize - BLUR_INC < BLUR_MIN) ? (env->bsize = BLUR_MIN)
-										: (env->bsize -= BLUR_INC));
+		IFDO(!(env->bsize - BLUR_INC < BLUR_MIN), env->bsize -= BLUR_INC));
 }
 
-void	wolf_rendering_loop_keys_release(t_env *env)
+inline void	wolf_rendering_loop_keys_release(t_env *env)
 {
 	IFDO(SEKEY == SDLK_w, env->isr->is_move_forward = false);
 	IFDO(SEKEY == SDLK_a, env->isr->is_rotate_left = false);
@@ -46,14 +44,14 @@ void	wolf_rendering_loop_keys_release(t_env *env)
 	IFDO(SEKEY == SDLK_LSHIFT, env->isr->is_boost_step = false);
 }
 
-void	wolf_rendering_loop_keys_sfx_press(t_env *env)
+inline void	wolf_rendering_loop_keys_sfx_press(t_env *env)
 {
 	IFDO(SEKEY == SDLK_q, env->isr->is_play_music = !env->isr->is_play_music);
-	IFDO(SEKEY == SDLK_EQUALS, (env->sfx->bg_volume + BG_VOL_INC >= BG_VOL_MAX)
-								? (env->sfx->bg_volume = BG_VOL_MAX)
-								: (env->sfx->bg_volume += BG_VOL_INC));
-	IFDO(SEKEY == SDLK_MINUS, (env->sfx->bg_volume - BG_VOL_INC <= BG_VOL_MIN)
-								? (env->sfx->bg_volume = BG_VOL_MIN)
-								: (env->sfx->bg_volume -= BG_VOL_INC));
+	IFDO(SEKEY == SDLK_EQUALS,
+		IFDO(!(env->sfx->bg_volume + BG_VOL_INC > BG_VOL_MAX),
+			env->sfx->bg_volume += BG_VOL_INC));
+	IFDO(SEKEY == SDLK_MINUS,
+		IFDO(!(env->sfx->bg_volume - BG_VOL_INC < BG_VOL_MIN),
+			env->sfx->bg_volume -= BG_VOL_INC));
 	IFDO(SEKEY == SDLK_z, env->isr->is_play_steps = !env->isr->is_play_steps);
 }

@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 22:59:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/06 17:39:42 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/06 18:01:03 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static void	add_mouse_moves(t_env *env)
+static inline void	add_mouse_moves(t_env *env)
 {
 	SDL_GetMouseState(&(env->sdl->event.motion.x), &(env->sdl->event.motion.y));
 	if (env->sdl->event.type == SDL_MOUSEBUTTONDOWN)
@@ -26,7 +26,7 @@ static void	add_mouse_moves(t_env *env)
 			env->mouse->last) * ROT_MOUSE_INC);
 }
 
-static void	add_loop_isr(t_env *env)
+static inline void	add_loop_isr(t_env *env)
 {
 	if ((env->isr->is_move_backward || env->isr->is_move_forward)
 		&& env->isr->is_play_steps)
@@ -44,10 +44,13 @@ static void	add_loop_isr(t_env *env)
 		wolf_rotate(env->rc, RAD(env->isr->is_boost_step
 			? (ROT_BOOST * -env->fps.rot) : -env->fps.rot));
 	Mix_VolumeMusic(env->sfx->bg_volume);
-	(env->isr->is_play_music) ? Mix_ResumeMusic() : Mix_PauseMusic();
+	if (env->isr->is_play_music)
+		Mix_ResumeMusic();
+	else
+		Mix_PauseMusic();
 }
 
-void		wolf_sdl_rendering_loop(t_env *env)
+void				wolf_sdl_rendering_loop(t_env *env)
 {
 	bool	exit_;
 
