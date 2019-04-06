@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 11:13:19 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/05 15:56:31 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/06 17:29:42 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static void	add_set_diststep(t_rc *rc)
+static inline void	add_set_diststep(t_rc *rc)
 {
 	if (rc->raydir.x < 0)
 	{
@@ -36,7 +36,20 @@ static void	add_set_diststep(t_rc *rc)
 	}
 }
 
-static void	add_check_hit(t_rc *rc, itab map)
+static inline void	add_dist_to_wall(t_rc *rc)
+{
+	if (0 == rc->is_side)
+		rc->pwd = (rc->map.x - rc->pos.x + (1 - rc->step.x) / 2) / rc->raydir.x;
+	else
+		rc->pwd = (rc->map.y - rc->pos.y + (1 - rc->step.y) / 2) / rc->raydir.y;
+	rc->hline = (int)(WIN_Y / rc->pwd);
+	rc->draw_start = -(rc->hline) / 2 + WIN_Y / 2;
+	rc->draw_end = rc->hline / 2 + WIN_Y / 2;
+	IFDO(rc->draw_start < 0, rc->draw_start = 0);
+	IFDO(rc->draw_end >= WIN_Y, rc->draw_end = WIN_Y - 1);
+}
+
+static void			add_check_hit(t_rc *rc, itab map)
 {
 	while (!rc->is_hit)
 	{
@@ -56,19 +69,7 @@ static void	add_check_hit(t_rc *rc, itab map)
 	}
 }
 
-static void	add_dist_to_wall(t_rc *rc)
-{
-	!rc->is_side
-	? (rc->pwd = (rc->map.x - rc->pos.x + (1 - rc->step.x) / 2) / rc->raydir.x)
-	: (rc->pwd = (rc->map.y - rc->pos.y + (1 - rc->step.y) / 2) / rc->raydir.y);
-	rc->hline = (int)(WIN_Y / rc->pwd);
-	rc->draw_start = -(rc->hline) / 2 + WIN_Y / 2;
-	rc->draw_end = rc->hline / 2 + WIN_Y / 2;
-	IFDO(rc->draw_start < 0, rc->draw_start = 0);
-	IFDO(rc->draw_end >= WIN_Y, rc->draw_end = WIN_Y - 1);
-}
-
-static void	add_fill_floornceiling(t_sdl *sdl)
+static void			add_fill_floornceiling(t_sdl *sdl)
 {
 	point	p;
 
@@ -79,7 +80,7 @@ static void	add_fill_floornceiling(t_sdl *sdl)
 				(p.y >= WIN_Y / 2) ? IRGB_FLOOR : IRGB_SKY;
 }
 
-void		wolf_raycaster(t_env *env)
+void				wolf_raycaster(t_env *env)
 {
 	point	p;
 
@@ -98,6 +99,9 @@ void		wolf_raycaster(t_env *env)
 		add_set_diststep(env->rc);
 		add_check_hit(env->rc, env->map->tab);
 		add_dist_to_wall(env->rc);
-		ISRT ? wolf_render_textured(env, &p) : wolf_render_colored(env, &p);
+		if (env->isr->is_textured)
+			wolf_render_textured(env, &p);
+		else
+			wolf_render_colored(env, &p);
 	}
 }

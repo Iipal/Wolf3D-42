@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 22:59:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/05 15:56:40 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/06 17:39:42 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ void		wolf_sdl_rendering_loop(t_env *env)
 			IFDO(env->sdl->event.type == SDL_QUIT, exit_ = true);
 			if (env->sdl->event.type == SDL_KEYDOWN)
 			{
-				wofl_rendering_loop_keys_press(env, &exit_);
-				wofl_rendering_loop_keys_sfx_press(env);
+				wolf_rendering_loop_keys_press(env, &exit_);
+				wolf_rendering_loop_keys_sfx_press(env);
 			}
 			if (env->sdl->event.type == SDL_KEYUP)
-				wofl_rendering_loop_keys_release(env);
+				wolf_rendering_loop_keys_release(env);
 			add_mouse_moves(env);
 		}
 		add_loop_isr(env);

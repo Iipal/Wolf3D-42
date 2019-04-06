@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 14:42:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/05 11:05:46 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/06 17:34:00 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void		wolf_rendering_fps_counter(t_env *env)
 	delta += env->fps.time.res;
 }
 
-void		wolf_fps(t_fps *fps)
+inline void	wolf_fps(t_fps *fps)
 {
 	fps->time.old = fps->time.current;
 	fps->time.current = SDL_GetTicks();

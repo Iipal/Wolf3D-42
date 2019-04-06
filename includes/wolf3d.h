@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/05 15:53:32 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/06 17:38:53 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,9 +261,9 @@ void			wolf_rendering_torch(t_env *env);
 
 void			wolf_fps(t_fps *fps);
 
-void			wofl_rendering_loop_keys_press(t_env *env, bool *exit);
-void			wofl_rendering_loop_keys_sfx_press(t_env *env);
-void			wofl_rendering_loop_keys_release(t_env *env);
+void			wolf_rendering_loop_keys_press(t_env *env, bool *exit);
+void			wolf_rendering_loop_keys_sfx_press(t_env *env);
+void			wolf_rendering_loop_keys_release(t_env *env);
 
 void			wolf_sdl_rendering_loop(t_env *env);
 void			wolf_sdl_mainmenu_loop(t_env *env, bool *exit_);

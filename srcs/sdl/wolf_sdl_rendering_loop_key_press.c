@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 11:26:54 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/05 15:55:50 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/06 17:39:00 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void	wofl_rendering_loop_keys_press(t_env *env, bool *exit)
+void	wolf_rendering_loop_keys_press(t_env *env, bool *exit)
 {
 	IFDO(SEKEY == SDLK_ESCAPE, *exit = true);
 	IFDO(SEKEY == SDLK_w, env->isr->is_move_forward = 1);
@@ -37,7 +37,7 @@ void	wofl_rendering_loop_keys_press(t_env *env, bool *exit)
 										: (env->bsize -= BLUR_INC));
 }
 
-void	wofl_rendering_loop_keys_release(t_env *env)
+void	wolf_rendering_loop_keys_release(t_env *env)
 {
 	IFDO(SEKEY == SDLK_w, env->isr->is_move_forward = false);
 	IFDO(SEKEY == SDLK_a, env->isr->is_rotate_left = false);
@@ -46,7 +46,7 @@ void	wofl_rendering_loop_keys_release(t_env *env)
 	IFDO(SEKEY == SDLK_LSHIFT, env->isr->is_boost_step = false);
 }
 
-void	wofl_rendering_loop_keys_sfx_press(t_env *env)
+void	wolf_rendering_loop_keys_sfx_press(t_env *env)
 {
 	IFDO(SEKEY == SDLK_q, env->isr->is_play_music = !env->isr->is_play_music);
 	IFDO(SEKEY == SDLK_EQUALS, (env->sfx->bg_volume + BG_VOL_INC >= BG_VOL_MAX)
