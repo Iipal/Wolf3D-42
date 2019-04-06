@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 11:02:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/05 10:47:28 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/06 18:00:45 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static void	add_press_selector(t_env *env, bool *exit_)
+static inline void	add_press_selector(t_env *env, bool *exit_)
 {
 	if (env->menu->is_selector_start)
 	{
@@ -23,13 +23,13 @@ static void	add_press_selector(t_env *env, bool *exit_)
 		*exit_ = true;
 }
 
-static void	add_press_keys(t_env *env)
+static inline void	add_press_keys(t_env *env)
 {
 	if (env->sdl->event.key.keysym.sym == SDLK_DOWN
 	&& !env->menu->is_selector_start)
 		Mix_PlayChannel(-1, env->sfx->selector_err, 0);
 	else if (env->sdl->event.key.keysym.sym == SDLK_UP
-	&& env->menu->is_selector_start)
+		&& env->menu->is_selector_start)
 		Mix_PlayChannel(-1, env->sfx->selector_err, 0);
 	else if (env->sdl->event.key.keysym.sym == SDLK_UP)
 	{
@@ -45,7 +45,7 @@ static void	add_press_keys(t_env *env)
 		env->isr->is_play_music = !env->isr->is_play_music;
 }
 
-void		wolf_sdl_mainmenu_loop(t_env *env, bool *exit_)
+void				wolf_sdl_mainmenu_loop(t_env *env, bool *exit_)
 {
 	(env->sdl->event.type == SDL_QUIT) ? (*exit_ = true) : 0;
 	if (env->sdl->event.type == SDL_KEYDOWN)
