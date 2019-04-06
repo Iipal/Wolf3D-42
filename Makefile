@@ -6,12 +6,12 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/04/05 15:58:32 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/04/05 22:43:32 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := wolf3d
-PPATH := $(CURDIR)/$(NAME)
+NPWD := $(CURDIR)/$(NAME)
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
@@ -32,15 +32,15 @@ endif
 #	-flto				- Enable Link Time Optimization
 #	-Ofast				- MAXIMUM OPTIMIZATION
 #	-fno-elide-type		- Do not elide types when printing diagnostics
-CC := clang -march=native -mtune=native -flto -Ofast
-CFLAGS := -Wall -Wextra -Werror -Wunused -fno-elide-type
+CC := gcc -march=native -mtune=native -flto -Ofast
+CFLAGS := -Wall -Wextra -Werror -Wunused
 IFLAGS := -I $(CURDIR)/includes/
 
 SRC := $(abspath $(wildcard srcs/*.c))
 SRC += $(abspath $(wildcard srcs/*/*.c))
 OBJ := $(SRC:.c=.o)
 
-LIBFT := libft/libft.a
+LIBFT := $(CURDIR)/libft/libft.a
 LMAKE := make -C libft
 
 WHITE := \033[0m
@@ -64,7 +64,7 @@ $(LIBFT):
 	@$(LMAKE)
 
 $(NAME): $(LIBFT) $(OBJ)
-	@$(ECHO) -n ' <q.p> | $(PPATH): '
+	@$(ECHO) -n ' <q.p> | $(NPWD): '
 	@$(CC) $(OBJ) $(LIBS) $(LIBFT) -o $(NAME)
 	@$(ECHO) "[$(INVERT)$(GREEN)✓$(WHITE)]"
 
@@ -78,7 +78,7 @@ clean:
 fclean: clean
 	@$(LMAKE) fclean
 	@$(DEL) $(NAME)
-	@$(ECHO) "$(INVERT)$(RED)deleted$(WHITE)$(INVERT): $(PPATH)$(WHITE)"
+	@$(ECHO) "$(INVERT)$(RED)deleted$(WHITE)$(INVERT): $(NPWD)$(WHITE)"
 
 re: fclean all
 

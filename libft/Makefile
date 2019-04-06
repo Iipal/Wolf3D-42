@@ -6,12 +6,12 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 11:27:37 by tmaluh            #+#    #+#              #
-#    Updated: 2019/04/05 15:34:22 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/04/05 22:43:18 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := libft.a
-PPATH := $(CURDIR)/$(NAME)
+NPWD := $(CURDIR)/$(NAME)
 
 ECHO := echo
 
@@ -26,8 +26,8 @@ endif
 
 LC += rcs
 
-CC := clang -march=native -mtune=native -flto -Ofast -std=c11
-CFLAGS := -Wall -Wextra -Werror -Wunused -fno-elide-type
+CC := gcc -march=native -mtune=native -flto -Ofast -std=c11
+CFLAGS := -Wall -Wextra -Werror -Wunused
 INC := -I $(CURDIR)/includes/
 
 SRC_D := srcs/
@@ -47,7 +47,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@$(ECHO) "$(INVERT)"
-	@$(ECHO) -n ' <=-=> | $(PPATH): '
+	@$(ECHO) -n ' <=-=> | $(NPWD): '
 	@$(LC) $(NAME) $(OBJS)
 	@$(ECHO) "[$(GREEN)✓$(WHITE)$(INVERT)]$(WHITE)"
 	@$(ECHO)
@@ -61,7 +61,7 @@ clean:
 
 fclean: clean
 	@$(DEL) $(NAME)
-	@$(ECHO) "$(INVERT)$(RED)deleted$(WHITE)$(INVERT): $(PPATH)$(WHITE)"
+	@$(ECHO) "$(INVERT)$(RED)deleted$(WHITE)$(INVERT): $(NPWD)$(WHITE)"
 
 re: fclean all
 
