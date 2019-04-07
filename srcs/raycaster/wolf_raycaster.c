@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 11:13:19 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/07 12:16:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/08 00:32:38 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	add_dist_to_wall(t_rc *rc)
 	IFDO(rc->draw_end >= WIN_Y, rc->draw_end = WIN_Y - 1);
 }
 
-inline void	add_check_hit(t_rc *rc, itab map)
+inline void	add_check_hit(t_rc *rc, int8_t **map)
 {
 	if (rc->side_dist.x < rc->side_dist.y)
 	{

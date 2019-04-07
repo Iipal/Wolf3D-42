@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 11:59:37 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/05 15:55:26 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/08 02:39:57 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void	wolf_render_textured_draw_line(t_env *env, point *p, t_texhelper *h)
+void	wolf_render_textured_draw_line(t_env *env, point *p, t_texhelp *h)
 {
 	p->y = env->rc->draw_start;
 	while (p->y < env->rc->draw_end)

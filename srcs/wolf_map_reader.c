@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 17:18:56 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/07 21:37:49 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/08 00:31:04 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static bool		add_save_map(string line, iarr map_line,
+static bool		add_save_map(string line, int8_t *map_line,
 						iarr colors_line, int map_x)
 {
 	const int	colors[] = {IRGB_WHITE, IRGB_RED, IRGB_ORANGE, IRGB_LIME,
@@ -78,12 +78,12 @@ static bool		add_valid_info(string info_line, t_map *map, string map_name)
 	while (info_line[i] && ft_isdigit(info_line[i]))
 		++i;
 	IS_F(info_line[i]);
-	NOTIS_F(map->tab = (itab)malloc(sizeof(iarr) * map->size.y));
+	NOTIS_F(map->tab = (int8_t**)malloc(sizeof(int8_t*) * map->size.y));
 	NOTIS_F(map->colors = (itab)malloc(sizeof(iarr) * map->size.y));
 	i = -1;
 	while (++i < map->size.y)
 	{
-		NOTIS_F(map->tab[i] = (iarr)malloc(sizeof(int) * map->size.x));
+		NOTIS_F(map->tab[i] = (int8_t*)malloc(sizeof(int8_t) * map->size.x));
 		NOTIS_F(map->colors[i] = (iarr)malloc(sizeof(int) * map->size.x));
 	}
 	ft_strdel(&info_line);

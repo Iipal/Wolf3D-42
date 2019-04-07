@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 15:41:02 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/05 15:55:21 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/08 02:39:51 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static void	add_render_floor_init_fpos(t_env *env, t_texhelper *tx,
+static void	add_render_floor_init_fpos(t_env *env, t_texhelp *tx,
 										t_floorhelper *h)
 {
 	if (!env->rc->is_side && env->rc->raydir.x > 0)
@@ -56,7 +56,7 @@ static void	add_is_render_fog(t_floorhelper *h, t_env *env,
 	}
 }
 
-static void	add_render_floornceiling(t_env *env, t_texhelper *tx, point *p)
+static void	add_render_floornceiling(t_env *env, t_texhelp *tx, point *p)
 {
 	t_floorhelper	h;
 
@@ -77,7 +77,7 @@ static void	add_render_floornceiling(t_env *env, t_texhelper *tx, point *p)
 	}
 }
 
-static void	add_choose_current_texture(t_env *env, t_texhelper *h)
+static void	add_choose_current_texture(t_env *env, t_texhelp *h)
 {
 	uint8_t	tex;
 
@@ -93,7 +93,7 @@ static void	add_choose_current_texture(t_env *env, t_texhelper *h)
 
 void		wolf_render_textured(t_env *env, point *p)
 {
-	t_texhelper	h;
+	t_texhelp	h;
 
 	add_choose_current_texture(env, &h);
 	if (!env->rc->is_side)

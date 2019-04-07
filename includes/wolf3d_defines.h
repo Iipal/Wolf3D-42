@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/07 21:37:59 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/08 02:36:47 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,13 +134,14 @@
 # define MIN(a,b) (((a)<(b))?(a):(b))
 # define MAX(a,b) (((a)>(b))?(a):(b))
 
-# define FPOINT     typedef t_fp        fpoint
-# define POINT      typedef t_p         point
-# define IARR       typedef int32_t*    iarr
-# define ITAB       typedef int32_t**   itab
-# define UIARR      typedef uint32_t*   uiarr
-# define UINT       typedef uint32_t    uint
-# define FCOLOR     typedef t_fcolor    FColor
+# define FPOINT     typedef struct s_fpoint fpoint
+# define POINT      typedef struct s_point  point
+# define IARR       typedef int32_t*        iarr
+# define ITAB       typedef int32_t**       itab
+# define UIARR      typedef uint32_t*       uiarr
+# define UINT       typedef uint32_t        uint
+# define FCOLOR     typedef struct s_fcolor FColor
+
 # define FPTR_FLG   typedef void (*f_fnptr)(t_env*, char**, int32_t)
 
 # define SWIN   env->sdl->win
