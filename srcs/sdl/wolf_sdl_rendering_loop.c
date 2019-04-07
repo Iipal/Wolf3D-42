@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 22:59:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/07 21:56:12 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/08 02:30:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,8 @@ static void	add_loop_isr(t_env *env)
 
 void		wolf_sdl_rendering_loop(t_env *env)
 {
-	int16_t	ms;
 	bool	exit_;
 
-	ms = 0;
 	exit_ = false;
 	while (true != exit_)
 	{
@@ -73,7 +71,6 @@ void		wolf_sdl_rendering_loop(t_env *env)
 		}
 		add_loop_isr(env);
 		wolf_rendering(env);
-		IFDO((ms = (1000 / 60) - env->fps.time.res) > 0, SDL_Delay(ms));
 	}
 	IFDO(env->isr->is_play_music,
 		Mix_VolumeMusic(env->sfx->bg_volume / BG_VOL_MUTE));
