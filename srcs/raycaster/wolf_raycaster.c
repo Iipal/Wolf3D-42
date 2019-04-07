@@ -6,11 +6,22 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 11:13:19 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/07 00:50:44 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/07 12:16:27 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+static void	add_fill_floornceiling(t_sdl *sdl)
+{
+	point	p;
+
+	p.y = -1;
+	while (++(p.y) < WIN_Y && (p.x = -1))
+		while (++(p.x) < WIN_X)
+			sdl->win_pixels[p.y * WIN_X + p.x] =
+				(p.y >= WIN_Y / 2) ? IRGB_FLOOR : IRGB_SKY;
+}
 
 static void	add_set_diststep(t_rc *rc)
 {
@@ -49,35 +60,21 @@ static void	add_dist_to_wall(t_rc *rc)
 	IFDO(rc->draw_end >= WIN_Y, rc->draw_end = WIN_Y - 1);
 }
 
-static void	add_check_hit(t_rc *rc, itab map)
+inline void	add_check_hit(t_rc *rc, itab map)
 {
-	while (!rc->is_hit)
+	if (rc->side_dist.x < rc->side_dist.y)
 	{
-		if (rc->side_dist.x < rc->side_dist.y)
-		{
-			rc->side_dist.x += rc->ddist.x;
-			rc->map.x += rc->step.x;
-			rc->is_side = false;
-		}
-		else
-		{
-			rc->side_dist.y += rc->ddist.y;
-			rc->map.y += rc->step.y;
-			rc->is_side = true;
-		}
-		IFDO(map[rc->map.y][rc->map.x] > 0, rc->is_hit = true);
+		rc->side_dist.x += rc->ddist.x;
+		rc->map.x += rc->step.x;
+		rc->is_side = false;
 	}
-}
-
-static void	add_fill_floornceiling(t_sdl *sdl)
-{
-	point	p;
-
-	p.y = -1;
-	while (++(p.y) < WIN_Y && (p.x = -1))
-		while (++(p.x) < WIN_X)
-			sdl->win_pixels[p.y * WIN_X + p.x] =
-				(p.y >= WIN_Y / 2) ? IRGB_FLOOR : IRGB_SKY;
+	else
+	{
+		rc->side_dist.y += rc->ddist.y;
+		rc->map.y += rc->step.y;
+		rc->is_side = true;
+	}
+	IFDO(map[rc->map.y][rc->map.x] > 0, rc->is_hit = true);
 }
 
 void				wolf_raycaster(t_env *env)
@@ -97,7 +94,8 @@ void				wolf_raycaster(t_env *env)
 		env->rc->map = (point){(int)env->rc->pos.y, (int)env->rc->pos.x};
 		RC->ddist = (fpoint){ABS(1 / RC->raydir.y), ABS(1 / RC->raydir.x)};
 		add_set_diststep(env->rc);
-		add_check_hit(env->rc, env->map->tab);
+		while (!env->rc->is_hit)
+			add_check_hit(env->rc, env->map->tab);
 		add_dist_to_wall(env->rc);
 		if (env->isr->is_textured)
 			wolf_render_textured(env, &p);

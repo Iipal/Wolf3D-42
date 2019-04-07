@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/05 15:52:41 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/07 17:07:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 #  define SPOS_START    20
 #  define SPOS_EXIT     90
 
-#  define MENU_BG   "resources/main_menu/1500x750_menu_bg.bmp"
+#  define MENU_BG       "resources/main_menu/1500x750_menu_bg.bmp"
 # endif
 
 # ifdef __linux__
@@ -38,7 +38,7 @@
 #  define SPOS_START    13
 #  define SPOS_EXIT     60
 
-#  define MENU_BG   "resources/main_menu/1000x500_menu_bg.bmp"
+#  define MENU_BG       "resources/main_menu/1000x500_menu_bg.bmp"
 # endif
 
 # define MSTART         "resources/music/start.wav"
