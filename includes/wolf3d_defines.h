@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/07 17:42:22 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/07 21:37:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,8 @@
 
 # define MSG(msg) ft_putstr(msg)
 # define MSGN(msg) ft_putendl(msg)
-# define NOTIS(msg, ex, do, ret) if (!(ex)) {MSGN(msg);do;return (ret);}
+# define NOTIS(msg, ex, do, ret) if (!(ex)) {MSGN(msg);do;return(ret);}
+# define NOTIS2(msg, ex, do1, do2) if (!(ex)) {MSGN(msg);do1;do2;}
 # define NOTIS_N(ex) if (!(ex)) return (NULL)
 # define NOTIS_F(ex) if (!(ex)) return (false)
 # define IS(ex, do, ret) if (ex) {do; return (ret);}

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:19:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/07 17:39:58 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/07 21:46:02 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int			main(int argc, string argv[])
 	ISARGS(argc, argv);
 	ISZ(t_env, env, 1);
 	NOTIS(E_ALLOC, wolf_init(env), wolf_free(&env), EXIT_FAILURE);
-	wolf_parser(env, argv, argc);
+	NOTIS_F(wolf_fparser(env, argv, argc));
 	NOTIS(E_FILER, wolf_readnsave(argv[argc - 1], env), exit(EXIT_FAILURE), 0);
 	wolf_setup_rc(env);
 	wolf_usage();
