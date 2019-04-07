@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/07 17:07:59 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/07 17:42:22 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@
 
 #  define MENU_BG       "resources/main_menu/1000x500_menu_bg.bmp"
 # endif
+
+# define F_MAX              2
+# define F_HELP             "-h"
+# define F_WIN_NO_BORDER    "-no-border"
 
 # define MSTART         "resources/music/start.wav"
 # define MSELECTOR      "resources/music/selector.wav"
@@ -102,7 +106,7 @@
 # define SELECTOR_START_X   ((WIN_X - SELECTOR_X) / 2.0)
 # define SELECTOR_START_Y   ((WIN_Y - SELECTOR_Y) / 2.0)
 
-# define ISARGS(ac, av) {--ac;++av;NOTIS(E_USAGE, !(ac != 1), exit(-1), 0);}
+# define ISARGS(ac, av) {--ac;++av;NOTIS(E_USAGE, ac, exit(-1), 0);}
 
 # define IFDO(ex, do) if ((ex)) { do; }
 
@@ -129,13 +133,14 @@
 # define MIN(a,b) (((a)<(b))?(a):(b))
 # define MAX(a,b) (((a)>(b))?(a):(b))
 
-# define FPOINT    typedef t_fp                fpoint
-# define POINT     typedef t_p                 point
-# define IARR      typedef int32_t*            iarr
-# define ITAB      typedef int32_t**           itab
-# define UIARR     typedef uint32_t*           uiarr
-# define UINT      typedef uint32_t            uint
-# define FCOLOR    typedef t_fcolor            FColor
+# define FPOINT     typedef t_fp        fpoint
+# define POINT      typedef t_p         point
+# define IARR       typedef int32_t*    iarr
+# define ITAB       typedef int32_t**   itab
+# define UIARR      typedef uint32_t*   uiarr
+# define UINT       typedef uint32_t    uint
+# define FCOLOR     typedef t_fcolor    FColor
+# define FPTR_FLG   typedef void (*f_fnptr)(t_env*, char**, int32_t)
 
 # define SWIN   env->sdl->win
 # define SWINS  env->sdl->win_surface

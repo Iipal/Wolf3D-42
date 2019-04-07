@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/07 17:07:16 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/07 17:39:41 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,6 +209,8 @@ typedef struct	s_wolf3d_environment
 	int32_t		bsize;
 }				t_env;
 
+FPTR_FLG;
+
 /*
 **		NORME HELP CODE START.
 */
@@ -242,6 +244,8 @@ typedef struct	s_bhelp
 /*
 **		NORME HELP CODE END.
 */
+
+void			wolf_parser(t_env *env, strtab av, int32_t ac);
 
 bool			wolf_readnsave(string map_name, t_env *env);
 
