@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 15:41:02 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/08 02:39:51 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/08 02:43:46 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,25 +77,25 @@ static void	add_render_floornceiling(t_env *env, t_texhelp *tx, point *p)
 	}
 }
 
-static void	add_choose_current_texture(t_env *env, t_texhelp *h)
+inline void	add_choose_current_texture(t_env *env, int32_t *curr_tex)
 {
 	uint8_t	tex;
 
-	h->curr_tex = env->map->tab[RC->map.y][RC->map.x] - 1;
+	*curr_tex = env->map->tab[RC->map.y][RC->map.x] - 1;
 	(env->rc->step.x < 0) ? (tex = 0)
 		: (tex = 1);
 	if (env->rc->is_side)
 		(env->rc->step.y < 0) ? (tex = 2)
 			: (tex = 3);
-	if ((h->curr_tex += tex) > env->walls->max_textures - 1)
-		h->curr_tex -= (env->walls->max_textures - 1);
+	if ((*curr_tex += tex) > env->walls->max_textures - 1)
+		*curr_tex -= (env->walls->max_textures - 1);
 }
 
 void		wolf_render_textured(t_env *env, point *p)
 {
 	t_texhelp	h;
 
-	add_choose_current_texture(env, &h);
+	add_choose_current_texture(env, &h.curr_tex);
 	if (!env->rc->is_side)
 		h.where_is_hit = env->rc->pos.y + env->rc->pwd * env->rc->raydir.y;
 	else
