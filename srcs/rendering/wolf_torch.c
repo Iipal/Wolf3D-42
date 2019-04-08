@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 22:08:27 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/05 11:09:08 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/08 23:17:27 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	wolf_rendering_torch(t_env *env)
 	point			p;
 	point			tp;
 
-	if (old_torch_frame != FOG.freq)
+	if (old_torch_frame != env->fog.freq)
 	{
 		torch_frame = ft_rand(MAX_TORCH - 1);
-		old_torch_frame = FOG.freq;
+		old_torch_frame = env->fog.freq;
 	}
 	tp.y = -1;
 	p.y = torch_shift.y;

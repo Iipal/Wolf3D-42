@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/08 15:32:04 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/08 23:17:30 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -411,11 +411,6 @@
 # define NOTIS2(msg, ex, do1, do2) if (!(ex)) {MSGN(msg);do1;do2;}
 
 /*
-**	If \param ex false return NULL.
-*/
-# define NOTIS_N(ex) if (!(ex)) return (NULL)
-
-/*
 **	If \param ex false return false.
 */
 # define NOTIS_F(ex) if (!(ex)) return (false)
@@ -435,10 +430,6 @@
 */
 # define ISM(msg, ex, do, ret) if ((ex)) {MSGN(msg);do;return (ret);}
 
-/*
-**	If \param ex true return NULL.
-*/
-# define IS_N(ex) if ((ex)) return (NULL)
 
 /*
 **	If \param ex true return false.
@@ -472,31 +463,9 @@
 */
 
 /*
-**	Pi value.
-*/
-# define PI 3.141592
-
-/*
 **	Absolute value of \param var macros.
 */
 # define ABS(var) ((var) < 0) ? -(var) : (var)
-
-/*
-**	Convert \param deg value from degrees to radians.
-*/
-# define RAD(deg) (((deg) * PI) / 180.0)
-
-/*
-**	Calling cos() function with \param angle value in degrees
-**	 what will convert to radians.
-*/
-# define COSR(angle) cos(RAD(angle))
-
-/*
-**	Calling sin() function with \param angle value in degrees
-**	 what will convert to radians.
-*/
-# define SINR(angle) sin(RAD(angle))
 
 /*
 ** Lesser value among the two.
@@ -529,17 +498,12 @@
 */
 
 # define SWIN   env->sdl->win
-# define SWINS  env->sdl->win_surface
 # define SWINP  env->sdl->win_pixels
 # define SEVENT env->sdl->event
-# define SETYPE env->sdl->event.type
 # define SEKEY  env->sdl->event.key.keysym.sym
 # define MAPY   env->map->size.y
 # define MAP    env->map->tab
 # define MAPC   env->map->colors
-# define ISRT   env->isr->is_textured
-# define ISRF   env->isr->is_render_fog
 # define RC     env->rc
-# define FOG    env->fog
 
 #endif
