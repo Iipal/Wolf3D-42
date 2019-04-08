@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 11:14:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 01:05:37 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/08 21:35:19 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-bool	ft_toupper(uint8_t c)
+uchar	ft_toupper(uchar c)
 {
-	return ((c >= 'a' && c <= 'z') ? c -= 32 : c);
+	return (ft_islower(c) ? c -= 32 : c);
 }

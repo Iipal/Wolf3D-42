@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/28 10:13:34 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 01:04:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/08 21:26:51 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-bool	ft_isblank(uint8_t c)
+bool	ft_isblank(uchar c)
 {
 	return ((c >= 9 && c <= 13) || c == 32);
 }

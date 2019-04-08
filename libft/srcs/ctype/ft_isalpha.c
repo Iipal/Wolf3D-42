@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 09:37:17 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 01:04:28 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/08 21:26:31 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-bool	ft_isalpha(uint8_t c)
+bool	ft_isalpha(uchar c)
 {
 	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
 }

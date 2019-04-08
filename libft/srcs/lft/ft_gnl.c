@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/03 12:31:02 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/05 14:18:45 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/08 21:06:01 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int32_t	catline_recursive(int32_t fd, string *data,
 	return (1);
 }
 
-int32_t			ft_gnl(const int32_t fd, string *line)
+int8_t			ft_gnl(const int32_t fd, string *line)
 {
 	static string	data[255];
 	string			temp;

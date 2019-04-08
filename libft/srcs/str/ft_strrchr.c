@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 17:07:43 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 01:39:55 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/08 22:29:02 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-string	ft_strrchr(cstring s, uint8_t c)
+string	ft_strrchr(cstring s, uchar c)
 {
 	int32_t	len;
 

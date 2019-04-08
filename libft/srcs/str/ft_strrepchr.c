@@ -6,19 +6,20 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 11:20:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 01:41:01 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/08 23:02:55 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-bool	ft_strrepchr(cstring str, char find_sumbol, char replace_sumbol)
+bool	ft_strrepchr(cstring str, char search, char replace)
 {
 	string ptr;
 
 	if (!str)
 		return (false);
-	while ((ptr = ft_strchr(str, find_sumbol)))
-		*ptr = replace_sumbol;
+	ptr = (string)str;
+	while ((ptr = ft_strchr(ptr, search)))
+		*ptr++ = replace;
 	return (true);
 }
