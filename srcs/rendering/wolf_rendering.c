@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/07 16:32:50 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/08 14:32:49 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	wolf_rendering(t_env *env)
 {
-	SDL_FillRect(env->sdl->win_surface, NULL, IRGB_BLACK);
+	SDL_FillRect(env->sdl->win_surface, NULL, RGB_BLACK);
 	wolf_raycaster(env);
 	if (env->isr->is_render_fog)
 	{

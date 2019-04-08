@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 22:33:18 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 00:32:33 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/08 14:29:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	add_rendering_ray(t_env *env, int32_t size, fpoint p)
 	&& !env->map->tab[(int32_t)p.y][(int32_t)p.x])
 		p = (fpoint) {p.y + RC->dir.y * MMAP_PRECISION,
 			p.x + RC->dir.x * MMAP_PRECISION};
-	add_rendering_square(env, size, p, IRGB_MAP_RAY);
+	add_rendering_square(env, size, p, RGB_MAP_RAY);
 }
 
 void		wolf_rendering_minimap(t_env *env)
@@ -47,8 +47,8 @@ void		wolf_rendering_minimap(t_env *env)
 	while (++(p.y) < env->map->size.y && (p.x = -1))
 		while (++(p.x) < env->map->size.x)
 			if (!wolf_is_tile(env->map, (fpoint){p.y, p.x}))
-				add_rendering_square(env, size, p, IRGB_MAP_BG);
+				add_rendering_square(env, size, p, RGB_MAP_BG);
 	p = (fpoint){RC->pos.y, RC->pos.x};
-	add_rendering_square(env, size, p, IRGB_MAP_POS);
+	add_rendering_square(env, size, p, RGB_MAP_POS);
 	add_rendering_ray(env, size, p);
 }

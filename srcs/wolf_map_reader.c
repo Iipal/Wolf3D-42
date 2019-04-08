@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 17:18:56 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/08 00:31:04 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/08 14:28:35 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static bool		add_save_map(string line, int8_t *map_line,
 						iarr colors_line, int map_x)
 {
-	const int	colors[] = {IRGB_WHITE, IRGB_RED, IRGB_ORANGE, IRGB_LIME,
-							IRGB_AQUA, IRGB_PURPLE, IRGB_MINT, IRGB_DARK_BLUE};
+	const int	colors[] = {RGB_WHITE, RGB_RED, RGB_ORANGE, RGB_LIME,
+						RGB_AQUA, RGB_PURPLE, RGB_MINT, RGB_DARK_BLUE};
 	string		temp_digits;
 	int			digits;
 	int			x;

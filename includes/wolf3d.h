@@ -6,13 +6,16 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/08 02:39:30 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/08 03:16:49 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WOLF3D_H
 # define WOLF3D_H
 
+/**
+** \file
+*/
 # include "wolf3d_structs.h"
 # include "wolf3d_errno.h"
 # include <math.h>

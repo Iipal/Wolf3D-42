@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 11:13:19 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/08 00:32:38 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/08 14:40:40 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	add_fill_floornceiling(t_sdl *sdl)
 	while (++(p.y) < WIN_Y && (p.x = -1))
 		while (++(p.x) < WIN_X)
 			sdl->win_pixels[p.y * WIN_X + p.x] =
-				(p.y >= WIN_Y / 2) ? IRGB_FLOOR : IRGB_SKY;
+				(p.y >= WIN_Y / 2) ? RGB_FLOOR : RGB_SKY;
 }
 
 static void	add_set_diststep(t_rc *rc)

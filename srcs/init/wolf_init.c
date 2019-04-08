@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/07 17:08:33 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/08 14:29:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static bool	add_init_menu_and_text(t_env *env)
 		wolf_optimize_surf_load(MENU_BG, env->sdl->win_surface->format));
 	NOTIS_F(env->menu->selector->surf =
 		SDL_CreateRGBSurface(0, SELECTOR_X, SELECTOR_Y, 32, 0, 0, 0, 0));
-	SDL_FillRect(env->menu->selector->surf, NULL, IRGB_WHITE);
+	SDL_FillRect(env->menu->selector->surf, NULL, RGB_WHITE);
 	NOTIS_F(env->menu->selector->pixels = env->menu->selector->surf->pixels);
 	NOTIS_F(env->menu->bg->pixels = env->menu->bg->surf->pixels);
 	NOTIS(TTF_GetError(),
@@ -80,13 +80,13 @@ static bool	add_init_audio(t_env *env)
 
 bool		wolf_init(t_env *env)
 {
-	env->fog = (t_fog){dark, IRGB_BLACK, 4.2, 0};
+	env->fog = (t_fog){dark, RGB_BLACK, 4.2, 0};
 	env->bsize = BLUR_DEF;
 	ISM(SDL_GetError(), SDL_Init(SDL_INIT_EVERYTHING) < 0, exit(1), false);
 	ISM(TTF_GetError(), TTF_Init() < 0, exit(1), false);
 	ISZ(t_sdl, env->sdl, 1);
 	NOTIS(SDL_GetError(),
-		env->sdl->win = SDL_CreateWindow(WOLF_TITTLE, SDL_WINDOWPOS_CENTERED,
+		env->sdl->win = SDL_CreateWindow(WOLF_TITLE, SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED, WIN_X, WIN_Y, 4), exit(1), false);
 	NOTIS(SDL_GetError(),
 		env->sdl->win_surface = SDL_GetWindowSurface(SWIN), exit(1), false);

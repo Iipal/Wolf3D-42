@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 21:38:46 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/08 02:40:50 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/08 14:50:47 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@
 # include "wolf3d_defines.h"
 # include "../libft/includes/libft.h"
 
+/*
+**	Uncommented cheats:
+*/
 typedef enum	e_colors
 {
 	white,
@@ -42,9 +45,6 @@ typedef enum	e_colors
 	max_colors
 } __attribute__((packed))				t_colors;
 
-/*
-**	Uncommented cheats:
-*/
 struct	s_point
 {
 	int32_t	y;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wolf_window_flags.c                                :+:      :+:    :+:   */
+/*   wolf_fwindow.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 21:24:15 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/07 21:34:43 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/08 14:17:00 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	wolf_fnoborder(t_env *env, strtab av, int32_t ac)
 	(void)ac;
 	(void)av;
 	FREE(env->sdl->win, SDL_DestroyWindow);
-	env->sdl->win = SDL_CreateWindow(WOLF_TITTLE, SDL_WINDOWPOS_CENTERED,
+	env->sdl->win = SDL_CreateWindow(WOLF_TITLE, SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED, WIN_X, WIN_Y,
 		SDL_WINDOW_SHOWN | SDL_WINDOW_BORDERLESS);
 	NOTIS2(SDL_GetError(), env->sdl->win, wolf_free(&env), exit(EXIT_FAILURE));
