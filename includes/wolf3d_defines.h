@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 10:53:19 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 11:34:37 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -429,7 +429,6 @@
 **	 \param ret return value.
 */
 # define ISM(msg, ex, do, ret) if ((ex)) {MSGN(msg);do;return (ret);}
-
 
 /*
 **	If \param ex true return false.

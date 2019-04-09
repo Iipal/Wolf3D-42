@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 17:16:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/07 21:55:05 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 11:33:16 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ bool	add_fparse_current(t_env *env, string flag, strtab av, int32_t ac)
 			f_fns[i](env, av, ac);
 			break ;
 		}
-	return is_valid_flag;
+	return (is_valid_flag);
 }
 
 bool	wolf_fparser(t_env *env, strtab av, int32_t ac)
@@ -40,5 +40,5 @@ bool	wolf_fparser(t_env *env, strtab av, int32_t ac)
 		if (av[i][0] == '-')
 			NOTIS(E_IFLAG, add_fparse_current(env, av[i], av, ac),
 				wolf_free(&env), false);
-	return true;
+	return (true);
 }

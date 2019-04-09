@@ -6,12 +6,12 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 21:38:46 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/08 14:50:47 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 11:35:19 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WOLF3D_STRUCTS
-# define WOLF3D_STRUCTS
+#ifndef WOLF3D_STRUCTS_H
+# define WOLF3D_STRUCTS_H
 
 # ifdef __APPLE__
 #  include "../frameworks/SDL2.framework/Headers/SDL.h"
@@ -193,7 +193,7 @@ struct	s_time
 **	(float)current: Current time. | SDL_GetTicks();
 **	(float)res: Diff current and old time in ms. | (.current - .old) / 1000;
 */
-typedef struct	s_time	t_time;
+typedef struct s_time	t_time;
 
 struct	s_fps
 {

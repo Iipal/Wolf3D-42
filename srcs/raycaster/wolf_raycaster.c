@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 11:13:19 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/08 14:40:40 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 11:33:27 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ inline void	add_check_hit(t_rc *rc, int8_t **map)
 	IFDO(map[rc->map.y][rc->map.x] > 0, rc->is_hit = true);
 }
 
-void				wolf_raycaster(t_env *env)
+void		wolf_raycaster(t_env *env)
 {
 	point	p;
 
