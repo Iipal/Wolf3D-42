@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 10:04:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 12:24:03 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 23:19:05 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,22 @@ int8_t	ft_gnl(const int32_t fd, string *line);
 size_t	ft_rand(size_t limits);
 
 /*
-**	Compare if one of \ref n arguments is equal to \ref cmp.
+**	Compare if one of \param n va_list arguments is equal to \param cmp.
 **	\param cmp: Value to compare.
-**	\param n: Arguments counter in va_list.
+**	\param n: va_list arguments counter to compare.
 **	\param ...: va_list.
-**	\return true if one of argument is equal to \ref cmp, else - false.
+**	\return true if one of argument is equal to \param cmp, else - false.
 */
 bool	ft_is_one_of_n(int64_t cmp, int64_t n, ...);
+
+/*
+**	Compare if one of \param n va_list arguments is equal to \param cmp.
+**	\param cmp: String to compare.
+**	\param n: va_list arguments counter to compare.
+**	\param ...: va_list.
+**	\return true if one of argument is equal to \param cmp, else - false.
+*/
+bool	ft_is_one_of_str(cstring cmp, int32_t n, ...);
 
 /*
 **	Swap int32_t values.

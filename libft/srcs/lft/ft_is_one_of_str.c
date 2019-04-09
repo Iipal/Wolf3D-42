@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_one_of_n.c                                   :+:      :+:    :+:   */
+/*   ft_is_one_of_str.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/20 08:33:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 23:13:21 by tmaluh           ###   ########.fr       */
+/*   Created: 2019/04/09 23:08:35 by tmaluh            #+#    #+#             */
+/*   Updated: 2019/04/09 23:17:32 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-bool	ft_is_one_of_n(int64_t cmp, int64_t n, ...)
+bool	ft_is_one_of_str(cstring cmp, int32_t n, ...)
 {
 	va_list	ap;
 	bool	is_one_of;
@@ -20,7 +20,7 @@ bool	ft_is_one_of_n(int64_t cmp, int64_t n, ...)
 	va_start(ap, n);
 	is_one_of = false;
 	while (n--)
-		if (cmp == va_arg(ap, int64_t))
+		if (!ft_strcmp(cmp, va_arg(ap, char*)))
 			is_one_of = true;
 	va_end(ap);
 	return (is_one_of);

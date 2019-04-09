@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 17:16:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 19:58:51 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 23:15:07 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ bool		add_fparse_current(t_env *env, string flag, strtab av, int32_t ac)
 	i = -true;
 	is_valid_flag = false;
 	while (F_MAX > ++i)
-		if (!ft_strcmp(flag, flags[i]) || !ft_strcmp(flag, short_flags[i]))
+		if (ft_is_one_of_str(flag, 2, flags[i], short_flags[i]))
 		{
 			is_valid_flag = true;
 			f_fns[i](env, av, ac);
