@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 10:04:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/08 23:02:13 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 12:24:03 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,19 +138,24 @@ void	ft_putendl_fd(char const *s, int32_t fd);
 void	ft_putnbr_fd(int32_t n, int32_t fd);
 
 /*
+**	Print all strings from \param file to stdout or return false.
+*/
+bool	ft_putfile(string file);
+
+/*
 **	-----------------------
 **	ctype.h libc functions:
 **	-----------------------
 */
 
 /*
-**	\param c - unsigned char..
+**	\param c - unsigned char.
 **	\return true if \ref c is ASCII alphabet symbol, else - false.
 */
 bool	ft_isalpha(uchar c);
 
 /*
-**	\param c - unsigned char..
+**	\param c - unsigned char.
 **	\return true if \ref c is ASCII digit, else - false.
 */
 bool	ft_isdigit(uchar c);

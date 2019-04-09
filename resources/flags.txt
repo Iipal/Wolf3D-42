@@ -1,0 +1,4 @@
+Flags:
+    -h:         Print this help info.
+    -no-border: Start game window without borders.
+    -dbg-info:  Start game with drawing by default FPS\ms info. Also fog and sounds turned off.

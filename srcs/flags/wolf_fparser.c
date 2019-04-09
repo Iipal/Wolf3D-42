@@ -6,16 +6,23 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 17:16:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 11:33:16 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 12:32:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-bool	add_fparse_current(t_env *env, string flag, strtab av, int32_t ac)
+static void	add_fdebug_info(t_env *env, strtab av, int32_t ac)
 {
-	const string	flags[] = {F_HELP, F_WIN_NO_BORDER};
-	const f_fnptr	f_fns[] = {wolf_fhelp, wolf_fnoborder};
+	(void)av;
+	(void)ac;
+	*(env->isr) = (t_isr){0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0};
+}
+
+bool		add_fparse_current(t_env *env, string flag, strtab av, int32_t ac)
+{
+	const string	flags[] = {F_HELP, F_WIN_NO_BORDER, F_DEBUG_INFO};
+	const f_fnptr	f_fns[] = {wolf_fhelp, wolf_fnoborder, add_fdebug_info};
 	bool			is_valid_flag;
 	int8_t			i;
 
@@ -31,7 +38,7 @@ bool	add_fparse_current(t_env *env, string flag, strtab av, int32_t ac)
 	return (is_valid_flag);
 }
 
-bool	wolf_fparser(t_env *env, strtab av, int32_t ac)
+bool		wolf_fparser(t_env *env, strtab av, int32_t ac)
 {
 	int32_t	i;
 

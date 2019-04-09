@@ -6,31 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:19:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/07 22:26:18 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 12:31:20 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-
-static void	wolf_usage(void)
-{
-	MSGN("Usage:");
-	MSGN("  [W | S] - Moving forward | backward(or Arrows [UP | DOWN])");
-	MSGN("  [A | D] - Rotate left | right"
-		"(also Arrows [LEFT | RIGHT] or mouse)");
-	MSGN("  [T] - Toggle Textured\\Flat rendering method.");
-	MSGN("  [M] - Toggle mini-map rendering.");
-	MSGN("  [F] - Toggle Fog rendering.");
-	MSGN("  [C] - Switch Fog colors.");
-	MSGN("  [LShift] - Step & rotate boost.");
-	MSGN("  [Z] - Stop\\Play steps sounds.");
-	MSGN("  [Q] - Stop\\Play background in-game music.");
-	MSGN("  [+ | -] - Inc\\Decrease background volume.");
-	MSGN("  [R] - Toggle FPS\\ms rendering info.");
-	MSGN("  [H] - Toggle blur effect rendering.");
-	MSGN("  [Y | N] - Inc\\Decreaase bluring effect.");
-	MSGN("  [ESC] - exit.");
-}
 
 static void	add_start_game(t_env *env)
 {
@@ -57,7 +37,7 @@ int			main(int argc, string argv[])
 	NOTIS_F(wolf_fparser(env, argv, argc));
 	NOTIS(E_FILER, wolf_readnsave(argv[argc - 1], env), exit(EXIT_FAILURE), 0);
 	wolf_setup_rc(env);
-	wolf_usage();
+	NOTIS(E_OPEN, ft_putfile(USAGE_GAME_FILE), exit(EXIT_FAILURE), -1);
 	wolf_rendering_mainmenu(env);
 	add_start_game(env);
 	wolf_free(&env);

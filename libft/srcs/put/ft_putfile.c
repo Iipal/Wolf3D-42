@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wolf_fhelp.c                                       :+:      :+:    :+:   */
+/*   ft_putfile.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/07 21:27:02 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 12:30:46 by tmaluh           ###   ########.fr       */
+/*   Created: 2019/04/09 12:21:35 by tmaluh            #+#    #+#             */
+/*   Updated: 2019/04/09 12:23:35 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "libft.h"
 
-void	wolf_fhelp(t_env *env, strtab av, int32_t ac)
+bool	ft_putfile(string file)
 {
-	(void)ac;
-	(void)av;
-	(void)env;
-	IFDO(!ft_putfile(USAGE_FLAG_FILE), MSGN(E_OPEN));
-	exit(EXIT_SUCCESS);
+	int32_t	fd;
+	string	temp;
+
+	temp = NULL;
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
+		return (false);
+	while (ft_gnl(fd, &temp) > 0)
+	{
+		ft_putendl(temp);
+		ft_strdel(&temp);
+	}
+	if (temp)
+		ft_strdel(&temp);
+	return (true);
 }

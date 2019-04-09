@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 11:34:37 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 12:26:54 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,25 @@
 # endif
 
 /*
+**	File with game usage.
+*/
+# define USAGE_GAME_FILE     "resources/game.txt"
+
+/*
+**	File with flags usage.
+*/
+# define USAGE_FLAG_FILE     "resources/flags.txt"
+
+/*
 **	----------------------
 **	Flags constant values:
 **	----------------------
 */
 
 /*
-**	F_MAX: Flags counter.
+**	Flags counter.
 */
-# define F_MAX              2
+# define F_MAX              3
 
 /*
 **	Print help info about flags.
@@ -72,6 +82,11 @@
 **	Create window without borders.
 */
 # define F_WIN_NO_BORDER    "-no-border"
+
+/*
+**	Show debug FPS\ms info by default and turned off fog and sounds.
+*/
+# define F_DEBUG_INFO       "-dbg-info"
 
 /*
 **	-----------------------------

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:39:47 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/07 17:33:26 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 12:30:25 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define WOLF3D_ERRNO_H
 
 # define E_USAGE    "Usage: ./wolf3d [flags ...] <map_name>.w3d"
+
+# define E_OPEN     " ERROR: Cannot open usage file."
 
 # define E_IFLAG    " ERROR: Invalid command line option."
 
