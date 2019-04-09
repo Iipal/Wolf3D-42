@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 21:38:46 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 11:35:19 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 16:38:06 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ struct	s_isrender
 	bool	is_rotate_right;
 	bool	is_rotate_left;
 	bool	is_render_blur;
+	bool	is_use_mouse;
 };
 
 /*

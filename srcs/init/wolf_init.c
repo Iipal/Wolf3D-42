@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/08 14:29:13 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 16:36:14 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ bool		wolf_init(t_env *env)
 		env->sdl->win_surface = SDL_GetWindowSurface(SWIN), exit(1), false);
 	NOTIS_F(env->sdl->win_pixels = env->sdl->win_surface->pixels);
 	ISZ(t_isr, env->isr, 1);
-	*(env->isr) = (t_isr){1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0};
+	*(env->isr) = (t_isr){1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0};
 	ISZ(t_map, env->map, 1);
 	ISZ(t_rc, env->rc, 1);
 	ISZ(t_mouse, env->mouse, 1);

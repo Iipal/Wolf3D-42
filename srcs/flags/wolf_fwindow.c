@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 21:24:15 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/08 14:17:00 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 16:44:14 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,13 @@ void	wolf_fnoborder(t_env *env, strtab av, int32_t ac)
 	NOTIS2(SDL_GetError(), env->sdl->win, wolf_free(&env), exit(EXIT_FAILURE));
 	env->sdl->win_surface = SDL_GetWindowSurface(env->sdl->win);
 	env->sdl->win_pixels = env->sdl->win_surface->pixels;
+}
+
+void	wolf_fmouse(t_env *env, strtab av, int32_t ac)
+{
+	(void)av;
+	(void)ac;
+	env->isr->is_use_mouse = true;
+	SDL_ShowCursor(SDL_FALSE);
+	SDL_SetRelativeMouseMode(SDL_TRUE);
 }

@@ -2,3 +2,5 @@ Flags:
     -help, -h:          Print this help info.
     -no-border, -nb:    Start game window without borders.
     -dbg-info, -di:     Start game with drawing by default FPS\ms info. Also fog and sounds turned off.
+    -no-sound, -ns:     By default turned off all in-game sounds and music.
+    -use-mouse, -um:    Use by default mouse for rotate instead of keys.

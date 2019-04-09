@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 11:45:43 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 16:35:02 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ void		wolf_fhelp(t_env *env, strtab av, int32_t ac);
 **	 Create window without borders.
 */
 void		wolf_fnoborder(t_env *env, strtab av, int32_t ac);
+
+/*
+**	Turned on by default mouse rotate without left mouse click.
+*/
+void		wolf_fmouse(t_env *env, strtab av, int32_t ac);
 
 /*
 **	--------------------

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 22:59:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 11:32:00 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 16:40:37 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	add_mouse_moves(t_env *env)
 		env->mouse->is_pressed_mouse = false;
 	env->mouse->last = env->mouse->curr;
 	env->mouse->curr = env->sdl->event.motion.x;
-	if (env->mouse->is_pressed_mouse)
+	if (env->mouse->is_pressed_mouse || env->isr->is_use_mouse)
 		wolf_rotate(env->rc, -(env->sdl->event.motion.x -
 			env->mouse->last) * ROT_MOUSE_INC);
 }
@@ -29,7 +29,7 @@ static void	add_mouse_moves(t_env *env)
 static void	add_loop_isr(t_env *env)
 {
 	if ((env->isr->is_move_backward || env->isr->is_move_forward)
-		&& env->isr->is_play_steps)
+	&& env->isr->is_play_steps)
 		wolf_playing_steps(env->sfx, env->isr->is_boost_step);
 	if (env->isr->is_move_forward)
 		wolf_move(env, env->isr->is_boost_step
