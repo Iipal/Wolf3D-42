@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 12:26:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 12:47:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,12 @@
 /*
 **	Print help info about flags.
 */
-# define F_HELP             "-h"
+# define F_HELP             "-help"
+
+/*
+**  Short flag equals to -help.
+*/
+# define FS_HELP            "-h"
 
 /*
 **	Create window without borders.
@@ -84,9 +89,19 @@
 # define F_WIN_NO_BORDER    "-no-border"
 
 /*
+**  Short flag equals to -no-border.
+*/
+# define FS_WIN_NO_BORDER   "-nb"
+
+/*
 **	Show debug FPS\ms info by default and turned off fog and sounds.
 */
 # define F_DEBUG_INFO       "-dbg-info"
+
+/*
+**  Short flag equals to -dbg-info.
+*/
+# define FS_DEBUG_INFO      "-di"
 
 /*
 **	-----------------------------
