@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 19:10:46 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/08 14:29:15 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 20:16:02 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ float	wolf_fog_freq(uint8_t *freq, t_time *time)
 {
 	const float	freqs[] = {4.2, 4.25, 4.15, 4.17, 4.22, 4.3, 4.1, 4.16};
 
-	if (time->res > REFRESH_TORCH_FOG_FREQ)
+	if (REFRESH_TORCH_FOG_FREQ < time->res)
 	{
 		time->res = 0;
 		*freq = ft_rand((sizeof(freqs) / sizeof(*freqs)) - 1);
@@ -52,11 +52,11 @@ Uint32	wolf_fog(float dist_to_obj, Uint32 src_color, t_fog *fog)
 	fog_rgb = (SDL_Color){fog->fog_color >> 16,
 		(fog->fog_color >> 8) & 0xff, fog->fog_color & 0xff, 0};
 	dest_color = src_color;
-	if (dist_to_obj >= fog->fog_dist)
+	if (fog->fog_dist <= dist_to_obj)
 		fog_amount = 1.0;
 	else
 		fog_amount = dist_to_obj / fog->fog_dist;
-	if (fog_amount <= 1.00f && fog_amount > 0.00f)
+	if (1.0f >= fog_amount && .0f < fog_amount)
 	{
 		out_rgb = (SDL_Color){
 			(1.0 - fog_amount) * src_rgb.r + fog_amount * fog_rgb.r,

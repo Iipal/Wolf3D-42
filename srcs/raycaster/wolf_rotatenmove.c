@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 01:03:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/08 23:04:08 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 20:12:40 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 bool		wolf_is_tile(t_map *map, fpoint pos)
 {
-	if (pos.x < 0 || pos.y < 0
-	|| pos.x > map->size.x - 1
-	|| pos.y > map->size.y - 1)
+	if (0 > pos.x || 0 > pos.y
+	|| map->size.x - 1 < pos.x
+	|| map->size.y - 1 < pos.y)
 		return (false);
 	else if (map->tab[(int)pos.y][(int)pos.x])
 		return (false);
@@ -25,10 +25,10 @@ bool		wolf_is_tile(t_map *map, fpoint pos)
 
 void		wolf_move(t_env *env, float dist)
 {
-	if (wolf_is_tile(env->map,
+	if (true == wolf_is_tile(env->map,
 		(fpoint){env->rc->pos.y, env->rc->pos.x + (dist * 2) * env->rc->dir.x}))
 		env->rc->pos.x += dist * env->rc->dir.x;
-	if (wolf_is_tile(env->map,
+	if (true == wolf_is_tile(env->map,
 		(fpoint){env->rc->pos.y + (dist * 2) * env->rc->dir.y, env->rc->pos.x}))
 		env->rc->pos.y += dist * env->rc->dir.y;
 }

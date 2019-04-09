@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 16:33:24 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 20:00:50 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,12 @@
 # include "wolf3d_flags.h"
 
 /*
+**	------------------------
+**	Techinal game constants:
+**	------------------------
+*/
+
+/*
 **	File with game usage.
 */
 # define USAGE_GAME_FILE     "resources/game.txt"
@@ -65,12 +71,6 @@
 **	File with flags usage.
 */
 # define USAGE_FLAG_FILE     "resources/flags.txt"
-
-/*
-**	------------------------
-**	Techinal game constants:
-**	------------------------
-*/
 
 /*
 **	Default window title:

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 17:18:56 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/08 23:15:58 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 20:04:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,12 @@ static int		add_valid_inline_numbers(string line)
 	return (out);
 }
 
-static bool		add_valid_info(string info_line, t_map *map, string map_name)
+static bool		add_valid_info(string info_line, t_map *map)
 {
 	int		i;
 
-	NOTIS_F(!ft_strcmp(map_name +
-		(ft_strlen(map_name) - ft_strlen(WOLF_FILE_EXT)), WOLF_FILE_EXT));
-	IS_F(!(map->size.y = ft_atoi(info_line)) || map->size.y < 0);
 	i = 0;
+	IS_F(!(map->size.y = ft_atoi(info_line)) || map->size.y < 0);
 	while (info_line[i] && ft_isdigit(info_line[i]))
 		++i;
 	NOTIS_F(i);
@@ -129,7 +127,7 @@ bool			wolf_readnsave(string map_name, t_env *env)
 	gnl_temp = NULL;
 	IS_F(!(fd = open(map_name, O_RDONLY)) || fd < 0);
 	IS_F(ft_gnl(fd, &gnl_temp) < 0);
-	NOTIS_F(add_valid_info(gnl_temp, env->map, map_name));
+	NOTIS_F(add_valid_info(gnl_temp, env->map));
 	while ((gnl_ret = ft_gnl(fd, &gnl_temp)) && ++i < env->map->size.y)
 	{
 		ISM(E_IMAP, add_valid_inline_numbers(gnl_temp) != env->map->size.x,

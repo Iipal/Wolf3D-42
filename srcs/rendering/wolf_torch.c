@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 22:08:27 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/08 23:17:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 20:27:36 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ void	wolf_rendering_torch(t_env *env)
 	}
 	tp.y = -1;
 	p.y = torch_shift.y;
-	while ((tp.x = -1) && ++(p.y) < WIN_Y
-	&& ++tp.y < env->torch->tex[torch_frame].surf->h && (p.x = torch_shift.x))
+	while (WIN_Y > ++(p.y) && (tp.x = -1)
+	&& env->torch->tex[torch_frame].surf->h > ++tp.y && (p.x = torch_shift.x))
 		while (++p.x < WIN_X && ++tp.x < env->torch->tex[torch_frame].surf->w)
-			if (!(ft_is_one_of_n(env->torch->tex[torch_frame].pixels[
+			if (false == ft_is_one_of_n(env->torch->tex[torch_frame].pixels[
 						tp.y * env->torch->tex[torch_frame].surf->w + tp.x], 2,
-					(long)0xff000000, (long)0x00)))
+					(long)0xff000000, (long)0x00))
 				env->sdl->win_pixels[p.y * WIN_X + p.x] =
 					env->torch->tex[torch_frame].pixels[tp.y * env->torch->tex[
 						torch_frame].surf->w + tp.x];

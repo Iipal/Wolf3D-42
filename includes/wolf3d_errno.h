@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:39:47 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 12:41:50 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 20:02:41 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 **  Printed this message if not enought command line arguments for start game.
 */
 # define E_USAGE    "Usage: ./wolf3d [flags ...] <map_name>.w3d"
+
+/*
+**	Printed this message if map file extension isnt .w3d
+*/
+# define E_FILEXT   " ERROR: Map file extension must be .w3d"
 
 /*
 **  Printed this message if cannot open usage file.

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 14:42:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/07 16:34:01 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 20:19:07 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ static void	add_render_fps(SDL_Surface *text, iarr screen, bool pos)
 	tp.y = 0;
 	if (pos)
 		tp.y = 20;
-	while (++(p.y) < text->h && (p.x = -1)
+	while (text->h > ++(p.y) && (p.x = -1)
 	&& (tp.x = -1))
 	{
-		while (++(p.x) < text->w)
+		while (text->w > ++(p.x))
 			screen[tp.y * WIN_X + ++(tp.x)] = pixels[p.y * text->w + p.x];
 		++(tp.y);
 	}
@@ -41,7 +41,7 @@ static void	add_fps_prepare_and_draw(float dfps, float dms, t_env *env)
 	int8_t			i;
 
 	i = -1;
-	while (++i < 2)
+	while (2 > ++i)
 	{
 		data[i] = (i ? ft_itoa(dms) : ft_itoa(dfps));
 		temp[i] = data[i];
@@ -62,7 +62,7 @@ void		wolf_rendering_fps_counter(t_env *env)
 	static float	delta_ms;
 
 	(delta > REFRESH_FPS_COUNTER) ? (delta = 0) : 0;
-	if (!delta)
+	if (.0f == delta)
 	{
 		delta_fps = 1.0 / env->fps.time.res;
 		delta_ms = env->fps.time.res * 1000;

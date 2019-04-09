@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 23:17:49 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/08 02:17:51 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 20:32:49 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void	wolf_playing_steps(t_sfx *sfx, bool is_boost)
 {
 	static bool	lr_step;
 
-	if (sfx->step_sfx_timeout.res > (is_boost ? REFRESH_RUN_SFX_FREQ
-							: REFRESH_STEP_SFX_FREQ))
+	if ((is_boost ? REFRESH_RUN_SFX_FREQ : REFRESH_STEP_SFX_FREQ)
+		< sfx->step_sfx_timeout.res)
 	{
-		lr_step ? Mix_PlayChannel(-1, sfx->lstep, 0)
-			: Mix_PlayChannel(-1, sfx->rstep, 0);
+		(lr_step == true) ? Mix_PlayChannel(-1, sfx->lstep, 0)
+						: Mix_PlayChannel(-1, sfx->rstep, 0);
 		lr_step = !lr_step;
 		sfx->step_sfx_timeout.res = 0;
 	}

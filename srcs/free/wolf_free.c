@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/05 15:54:01 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 20:09:51 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ void		wolf_free_map(t_map **map)
 	if ((*map)->tab)
 	{
 		i = -1;
-		while (++i < (*map)->size.y)
+		while ((*map)->size.y > ++i)
 			FREE((*map)->tab[i], free);
 		FREE((*map)->tab, free);
 	}
 	if ((*map)->colors)
 	{
 		i = -1;
-		while (++i < (*map)->size.y)
+		while ((*map)->size.y > ++i)
 			FREE((*map)->colors[i], free);
 		FREE((*map)->colors, free);
 	}
@@ -38,7 +38,7 @@ static void	add_free_surfaces(t_tex **tex, int32_t max)
 	int32_t	i;
 
 	i = -1;
-	while (++i < max)
+	while (max > ++i)
 		FREE((*tex)[i].surf, SDL_FreeSurface);
 	FREE(*tex, free);
 }
@@ -74,18 +74,13 @@ static void	add_free_menu_sfx(t_sfx **sfx)
 void		wolf_free(t_env **env)
 {
 	IFDO((*env)->map, wolf_free_map(&((*env)->map)));
-	if ((*env)->torch && (*env)->torch->tex)
-	{
+	if ((*env)->torch->tex)
 		add_free_surfaces(&((*env)->torch->tex), MAX_TORCH);
-		FREE((*env)->torch, free);
-	}
+	FREE((*env)->torch, free);
 	IFDO((*env)->menu, add_free_menu(&((*env)->menu)));
 	IFDO((*env)->sfx, add_free_menu_sfx(&((*env)->sfx)));
-	if ((*env)->floor_and_sky)
-	{
-		SDL_FreeSurface((*env)->floor_and_sky->surf);
-		FREE((*env)->floor_and_sky, free);
-	}
+	FREE((*env)->floor_and_sky->surf, SDL_FreeSurface);
+	FREE((*env)->floor_and_sky, free);
 	SDL_FreeSurface((*env)->walls->data->surf);
 	FREE((*env)->walls->data, free);
 	FREE((*env)->walls->start, free);

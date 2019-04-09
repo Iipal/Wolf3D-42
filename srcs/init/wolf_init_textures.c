@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 10:38:52 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/05 15:53:46 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 20:10:21 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static bool	add_init_textures_map(t_env *env)
 	ISZ(point, env->walls->start, env->walls->max_textures);
 	i = -1;
 	p = (point){0, 0};
-	while (++i < env->walls->max_textures)
+	while (env->walls->max_textures > ++i)
 	{
 		env->walls->start[i] = (point){p.y, p.x};
 		p.x += WALLS_BLOCK_SIZE;
@@ -51,7 +51,7 @@ bool		wolf_init_textures(t_env *env)
 	ISZ(t_tex, env->floor_and_sky, 1);
 	ISZ(t_walls, env->walls, 1);
 	ISZ(t_tex, env->walls->data, 1);
-	while (++i < MAX_TORCH)
+	while (MAX_TORCH > ++i)
 		NOTIS_F((env->torch->tex[i].surf =
 			wolf_optimize_surf_load(torch[i], env->sdl->win_surface->format))
 			&& (env->torch->tex[i].pixels = env->torch->tex[i].surf->pixels));

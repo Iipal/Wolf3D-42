@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 19:29:39 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 19:35:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static bool	add_init_menu_and_text(t_env *env)
 static bool	add_init_audio(t_env *env)
 {
 	ISM(Mix_GetError(),
-		Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0, exit(1), false);
+		0 > Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048), exit(1), false);
 	ISZ(t_sfx, env->sfx, 1);
 	*(env->sfx) = (t_sfx){NULL, NULL, NULL, NULL, NULL, NULL,
 		{0, 0, 0}, BG_VOL_DEF};
