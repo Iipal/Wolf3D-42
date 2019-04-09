@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 13:22:34 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 20:14:43 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 23:20:53 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void			wolf_render_colored(t_env *env, point *p)
 	current_color = add_choose_current_color(env);
 	IFDO(env->rc->is_side, current_color /= 2);
 	p->y = env->rc->draw_start - 1;
-	while (env->rc->draw_end <= ++(p->y))
+	while (env->rc->draw_end >= ++(p->y))
 		if (true == env->isr->is_render_fog)
 		{
 			if (env->fog.fog_dist <= env->rc->pwd)
