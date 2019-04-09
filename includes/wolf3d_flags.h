@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 16:26:52 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/10 00:10:31 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/10 00:16:10 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /*
 **	Flags counter.
 */
-# define F_MAX              6
+# define F_MAX              7
 
 /*
 **	Print help info about flags.

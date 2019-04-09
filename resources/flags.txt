@@ -1,7 +1,7 @@
 Flags:
     -help, -h:          Print this help info.
-    -no-border, -nb:    Start game window without borders.
     -dbg-info, -d:      Start game with drawing by default FPS\ms info. Also fog and sounds turned off.
+    -no-border, -nb:    Start game window without borders.
     -no-sound, -ns:     Turned off by default all in-game sounds and music.
     -no-menu, -nm:      Turned off main menu screen on start.
     -no-fog, -nf:       Turned off by default fog rendering.
