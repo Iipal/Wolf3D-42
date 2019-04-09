@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 22:59:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 16:40:37 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 19:25:39 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void		wolf_sdl_rendering_loop(t_env *env)
 	exit_ = false;
 	while (true != exit_)
 	{
-		while (SDL_PollEvent(&env->sdl->event) > 0)
+		while (0 < SDL_PollEvent(&env->sdl->event))
 		{
 			IFDO(env->sdl->event.type == SDL_QUIT, exit_ = true);
 			if (env->sdl->event.type == SDL_KEYDOWN)

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 16:36:14 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 19:29:39 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static bool	add_init_menu_and_text(t_env *env)
 	NOTIS_F(env->menu->bg->pixels = env->menu->bg->surf->pixels);
 	NOTIS(TTF_GetError(),
 		env->sdl->font = TTF_OpenFont(FPS_FONT, 20), exit(EXIT_FAILURE), false);
+	env->menu->is_selector_start = true;
 	return (true);
 }
 

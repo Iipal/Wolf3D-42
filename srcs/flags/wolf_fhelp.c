@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 21:27:02 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 12:30:46 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 19:29:51 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	wolf_fhelp(t_env *env, strtab av, int32_t ac)
 {
 	(void)ac;
 	(void)av;
-	(void)env;
 	IFDO(!ft_putfile(USAGE_FLAG_FILE), MSGN(E_OPEN));
+	wolf_free(&env);
 	exit(EXIT_SUCCESS);
 }
