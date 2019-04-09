@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 11:34:09 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 11:45:43 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,19 @@
 FPTR_FLG;
 
 /*
-**	Function what will parse all flags.
+**	Function what parse all flags.
 */
 bool		wolf_fparser(t_env *env, strtab av, int32_t ac);
 
 /*
-**	Function what will processing flag '-h'
+**	Function what processing flag '-h'.
+**	 Printing help info about flags.
 */
 void		wolf_fhelp(t_env *env, strtab av, int32_t ac);
 
 /*
-**	Function what will processing flag '-no-border'
+**	Function what processing flag '-no-border'.
+**	 Create window without borders.
 */
 void		wolf_fnoborder(t_env *env, strtab av, int32_t ac);
 
