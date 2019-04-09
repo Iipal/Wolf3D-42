@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/08 23:17:30 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 10:53:19 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -463,9 +463,19 @@
 */
 
 /*
+**	Pi value.
+*/
+# define PI 3.141592
+
+/*
 **	Absolute value of \param var macros.
 */
 # define ABS(var) ((var) < 0) ? -(var) : (var)
+
+/*
+**	Convert \param deg value from degrees to radians.
+*/
+# define RAD(deg) (((deg) * PI) / 180.0)
 
 /*
 ** Lesser value among the two.
