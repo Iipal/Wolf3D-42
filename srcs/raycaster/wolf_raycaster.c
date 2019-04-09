@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 11:13:19 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 20:11:55 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 23:37:00 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	add_set_diststep(t_rc *rc)
 
 static void	add_dist_to_wall(t_rc *rc)
 {
-	if (false == rc->is_side)
+	if (!rc->is_side)
 		rc->pwd = (rc->map.x - rc->pos.x + (1 - rc->step.x) / 2) / rc->raydir.x;
 	else
 		rc->pwd = (rc->map.y - rc->pos.y + (1 - rc->step.y) / 2) / rc->raydir.y;
@@ -94,10 +94,10 @@ void		wolf_raycaster(t_env *env)
 		env->rc->map = (point){(int)env->rc->pos.y, (int)env->rc->pos.x};
 		RC->ddist = (fpoint){ABS(1 / RC->raydir.y), ABS(1 / RC->raydir.x)};
 		add_set_diststep(env->rc);
-		while (false == env->rc->is_hit)
+		while (!env->rc->is_hit)
 			add_check_hit(env->rc, env->map->tab);
 		add_dist_to_wall(env->rc);
-		if (true == env->isr->is_textured)
+		if (env->isr->is_textured)
 			wolf_render_textured(env, &p);
 		else
 			wolf_render_colored(env, &p);

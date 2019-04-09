@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 15:41:02 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 20:25:56 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 23:37:00 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 static void	add_render_floor_init_fpos(t_env *env, t_texhelp *tx,
 										t_floorhelper *h)
 {
-	if (false == env->rc->is_side && 0 < env->rc->raydir.x)
+	if (!env->rc->is_side && 0 < env->rc->raydir.x)
 		h->fpos = (fpoint){env->rc->map.y + tx->where_is_hit, env->rc->map.x};
-	else if (false == env->rc->is_side && 0 > env->rc->raydir.x)
+	else if (!env->rc->is_side && 0 > env->rc->raydir.x)
 		h->fpos = (fpoint){env->rc->map.y + tx->where_is_hit,
 			env->rc->map.x + 1.0};
-	else if (true == env->rc->is_side && 0 < env->rc->raydir.y)
+	else if (env->rc->is_side && 0 < env->rc->raydir.y)
 		h->fpos = (fpoint){env->rc->map.y, env->rc->map.x + tx->where_is_hit};
 	else
 		h->fpos = (fpoint){env->rc->map.y + 1.0,
@@ -34,7 +34,7 @@ static void	add_is_render_fog(t_floorhelper *h, t_env *env,
 	const Uint32	curr_sky = env->floor_and_sky->pixels[SPOS];
 	const Uint32	fog_color = env->fog.fog_color;
 
-	if (true == env->isr->is_render_fog)
+	if (env->isr->is_render_fog)
 	{
 		if (env->fog.fog_dist <= fog_distance)
 		{
@@ -84,7 +84,7 @@ inline void	add_choose_current_texture(t_env *env, int32_t *curr_tex)
 	*curr_tex = env->map->tab[RC->map.y][RC->map.x] - 1;
 	(0 > env->rc->step.x) ? (tex = 0)
 		: (tex = 1);
-	if (true == env->rc->is_side)
+	if (env->rc->is_side)
 		(0 > env->rc->step.y) ? (tex = 2)
 			: (tex = 3);
 	if (env->walls->max_textures - 1 < (*curr_tex += tex))
@@ -96,14 +96,14 @@ void		wolf_render_textured(t_env *env, point *p)
 	t_texhelp	h;
 
 	add_choose_current_texture(env, &h.curr_tex);
-	if (false == env->rc->is_side)
+	if (!env->rc->is_side)
 		h.where_is_hit = env->rc->pos.y + env->rc->pwd * env->rc->raydir.y;
 	else
 		h.where_is_hit = env->rc->pos.x + env->rc->pwd * env->rc->raydir.x;
 	h.where_is_hit -= (int32_t)h.where_is_hit;
 	h.pos_on_tex.x = (int32_t)(h.where_is_hit * WALLS_BLOCK_SIZE);
-	if ((false == env->rc->is_side && 0 < env->rc->raydir.x)
-	|| (true == env->rc->is_side && 0 < env->rc->raydir.y))
+	if ((!env->rc->is_side && 0 < env->rc->raydir.x)
+	|| (env->rc->is_side && 0 < env->rc->raydir.y))
 		h.pos_on_tex.x = WALLS_BLOCK_SIZE - h.pos_on_tex.x - 1;
 	wolf_render_textured_draw_line(env, p, &h);
 	add_render_floornceiling(env, &h, p);

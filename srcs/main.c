@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:19:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 20:33:20 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 23:55:51 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	add_start_game(t_env *env)
 	{
 		while (SDL_PollEvent(&env->sdl->event) > 0)
 			wolf_sdl_mainmenu_loop(env, &exit_);
-		(true == env->isr->is_play_music) ?
+		(env->isr->is_play_music) ?
 			Mix_ResumeMusic() : Mix_PauseMusic();
 		wolf_rendering_mainmenu(env);
 	}
@@ -42,7 +42,10 @@ int			main(int argc, string argv[])
 	NOTIS(E_FILER, wolf_readnsave(argv[argc - 1], env), exit(EXIT_FAILURE), 0);
 	wolf_setup_rc(env);
 	NOTIS(E_OPEN, ft_putfile(USAGE_GAME_FILE), exit(EXIT_FAILURE), -1);
-	wolf_rendering_mainmenu(env);
+	if (env->isr->is_no_main_menu)
+		wolf_sdl_rendering_loop(env);
+	else
+		wolf_rendering_mainmenu(env);
 	add_start_game(env);
 	wolf_free(&env);
 }

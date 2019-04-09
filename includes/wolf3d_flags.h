@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 16:26:52 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 16:28:23 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/10 00:10:31 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,17 @@
 /*
 **	Flags counter.
 */
-# define F_MAX              5
+# define F_MAX              6
 
 /*
 **	Print help info about flags.
 */
 # define F_HELP             "-help"
+
+/*
+**	Show debug FPS\ms info by default and turned off fog and sounds.
+*/
+# define F_DEBUG_INFO       "-dbg-info"
 
 /*
 **	Create window without borders.
@@ -34,9 +39,14 @@
 # define F_NO_SOUND         "-no-sound"
 
 /*
-**	Show debug FPS\ms info by default and turned off fog and sounds.
+**  Turned off main menu screen on start.
 */
-# define F_DEBUG_INFO       "-dbg-info"
+# define F_NO_MENU          "-no-menu"
+
+/*
+**  Turned off by default fog rendering.
+*/
+# define F_NO_FOG           "-no-fog"
 
 /*
 **  Turned on by default rotate player camera without left mouse click.
@@ -49,6 +59,11 @@
 # define FS_HELP            "-h"
 
 /*
+**  Short flag equals to -dbg-info.
+*/
+# define FS_DEBUG_INFO      "-d"
+
+/*
 **  Short flag equals to -no-border.
 */
 # define FS_WIN_NO_BORDER   "-nb"
@@ -59,9 +74,14 @@
 # define FS_NO_SOUND        "-ns"
 
 /*
-**  Short flag equals to -dbg-info.
+**  Short flag equals to -no-menu.
 */
-# define FS_DEBUG_INFO      "-d"
+# define FS_NO_MENU         "-nm"
+
+/*
+**  Short flag equals to -no-fog.
+*/
+# define FS_NO_FOG          "-nf"
 
 /*
 **  Short flag equals to -dbg-info.

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 01:03:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 20:12:40 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 23:23:31 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ bool		wolf_is_tile(t_map *map, fpoint pos)
 
 void		wolf_move(t_env *env, float dist)
 {
-	if (true == wolf_is_tile(env->map,
+	if (wolf_is_tile(env->map,
 		(fpoint){env->rc->pos.y, env->rc->pos.x + (dist * 2) * env->rc->dir.x}))
 		env->rc->pos.x += dist * env->rc->dir.x;
-	if (true == wolf_is_tile(env->map,
+	if (wolf_is_tile(env->map,
 		(fpoint){env->rc->pos.y + (dist * 2) * env->rc->dir.y, env->rc->pos.x}))
 		env->rc->pos.y += dist * env->rc->dir.y;
 }

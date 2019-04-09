@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 19:35:15 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 23:50:22 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void		wolf_setup_rc(t_env *env)
 {
-	*(env->rc) = (t_rc){{0, 0}, {0, -1}, {0.65, 0}, 0,
-		{0, 0}, {0, 0}, {0, 0}, {0, 0}, 0, {0, 0},
-		false, false, 0, 0, 0};
+	env->rc->dir.x = -1;
+	env->rc->plane.y = .65f;
 	while (1)
 	{
 		env->rc->pos = (fpoint){ft_rand(env->map->size.y - 1),
@@ -30,8 +29,6 @@ void		wolf_setup_rc(t_env *env)
 	if (!env->map->tab[(int32_t)(env->rc->pos.y + 0.05f)]
 		[(int32_t)env->rc->pos.x])
 		env->rc->pos.y += 0.05f;
-	env->torch->time = (t_time){0, 0, 0};
-	env->mouse->is_pressed_mouse = false;
 }
 
 static bool	add_init_menu_and_text(t_env *env)
@@ -93,7 +90,7 @@ bool		wolf_init(t_env *env)
 		env->sdl->win_surface = SDL_GetWindowSurface(SWIN), exit(1), false);
 	NOTIS_F(env->sdl->win_pixels = env->sdl->win_surface->pixels);
 	ISZ(t_isr, env->isr, 1);
-	*(env->isr) = (t_isr){1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0};
+	*(env->isr) = (t_isr){1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0};
 	ISZ(t_map, env->map, 1);
 	ISZ(t_rc, env->rc, 1);
 	ISZ(t_mouse, env->mouse, 1);

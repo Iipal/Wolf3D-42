@@ -6,36 +6,20 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 17:16:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 23:15:07 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/10 00:09:29 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static void	add_fdebug_info(t_env *env, strtab av, int32_t ac)
-{
-	(void)av;
-	(void)ac;
-	*(env->isr) = (t_isr){false, false, false, true, false, false, true,
-						false, false, false, false, false, false};
-}
-
-static void	add_fno_sound(t_env *env, strtab av, int32_t ac)
-{
-	(void)av;
-	(void)ac;
-	env->isr->is_play_music = false;
-	env->isr->is_play_steps = false;
-}
-
 bool		add_fparse_current(t_env *env, string flag, strtab av, int32_t ac)
 {
 	const string	flags[] = {F_HELP, F_WIN_NO_BORDER, F_DEBUG_INFO,
-					F_NO_SOUND, F_ALWAYS_MOUSE};
+					F_NO_SOUND, F_ALWAYS_MOUSE, F_NO_MENU, F_NO_FOG};
 	const string	short_flags[] = {FS_HELP, FS_WIN_NO_BORDER, FS_DEBUG_INFO,
-					FS_NO_SOUND, FS_ALWAYS_MOUSE};
-	const f_fnptr	f_fns[] = {wolf_fhelp, wolf_fnoborder, add_fdebug_info,
-					add_fno_sound, wolf_fmouse};
+					FS_NO_SOUND, FS_ALWAYS_MOUSE, FS_NO_MENU, FS_NO_FOG};
+	const f_fnptr	f_fns[] = {wolf_fhelp, wolf_fnoborder, wolf_fdebug_info,
+					wolf_fno_sound, wolf_fmouse, wolf_fno_menu};
 	bool			is_valid_flag;
 	int8_t			i;
 

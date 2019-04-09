@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 16:35:02 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/10 00:10:25 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,43 @@ FPTR_FLG;
 bool		wolf_fparser(t_env *env, strtab av, int32_t ac);
 
 /*
-**	Function what processing flag '-h'.
+**	Function what processing flag '-h', '-help;.
 **	 Printing help info about flags.
 */
 void		wolf_fhelp(t_env *env, strtab av, int32_t ac);
 
 /*
-**	Function what processing flag '-no-border'.
+**	Function what processing flag '-d', '-dbg-info'.
+*/
+void		wolf_fdebug_info(t_env *env, strtab av, int32_t ac);
+
+/*
+**	Function what processing flag '-no-border', '-nb'.
 **	 Create window without borders.
 */
 void		wolf_fnoborder(t_env *env, strtab av, int32_t ac);
 
 /*
-**	Turned on by default mouse rotate without left mouse click.
+**	Function what processing flag '-no-sound', '-ns'.
+**	 Turned off by default all sounds.
+*/
+void		wolf_fno_sound(t_env *env, strtab av, int32_t ac);
+
+/*
+**	Function what proccesing flag '-no-menu', '-nm'
+**	 Disable at start game main menu screen.
+*/
+void		wolf_fno_menu(t_env *env, strtab av, int32_t ac);
+
+/*
+**	Function what proccesing flag '-no-fog', '-nf'
+**	 Turned off by default fog rendering.
+*/
+void		wolf_no_fog(t_env *env, strtab av, int32_t ac);
+
+/*
+**	Function what processing flag '-um', '-use-mouse'.
+**	 Turned on by default mouse rotate without left mouse click.
 */
 void		wolf_fmouse(t_env *env, strtab av, int32_t ac);
 
@@ -195,7 +219,7 @@ Uint32		wolf_fog_change(t_colors *c);
 /*
 **	Change for_dist & torch frame.
 */
-float		wolf_fog_freq(uint8_t *freq, t_time *time);
+float		wolf_fog_freq(uint8_t *freq, float *delta, float game_delta);
 
 /*
 **	Render blur.

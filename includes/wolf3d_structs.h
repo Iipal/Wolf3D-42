@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 21:38:46 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 16:38:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 23:50:08 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ struct	s_isrender
 	bool	is_rotate_left;
 	bool	is_render_blur;
 	bool	is_use_mouse;
+	bool	is_no_main_menu;
 };
 
 /*
@@ -244,7 +245,7 @@ typedef struct s_menu	t_menu;
 
 struct	s_torch
 {
-	t_time	time;
+	float	delta;
 	t_tex	*tex;
 };
 

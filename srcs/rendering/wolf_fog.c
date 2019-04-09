@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 19:10:46 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 20:16:02 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 23:32:19 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,17 @@ Uint32	wolf_fog_change(t_colors *c)
 	return (colors[*c]);
 }
 
-float	wolf_fog_freq(uint8_t *freq, t_time *time)
+float	wolf_fog_freq(uint8_t *freq, float *delta, float game_delta)
 {
-	const float	freqs[] = {4.2, 4.25, 4.15, 4.17, 4.22, 4.3, 4.1, 4.16};
+	const float	freqs[] = {4.2, 4.25, 4.13, 4.17, 4.22, 4.3, 4.1, 4.19};
 
-	if (REFRESH_TORCH_FOG_FREQ < time->res)
+	if (REFRESH_TORCH_FOG_FREQ < *delta)
 	{
-		time->res = 0;
+		*delta = 0;
 		*freq = ft_rand((sizeof(freqs) / sizeof(*freqs)) - 1);
 	}
 	else
-	{
-		time->old = time->current;
-		time->current = SDL_GetTicks();
-		time->res += (time->current - time->old) / 1000.0;
-	}
+		*delta += game_delta;
 	return (freqs[(*freq)]);
 }
 

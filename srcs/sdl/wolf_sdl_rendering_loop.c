@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 22:59:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 20:31:49 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/09 23:35:57 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,31 +21,31 @@ static void	add_mouse_moves(t_env *env)
 		env->mouse->is_pressed_mouse = false;
 	env->mouse->last = env->mouse->curr;
 	env->mouse->curr = env->sdl->event.motion.x;
-	if (true == env->mouse->is_pressed_mouse || true == env->isr->is_use_mouse)
+	if (env->mouse->is_pressed_mouse || env->isr->is_use_mouse)
 		wolf_rotate(env->rc, -(env->sdl->event.motion.x - env->mouse->last)
 							* ROT_MOUSE_INC);
 }
 
 static void	add_loop_isr(t_env *env)
 {
-	if ((true == env->isr->is_move_backward
-		|| true == env->isr->is_move_forward)
-		&& true == env->isr->is_play_steps)
+	if ((env->isr->is_move_backward
+		|| env->isr->is_move_forward)
+		&& env->isr->is_play_steps)
 		wolf_playing_steps(env->sfx, env->isr->is_boost_step);
-	if (true == env->isr->is_move_forward)
-		wolf_move(env, (true == env->isr->is_boost_step)
+	if (env->isr->is_move_forward)
+		wolf_move(env, (env->isr->is_boost_step)
 			? (MOVE_BOOST * env->fps.move) : env->fps.move);
-	if (true == env->isr->is_rotate_left)
-		wolf_rotate(env->rc, RAD((true == env->isr->is_boost_step)
+	if (env->isr->is_rotate_left)
+		wolf_rotate(env->rc, RAD((env->isr->is_boost_step)
 			? (ROT_BOOST * env->fps.rot) : env->fps.rot));
-	if (true == env->isr->is_move_backward)
-		wolf_move(env, (true == env->isr->is_boost_step)
+	if (env->isr->is_move_backward)
+		wolf_move(env, (env->isr->is_boost_step)
 			? (MOVE_BOOST * -env->fps.move) : -env->fps.move);
-	if (true == env->isr->is_rotate_right)
-		wolf_rotate(env->rc, RAD((true == env->isr->is_boost_step)
+	if (env->isr->is_rotate_right)
+		wolf_rotate(env->rc, RAD((env->isr->is_boost_step)
 			? (ROT_BOOST * -env->fps.rot) : -env->fps.rot));
 	Mix_VolumeMusic(env->sfx->bg_volume);
-	if (true == env->isr->is_play_music)
+	if (env->isr->is_play_music)
 		Mix_ResumeMusic();
 	else
 		Mix_PauseMusic();
@@ -73,6 +73,6 @@ void		wolf_sdl_rendering_loop(t_env *env)
 		add_loop_isr(env);
 		wolf_rendering(env);
 	}
-	IFDO(true == env->isr->is_play_music,
+	IFDO(env->isr->is_play_music,
 		Mix_VolumeMusic(env->sfx->bg_volume / BG_VOL_MUTE));
 }
