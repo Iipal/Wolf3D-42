@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:19:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 23:55:51 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/10 11:02:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ int			main(int argc, string argv[])
 	if (env->isr->is_no_main_menu)
 		wolf_sdl_rendering_loop(env);
 	else
-		wolf_rendering_mainmenu(env);
-	add_start_game(env);
+		add_start_game(env);
 	wolf_free(&env);
 }
 
