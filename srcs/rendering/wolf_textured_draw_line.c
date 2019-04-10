@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 11:59:37 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 23:35:57 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/10 11:11:50 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	wolf_render_textured_draw_line(t_env *env, point *p, t_texhelp *h)
 		h->pos_on_tex.y = ((h->d * WALLS_BLOCK_SIZE) / env->rc->hline) / 256;
 		IFDO(0 > h->pos_on_tex.y, h->pos_on_tex.y = 0);
 		h->currtcolor = env->walls->data->pixels
-		[(env->walls->start[h->curr_tex].y + h->pos_on_tex.y) *
-		env->walls->data->surf->w + (env->walls->start[h->curr_tex].x
-		+ h->pos_on_tex.x)];
-		IFDO(env->rc->is_side, h->currtcolor = (h->currtcolor >> 1) & 8355711);
+		[(env->walls->start[h->curr_tex].y + h->pos_on_tex.y)
+		* env->walls->data->surf->w
+		+ (env->walls->start[h->curr_tex].x + h->pos_on_tex.x)];
+		IFDO(env->rc->is_side, h->currtcolor = (h->currtcolor >> 1) & FCL);
 		if (env->isr->is_render_fog)
 		{
 			if (env->fog.fog_dist <= env->rc->pwd)

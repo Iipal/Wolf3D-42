@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/10 00:10:25 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/10 11:18:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,12 @@ void		wolf_fno_menu(t_env *env, strtab av, int32_t ac);
 **	 Turned off by default fog rendering.
 */
 void		wolf_no_fog(t_env *env, strtab av, int32_t ac);
+
+/*
+**	Function what proccesing flag '-world-sides', '-ws'
+**	 Different textures for each world side.
+*/
+void		wolf_ftex_sides_of_world(t_env *env, strtab av, int32_t ac);
 
 /*
 **	Function what processing flag '-um', '-use-mouse'.

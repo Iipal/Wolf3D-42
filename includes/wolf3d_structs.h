@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 21:38:46 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 23:50:08 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/10 11:20:01 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ struct	s_isrender
 	bool	is_render_blur;
 	bool	is_use_mouse;
 	bool	is_no_main_menu;
+	bool	is_world_sides_textures;
 };
 
 /*

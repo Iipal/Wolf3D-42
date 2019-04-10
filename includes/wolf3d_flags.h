@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 16:26:52 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/10 00:16:10 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/10 11:22:33 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /*
 **	Flags counter.
 */
-# define F_MAX              7
+# define F_MAX              8
 
 /*
 **	Print help info about flags.
@@ -47,6 +47,11 @@
 **  Turned off by default fog rendering.
 */
 # define F_NO_FOG           "-no-fog"
+
+/*
+**	Set different textures to each world side.
+*/
+# define F_DIFF_SIDE        "-world-sides"
 
 /*
 **  Turned on by default rotate player camera without left mouse click.
@@ -82,6 +87,11 @@
 **  Short flag equals to -no-fog.
 */
 # define FS_NO_FOG          "-nf"
+
+/*
+**  Short flag equals to -world-sides.
+*/
+# define FS_DIFF_SIDE       "-ws"
 
 /*
 **  Short flag equals to -dbg-info.

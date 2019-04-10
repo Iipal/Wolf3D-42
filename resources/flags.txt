@@ -5,4 +5,5 @@ Flags:
     -no-sound, -ns:     Turned off by default all in-game sounds and music.
     -no-menu, -nm:      Turned off main menu screen on start.
     -no-fog, -nf:       Turned off by default fog rendering.
+    -world-sides, -ws:  Different textures for each world side.
     -use-mouse, -um:    Use by default mouse for rotate instead of keys.

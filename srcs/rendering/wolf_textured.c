@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 15:41:02 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 23:37:00 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/10 11:23:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,9 @@ void		wolf_render_textured(t_env *env, point *p)
 {
 	t_texhelp	h;
 
-	add_choose_current_texture(env, &h.curr_tex);
+	h.curr_tex = env->map->tab[RC->map.y][RC->map.x] - 1;
+	if (env->isr->is_world_sides_textures)
+		add_choose_current_texture(env, &h.curr_tex);
 	if (!env->rc->is_side)
 		h.where_is_hit = env->rc->pos.y + env->rc->pwd * env->rc->raydir.y;
 	else

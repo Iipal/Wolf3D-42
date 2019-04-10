@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 22:08:27 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 23:37:00 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/10 11:10:28 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	wolf_rendering_torch(t_env *env)
 {
 	static uint8_t	old_torch_frame;
 	static uint8_t	torch_frame;
-	const fpoint	torch_shift = {TORCH_SHIFT_Y, TORCH_SHIFT_X};
-	point			p;
+	fpoint			torch_shift;
 	point			tp;
+	point			p;
 
 	if (old_torch_frame != env->fog.freq)
 	{
@@ -26,6 +26,7 @@ void	wolf_rendering_torch(t_env *env)
 		old_torch_frame = env->fog.freq;
 	}
 	tp.y = -1;
+	torch_shift = (fpoint){TORCH_SHIFT_Y, TORCH_SHIFT_X};
 	p.y = torch_shift.y;
 	while (WIN_Y > ++(p.y) && (tp.x = -1)
 	&& env->torch->tex[torch_frame].surf->h > ++tp.y && (p.x = torch_shift.x))

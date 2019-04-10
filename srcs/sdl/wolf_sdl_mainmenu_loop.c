@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 11:02:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 23:49:29 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/10 11:08:04 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	add_press_keys(t_env *env)
 
 void		wolf_sdl_mainmenu_loop(t_env *env, bool *exit_)
 {
-	(env->sdl->event.type == SDL_QUIT) ? (*exit_ = true) : 0;
+	IFDO(env->sdl->event.type == SDL_QUIT, *exit_ = true);
 	if (env->sdl->event.type == SDL_KEYDOWN)
 	{
 		if (env->sdl->event.key.keysym.sym == SDLK_ESCAPE)
