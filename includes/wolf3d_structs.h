@@ -6,23 +6,19 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 21:38:46 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/10 11:20:01 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/08 13:55:22 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WOLF3D_STRUCTS_H
 # define WOLF3D_STRUCTS_H
 
-# ifdef __APPLE__
-#  include "../frameworks/SDL2.framework/Headers/SDL.h"
-#  include "../frameworks/SDL2_mixer.framework/Headers/SDL_mixer.h"
-#  include "../frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h"
-# endif
-
-# ifdef __linux__
+# if defined __APPLE__ || defined __linux
 #  include <SDL2/SDL.h>
-#  include <SDL2/SDL_mixer.h>
 #  include <SDL2/SDL_ttf.h>
+#  include <SDL2/SDL_mixer.h>
+# else
+#  error "Unsupported OS. Try to compile this on MacOS or Linux"
 # endif
 
 # include "wolf3d_defines.h"
