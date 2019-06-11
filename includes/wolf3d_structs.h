@@ -6,14 +6,14 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 21:38:46 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/08 13:55:22 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/11 20:27:39 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WOLF3D_STRUCTS_H
 # define WOLF3D_STRUCTS_H
 
-# if defined __APPLE__ || defined __linux
+# if defined __APPLE__ || defined __linux__
 #  include <SDL2/SDL.h>
 #  include <SDL2/SDL_ttf.h>
 #  include <SDL2/SDL_mixer.h>
@@ -21,8 +21,8 @@
 #  error "Unsupported OS. Try to compile this on MacOS or Linux"
 # endif
 
+# include "libft.h"
 # include "wolf3d_defines.h"
-# include "../libft/includes/libft.h"
 
 /*
 **	Uncommented cheats:
@@ -324,7 +324,8 @@ struct	s_wolf3d_environment
 
 /*
 **	(t_sdl*)sdl: All sdl stuff what needed to work with SDL2 framework.
-**	(t_isr*)isr: Full bool struct with flags for e\disable all binding features.
+**	(t_isr*)isr: Full bool struct with flags
+**	 for en\disable all binding features & also.
 **	(t_map*)map: Map readed from file.
 **	(t_rc*)rc: All RayCasting data.
 **	(t_tex*)floor_and_sky: Texture map with floor and sky textures.

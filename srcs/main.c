@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:19:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/10 11:05:19 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/11 20:22:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int			main(int argc, string argv[])
 {
 	t_env	*env;
 
-	ISM(E_DIR, ft_strcmp(*argv, WOLF_EXE_PATH), exit(EXIT_FAILURE), 0);
+	IFM(E_DIR, ft_strcmp(*argv, WOLF_EXE_PATH), exit(EXIT_FAILURE), 0);
 	ISARGS(argc, argv);
 	ISZ(t_env, env, 1);
 	NOTIS(E_ALLOC, wolf_init(env), wolf_free(&env), EXIT_FAILURE);
