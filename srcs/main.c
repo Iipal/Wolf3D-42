@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:19:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/11 20:22:58 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/11 22:57:07 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,17 @@ int			main(int argc, string argv[])
 {
 	t_env	*env;
 
-	IFM(E_DIR, ft_strcmp(*argv, WOLF_EXE_PATH), exit(EXIT_FAILURE), 0);
-	ISARGS(argc, argv);
-	ISZ(t_env, env, 1);
-	NOTIS(E_ALLOC, wolf_init(env), wolf_free(&env), EXIT_FAILURE);
-	NOTIS(E_FILEXT, !ft_strcmp(argv[argc - 1] +
+	// IFM_F(E_DIR, ft_strcmp(*argv, WOLF_EXE_PATH));
+	ISARGS(argc, argv, E_USAGE);
+	MEM(t_env, env, 1, E_ALLOC);
+	NODOM_F(E_ALLOC, wolf_init(env), wolf_free(&env));
+	NODOM_F(E_FILEXT, !ft_strcmp(argv[argc - 1] +
 		(ft_strlen(argv[argc - 1]) - ft_strlen(WOLF_FILE_EXT)), WOLF_FILE_EXT),
-		wolf_free(&env), false);
-	NOTIS_F(wolf_fparser(env, argv, argc - 1));
-	NOTIS(E_FILER, wolf_readnsave(argv[argc - 1], env), exit(EXIT_FAILURE), 0);
+		wolf_free(&env));
+	NO_F(wolf_fparser(env, argv, argc - 1));
+	NODOM_F(E_FILER, wolf_readnsave(argv[argc - 1], env), wolf_free(&env));
 	wolf_setup_rc(env);
-	NOTIS(E_OPEN, ft_putfile(USAGE_GAME_FILE), exit(EXIT_FAILURE), -1);
+	NOM_F(E_OPEN, ft_putfile(USAGE_GAME_FILE));
 	if (env->isr->is_no_main_menu)
 		wolf_sdl_rendering_loop(env);
 	else

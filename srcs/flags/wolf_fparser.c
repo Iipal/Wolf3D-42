@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 17:16:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/10 13:51:34 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/11 22:45:03 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ bool		add_fparse_current(t_env *env, string flag, strtab av, int32_t ac)
 		wolf_fno_sound, wolf_fmouse, wolf_fno_menu, wolf_no_fog,
 		wolf_ftex_sides_of_world};
 	bool			is_valid_flag;
-	int8_t			i;
+	size_t			i;
 
-	i = -true;
+	i = ~0UL;
 	is_valid_flag = false;
 	while (F_MAX > ++i)
-		if (ft_is_one_of_str(flag, 2, flags[i], short_flags[i]))
+		if (ft_is_one_of_str(flag, false, 2, flags[i], short_flags[i]))
 		{
 			is_valid_flag = true;
 			f_fns[i](env, av, ac);
@@ -38,16 +38,19 @@ bool		add_fparse_current(t_env *env, string flag, strtab av, int32_t ac)
 
 bool		wolf_fparser(t_env *env, strtab av, int32_t ac)
 {
-	int32_t	i;
+	size_t	i;
 
-	i = -1;
-	while (ac > ++i)
+	i = ~0UL;
+	while ((size_t)ac > ++i)
 		if (av[i][0] == '-' && ft_isalpha(av[i][1]))
 		{
-			NOTIS(E_IFLAG, add_fparse_current(env, av[i], av, ac),
-				wolf_free(&env), false);
+			NODOM_F(E_IFLAG, add_fparse_current(env, av[i], av, ac),
+				wolf_free(&env));
 		}
 		else
-			NOTIS2(E_IFLAG, false, wolf_free(&env), exit(EXIT_FAILURE));
+		{
+			MSGN(E_IFLAG);
+			wolf_free(&env);
+		}
 	return (true);
 }

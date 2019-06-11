@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 09:51:17 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/05 15:55:38 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/11 21:44:49 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,10 @@ SDL_Surface	*wolf_optimize_surf_load(string bmp_path,
 
 	temp_load = NULL;
 	optimize_out = NULL;
-	NOTIS(SDL_GetError(),
-		temp_load = SDL_LoadBMP(bmp_path), exit(EXIT_FAILURE), NULL);
-	NOTIS(SDL_GetError(),
-		optimize_out = SDL_ConvertSurface(temp_load, format, 0),
-		exit(EXIT_FAILURE), NULL);
+	NOM_R(SDL_GetError(),
+		temp_load = SDL_LoadBMP(bmp_path), NULL);
+	NOM_R(SDL_GetError(),
+		optimize_out = SDL_ConvertSurface(temp_load, format, 0), NULL);
 	SDL_FreeSurface(temp_load);
 	return (optimize_out);
 }
@@ -37,12 +36,10 @@ SDL_Surface	*wolf_optimize_font_load(string text, SDL_Color text_color,
 
 	temp_load = NULL;
 	optimize_out = NULL;
-	NOTIS(TTF_GetError(),
-		temp_load = TTF_RenderText_Solid(font, text, text_color),
-		exit(EXIT_FAILURE), NULL);
-	NOTIS(SDL_GetError(),
-		optimize_out = SDL_ConvertSurface(temp_load, format, 0),
-		exit(EXIT_FAILURE), NULL);
+	NOM_R(TTF_GetError(),
+		temp_load = TTF_RenderText_Solid(font, text, text_color), NULL);
+	NOM_R(SDL_GetError(),
+		optimize_out = SDL_ConvertSurface(temp_load, format, 0), NULL);
 	SDL_FreeSurface(temp_load);
 	return (optimize_out);
 }

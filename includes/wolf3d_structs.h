@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 21:38:46 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/11 20:27:39 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/11 22:42:00 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ struct	s_sdl
 {
 	SDL_Window	*win;
 	SDL_Surface	*win_surface;
-	iarr		win_pixels;
+	Uint32		*win_pixels;
 	SDL_Event	event;
 	TTF_Font	*font;
 };
@@ -293,7 +293,7 @@ struct	s_walls
 	point	*start;
 	int32_t	in_row;
 	int32_t	in_column;
-	int32_t	max_textures;
+	size_t	max_textures;
 };
 
 /*
@@ -385,7 +385,7 @@ FCOLOR;
 struct	s_bhelp
 {
 	point	*p;
-	iarr	src;
+	Uint32	*src;
 	float	*bmap;
 	float	dimm;
 	float	factor;

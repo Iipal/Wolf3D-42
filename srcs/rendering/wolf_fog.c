@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 19:10:46 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 23:32:19 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/11 22:22:31 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Uint32	wolf_fog_change(t_colors *c)
 
 float	wolf_fog_freq(uint8_t *freq, float *delta, float game_delta)
 {
-	const float	freqs[] = {4.2, 4.25, 4.13, 4.17, 4.22, 4.3, 4.1, 4.19};
+	const float	freqs[] = {4.2f, 4.25f, 4.13f, 4.17f, 4.22f, 4.3f, 4.1f, 4.19f};
 
 	if (REFRESH_TORCH_FOG_FREQ < *delta)
 	{

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 22:59:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/10 11:05:49 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/11 22:17:30 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,17 @@ static void	add_loop_isr(t_env *env)
 
 void		wolf_sdl_rendering_loop(t_env *env)
 {
-	bool	exit_;
+	bool	quit;
 
-	exit_ = false;
-	while (!exit_)
+	quit = false;
+	while (!quit)
 	{
 		while (0 < SDL_PollEvent(&env->sdl->event))
 		{
-			IFDO(SDL_QUIT == env->sdl->event.type, exit_ = true);
+			IFDO(SDL_QUIT == env->sdl->event.type, quit = true);
 			if (SDL_KEYDOWN == env->sdl->event.type)
 			{
-				wolf_rendering_loop_keys_press(env, &exit_);
+				wolf_rendering_loop_keys_press(env, &quit);
 				wolf_rendering_loop_keys_sfx_press(env);
 			}
 			if (SDL_KEYUP == env->sdl->event.type)

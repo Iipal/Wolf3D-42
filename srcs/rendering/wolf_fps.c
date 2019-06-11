@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 14:42:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 20:19:07 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/11 22:40:34 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static void	add_render_fps(SDL_Surface *text, iarr screen, bool pos)
+static void	add_render_fps(SDL_Surface *text, Uint32 *screen, bool pos)
 {
 	point	tp;
 	point	p;

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:03:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 23:30:33 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/11 22:36:05 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	wolf_rendering(t_env *env)
 	{
 		env->fog.fog_dist = wolf_fog_freq(&env->fog.freq, &env->torch->delta,
 											env->fps.time.res);
-		wolf_rendering_torch(env);
+		wolf_rendering_torch(env->torch, env->sdl->win_pixels, env->fog.freq);
 	}
 	IFDO(env->isr->is_render_minimap, wolf_rendering_minimap(env));
 	if (env->isr->is_render_blur)

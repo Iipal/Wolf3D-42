@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:30:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/10 11:18:58 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/11 22:41:20 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,7 +210,9 @@ void		wolf_rendering_minimap(t_env *env);
 /*
 **	Render torch.
 */
-void		wolf_rendering_torch(t_env *env);
+void		wolf_rendering_torch(t_torch *torch,
+								Uint32 *win_pxls,
+								uint8_t fog_freq);
 
 /*
 **	Render fog.
@@ -230,7 +232,7 @@ float		wolf_fog_freq(uint8_t *freq, float *delta, float game_delta);
 /*
 **	Render blur.
 */
-void		wolf_blur(point size, iarr src, float value, float dimmed);
+void		wolf_blur(point size, Uint32 *src, float value, float dimmed);
 
 /*
 **	Play steps sound effects.

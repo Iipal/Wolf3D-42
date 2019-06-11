@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 16:32:35 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/11 20:20:51 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/11 22:32:27 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 /*
 **	Shift torch textures by X for correct display in right down corner.
 */
-# define TORCH_SHIFT_X      ((WIN_X + TORCH->tex[torch_frame].surf->w) / 1.6)
+# define TORCH_SHIFT_X      ((WIN_X + torch->tex[torch_frame].surf->w) / 1.6)
 
 /*
 **	Shift torch textures by Y for correct display in right down corner.
 */
-# define TORCH_SHIFT_Y      (WIN_Y - TORCH->tex[torch_frame].surf->h)
+# define TORCH_SHIFT_Y      (WIN_Y - torch->tex[torch_frame].surf->h)
 
 /*
 **	Main menu selector shift by X for correct display in center.

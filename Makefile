@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/06/11 20:21:53 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/06/11 23:09:31 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME := wolf3d
 NPWD := $(CURDIR)/$(NAME)
 
 CC := gcc -march=native -mtune=native -flto -Ofast -pipe
+CC_DEBUG := gcc -march=native -mtune=native -g3
 CFLAGS := -Wall -Wextra -Werror -Wunused
 IFLAGS := -I $(CURDIR)/includes/ -I $(CURDIR)/libft/includes
 LIBSINC :=
@@ -64,8 +65,6 @@ del:
 
 pre: del all
 	@echo "$(INVERT)$(GREEN)Successed re-build.$(WHITE)"
-
-pre: del all
 
 $(CC_DEBUG):
 	@$(eval CC=$(CC_DEBUG))

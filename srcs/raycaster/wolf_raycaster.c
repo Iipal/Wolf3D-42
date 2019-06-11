@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 11:13:19 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 23:37:00 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/11 23:13:23 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static void	add_fill_floornceiling(t_sdl *sdl)
+static void			add_fill_floornceiling(t_sdl *sdl)
 {
 	point	p;
 
@@ -23,7 +23,7 @@ static void	add_fill_floornceiling(t_sdl *sdl)
 				(p.y >= WIN_Y / 2) ? RGB_FLOOR : RGB_SKY;
 }
 
-static void	add_set_diststep(t_rc *rc)
+static inline void	add_set_diststep(t_rc *rc)
 {
 	if (0 > rc->raydir.x)
 	{
@@ -47,7 +47,7 @@ static void	add_set_diststep(t_rc *rc)
 	}
 }
 
-static void	add_dist_to_wall(t_rc *rc)
+static inline void	add_dist_to_wall(t_rc *rc)
 {
 	if (!rc->is_side)
 		rc->pwd = (rc->map.x - rc->pos.x + (1 - rc->step.x) / 2) / rc->raydir.x;
@@ -60,7 +60,7 @@ static void	add_dist_to_wall(t_rc *rc)
 	IFDO(rc->draw_end >= WIN_Y, rc->draw_end = WIN_Y - 1);
 }
 
-inline void	add_check_hit(t_rc *rc, int8_t **map)
+static inline void	add_check_hit(t_rc *rc, int8_t **map)
 {
 	if (rc->side_dist.x < rc->side_dist.y)
 	{
@@ -77,7 +77,7 @@ inline void	add_check_hit(t_rc *rc, int8_t **map)
 	IFDO(map[rc->map.y][rc->map.x] > 0, rc->is_hit = true);
 }
 
-void		wolf_raycaster(t_env *env)
+void				wolf_raycaster(t_env *env)
 {
 	point	p;
 

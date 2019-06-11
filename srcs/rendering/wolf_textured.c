@@ -6,14 +6,14 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 15:41:02 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/10 11:45:19 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/11 23:14:45 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static void	add_render_floor_init_fpos(t_env *env, t_texhelp *tx,
-										t_floorhelper *h)
+static inline void	add_render_floor_init_fpos(t_env *env, t_texhelp *tx,
+												t_floorhelper *h)
 {
 	if (!env->rc->is_side && 0 < env->rc->raydir.x)
 		h->fpos = (fpoint){env->rc->map.y + tx->where_is_hit, env->rc->map.x};
@@ -27,7 +27,7 @@ static void	add_render_floor_init_fpos(t_env *env, t_texhelp *tx,
 			env->rc->map.x + tx->where_is_hit};
 }
 
-static void	add_is_render_fog(t_floorhelper *h, t_env *env,
+static inline void	add_is_render_fog(t_floorhelper *h, t_env *env,
 								point *p, float fog_distance)
 {
 	const Uint32	curr_floor = (env->floor_and_sky->pixels[FPOS] >> 1) & FCL;
@@ -56,7 +56,9 @@ static void	add_is_render_fog(t_floorhelper *h, t_env *env,
 	}
 }
 
-static void	add_render_floornceiling(t_env *env, t_texhelp *tx, point *p)
+static void			add_render_floornceiling(t_env *env,
+											t_texhelp *tx,
+											point *p)
 {
 	t_floorhelper	h;
 
@@ -77,7 +79,7 @@ static void	add_render_floornceiling(t_env *env, t_texhelp *tx, point *p)
 	}
 }
 
-inline void	add_choose_current_texture(t_env *env, int32_t *curr_tex)
+static inline void	add_choose_current_texture(t_env *env, int32_t *curr_tex)
 {
 	uint8_t	tex;
 
@@ -87,11 +89,11 @@ inline void	add_choose_current_texture(t_env *env, int32_t *curr_tex)
 	if (env->rc->is_side)
 		(0 > env->rc->step.y) ? (tex = 2)
 			: (tex = 3);
-	if (env->walls->max_textures - 1 < (*curr_tex += tex))
+	if (env->walls->max_textures - 1 < (size_t)(*curr_tex += tex))
 		*curr_tex -= (env->walls->max_textures - 1);
 }
 
-void		wolf_render_textured(t_env *env, point *p)
+void				wolf_render_textured(t_env *env, point *p)
 {
 	t_texhelp	h;
 
