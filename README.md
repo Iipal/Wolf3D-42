@@ -1,6 +1,6 @@
 # Wolf3D
 ###### made by tmaluh __(\_ipal)__
-
+###### README.md contain not all info about project and after update project after last changes in libft its may work unstability
 [![Video preview](https://raw.githubusercontent.com/Iipal/Wolf3D-42/master/screenshot.png)](https://youtu.be/s2rnZQIKDzw)
 ## Installation:
 
@@ -34,7 +34,7 @@ Use [make](https://en.wikipedia.org/wiki/Makefile) for compiling all files.
 When you have already installed SDL2 library you can use this simple rules:
 - **make**: Compile all.
 - **make clean**: Delete temporary files.
-- **makde del**: Delete temporary Wolf3D files only(if you changed code use `make del && make` for re-compile only Wolf3D executable without libft).
+- **make del**: Delete temporary Wolf3D files only(if you changed code use `make del && make` for re-compile only Wolf3D executable without libft).
 - **make fclean**: Delete executable Wolf3D file & libft.
 - **make re**: It's rules - **make fclean** & **make** in one.
 
