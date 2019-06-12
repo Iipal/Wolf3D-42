@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 16:29:12 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 16:29:37 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/12 15:15:14 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 /*
 **	Game background music.
 */
-# define AMBIENT_BG     "resources/music/ambient_game_bg.mp3"
+# define AMBIENT_BG     "resources/music/ambient_game_bg.wav"
 
 /*
 **	When player walking, left step sound.

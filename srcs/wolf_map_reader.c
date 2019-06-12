@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 17:18:56 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/11 23:01:21 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/12 16:45:26 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static bool		add_save_map(string line, int8_t *map_line,
 		if (ft_isdigit(*line))
 		{
 			map_line[++x] = ft_atoi(line);
-			NO_F(!(map_line[x] < 0 || map_line[x] > MAX_TEXTURES));
+			IF_F(0 > map_line[x] < 0 || MAX_TEXTURES < map_line[x]);
 			colors_line[x] = colors[map_line[x] - 1];
 			temp_digits = ft_itoa(map_line[x]);
 			digits = ft_strlen(temp_digits);
@@ -132,10 +132,10 @@ bool			wolf_readnsave(string map_name, t_env *env)
 	{
 		IFDOMR(E_IMAP, add_valid_inline_numbers(gnl_temp) != env->map->size.x,
 			ft_strdel(&gnl_temp), false);
-		IFDOMR(E_IMAP, add_save_map(gnl_temp, MAP[i], MAPC[i],
-			env->map->size.x), ft_strdel(&gnl_temp), false);
-		IFDOMR(E_ENDMAP, add_endofmap(env, i, (point){MAPY, env->map->size.x},
-			false), ft_strdel(&gnl_temp), false);
+		NODOM_F(E_IMAP, add_save_map(gnl_temp, MAP[i], MAPC[i],
+			env->map->size.x), ft_strdel(&gnl_temp));
+		NODOM_F(E_ENDMAP, add_endofmap(env, i, (point){MAPY, env->map->size.x},
+			false), ft_strdel(&gnl_temp));
 		ft_strdel(&gnl_temp);
 	}
 	close(fd);

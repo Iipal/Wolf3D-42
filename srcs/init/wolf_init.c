@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:38:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/11 21:51:04 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/12 11:25:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,12 @@ static bool	add_init_audio(t_env *env)
 	MEM(t_sfx, env->sfx, 1, E_ALLOC);
 	*(env->sfx) = (t_sfx){NULL, NULL, NULL, NULL, NULL, NULL,
 		{0, 0, 0}, BG_VOL_DEF};
-	NOM_F(Mix_GetError(), env->sfx->ambient_bg = Mix_LoadMUS(AMBIENT_BG));
 	NOM_F(Mix_GetError(), env->sfx->start = Mix_LoadWAV(MSTART));
 	NOM_F(Mix_GetError(), env->sfx->selector = Mix_LoadWAV(MSELECTOR));
 	NOM_F(Mix_GetError(), env->sfx->selector_err = Mix_LoadWAV(MSERROR));
 	NOM_F(Mix_GetError(), env->sfx->lstep = Mix_LoadWAV(GAME_LSTEP));
 	NOM_F(Mix_GetError(), env->sfx->rstep = Mix_LoadWAV(GAME_RSTEP));
+	NOM_F(Mix_GetError(), env->sfx->ambient_bg = Mix_LoadMUS(AMBIENT_BG));
 	Mix_VolumeChunk(env->sfx->lstep, 35);
 	Mix_VolumeChunk(env->sfx->rstep, 35);
 	Mix_PlayMusic(env->sfx->ambient_bg, -1);
