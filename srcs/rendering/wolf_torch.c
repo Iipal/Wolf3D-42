@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 22:08:27 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/12 16:47:29 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/13 09:44:46 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	wolf_rendering_torch(t_torch *torch, Uint32 *win_pxls, uint8_t fog_freq)
 {
 	static uint8_t	old_torch_frame;
 	static uint8_t	torch_frame;
-	const fpoint	torch_shift = (fpoint){TORCH_SHIFT_Y, TORCH_SHIFT_X};
-	point			tp;
+	const point		torch_shift = {TORCH_SHIFT_Y, TORCH_SHIFT_X};
+	uint32_t		curr_tex_pxl;
 	point			p;
 
 	if (old_torch_frame != fog_freq)
@@ -25,14 +25,14 @@ void	wolf_rendering_torch(t_torch *torch, Uint32 *win_pxls, uint8_t fog_freq)
 		torch_frame = ft_rand(MAX_TORCH - 1);
 		old_torch_frame = fog_freq;
 	}
-	tp.y = -1;
-	p.y = torch_shift.y;
-	while (WIN_Y > ++(p.y) && (tp.x = -1)
-	&& torch->tex[torch_frame].surf->h > ++tp.y && (p.x = torch_shift.x))
-		while (++p.x < WIN_X && ++tp.x < torch->tex[torch_frame].surf->w)
-			if (!ft_is_one_of_n(torch->tex[torch_frame]
-				.pixels[tp.y * torch->tex[torch_frame].surf->w + tp.x],
-					2UL, 0xff000000L, 0x00L))
-				win_pxls[p.y * WIN_X + p.x] = torch->tex[torch_frame]
-					.pixels[tp.y * torch->tex[torch_frame].surf->w + tp.x];
+	p.y = -1;
+	while (torch->tex[torch_frame].surf->h > ++p.y && (p.x = -1))
+		while (torch->tex[torch_frame].surf->w > ++p.x)
+		{
+			curr_tex_pxl = torch->tex[torch_frame]
+				.pixels[p.y * torch->tex[torch_frame].surf->w + p.x];
+			if (curr_tex_pxl != 0xff000000 || curr_tex_pxl != 0x00)
+				win_pxls[(p.y + torch_shift.y) * WIN_X + (p.x + torch_shift.x)]
+					= curr_tex_pxl;
+		}
 }
